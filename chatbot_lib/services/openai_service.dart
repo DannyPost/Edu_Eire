@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../utils/constants.dart';
 
+
 Future<String> fetchChatGPTResponse(String prompt) async {
   final url = Uri.parse('https://api.openai.com/v1/chat/completions');
 
@@ -25,7 +26,7 @@ Future<String> fetchChatGPTResponse(String prompt) async {
   );
 
   if (response.statusCode == 200) {
-    final data = jsonDecode(response.body);
+    final data = jsonDecode(utf8.decode(response.bodyBytes));
     return data['choices'][0]['message']['content'];
   } else {
     throw Exception('Failed to get response: ${response.body}');
