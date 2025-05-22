@@ -1,266 +1,379 @@
+// lib/pages/cao_search_page.dart
+import 'dart:async';
+import 'dart:collection';
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:csv/csv.dart';
 
+/* ───────── assets ───────── */
+const _csvAsset        = 'assets/cao_list_25.csv';
+const _placeholderLogo = 'assets/images/college_placeholder.jpeg';
+
+/* optional: college → logo asset  (all caps key) */
+const _logoMap = <String, String>{
+  'ATLANTIC TECHNOLOGICAL UNIVERSITY': 'assets/logos/atu.png',
+  // add more when you have them
+};
+
+/* ───────── widget ───────── */
 class CAOSearchPage extends StatefulWidget {
   const CAOSearchPage({super.key});
-
   @override
   State<CAOSearchPage> createState() => _CAOSearchPageState();
 }
 
-class _CAOSearchPageState extends State<CAOSearchPage> with SingleTickerProviderStateMixin {
-  String searchQuery = '';
-  String? selectedField;
-  String? selectedLocation;
-  String? selectedCollege;
-  String? selectedLevel;
-  String? sortOption;
-  RangeValues selectedPointsRange = const RangeValues(100, 600);
+class _CAOSearchPageState extends State<CAOSearchPage> {
+/* ───────── runtime data ───────── */
+  List<Map<String, String>> _courses = [];
 
-  final List<String> fieldsOfStudy = [
-    'Business', 'Science', 'Engineering', 'Arts', 'Media', 'Healthcare', 'IT', 'Education', 'Law', 'Social Science'
-  ];
+  final _universities = <String>['All'];
+  final _locations    = <String>['All'];
+  final _levels       = <String>['All'];
+  final _jobFields    = <String>['All'];
 
-  final List<String> countiesList = [
-    'Carlow', 'Cavan', 'Clare', 'Cork', 'Donegal', 'Dublin', 'Galway', 'Kerry', 'Kildare', 'Kilkenny',
-    'Laois', 'Leitrim', 'Limerick', 'Longford', 'Louth', 'Mayo', 'Meath', 'Monaghan', 'Offaly',
-    'Roscommon', 'Sligo', 'Tipperary', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow'
-  ];
+/* ───────── UI state ───────── */
+  String _query = '';
+  String _uniF  = 'All';
+  String _locF  = 'All';
+  String _levF  = 'All';
+  String _jobF  = 'All';
+  int    _shown = 10;
+  List<Map<String, String>> _sug = [];
 
-  final List<String> collegesList = [
-  'American College Dublin',
-  'National College of Art and Design',
-  'Atlantic Technological University',
-  'IBAT College Dublin',
-  'University College Cork (NUI)',
-  'Marino Institute of Education',
-  'CCT College Dublin',
-  'Dublin Business School',
-  'Dublin City University',
-  'Dundalk Institute of Technology',
-  'Dun Laoghaire Institute of Art, Design and Technology',
-  'University College Dublin (NUI)',
-  'Dorset College',
-  'Galway Business School',
-  'Griffith College',
-  'University of Galway',
-  'ICD Business School',
-  'University of Limerick',
-  'Maynooth University',
-  'Mary Immaculate College',
-  'Munster Technological University',
-  'Pontifical University, St Patrick\'s College',
-  'National College of Ireland (NCI)',
-  'Carlow College, St. Patrick\'s',
-  'RCSI University of Medicine & Health Sciences',
-  'Setanta College',
-  'South East Technological University',
-  'Trinity College Dublin',
-  'Technological University Dublin',
-  'Technological University of the Shannon',
-];
+/* ───────── helpers ───────── */
+  /// trim + collapse whitespace/new-lines
+  String _clean(String? v) =>
+      v?.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim() ?? '';
 
+  bool _match(String filter, String? rawCell) =>
+      filter == 'All' || _clean(rawCell) == filter;
 
-  final List<String> levels = ['6', '7', '8'];
-  final List<String> sortOptions = ['Alphabetical (A-Z)', 'Points (Low to High)', 'Points (High to Low)'];
+  List<Map<String, String>> get _currentCourses {
+    final q = _query.toLowerCase();
+    return _courses.where((c) {
+      final sOK = q.isEmpty ||
+          (c['Code']  ?? '').toLowerCase().contains(q) ||
+          (c['Title'] ?? '').toLowerCase().contains(q);
+      return sOK &&
+          _match(_uniF,  c['University']) &&
+          _match(_locF,  c['Location'])   &&
+          _match(_levF,  c['Level'])      &&
+          _match(_jobF,  c['Job Field']);
+    }).take(_shown).toList();
+  }
 
-  late final List<Map<String, dynamic>> dummyCourses;
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  int displayedCourses = 5;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-    _controller.forward();
-
-    dummyCourses = List.generate(20, (index) => {
-      'title': 'Course ${index + 1}',
-      'college': 'College ${index % 5 + 1}',
-      'location': countiesList[index % countiesList.length],
-      'code': 'AB${100 + index}',
-      'level': (index % 3 + 6).toString(),
-      'points': 300 + (index * 15) % 300,
+  void _updateSug(String q) {
+    final L = q.toLowerCase();
+    setState(() {
+      _sug = q.isEmpty
+          ? []
+          : _courses.where((c) =>
+              (c['Code']  ?? '').toLowerCase().contains(L) ||
+              (c['Title'] ?? '').toLowerCase().contains(L))
+              .take(5)
+              .toList();
     });
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  List<Map<String, dynamic>> applySorting(List<Map<String, dynamic>> courses) {
-    switch (sortOption) {
-      case 'Alphabetical (A-Z)':
-        courses.sort((a, b) => a['title'].compareTo(b['title']));
-        break;
-      case 'Points (Low to High)':
-        courses.sort((a, b) => a['points'].compareTo(b['points']));
-        break;
-      case 'Points (High to Low)':
-        courses.sort((a, b) => b['points'].compareTo(a['points']));
-        break;
-    }
-    return courses;
-  }
-
-  Widget buildCourseCard(Map<String, dynamic> course) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      child: ListTile(
-        title: Text(course['title']),
-        subtitle: Text("${course['college']} • ${course['location']} • Level ${course['level']} • ${course['points']} pts"),
-        trailing: Text(course['code']),
+  Widget _logo(String? uni) {
+    final path = _logoMap[(uni ?? '').trim().toUpperCase()] ?? _placeholderLogo;
+    return CircleAvatar(
+      radius: 22,
+      backgroundColor: Colors.grey[200],
+      child: ClipOval(
+        child: Image.asset(
+          path,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) =>
+              Image.asset(_placeholderLogo, fit: BoxFit.cover),
+        ),
       ),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    List<Map<String, dynamic>> filteredCourses = dummyCourses.where((course) {
-      final matchesQuery = searchQuery.isEmpty || course['title'].toLowerCase().contains(searchQuery.toLowerCase());
-      final matchesField = selectedField == null || course['title'].toLowerCase().contains(selectedField!.toLowerCase());
-      final matchesLocation = selectedLocation == null || course['location'] == selectedLocation;
-      final matchesCollege = selectedCollege == null || course['college'] == selectedCollege;
-      final matchesLevel = selectedLevel == null || course['level'] == selectedLevel;
-      final matchesPoints = course['points'] >= selectedPointsRange.start && course['points'] <= selectedPointsRange.end;
-      return matchesQuery && matchesField && matchesLocation && matchesCollege && matchesLevel && matchesPoints;
-    }).toList();
+  DropdownButtonFormField<String> _drop(
+      String label, String val, List<String> items, ValueChanged<String> cb) {
+    return DropdownButtonFormField<String>(
+      value: val,
+      isExpanded: true,
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      ),
+      items: items
+          .map((v) => DropdownMenuItem(
+                value: v,
+                child: Text(v, overflow: TextOverflow.ellipsis),
+              ))
+          .toList(),
+      onChanged: (v) {
+        if (v != null) setState(() => cb(v));
+      },
+    );
+  }
 
-    filteredCourses = applySorting(filteredCourses).take(displayedCourses).toList();
+/* ───────── init & CSV loader ───────── */
+  @override
+  void initState() {
+    super.initState();
+    unawaited(_loadCsv());
+  }
+
+  Future<void> _loadCsv() async {
+    // 1. read CSV
+    final raw = await rootBundle.loadString(_csvAsset);
+    final table = const CsvToListConverter(
+      eol: '\n',
+      shouldParseNumbers: false,
+    ).convert(raw);
+
+    // 2. headers
+    final headers = table.first.map((e) => e.toString().trim()).toList();
+    const required = ['University', 'Location', 'Level', 'Job Field'];
+    if (!required.every(headers.contains)) {
+      throw StateError('CSV missing one of $required');
+    }
+
+    // 3. containers for unique values
+    final uniSet = <String>{}, locSet = <String>{},
+          levSet = <String>{}, jobSet = <String>{};
+
+    final data = <Map<String, String>>[];
+
+    // 4. iterate rows
+    for (var r = 1; r < table.length; r++) {
+      final rawRow = table[r];
+      if (rawRow.every((e) => e.toString().trim().isEmpty)) continue;
+
+      // normalise to correct length
+      final row = rawRow.map((e) => e.toString()).toList();
+      final fixed = row.length == headers.length
+          ? row
+          : row.length > headers.length
+              ? [...row.take(headers.length - 1),
+                 row.sublist(headers.length - 1).join(',')]
+              : [...row, ...List.filled(headers.length - row.length, '')];
+
+      final rec = <String, String>{};
+      for (var i = 0; i < headers.length; i++) {
+        rec[headers[i]] = _clean(fixed[i]);
+      }
+      data.add(rec);
+
+      // collect sets
+      if (rec['University']!.isNotEmpty) uniSet.add(rec['University']!);
+      if (rec['Location']!.isNotEmpty)   locSet.add(rec['Location']!);
+      if (rec['Level']!.isNotEmpty)      levSet.add(rec['Level']!);
+      if (rec['Job Field']!.isNotEmpty)  jobSet.add(rec['Job Field']!);
+    }
+
+    // 5. sort lists
+    final levList = levSet.toList()
+      ..sort((a, b) {
+        final ai = int.tryParse(a), bi = int.tryParse(b);
+        return (ai != null && bi != null) ? ai.compareTo(bi) : a.compareTo(b);
+      });
+
+    setState(() {
+      _courses      = data;
+      _universities
+        ..clear() ..addAll(['All', ...uniSet.toList()..sort()]);
+      _locations
+        ..clear() ..addAll(['All', ...locSet.toList()..sort()]);
+      _levels
+        ..clear() ..addAll(['All', ...levList]);
+      _jobFields
+        ..clear() ..addAll(['All', ...jobSet.toList()..sort()]);
+    });
+  }
+
+/* ───────── UI ───────── */
+  @override
+  Widget build(BuildContext ctx) {
+    final res = _currentCourses;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('CAO Search'),
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
-      body: Container(
-        color: Colors.lightBlue[50],
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              decoration: const InputDecoration(
-                labelText: 'Search Courses',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (value) {
-                setState(() => searchQuery = value);
-              },
-            ),
-            const SizedBox(height: 16),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
+      body: _courses.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 200,
-                    child: DropdownButtonFormField<String>(
-                      value: selectedField,
-                      hint: const Text('Field of Study'),
-                      items: fieldsOfStudy.map((field) => DropdownMenuItem(value: field, child: Text(field))).toList(),
-                      onChanged: (value) => setState(() => selectedField = value),
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
+                  /* search */
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search by CAO code or course title',
+                      prefixIcon: const Icon(Icons.search),
+                      filled: true,
+                      fillColor: Colors.grey[100],
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
                     ),
+                    onChanged: (v) {
+                      _query = v.trimLeft();
+                      _updateSug(_query);
+                    },
                   ),
-                  SizedBox(
-                    width: 200,
-                    child: DropdownButtonFormField<String>(
-                      value: selectedLocation,
-                      hint: const Text('County'),
-                      items: countiesList.map((county) => DropdownMenuItem(value: county, child: Text(county))).toList(),
-                      onChanged: (value) => setState(() => selectedLocation = value),
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 200,
-                    child: DropdownButtonFormField<String>(
-                      value: selectedCollege,
-                      hint: const Text('College'),
-                      items: collegesList.map((college) => DropdownMenuItem(value: college, child: Text(college))).toList(),
-                      onChanged: (value) => setState(() => selectedCollege = value),
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 120,
-                    child: DropdownButtonFormField<String>(
-                      value: selectedLevel,
-                      hint: const Text('NFQ Level'),
-                      items: levels.map((level) => DropdownMenuItem(value: level, child: Text(level))).toList(),
-                      onChanged: (value) => setState(() => selectedLevel = value),
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 200,
-                    child: DropdownButtonFormField<String>(
-                      value: sortOption,
-                      hint: const Text('Sort By'),
-                      items: sortOptions.map((opt) => DropdownMenuItem(value: opt, child: Text(opt))).toList(),
-                      onChanged: (value) => setState(() => sortOption = value),
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text("Points Range"),
-                      RangeSlider(
-                        values: selectedPointsRange,
-                        min: 0,
-                        max: 600,
-                        divisions: 12,
-                        labels: RangeLabels(
-                          selectedPointsRange.start.round().toString(),
-                          selectedPointsRange.end.round().toString(),
-                        ),
-                        onChanged: (RangeValues values) {
-                          setState(() => selectedPointsRange = values);
+                  if (_sug.isNotEmpty)
+                    Container(
+                      constraints: const BoxConstraints(maxHeight: 160),
+                      margin: const EdgeInsets.only(top: 4, bottom: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border:
+                            Border.all(color: Colors.grey.shade300, width: 1),
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black26.withOpacity(0.08),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2))
+                        ],
+                      ),
+                      child: ListView.builder(
+                        itemCount: _sug.length,
+                        itemBuilder: (_, i) {
+                          final s = _sug[i];
+                          return ListTile(
+                            dense: true,
+                            title: Text(
+                              '${s['Code']}  •  ${s['Title']}',
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            onTap: () {
+                              setState(() {
+                                _query = s['Title'] ?? '';
+                                _sug.clear();
+                              });
+                            },
+                          );
                         },
                       ),
+                    )
+                  else
+                    const SizedBox(height: 12),
+
+                  /* filters */
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: [
+                      SizedBox(
+                        width: 200,
+                        child: _drop('University', _uniF, _universities,
+                            (v) => _uniF = v),
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: _drop('Location', _locF, _locations,
+                            (v) => _locF = v),
+                      ),
+                      SizedBox(
+                        width: 120,
+                        child:
+                            _drop('Level', _levF, _levels, (v) => _levF = v),
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: _drop('Job Field', _jobF, _jobFields,
+                            (v) => _jobF = v),
+                      ),
                     ],
-                  )
+                  ),
+                  const SizedBox(height: 12),
+
+                  /* info + reset */
+                  Row(
+                    children: [
+                      Text('Results: ${res.length}',
+                          style:
+                              const TextStyle(fontWeight: FontWeight.bold)),
+                      const Spacer(),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            _query = '';
+                            _uniF = _locF = _levF = _jobF = 'All';
+                            _shown = 10;
+                            _sug.clear();
+                          });
+                        },
+                        icon: const Icon(Icons.clear),
+                        label: const Text('Reset Filters'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+
+                  /* list */
+                  Expanded(
+                    child: res.isEmpty
+                        ? const Center(
+                            child: Text(
+                              'No courses match the selected filters.',
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: res.length,
+                            itemBuilder: (_, i) {
+                              final c = res[i];
+                              return Card(
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 6),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: ListTile(
+                                  leading: _logo(c['University']),
+                                  title: Text(c['Title'] ?? '—',
+                                      overflow: TextOverflow.ellipsis),
+                                  subtitle: Text(
+                                    '${c['University']} • ${c['Location']} • '
+                                    'Level ${c['Level']} • ${c['Job Field']}',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  trailing: Text(
+                                    c['Code'] ?? '',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                  ),
+
+                  /* load-more / fewer */
+                  if (res.isNotEmpty)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (_shown < _courses.length)
+                          ElevatedButton(
+                            onPressed: () => setState(() => _shown += 10),
+                            child: const Text('Load More'),
+                          ),
+                        if (_shown > 10) ...[
+                          const SizedBox(width: 12),
+                          TextButton(
+                            onPressed: () => setState(() => _shown = 10),
+                            child: const Text('Show Less'),
+                          ),
+                        ]
+                      ],
+                    ),
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredCourses.length,
-                itemBuilder: (context, index) {
-                  return buildCourseCard(filteredCourses[index]);
-                },
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (displayedCourses < dummyCourses.length)
-                  ElevatedButton(
-                    onPressed: () => setState(() => displayedCourses += 5),
-                    child: const Text('Load More'),
-                  ),
-                const SizedBox(width: 10),
-                if (displayedCourses > 5)
-                  ElevatedButton(
-                    onPressed: () => setState(() => displayedCourses = 5),
-                    child: const Text('Show Less'),
-                  ),
-              ],
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
