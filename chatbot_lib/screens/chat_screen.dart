@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/openai_service.dart';
 import '../models/message_model.dart';
+import '../utils/logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,19 +21,40 @@ class _ChatScreenState extends State<ChatScreen> {
     final input = _controller.text.trim();
     if (input.isEmpty) return;
 
+    final userMessage = Message(role: 'user', text: input);
     setState(() {
-      _messages.add(Message(role: 'user', text: input));
+      _messages.add(userMessage);
       _controller.clear();
+    });
+
+    // Log user message (non-blocking)
+    ChatLogger.logMessage('User', input).catchError((e) {
+      debugPrint('Failed to log user message: $e');
     });
 
     try {
       final reply = await fetchChatGPTResponse(input);
+      final botMessage = Message(role: 'bot', text: reply);
+
       setState(() {
-        _messages.add(Message(role: 'bot', text: reply));
+        _messages.add(botMessage);
+      });
+
+      // Log bot reply (non-blocking)
+      ChatLogger.logMessage('Bot', reply).catchError((e) {
+        debugPrint('Failed to log bot reply: $e');
       });
     } catch (e) {
+      final errorMsg = 'Error: $e';
+      final errorMessage = Message(role: 'bot', text: errorMsg);
+
       setState(() {
-        _messages.add(Message(role: 'bot', text: 'Error: $e'));
+        _messages.add(errorMessage);
+      });
+
+      // Log error (non-blocking)
+      ChatLogger.logMessage('Bot', errorMsg).catchError((e) {
+        debugPrint('Failed to log error: $e');
       });
     }
   }
@@ -89,18 +111,27 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6F7FF), // Light blue background
+      backgroundColor: const Color(0xFFE6F7FF),
       appBar: AppBar(
         backgroundColor: const Color(0xFF3AB6FF),
-        centerTitle: true, // Center the title
+        centerTitle: true,
+        leading: IconButton(
+          icon: Image.asset('assets/menu.png', height: 24, width: 24),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            icon: Image.asset('assets/back_arrow.png', height: 24, width: 24),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/edu_eire_logo.png',
-              height: 36,
-            ),
+            Image.asset('assets/edu_eire_logo.png', height: 36),
             const SizedBox(width: 10),
             const Text(
               'Edu Bot',
