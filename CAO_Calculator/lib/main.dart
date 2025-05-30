@@ -110,7 +110,7 @@ class _GrantCalculatorPageState extends State<GrantCalculatorPage> {
     } else {
       setState(() {
         result =
-            "May not eligible\nYour income (€\${income.toStringAsFixed(2)}) exceeds the limit (€\${threshold.toStringAsFixed(2)}).";
+            "May not eligible\nYour income (€${income.toStringAsFixed(2)}) exceeds the limit (€${threshold.toStringAsFixed(2)}).";
         resultColor = Colors.red.shade100;
         isEligible = false;
       });
