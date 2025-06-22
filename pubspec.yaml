@@ -1,0 +1,53 @@
+name: edueire2
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Core packages
+  http: ^1.2.1
+  xml: ^6.5.0
+  collection: ^1.18.0
+  intl: ^0.20.2
+
+  # Env & utilities
+  flutter_dotenv: ^5.1.0
+  url_launcher: ^6.2.3
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.1
+
+  # Fonts & UI
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - chatbot_api.env
+    - assets/fonts/
+    - assets/chatbot/
+    - assets/chatbot/edu_eire_logo.png  # ✅ SUSI Calculator logo
+    - assets/edu_eire_logo.png
+
+  fonts:
+    - family: OpenDyslexic
+      fonts:
+        - asset: assets/fonts/OpenDyslexic-Regular.otf
+        - asset: assets/fonts/OpenDyslexic-Bold.otf
+          weight: 700
+        - asset: assets/fonts/OpenDyslexic-Italic.otf
+          style: italic
