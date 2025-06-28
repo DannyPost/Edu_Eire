@@ -73,3 +73,4 @@ replay_pid*.log
 
 # Environment secrets
 .env
+chatbot_api.env

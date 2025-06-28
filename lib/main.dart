@@ -7,6 +7,8 @@ import 'homepage/widgets/education_news_feed.dart';
 import 'settings/settings_page.dart';
 import 'chatbot/screens/chat_screen.dart';
 import 'susi_calculator/susi_calculator.dart'; // ✅ SUSI Calculator
+import 'hear_calculator/hear_calculator.dart'; // ✅ HEAR Calculator
+import 'dare_calculator/dare_calculator.dart'; // ✅ DARE Calculator
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,7 +76,9 @@ class _MyAppState extends State<MyApp> {
         isDyslexicFont: _isDyslexicFont,
       ),
       const ChatScreen(),
-      const GrantCalculatorPage(), // ✅ SUSI Page
+      const GrantCalculatorPage(),       // ✅ SUSI Page
+      HearCalculatorPage(),     // ✅ HEAR Page
+      DareCalculatorPage(),      // ✅ DARE Page
     ];
 
     return MaterialApp(
@@ -152,6 +156,26 @@ class _MyAppState extends State<MyApp> {
                 onTap: () {
                   setState(() {
                     _selectedIndex = 3;
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.school),
+                title: const Text('HEAR Calculator'),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 4;
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.accessibility_new),
+                title: const Text('DARE Calculator'),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 5;
                   });
                   Navigator.pop(context);
                 },
