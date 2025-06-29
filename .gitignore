@@ -1,0 +1,40 @@
+# Android/IntelliJ/IDE
+*.iml
+*.ipr
+*.iws
+.android/
+.gradle/
+.idea/
+*.swp
+*.log
+
+# Xcode (iOS/Mac)
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata
+*.xcodeproj
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.moved-aside
+*.xcuserdatad
+
+# macOS & system
+.AppleDouble
+.LSOverride
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Windows system files
+desktop.ini
+$RECYCLE.BIN/
+
+# Coverage/Reports
+coverage/
+*.lcov
+
+# Misc
+*.bak
+*.tmp
