@@ -6,9 +6,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'homepage/widgets/education_news_feed.dart';
 import 'settings/settings_page.dart';
 import 'chatbot/screens/chat_screen.dart';
-import 'susi_calculator/susi_calculator.dart'; // ✅ SUSI Calculator
-import 'hear_calculator/hear_calculator.dart'; // ✅ HEAR Calculator
-import 'dare_calculator/dare_calculator.dart'; // ✅ DARE Calculator
+import 'susi_calculator/susi_calculator.dart';
+import 'hear_calculator/hear_calculator.dart';
+import 'dare_calculator/dare_calculator.dart';
+import 'calendar/calendar.dart'; // ✅ School Calendar
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,17 +69,18 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> _pages = [
-      const EducationNewsFeed(),
-      SettingsPage(
+      const EducationNewsFeed(), // 0
+      SettingsPage( // 1
         toggleTheme: _toggleTheme,
         isDarkMode: _isDarkMode,
         toggleDyslexicFont: _toggleDyslexicFont,
         isDyslexicFont: _isDyslexicFont,
       ),
-      const ChatScreen(),
-      const GrantCalculatorPage(),       // ✅ SUSI Page
-      HearCalculatorPage(),     // ✅ HEAR Page
-      DareCalculatorPage(),      // ✅ DARE Page
+      const ChatScreen(),        // 2
+      const GrantCalculatorPage(),   // 3
+      HearCalculatorPage(),     // 4
+      DareCalculatorPage(),     // 5
+      const CalendarPage(),     // 6 ✅ School Calendar
     ];
 
     return MaterialApp(
@@ -176,6 +178,16 @@ class _MyAppState extends State<MyApp> {
                 onTap: () {
                   setState(() {
                     _selectedIndex = 5;
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.calendar_today),
+                title: const Text('School Calendar'),
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = 6;
                   });
                   Navigator.pop(context);
                 },
