@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   table_calendar: ^3.0.9  # Use the latest version at the time
   cupertino_icons: ^1.0.2
+  csv: ^5.0.2
 
   # Core packages
   http: ^1.2.1
@@ -44,6 +45,10 @@ flutter:
     - assets/chatbot/
     - assets/chatbot/edu_eire_logo.png  # ✅ SUSI Calculator logo
     - assets/edu_eire_logo.png
+
+    - assets/cao_list_25.csv
+    - assets/cao_search/
+
 
   fonts:
     - family: OpenDyslexic

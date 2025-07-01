@@ -10,6 +10,8 @@ import 'susi_calculator/susi_calculator.dart';
 import 'hear_calculator/hear_calculator.dart';
 import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart'; // ✅ School Calendar
+import 'cao_search/cao_search_page.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -190,6 +192,23 @@ class _MyAppState extends State<MyApp> {
                     _selectedIndex = 6;
                   });
                   Navigator.pop(context);
+                },
+              ),
+              Builder(
+                builder: (innerContext) {
+                  return ListTile(
+                    leading: const Icon(Icons.search),
+                    title: const Text('CAO Search'),
+                    onTap: () {
+                      Navigator.pop(innerContext); // close the drawer first
+                      Navigator.push(
+                        innerContext,
+                        MaterialPageRoute(
+                          builder: (context) => const CAOSearchPage(),
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
             ],
