@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'signup_page.dart';
-import '../homepage.dart'; // Assuming this exists
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// Define a consistent color scheme for better character
-const Color primaryColor = Color.fromARGB(255, 0, 24, 238); // Deep purple
+import '../homepage.dart';
+import 'choose_signup_type_page.dart';
+
+// Define a consistent color scheme
+const Color primaryColor = Color.fromARGB(255, 0, 24, 238); // Deep blue
 const Color accentColor = Color(0xFF03DAC6); // Teal
 const Color textColor = Color(0xFF424242); // Dark grey for text
 const Color errorColor = Colors.redAccent;
 const Color googleButtonColor = Color(0xFF4285F4); // Google blue
 
-final GoogleSignIn _googleSignIn = GoogleSignIn(
+// Make this instance public so it can be accessed from other files (e.g., HomePage for signOut)
+final GoogleSignIn googleSignIn = GoogleSignIn( // Renamed from _googleSignIn
   clientId: kIsWeb
       ? '21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com'
       : null,
-  scopes: ['email', 'profile', 'openid'], // Keep original for now, adjust based on People API fix
+  scopes: ['email', 'profile', 'openid'],
 );
 
 class LoginPage extends StatefulWidget {
@@ -32,21 +35,76 @@ class _LoginPageState extends State<LoginPage> {
   String error = '';
   bool _isLoading = false; // To manage loading state
 
+  Future<void> _checkAndNavigateUser(User? user) async {
+    if (user == null || !mounted) return;
+
+    try {
+      final userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+
+      if (userDoc.exists) {
+        final data = userDoc.data();
+        final bool profileCompleted = data?['profileCompleted'] ?? false;
+        // final String? role = data?['role']; // Role can be null initially for Google users
+
+        if (profileCompleted) {
+          // If profile is complete, navigate to HomePage
+          if (mounted) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const HomePage()),
+            );
+          }
+        } else {
+          // Profile is NOT complete. They need to choose a role and complete the profile.
+          if (mounted) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const ChooseSignupTypePage()),
+            );
+          }
+        }
+      } else {
+        // User document doesn't exist (e.g., brand new Google user).
+        // They need to choose their role and complete signup.
+        if (mounted) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const ChooseSignupTypePage()),
+          );
+        }
+      }
+    } catch (e) {
+      print("Error checking user data for navigation: $e");
+      // Fallback: If there's an error fetching user data, navigate to ChooseSignupTypePage
+      // as it's safer than HomePage if profile state is unknown.
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const ChooseSignupTypePage()),
+        );
+      }
+    }
+  }
+
   Future<void> _login() async {
     setState(() {
       _isLoading = true;
       error = ''; // Clear previous errors
     });
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
-      if (mounted) { // Check if widget is still mounted before navigation
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const HomePage()),
-        );
+      if (userCredential.user == null) {
+        setState(() {
+          error = 'Login failed: User information not available.';
+          _isLoading = false;
+        });
+        return; // Stop execution if user is null
+      }
+      if (mounted) {
+        await _checkAndNavigateUser(userCredential.user);
       }
     } on FirebaseAuthException catch (e) {
       setState(() => error = e.message ?? 'An unknown error occurred.');
@@ -55,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  Future<void> _signInWithGoogle() async {
+  Future<void> _signInWithGoogle() async { // Renamed from signInWithGoogle to _signInWithGoogle to match class convention
     setState(() {
       _isLoading = true;
       error = ''; // Clear previous errors
@@ -63,11 +121,8 @@ class _LoginPageState extends State<LoginPage> {
     try {
       GoogleSignInAccount? user;
 
-      if (kIsWeb) {
-        user = await _googleSignIn.signIn();
-      } else {
-        user = await _googleSignIn.signIn();
-      }
+      // The kIsWeb condition here is redundant as signIn() is compatible across platforms
+      user = await googleSignIn.signIn(); // Use the global googleSignIn instance
 
       if (user == null) {
         setState(() => error = 'Google sign-in aborted by user.');
@@ -81,16 +136,38 @@ class _LoginPageState extends State<LoginPage> {
         idToken: googleAuth.idToken,
       );
 
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (userCredential.user == null) {
+        setState(() {
+          error = 'Google sign-in failed: User information not available.';
+          _isLoading = false;
+        });
+        return; // Stop execution if user is null
+      }
+
+      // Check if this is a brand new Google user
+      // If the user document doesn't exist, create it and mark profile incomplete
+      final userDoc = await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).get();
+      if (!userDoc.exists) {
+        await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
+          'email': userCredential.user!.email,
+          'role': null, // Role is initially null for new Google users
+          'profileCompleted': false, // Profile is initially false
+          'createdAt': FieldValue.serverTimestamp(),
+          'displayName': userCredential.user!.displayName,
+          'photoURL': userCredential.user!.photoURL,
+        });
+      }
 
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const HomePage()),
-        );
+        await _checkAndNavigateUser(userCredential.user);
       }
+    } on FirebaseAuthException catch (e) {
+      setState(() => error = 'Google sign-in failed: ${e.message}');
     } catch (e) {
-      // General catch for other errors, e.g., People API not enabled.
+      // Catch Firestore permission errors or other general errors here
+      print("Google Sign-In General Error: $e");
       setState(() => error = 'Google sign-in failed: ${e.toString()}');
     } finally {
       setState(() => _isLoading = false);
@@ -107,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // A clean background
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "Edu Eire",
@@ -115,15 +192,15 @@ class _LoginPageState extends State<LoginPage> {
         ),
         centerTitle: true,
         backgroundColor: primaryColor,
-        elevation: 0, // No shadow for a modern look
+        elevation: 0,
       ),
-      body: SingleChildScrollView( // Prevents overflow on smaller screens
+      body: SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Colors.white, Color(0xFFF0F4F8)], // Subtle gradient
+              colors: [Colors.white, Color(0xFFF0F4F8)],
             ),
           ),
           padding: const EdgeInsets.all(32.0),
@@ -131,16 +208,14 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // App Logo/Illustration
               Center(
                 child: Image.asset(
-                  'lib/assets/logo.png', // Replace with your app logo path
+                  'lib/assets/g-logo.png', // Replace with your app logo path
                   height: 120,
                   width: 120,
                 ),
               ),
               const SizedBox(height: 30),
-
               Text(
                 "Login to your account",
                 textAlign: TextAlign.center,
@@ -151,8 +226,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // Email TextField
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -162,17 +235,15 @@ class _LoginPageState extends State<LoginPage> {
                   prefixIcon: const Icon(Icons.email_outlined, color: primaryColor),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none, // Hide default border
+                    borderSide: BorderSide.none,
                   ),
                   filled: true,
-                  fillColor: Colors.grey[100], // Light grey background
+                  fillColor: Colors.grey[100],
                   contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                 ),
                 style: TextStyle(color: textColor),
               ),
               const SizedBox(height: 16),
-
-              // Password TextField
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -191,18 +262,16 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(color: textColor),
               ),
               const SizedBox(height: 24),
-
-              // Login Button
               ElevatedButton(
-                onPressed: _isLoading ? null : _login, // Disable button while loading
+                onPressed: _isLoading ? null : _login,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor, // Custom primary color
+                  backgroundColor: primaryColor,
                   foregroundColor: Colors.white,
-                  minimumSize: const Size(double.infinity, 55), // Larger button
+                  minimumSize: const Size(double.infinity, 55),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  elevation: 5, // Add shadow
+                  elevation: 5,
                 ),
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
@@ -212,39 +281,50 @@ class _LoginPageState extends State<LoginPage> {
                       ),
               ),
               const SizedBox(height: 16),
-
               // Google Sign-In Button
               ElevatedButton.icon(
-                icon: Image.asset(
-                  'lib/assets/g-logo.png', // Make sure this path is correct
-                  height: 24,
-                  width: 24,
-                ),
-                label: const Text(
-                  "Continue with Google",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
+                icon: _isLoading
+                    ? const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          color: Colors.white, // Or a contrasting color
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : Image.asset(
+                        'lib/assets/g-logo.png',
+                        height: 24,
+                        width: 24,
+                      ),
+                label: _isLoading
+                    ? const Text(
+                        "Loading...", // Or an empty string if you prefer
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      )
+                    : const Text(
+                        "Continue with Google",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white, // White background
-                  foregroundColor: textColor, // Dark text
+                  backgroundColor: Colors.white,
+                  foregroundColor: textColor,
                   minimumSize: const Size(double.infinity, 55),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
-                    side: const BorderSide(color: Colors.grey, width: 0.5), // Subtle border
+                    side: const BorderSide(color: Colors.grey, width: 0.5),
                   ),
-                  elevation: 2, // Subtle shadow
+                  elevation: 2,
                 ),
-                onPressed: _isLoading ? null : _signInWithGoogle, // Disable while loading
+                onPressed: _isLoading ? null : _signInWithGoogle, // Call the new _signInWithGoogle
               ),
               const SizedBox(height: 24),
-
-              // Sign Up Text Button
               TextButton(
                 onPressed: () => _isLoading
                     ? null
                     : Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const SignupPage()),
+                        MaterialPageRoute(builder: (_) => const ChooseSignupTypePage()),
                       ),
                 child: Text(
                   "Don't have an account? Sign up",
@@ -255,7 +335,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               if (error.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
