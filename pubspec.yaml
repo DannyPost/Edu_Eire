@@ -28,6 +28,7 @@ dependencies:
 
   # Fonts & UI
   google_fonts: ^6.1.0
+  provider: ^6.1.5
 
 dev_dependencies:
   flutter_test:
