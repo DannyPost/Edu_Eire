@@ -1,0 +1,27 @@
+name: academic_support_app 
+description: A one-stop guide to grants, scholarships, resources & student deals.
+publish_to: "none"
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase + Firestore (if you plan to wire up your own queries)
+  firebase_core: ^2.20.0
+  cloud_firestore: ^4.13.0
+
+  # To open external URLs
+  url_launcher: ^6.1.10
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/logo.jpeg
