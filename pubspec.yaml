@@ -29,6 +29,16 @@ dependencies:
   # Fonts & UI
   google_fonts: ^6.1.0
   provider: ^6.1.5
+  
+  # Firebase
+  
+  google_sign_in: ^6.1.5
+  firebase_core: ^3.15.1
+  firebase_auth: ^5.6.2
+  cloud_firestore: ^5.6.11
+  cloud_functions: ^5.6.1 
+  # Validation
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:
@@ -46,9 +56,9 @@ flutter:
     - assets/chatbot/
     - assets/chatbot/edu_eire_logo.png  # ✅ SUSI Calculator logo
     - assets/edu_eire_logo.png
-
     - assets/cao_list_25.csv
     - assets/cao_search/
+    - assets/g-logo.png
 
 
   fonts:
