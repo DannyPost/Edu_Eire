@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "21657212241",
+    "project_id": "edueire-a3dc3",
+    "storage_bucket": "edueire-a3dc3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21657212241:android:2152f466e41eb766e7af70",
+        "android_client_info": {
+          "package_name": "com.example.edu_eire_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhSCemIzA-rqxivM4lKsAw0wgvAGRfyKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "21657212241-b5qhsn0k3qaulchk56cdgqm5a278g9t2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.studentdeal"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21657212241:android:ebfe0a072ff7e453e7af70",
+        "android_client_info": {
+          "package_name": "com.example.help"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhSCemIzA-rqxivM4lKsAw0wgvAGRfyKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "21657212241-b5qhsn0k3qaulchk56cdgqm5a278g9t2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.studentdeal"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21657212241:android:fe53f961c1bed97ee7af70",
+        "android_client_info": {
+          "package_name": "com.example.studentdeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhSCemIzA-rqxivM4lKsAw0wgvAGRfyKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21657212241-s031j74rca545f8mv94cn99rcv5da4st.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "21657212241-b5qhsn0k3qaulchk56cdgqm5a278g9t2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.studentdeal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
