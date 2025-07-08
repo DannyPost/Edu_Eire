@@ -10,41 +10,42 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  table_calendar: ^3.0.9  # Use the latest version at the time
-  cupertino_icons: ^1.0.2
-  csv: ^5.0.2
 
-  # Core packages
+  # UI & Icons
+  cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
+  provider: ^6.1.5
+
+  # Core Functionality
   http: ^1.2.1
   xml: ^6.5.0
+  csv: ^5.0.2
   collection: ^1.18.0
   intl: ^0.20.2
 
-  # Env & utilities
-  flutter_dotenv: ^5.1.0
-  url_launcher: ^6.2.3
-  shared_preferences: ^2.2.2
-  path_provider: ^2.1.1
-
-  # Fonts & UI
-  google_fonts: ^6.1.0
-  provider: ^6.1.5
-  
-  # Firebase
-  
-  google_sign_in: ^6.1.5
+  # Firebase & Auth
   firebase_core: ^3.15.1
   firebase_auth: ^5.6.2
   cloud_firestore: ^5.6.11
-  cloud_functions: ^5.6.1 
-  # Validation
+  cloud_functions: ^5.6.1
+  google_sign_in: ^6.1.5
+
+  # Form validation
   email_validator: ^2.1.17
+
+  # Local Storage & Env
+  shared_preferences: ^2.2.2
+  flutter_dotenv: ^5.1.0
+  path_provider: ^2.1.1
+
+  # Misc
+  url_launcher: ^6.2.3
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-
 
 flutter:
   uses-material-design: true
@@ -54,12 +55,11 @@ flutter:
     - chatbot_api.env
     - assets/fonts/
     - assets/chatbot/
-    - assets/chatbot/edu_eire_logo.png  # ✅ SUSI Calculator logo
+    - assets/chatbot/edu_eire_logo.png
     - assets/edu_eire_logo.png
     - assets/cao_list_25.csv
     - assets/cao_search/
     - assets/g-logo.png
-
 
   fonts:
     - family: OpenDyslexic
@@ -70,6 +70,8 @@ flutter:
         - asset: assets/fonts/OpenDyslexic-Italic.otf
           style: italic
 
+    - family: NotoSans
+      fonts:
         - asset: assets/calendar/fonts/NotoSans-VariableFont_wdth,wght.ttf
         - asset: assets/calendar/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf
           style: italic

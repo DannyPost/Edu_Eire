@@ -1,4 +1,8 @@
 const functions = require('firebase-functions');
+<<<<<<< HEAD
+=======
+const { onDocumentCreated } = require("firebase-functions/v2/firestore");
+>>>>>>> fb3a2d1 (Integrated Help Page)
 const admin = require('firebase-admin');
 const stripe = require('stripe')(functions.config().stripe.secret);
 const sgMail = require('@sendgrid/mail');
@@ -6,9 +10,16 @@ const sgMail = require('@sendgrid/mail');
 admin.initializeApp();
 const db = admin.firestore();
 
+<<<<<<< HEAD
 const SENDGRID_API_KEY = functions.config().sendgrid.key;
 const VERIFIED_SENDER = 'quantiumbusiness@gmail.com';
 const TEAM_EMAIL = 'quantiumbusiness@gmail.com';
+=======
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || functions.config().sendgrid.key;
+const VERIFIED_SENDER = 'quantiumbusiness@gmail.com';
+const TEAM_EMAIL = 'quantiumbusiness@gmail.com';
+
+>>>>>>> fb3a2d1 (Integrated Help Page)
 if (SENDGRID_API_KEY) sgMail.setApiKey(SENDGRID_API_KEY);
 
 // 1. CREATE STRIPE CONNECT ACCOUNT & ONBOARDING LINK
@@ -16,7 +27,10 @@ exports.createStripeConnectAccount = functions.https.onCall(async (data, context
   const { email, businessName } = data;
   if (!email) throw new functions.https.HttpsError('invalid-argument', 'Missing email');
 
+<<<<<<< HEAD
   // Create Stripe Connect account
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
   const account = await stripe.accounts.create({
     type: 'express',
     email,
@@ -25,11 +39,18 @@ exports.createStripeConnectAccount = functions.https.onCall(async (data, context
     capabilities: { transfers: { requested: true } }
   });
 
+<<<<<<< HEAD
   // Create onboarding link
   const accountLink = await stripe.accountLinks.create({
     account: account.id,
     refresh_url: 'https://your-app-url.com/reauth',     // Update with your URL
     return_url: 'https://your-app-url.com/onboarding-success', // Update with your URL
+=======
+  const accountLink = await stripe.accountLinks.create({
+    account: account.id,
+    refresh_url: 'https://your-app-url.com/reauth',
+    return_url: 'https://your-app-url.com/onboarding-success',
+>>>>>>> fb3a2d1 (Integrated Help Page)
     type: 'account_onboarding',
   });
 
@@ -38,7 +59,11 @@ exports.createStripeConnectAccount = functions.https.onCall(async (data, context
 
 // 2. CREATE STRIPE CHECKOUT SESSION WITH COMMISSION LOGIC (Connect)
 exports.createStripeCheckoutSession = functions.https.onCall(async (data, context) => {
+<<<<<<< HEAD
   const { items } = data; // [{id, qty}]
+=======
+  const { items } = data;
+>>>>>>> fb3a2d1 (Integrated Help Page)
   if (!Array.isArray(items) || items.length === 0)
     throw new functions.https.HttpsError('invalid-argument', 'Cart empty');
 
@@ -51,24 +76,36 @@ exports.createStripeCheckoutSession = functions.https.onCall(async (data, contex
     return { ...data, id: snap.id, qty: items[i].qty };
   });
 
+<<<<<<< HEAD
   // Only allow checkout for 1 business per session!
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
   const businessEmails = new Set(products.map(p => p.adminId));
   if (businessEmails.size > 1) throw new functions.https.HttpsError('invalid-argument', 'All items must be from one business');
   const businessEmail = Array.from(businessEmails)[0];
 
+<<<<<<< HEAD
   // Find business Stripe Account
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
   const adminSnap = await db.collection('admins').where('email', '==', businessEmail).limit(1).get();
   if (adminSnap.empty) throw new functions.https.HttpsError('not-found', 'Business admin not found');
   const business = adminSnap.docs[0].data();
   if (!business.stripeAccountId) throw new functions.https.HttpsError('failed-precondition', 'Business Stripe account not set up');
 
+<<<<<<< HEAD
   // Build line_items and calculate commission (platform_fee)
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
   let total = 0;
   let commission = 0;
   const line_items = products.map(product => {
     const subtotal = product.price * product.qty;
     total += subtotal;
+<<<<<<< HEAD
     // Commission logic
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
     let pct = 0.3;
     if (product.price > 1000) pct = 0.15;
     else if (product.price > 50) pct = 0.2;
@@ -83,16 +120,27 @@ exports.createStripeCheckoutSession = functions.https.onCall(async (data, contex
     };
   });
 
+<<<<<<< HEAD
   // Stripe Connect destination charges (on_behalf_of business, fee to platform)
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items,
     mode: 'payment',
+<<<<<<< HEAD
     success_url: 'https://your-app-url.com/success', // UPDATE!
     cancel_url: 'https://your-app-url.com/cancel',   // UPDATE!
     metadata: { items: JSON.stringify(items), businessEmail, stripeAccountId: business.stripeAccountId },
     payment_intent_data: {
       application_fee_amount: Math.round(commission * 100), // cents
+=======
+    success_url: 'https://your-app-url.com/success',
+    cancel_url: 'https://your-app-url.com/cancel',
+    metadata: { items: JSON.stringify(items), businessEmail, stripeAccountId: business.stripeAccountId },
+    payment_intent_data: {
+      application_fee_amount: Math.round(commission * 100),
+>>>>>>> fb3a2d1 (Integrated Help Page)
       transfer_data: { destination: business.stripeAccountId },
     },
   });
@@ -117,6 +165,10 @@ exports.handleStripeWebhook = functions.https.onRequest(async (req, res) => {
       console.error('❌ Stripe session missing items metadata');
       return res.status(400).send('Missing items metadata');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fb3a2d1 (Integrated Help Page)
     let items;
     try {
       items = JSON.parse(session.metadata.items);
@@ -157,7 +209,10 @@ exports.notifyNewBusiness = functions.firestore
       return null;
     }
     const data = snap.data();
+<<<<<<< HEAD
     // Email to your team
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
     const msgToTeam = {
       to: TEAM_EMAIL,
       from: VERIFIED_SENDER,
@@ -176,7 +231,10 @@ exports.notifyNewBusiness = functions.firestore
         </p>
       `,
     };
+<<<<<<< HEAD
     // Email to business (optional)
+=======
+>>>>>>> fb3a2d1 (Integrated Help Page)
     const msgToBusiness = {
       to: data.email,
       from: VERIFIED_SENDER,
@@ -191,3 +249,31 @@ exports.notifyNewBusiness = functions.firestore
     await sgMail.send(msgToBusiness);
     return null;
   });
+<<<<<<< HEAD
+=======
+
+// 5. CONTACT US HELP FORM: SEND EMAIL TO TEAM + USER
+exports.sendContactEmails = onDocumentCreated("contact_submissions/{docId}", async (event) => {
+  const data = event.data.data();
+
+  const teamMsg = {
+    to: TEAM_EMAIL,
+    from: TEAM_EMAIL,
+    subject: `New Contact Us Enquiry from ${data.name}`,
+    text: `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`,
+  };
+
+  const userMsg = {
+    to: data.email,
+    from: TEAM_EMAIL,
+    subject: 'We received your enquiry',
+    text: `Hi ${data.name},\n\nThanks for reaching out! We've received your enquiry and will reply as soon as possible.\n\nBest regards,\nQuantium Business Team`,
+  };
+
+  await Promise.all([
+    sgMail.send(teamMsg),
+    sgMail.send(userMsg),
+  ]);
+  return null;
+});
+>>>>>>> fb3a2d1 (Integrated Help Page)

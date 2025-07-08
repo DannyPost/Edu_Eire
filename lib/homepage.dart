@@ -14,6 +14,9 @@ import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
 
+import '../help_page/help_main.dart';
+import '../help_page/help/help_page.dart';
+
 const primaryColor = Color(0xFF0018EE);
 
 class HomePage extends StatefulWidget {
@@ -49,7 +52,6 @@ class _HomePageState extends State<HomePage> {
     _dys = widget.isDyslexicFont;
   }
 
-  // Callback relays for theme/font
   Future<void> _setDark(bool v) async {
     setState(() => _dark = v);
     widget.setDarkMode(v);
@@ -64,7 +66,6 @@ class _HomePageState extends State<HomePage> {
     await prefs.setBool('isDyslexicFont', v);
   }
 
-  // Pages for each role
   late final List<Widget> _bizPages = [
     SettingsPage(
       toggleTheme: _setDark,
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   late final List<Widget> _stdPages = [
-    const EducationNewsFeed(), // 0 Home
+    const EducationNewsFeed(),
     SettingsPage(
       toggleTheme: _setDark,
       isDarkMode: _dark,
@@ -115,11 +116,9 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: isBiz ? _bizDrawer(context) : _stdDrawer(context),
       body: IndexedStack(index: _idx, children: pages),
-      // No bottomNavigationBar for either role
     );
   }
 
-  // BUSINESS DRAWER
   Drawer _bizDrawer(BuildContext ctx) => Drawer(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(topRight: Radius.circular(28), bottomRight: Radius.circular(28))),
@@ -152,15 +151,19 @@ class _HomePageState extends State<HomePage> {
 
   Icon _bizIcon(int i) {
     switch (i) {
-      case 0: return const Icon(Icons.settings, color: primaryColor);
-      case 1: return const Icon(Icons.help, color: primaryColor);
-      case 2: return const Icon(Icons.local_offer, color: primaryColor);
-      case 3: return const Icon(Icons.dashboard, color: primaryColor);
-      default: return const Icon(Icons.circle);
+      case 0:
+        return const Icon(Icons.settings, color: primaryColor);
+      case 1:
+        return const Icon(Icons.help, color: primaryColor);
+      case 2:
+        return const Icon(Icons.local_offer, color: primaryColor);
+      case 3:
+        return const Icon(Icons.dashboard, color: primaryColor);
+      default:
+        return const Icon(Icons.circle);
     }
   }
 
-  // STUDENT DRAWER
   Drawer _stdDrawer(BuildContext ctx) => Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -173,36 +176,54 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(color: Colors.white, fontSize: 24)),
               ),
             ),
-            _drawerItem(Icons.home, 'Home', 0),
-            _drawerItem(Icons.settings, 'Settings', 1),
-            _drawerItem(Icons.chat, 'Chatbot', 2),
-            _drawerItem(Icons.local_offer, 'Deals', 3),
-            _drawerItem(Icons.calculate, 'SUSI Calculator', 4),
-            _drawerItem(Icons.school, 'HEAR Calculator', 5),
-            _drawerItem(Icons.accessibility_new, 'DARE Calculator', 6),
-            _drawerItem(Icons.calendar_today, 'School Calendar', 7),
+            _drawerItem(ctx, Icons.home, 'Home', 0),
+            _drawerItem(ctx, Icons.settings, 'Settings', 1),
+            _drawerItem(ctx, Icons.chat, 'Chatbot', 2),
+            _drawerItem(ctx, Icons.local_offer, 'Deals', 3),
+            _drawerItem(ctx, Icons.calculate, 'SUSI Calculator', 4),
+            _drawerItem(ctx, Icons.school, 'HEAR Calculator', 5),
+            _drawerItem(ctx, Icons.accessibility_new, 'DARE Calculator', 6),
+            _drawerItem(ctx, Icons.calendar_today, 'School Calendar', 7),
             ListTile(
               leading: const Icon(Icons.search),
               title: const Text('CAO Search'),
               onTap: () {
-                Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(
+                Navigator.pop(ctx);
+                Navigator.push(ctx, MaterialPageRoute(
                   builder: (_) => CAOSearchPage(),
                 ));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.help_outline, color: Colors.lightBlue),
+              title: const Text(
+                'Help & Support',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+              onTap: () {
+                Navigator.pop(ctx);
+                Navigator.push(
+                  ctx,
+                  MaterialPageRoute(builder: (_) => HelpPage()),
+                );
               },
             ),
           ],
         ),
       );
 
-  ListTile _drawerItem(IconData ico, String txt, int page) => ListTile(
-        leading: Icon(ico),
-        title: Text(txt),
-        selected: _idx == page,
-        selectedTileColor: Colors.grey[200],
-        onTap: () {
-          Navigator.pop(context);
-          setState(() => _idx = page);
-        },
-      );
+  ListTile _drawerItem(BuildContext ctx, IconData icon, String title, int index) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      selected: _idx == index,
+      selectedTileColor: Colors.grey[200],
+      onTap: () {
+        Navigator.pop(ctx);
+        setState(() {
+          _idx = index;
+        });
+      },
+    );
+  }
 }

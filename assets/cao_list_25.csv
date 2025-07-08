@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Level,Code,Title,Location,University,Job Field
 8,AC120,International Business,Dublin,AMERICAN COLLEGE,"Business, Sales & Tourism"
 8,AC137,Liberal Arts,Dublin,AMERICAN COLLEGE,"Creative Arts, Fashion & Media"
@@ -1498,3 +1499,1505 @@ OR Tallaght",TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
 day at TUS Limerick)",Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
 6,US660,Pharmacy Technician,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
 6,US661,Dental Nursing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+=======
+Level,Code,Title,Location,University,Job Field
+8,AC120,International Business,Dublin,AMERICAN COLLEGE,"Business, Sales & Tourism"
+8,AC137,Liberal Arts,Dublin,AMERICAN COLLEGE,"Creative Arts, Fashion & Media"
+8,AD101,First Year Art and Design ( Common Entry) (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD102,Graphic Design and Moving Image Design (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD103,Textile & Surface Design and Jewellery & Objects (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD104,Fine Art and Applied Art (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD202,Education and Art or Design (Second Level Teaching) (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD211,Fashion Design (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD212,Product Design (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AD215,Visual Culture,Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Government, Law & Education"
+8,AD217,Illustration (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,Other
+8,AD222,Interaction Design (Portfolio),Dublin,NATIONAL COLLEGE OF ART AND DESIGN,"Creative Arts, Fashion & Media"
+8,AU300,Business - Accounting,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,AU301,Business,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU302,Marketing with Online Technologies,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU310,LLB (Law),Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU311,Corporate Law,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU312,Communications with English,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU320,Sports and Exercise - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU321,Athletic Therapy and Exercise Rehabilitation,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU322,Hospitality Management,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU330,Design - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU340,Fire Safety Engineering,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU341,Quantity Surveying,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU342,Construction Management,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU343,Architectural Technology,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU350,Mechanical Engineering,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU351,Electronic Engineering,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU354,Electric Vehicle Engineering *NEW*,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU360,Applied Computing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU361,Computer Science,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU362,Cyberpsychology,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU363,Computing in Data Science and Artificial Intelligence,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU370,Food Science and Nutrition,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,AU371,Agriculture - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,AU372,Bioanalytical Science,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+8,AU373,Pharmaceutical and Medicinal Science,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU380,General Nursing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU381,Mental Health Nursing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU382,Intellectual Disability Nursing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU390,"Early Childhood Care, Health and Education",Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU391,Health and Social Care,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU600,Accounting,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,AU601,Business,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU602,Business Information Systems,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU603,Marketing and Sales,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU604,Finance and Economics,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,AU605,Business with Entrepreneurship,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU606,Rural Enterprise and Agri Business,Mountbellew,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU607,Digital Accounting,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU615,Film and Documentary,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU616,Creative Media and Storytelling,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU617,Animation and Game Design,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU618,Art (Portfolio),Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU620,Education (Art and Design and Communication Graphics),Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU621,Textile and Fashion Design,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU622,Interior Design,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU623,Graphic Design and Illustration,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU624,Product Design,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU625,Heritage,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU628,International Tourism Management,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU629,Event Management with Public Relations,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU630,International Hotel and Hospitality Management,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU631,Gastronomy Science and Food Innovation,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,AU635,Construction Management,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU636,Quantity Surveying and Construction Economics,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU637,Architectural Technology,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU638,Civil Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU642,Software and Electronic Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU645,Mechanical Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU646,Energy Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU647,Biomedical Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,AU648,Agricultural Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,AU649,Engineering - Common Entry,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU650,Manufacturing Engineering Design,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU655,Applied Freshwater and Marine Biology,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU656,Science - undenominated,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+8,AU657,Agriculture and Environmental Management,Mountbellew,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,AU662,Sport and Exercise Science,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU663,Public Health Nutrition,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU664,Sports Coaching,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU668,Chemical and Pharmaceutical Science,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU669,Forensic Science and Analysis,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU670,Applied Biology and Biopharmaceutical Science,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU671,Medical Science,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,AU675,Physics and Instrumentation,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Physics, Mathematics & Space Science"
+8,AU676,Computing in Software Development,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU677,Computing and Digital Media,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU680,"Education (Design, Graphics and Construction)",Letterfrack,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU681,Furniture Design and Manufacture,Letterfrack,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU682,Furniture Making and Architectural Woodworking,Letterfrack,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU683,Furniture Design Making and Technology - Common Entry,Letterfrack,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU690,General Nursing,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU691,Mental Health Nursing,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU693,Geography and Outdoor Education,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU694,History and Geography,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU695,Early Childhood Education and Care,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU696,Applied Social Care,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU698,Psychology,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU699,Outdoor and Environmental Education - Common Entry,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU900,Business,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU901,Business and ICT,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU902,Accounting,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,AU903,Sport with Business,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU904,Marketing,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU905,Tourism and Event Management,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU906,Business and Irish,Sligo and St Angela`s,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,AU915,Law and Business,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU916,Sociology and Politics,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU917,English and Psychology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU918,Social Care Practice,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU919,Early Education and Care,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU925,Architecture,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU926,Interior Architecture and Design,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU927,Creative Design,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU928,Fine Art (Portfolio),Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU929,Writing and Literature,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU930,Writing and Literature (online),Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU931,Performing Arts,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,AU940,Engineering - Common Entry,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU943,Mechanical Engineering,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,AU944,Civil Engineering,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU945,Quantity Surveying,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU946,Construction Project Management and Applied Technology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU955,Computing - Common Entry,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU956,Computer Networks and Cyber Security,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU957,Software Development,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,AU965,Science - Common Entry,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+8,AU966,Environmental Science with Ecology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,AU967,Occupational Safety and Health,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU968,Pharmaceutical Science with Drug Development,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU969,Biomedical Science,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,AU970,Forensic Investigation and Analysis,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU971,Health Science and Physical Activity,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU972,Human Nutrition,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU973,Clinical Measurement Physiology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,AU985,"Education, Home Economics and Biology - with concurrent Teacher Education","Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,AU986,"Education, Home Economics and Religious Ed - with concurrent Teacher Education","Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU987,"Education, Home Economics and Irish - with concurrent Teacher Education","Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU988,"Education, Home Economics - with concurrent Teacher Education","Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,AU989,"Nutrition, Food and Business Management","Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,AU990,Home Economics,"Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,AU991,General Nursing,"Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,AU992,Intellectual Disability Nursing,"Sligo, St Angela`s",ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,BY001,Business,Dublin,IBAT COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,CK101,Arts - 3 years,Cork,UNIVERSITY COLLEGE CORK (NUI),"Creative Arts, Fashion & Media"
+8,CK102,Social Science - 3 years or 4 years (International Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),Other
+8,CK104,Arts - Music - 3 years or 4 years (BMus or Chinese/European/International Pathway) (Interview) (Audition),Cork,UNIVERSITY COLLEGE CORK (NUI),"Creative Arts, Fashion & Media"
+8,CK105,Film and Screen Media - 3 years or 4 years (International Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),"Creative Arts, Fashion & Media"
+8,CK108,Arts International - 4 years,Cork,UNIVERSITY COLLEGE CORK (NUI),"Creative Arts, Fashion & Media"
+8,CK109,English - 3 years or 4 years (International Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),"Creative Arts, Fashion & Media"
+8,CK110,World Languages,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK111,Early Years and Childhood Studies,Cork,UNIVERSITY COLLEGE CORK (NUI),Other
+8,CK112,Theatre and Performative Practices - 3 years or 4 years (International Pathway) (Audition),Cork,UNIVERSITY COLLEGE CORK (NUI),"Creative Arts, Fashion & Media"
+8,CK113,Criminology - 3 years or 4 years (International Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK114,Social Science (Youth and Community Work) (Interview),Cork,UNIVERSITY COLLEGE CORK (NUI),Other
+8,CK115,Social Work - Mature Applicants only,Cork,UNIVERSITY COLLEGE CORK (NUI),Other
+8,CK118,Digital Humanities and Information Technology - 3 years or 4 years (Work Experience or International Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),Information Technology (IT)
+8,CK120,Applied Psychology,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK121,Psychology and Computing - 3 years or 4 years (Work Experience Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),Information Technology (IT)
+8,CK122,Government and Political Science,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK123,Anthropology - 3 years or 4 years (International Pathway),Cork,UNIVERSITY COLLEGE CORK (NUI),Other
+8,CK124,Education - Gaeilge,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK125,"Physical Education, Sports Studies and Arts",Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK201,Commerce,Cork,UNIVERSITY COLLEGE CORK (NUI),"Business, Sales & Tourism"
+8,CK202,Accounting,Cork,UNIVERSITY COLLEGE CORK (NUI),"Accountancy, Finance & Insurance"
+8,CK203,Business Information Systems,Cork,UNIVERSITY COLLEGE CORK (NUI),"Business, Sales & Tourism"
+8,CK204,Finance,Cork,UNIVERSITY COLLEGE CORK (NUI),"Accountancy, Finance & Insurance"
+8,CK212,Applied Economics,Cork,UNIVERSITY COLLEGE CORK (NUI),"Accountancy, Finance & Insurance"
+8,CK213,Food Marketing and Entrepreneurship,Cork,UNIVERSITY COLLEGE CORK (NUI),"Agriculture, Animals & Food"
+8,CK215,International Business with Languages,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK301,Law (Pathways) - 3 years or 4 years,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK302,Law and French,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK304,Law and Irish,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK307,Law and Business,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK401,Computer Science,Cork,UNIVERSITY COLLEGE CORK (NUI),Information Technology (IT)
+8,CK402,Biological and Chemical Sciences,Cork,UNIVERSITY COLLEGE CORK (NUI),"Biological, Chemical & Pharmaceutical Science"
+8,CK404,"Biological, Environmental and Geological Sciences",Cork,UNIVERSITY COLLEGE CORK (NUI),Environment & Construction
+8,CK405,Genetics,Cork,UNIVERSITY COLLEGE CORK (NUI),"Biological, Chemical & Pharmaceutical Science"
+8,CK406,Chemical Sciences,Cork,UNIVERSITY COLLEGE CORK (NUI),"Biological, Chemical & Pharmaceutical Science"
+8,CK407,Mathematical Sciences,Cork,UNIVERSITY COLLEGE CORK (NUI),"Physics, Mathematics & Space Science"
+8,CK408,Physics and Astrophysics,Cork,UNIVERSITY COLLEGE CORK (NUI),"Physics, Mathematics & Space Science"
+8,CK411,Data Science and Analytics,Cork,UNIVERSITY COLLEGE CORK (NUI),Information Technology (IT)
+8,CK412,Agricultural Science,Cork,UNIVERSITY COLLEGE CORK (NUI),"Agriculture, Animals & Food"
+8,CK413,Science Education,Cork,UNIVERSITY COLLEGE CORK (NUI),"Government, Law & Education"
+8,CK504,Nutritional Sciences,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK505,Food Science,Cork,UNIVERSITY COLLEGE CORK (NUI),"Agriculture, Animals & Food"
+8,CK600,Engineering,Cork,UNIVERSITY COLLEGE CORK (NUI),"Engineering, Manufacturing & Energy"
+8,CK606,Architecture - Offered jointly by UCC and MTU,Cork,UNIVERSITY COLLEGE CORK (NUI),Environment & Construction
+8,CK701,Medicine (Undergraduate Entry) (HPAT Required),Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK702,Dentistry,Cork,UNIVERSITY COLLEGE CORK (NUI),Other
+8,CK703,Pharmacy,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK704,Occupational Therapy,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK705,Speech and Language Therapy,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK706,Public Health Sciences,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK707,Medical and Health Sciences,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK708,Paramedicine,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK710,General Nursing,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK712,Children`s and General Nursing,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK720,Mental Health Nursing,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK730,Intellectual Disability Nursing,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK740,Midwifery,Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CK791,Medicine (Graduate Entry) (GAMSAT Required),Cork,UNIVERSITY COLLEGE CORK (NUI),"Healthcare, Wellbeing & Sport"
+8,CM001,Education - Primary Teaching,Dublin,MARINO INSTITUTE OF EDUCATION,"Government, Law & Education"
+8,CM002,Education - Primary Teaching - Gaeltacht Applicants,Dublin,MARINO INSTITUTE OF EDUCATION,"Government, Law & Education"
+8,CM003,Oideachas - Bunmhúinteoireacht - Trí Mheán na Gaeilge (TEG),Dublin,MARINO INSTITUTE OF EDUCATION,Other
+8,CM004,Oideachas - Bunmhúinteoireacht - Trí Mheán na Gaeilge (daltaí Gaeltachta - TEG),Dublin,MARINO INSTITUTE OF EDUCATION,Other
+8,CM010,Education Studies,Dublin,MARINO INSTITUTE OF EDUCATION,"Government, Law & Education"
+8,CM020,Early Childhood Education,Dublin,MARINO INSTITUTE OF EDUCATION,"Government, Law & Education"
+8,CT125,Computing and IT,Dublin,CCT COLLEGE DUBLIN,Information Technology (IT)
+8,CT325,Business,Dublin,CCT COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,DB500,Computing,Dublin,DUBLIN BUSINESS SCHOOL,Information Technology (IT)
+8,DB502,Computing (Data Analytics and Big Data),Dublin,DUBLIN BUSINESS SCHOOL,Information Technology (IT)
+8,DB503,Computing (Software Development),Dublin,DUBLIN BUSINESS SCHOOL,Information Technology (IT)
+8,DB510,Audio Production and Music Project Management,Dublin,DUBLIN BUSINESS SCHOOL,"Creative Arts, Fashion & Media"
+8,DB512,Business Studies,Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,DB514,Business Studies (Law),Dublin,DUBLIN BUSINESS SCHOOL,"Government, Law & Education"
+8,DB515,Business Studies (Human Resource Management),Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,DB517,Marketing (Event Management),Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,DB518,Marketing (Digital Marketing),Dublin,DUBLIN BUSINESS SCHOOL,Information Technology (IT)
+8,DB520,Global Business,Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,DB521,Accounting and Finance,Dublin,DUBLIN BUSINESS SCHOOL,"Accountancy, Finance & Insurance"
+8,DB524,Business (Information Systems),Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,DB526,Business (Cloud Computing),Dublin,DUBLIN BUSINESS SCHOOL,Information Technology (IT)
+8,DB531,Marketing,Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,DB535,Sustainability *NEW*,Dublin,DUBLIN BUSINESS SCHOOL,Environment & Construction
+8,DB562,Psychology,Dublin,DUBLIN BUSINESS SCHOOL,"Healthcare, Wellbeing & Sport"
+8,DB566,Social Science,Dublin,DUBLIN BUSINESS SCHOOL,Other
+8,DB567,Film and Creative Media,Dublin,DUBLIN BUSINESS SCHOOL,"Creative Arts, Fashion & Media"
+8,DB568,Law,Dublin,DUBLIN BUSINESS SCHOOL,"Government, Law & Education"
+8,DB569,Business (Psychology),Dublin,DUBLIN BUSINESS SCHOOL,"Healthcare, Wellbeing & Sport"
+8,DC001,Education - Early Childhood Education,Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC002,Education - Primary Teaching,Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC003,Education - Primary Teaching - Gaeltacht Applicants,Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC004,Education - Primary Teaching - CIC (Church of Ireland Centre formerly CICE),Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC009,Arts: Joint Honours (Humanities),Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC010,Post Primary Teacher Education - Religious Education and English,Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC011,Post Primary Teacher Education - Religious Education and History,Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC012,Post Primary Teacher Education - Religious Education and Music,Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC013,"Post Primary Teacher Education - Gaeilge and French, German or Spanish",Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC014,Jazz and Contemporary Music Performance (Audition),Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC015,"Post Primary Teacher Education - Technology, Engineering and Graphics",Dublin,DUBLIN CITY UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,DC110,Business Studies International,Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC111,Business Studies,Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC112,Global Business (France),Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC113,Global Business (Germany),Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC114,Global Business (Spain),Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC115,Accounting and Finance,Dublin,DUBLIN CITY UNIVERSITY,"Accountancy, Finance & Insurance"
+8,DC116,Global Business (USA),Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC117,Aviation Management / Aviation Management with Pilot Studies/Aviation Management with Air Traffic Controller Studies,Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC118,Gnó agus Gaeilge / Business and Irish,Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC119,Global Business (Canada),Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC120,Computing for Business,Dublin,DUBLIN CITY UNIVERSITY,Information Technology (IT)
+8,DC121,Computer Science,Dublin,DUBLIN CITY UNIVERSITY,Information Technology (IT)
+8,DC123,Data Science,Dublin,DUBLIN CITY UNIVERSITY,Information Technology (IT)
+8,DC126,Actuarial Mathematics,Dublin,DUBLIN CITY UNIVERSITY,"Physics, Mathematics & Space Science"
+8,DC127,Common Entry into Actuarial and Financial Mathematics,Dublin,DUBLIN CITY UNIVERSITY,"Physics, Mathematics & Space Science"
+8,DC131,Communication Studies,Dublin,DUBLIN CITY UNIVERSITY,Other
+8,DC132,Journalism,Dublin,DUBLIN CITY UNIVERSITY,Other
+8,DC133,Multimedia,Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC155,Applied Language and Translation Studies,Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC160,Chemistry with Artificial Intelligence *NEW*,Dublin,DUBLIN CITY UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,DC161,Analytical Science,Dublin,DUBLIN CITY UNIVERSITY,Other
+8,DC162,Chemical and Pharmaceutical Sciences,Dublin,DUBLIN CITY UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,DC163,Chemical Sciences (General Entry),Dublin,DUBLIN CITY UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,DC166,Environmental Science and Technology,Dublin,DUBLIN CITY UNIVERSITY,Environment & Construction
+8,DC168,Genetics and Cell Biology,Dublin,DUBLIN CITY UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,DC175,Physics (General Entry),Dublin,DUBLIN CITY UNIVERSITY,"Physics, Mathematics & Space Science"
+8,DC180,Biological Sciences (General Entry),Dublin,DUBLIN CITY UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,DC181,Biotechnology,Dublin,DUBLIN CITY UNIVERSITY,Other
+8,DC190,Electronic and Computer Engineering,Dublin,DUBLIN CITY UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,DC193,Mechatronic Engineering,Dublin,DUBLIN CITY UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,DC194,Mechanical and Sustainability Engineering,Dublin,DUBLIN CITY UNIVERSITY,Environment & Construction
+8,DC195,Mechanical and Manufacturing Engineering,Dublin,DUBLIN CITY UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,DC197,Biomedical Engineering,Dublin,DUBLIN CITY UNIVERSITY,Biomedical Technologies & Medtech
+8,DC200,Common Entry into Engineering (Undenominated Entry),Dublin,DUBLIN CITY UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,DC202,Sport Science and Health,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC203,Science and Mathematics Education,Dublin,DUBLIN CITY UNIVERSITY,"Physics, Mathematics & Space Science"
+8,DC204,Athletic Therapy and Training,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC205,Physical Education with Biology,Dublin,DUBLIN CITY UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,DC206,Physical Education with Mathematics,Dublin,DUBLIN CITY UNIVERSITY,"Physics, Mathematics & Space Science"
+8,DC207,Psychology and Mathematics,Dublin,DUBLIN CITY UNIVERSITY,"Physics, Mathematics & Space Science"
+8,DC208,Psychology,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC209,Health and Society,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC210,Psychology and Disruptive Technologies,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC215,General Nursing,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC216,Mental Health Nursing,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC217,Intellectual Disability Nursing,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC218,Children`s and General Nursing,Dublin,DUBLIN CITY UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,DC230,"Economics, Politics and Law",Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC231,International Relations,Dublin,DUBLIN CITY UNIVERSITY,Other
+8,DC232,Civil Law (BCL),Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC235,Education and Training,Dublin,DUBLIN CITY UNIVERSITY,"Government, Law & Education"
+8,DC238,Social Sciences and Cultural Innovation,Dublin,DUBLIN CITY UNIVERSITY,Other
+8,DC240,"Marketing, Innovation and Technology",Dublin,DUBLIN CITY UNIVERSITY,"Business, Sales & Tourism"
+8,DC241,Digital Business and Innovation,Dublin,DUBLIN CITY UNIVERSITY,Information Technology (IT)
+8,DC291,Arts: Joint Honours (Media Studies),Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC292,Arts: Joint Honours (Law),Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC293,Arts: Joint Honours (International Languages),Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DC294,Climate and Environmental Sustainability,Dublin,DUBLIN CITY UNIVERSITY,Environment & Construction
+8,DC295,Arts: Joint Honours (Politics),Dublin,DUBLIN CITY UNIVERSITY,"Creative Arts, Fashion & Media"
+8,DK801,International Business with Digitalisation,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+8,DK802,Business with Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+8,DK810,Accounting and Finance,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Accountancy, Finance & Insurance"
+8,DK816,Business Studies,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+8,DK818,Digital Marketing and Strategic Communication,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+8,DK820,Games Development,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+8,DK821,Computing in Software Development,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+8,DK823,Mathematics and Data Science,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+8,DK824,Computing Systems and Operations,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+8,DK830,Building Surveying,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+8,DK831,Architectural Technology,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+8,DK832,Construction Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+8,DK834,Quantity Surveying,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+8,DK843,Engineering (Common Entry),Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Engineering, Manufacturing & Energy"
+8,DK844,Mechanical Engineering,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Engineering, Manufacturing & Energy"
+8,DK845,Electrical and Electronic Engineering,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Engineering, Manufacturing & Energy"
+8,DK846,Civil Engineering,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+8,DK850,International Tourism Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+8,DK851,Hospitality Management with Business,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+8,DK852,Event Management with Marketing,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+8,DK853,Marketing and International Tourism Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+8,DK861,Arts,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+8,DK862,Social Care,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK863,Creative Media,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+8,DK864,Film and Television Production,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+8,DK865,Audio and Music Production,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+8,DK866,Applied Youth Work (Portfolio) (Interview),Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+8,DK867,Sport and Exercise with Business,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK870,General Nursing,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK872,Intellectual Disability Nursing,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK874,Mental Health Nursing,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK876,Early Childhood Studies,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+8,DK877,Midwifery,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK880,Health and Physical Activity,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK882,Agriculture,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Agriculture, Animals & Food"
+8,DK883,Science,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+8,DK888,Nutrition and Health,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+8,DK891,Audio Development,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+8,DK892,Music and Performance Technologies,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+8,DK893,Sound Design,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+8,DL822,Arts Management,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL823,Business Management,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Business, Sales & Tourism"
+8,DL825,Applied Psychology,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Healthcare, Wellbeing & Sport"
+8,DL826,Graphic Design (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL827,Art (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL832,Animation (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL833,Photography and Visual Media (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL836,Creative Computing,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY",Information Technology (IT)
+8,DL837,New Media Studies,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL838,Creative Music Production (Portfolio) (Audition),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL840,Digital Marketing,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY",Information Technology (IT)
+8,DL843,Film (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL844,Television (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY",Other
+8,DL845,Design for Film (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL847,3D Animation (Portfolio),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL848,Business and Digital Technology,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY",Information Technology (IT)
+8,DL849,English and Media Studies,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL851,English and Equality Studies,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL854,Game Design *NEW*,Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DL856,Film (Joint International programme) *NEW* (Portfolio) (Interview),Dublin,"DUN LAOGHAIRE INSTITUTE OF ART, DESIGN AND TECHNOLOGY","Creative Arts, Fashion & Media"
+8,DN100,Architecture (Level 9 progression option),Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Environment & Construction
+8,DN120,Landscape Architecture,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Environment & Construction
+8,DN130,City Planning and Environmental Policy,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Environment & Construction
+8,DN150,Engineering,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Engineering, Manufacturing & Energy"
+8,DN200,Science,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Other
+8,DN201,Computer Science,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Information Technology (IT)
+8,DN230,Actuarial & Financial Studies,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Accountancy, Finance & Insurance"
+8,DN240,Sustainability,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Environment & Construction
+8,DN250,Agricultural Science,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Agriculture, Animals & Food"
+8,DN261,Food Science,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Agriculture, Animals & Food"
+8,DN262,Human Nutrition,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN300,Veterinary Medicine - Undergraduate Entry (Practical Experience Required),Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Agriculture, Animals & Food"
+8,DN301,Veterinary Medicine - Graduate Entry (GAMSAT Required) (Practical Experience Required),Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Agriculture, Animals & Food"
+8,DN310,Veterinary Nursing,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Agriculture, Animals & Food"
+8,DN400,Medicine - Undergraduate Entry (HPAT Required),Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN401,Medicine - Graduate Entry (GAMSAT Required),Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN410,Radiography,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Other
+8,DN411,Diagnostic Radiography - Graduate Entry,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Biomedical Technologies & Medtech
+8,DN420,Physiotherapy,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN425,"Sport, Health and Exercise Science",Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN430,Sport and Exercise Management,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN440,"Biomedical, Health and Life Sciences",Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Biomedical Technologies & Medtech
+8,DN450,General Nursing,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN451,Children`s and General Nursing,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN452,Midwifery,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN453,Mental Health Nursing,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN520,Joint Honours,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Other
+8,DN530,Humanities,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Other
+8,DN541,Modern Languages,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Government, Law & Education"
+8,DN600,Law,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Government, Law & Education"
+8,DN610,Business and Law,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Government, Law & Education"
+8,DN620,Criminology with Psychology,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN650,Commerce,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Business, Sales & Tourism"
+8,DN660,Commerce International,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Business, Sales & Tourism"
+8,DN670,Economics and Finance,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Accountancy, Finance & Insurance"
+8,DN700,Social Sciences,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Other
+8,DN710,Economics,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Accountancy, Finance & Insurance"
+8,DN720,Psychology,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Healthcare, Wellbeing & Sport"
+8,DN750,Social Policy and Sociology,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),Other
+8,DN760,Education,Dublin,UNIVERSITY COLLEGE DUBLIN (NUI),"Government, Law & Education"
+8,GB002,Enterprise Management *NEW*,Galway,GALWAY BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,GC200,Business,Cork,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC201,Accounting and Finance,Cork,GRIFFITH COLLEGE,"Accountancy, Finance & Insurance"
+8,GC230,Computing Science,Cork,GRIFFITH COLLEGE,Information Technology (IT)
+8,GC300,Business,Limerick,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC301,Accounting and Finance,Limerick,GRIFFITH COLLEGE,"Accountancy, Finance & Insurance"
+8,GC302,Business (HRM),Limerick,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC307,Business (Marketing),Limerick,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC400,Business,Dublin,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC401,Accounting and Finance,Dublin,GRIFFITH COLLEGE,"Accountancy, Finance & Insurance"
+8,GC402,Business (HRM),Dublin,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC403,Law,Dublin,GRIFFITH COLLEGE,"Government, Law & Education"
+8,GC407,Business (Marketing),Dublin,GRIFFITH COLLEGE,"Business, Sales & Tourism"
+8,GC409,Psychology *NEW*,Dublin,GRIFFITH COLLEGE,"Healthcare, Wellbeing & Sport"
+8,GC418,Law - Criminal Justice *NEW*,Dublin,GRIFFITH COLLEGE,"Government, Law & Education"
+8,GC419,Law - Commercial Law *NEW*,Dublin,GRIFFITH COLLEGE,"Government, Law & Education"
+8,GC430,Computing Science,Dublin,GRIFFITH COLLEGE,Information Technology (IT)
+8,GC450,Communications and Media Production,Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+8,GC456,"Film, TV and Screen Media Production",Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+8,GC462,Graphic Communication Design (Portfolio),Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+8,GC489,Interior Architecture (Portfolio),Dublin,GRIFFITH COLLEGE,Environment & Construction
+8,GC494,Fashion Design (Portfolio),Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+8,GY101,Arts (Joint-Honours),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY104,Psychology,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY105,Arts (History),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY109,Arts (Mathematics and Education),Galway,UNIVERSITY OF GALWAY,"Physics, Mathematics & Space Science"
+8,GY110,Arts (Children and Youth Studies),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY111,Arts (English and Creative Writing),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY113,Arts with Human Rights,Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY118,"Arts (Drama, Theatre and Performance Studies)",Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY119,Arts (Journalism),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY122,Na Dána (Cumarsáid agus Gaeilge),Galway,UNIVERSITY OF GALWAY,Other
+8,GY123,Social Sciences,Galway,UNIVERSITY OF GALWAY,Other
+8,GY125,Arts (Digital Arts and Technology),Galway,UNIVERSITY OF GALWAY,Information Technology (IT)
+8,GY127,Arts (Film and Digital Media),Galway,UNIVERSITY OF GALWAY,Information Technology (IT)
+8,GY128,Arts (Global Languages),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY129,Arts (Global Experience),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY130,Arts (Music),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY132,"Government (Politics, Economics and Law)",Galway,UNIVERSITY OF GALWAY,"Government, Law & Education"
+8,GY133,Education (Computer Science and Mathematical Studies),Galway,UNIVERSITY OF GALWAY,Information Technology (IT)
+8,GY134,Geography and Geosystems,Galway,UNIVERSITY OF GALWAY,Environment & Construction
+8,GY135,Arts (Global Media),Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY136,Gaeilge agus Léann an Aistriúcháin,Galway,UNIVERSITY OF GALWAY,Other
+8,GY137,"Arts (Child, Youth and Family: Policy and Practice)",Galway,UNIVERSITY OF GALWAY,"Creative Arts, Fashion & Media"
+8,GY201,Commerce,Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY202,Commerce (International) with French,Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY203,Commerce (International) with German,Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY204,Commerce (International) with Spanish,Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY206,Business Information Systems,Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY207,Commerce (Accounting),Galway,UNIVERSITY OF GALWAY,"Accountancy, Finance & Insurance"
+8,GY208,Commerce (Gaeilge),Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY209,Commerce (Global Experience),Galway,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY250,Law (BCL) and Business,Galway,UNIVERSITY OF GALWAY,"Government, Law & Education"
+8,GY251,Law (BCL),Galway,UNIVERSITY OF GALWAY,"Government, Law & Education"
+8,GY252,Law (BCL) and Human Rights,Galway,UNIVERSITY OF GALWAY,"Government, Law & Education"
+8,GY254,"Law (BCL), Criminology and Criminal Justice",Galway,UNIVERSITY OF GALWAY,"Government, Law & Education"
+8,GY261,Business Studies (International Hotel Management) (Interview),Shannon College,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY262,Commerce (International Hotel Management) (Interview),Shannon College,UNIVERSITY OF GALWAY,"Business, Sales & Tourism"
+8,GY301,Science,Galway,UNIVERSITY OF GALWAY,Other
+8,GY303,Biomedical Science,Galway,UNIVERSITY OF GALWAY,Biomedical Technologies & Medtech
+8,GY304,Biotechnology,Galway,UNIVERSITY OF GALWAY,Other
+8,GY308,Environmental Science,Galway,UNIVERSITY OF GALWAY,Environment & Construction
+8,GY309,Financial Mathematics and Economics,Galway,UNIVERSITY OF GALWAY,"Physics, Mathematics & Space Science"
+8,GY310,Marine Science,Galway,UNIVERSITY OF GALWAY,Other
+8,GY313,Occupational Health and Safety Management,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY314,Earth and Ocean Sciences,Galway,UNIVERSITY OF GALWAY,Environment & Construction
+8,GY318,Biopharmaceutical Chemistry,Galway,UNIVERSITY OF GALWAY,"Biological, Chemical & Pharmaceutical Science"
+8,GY319,Mathematical Science,Galway,UNIVERSITY OF GALWAY,"Physics, Mathematics & Space Science"
+8,GY320,Physics,Galway,UNIVERSITY OF GALWAY,"Physics, Mathematics & Space Science"
+8,GY321,Genetics and Genomics,Galway,UNIVERSITY OF GALWAY,"Biological, Chemical & Pharmaceutical Science"
+8,GY322,Agricultural Science,Galway,UNIVERSITY OF GALWAY,"Agriculture, Animals & Food"
+8,GY350,Computer Science and Information Technology,Galway,UNIVERSITY OF GALWAY,Information Technology (IT)
+8,GY401,Engineering (Undenominated),Galway,UNIVERSITY OF GALWAY,"Engineering, Manufacturing & Energy"
+8,GY402,Civil Engineering,Galway,UNIVERSITY OF GALWAY,Environment & Construction
+8,GY405,Mechanical Engineering,Galway,UNIVERSITY OF GALWAY,"Engineering, Manufacturing & Energy"
+8,GY406,Electronic and Computer Engineering,Galway,UNIVERSITY OF GALWAY,"Engineering, Manufacturing & Energy"
+8,GY408,Biomedical Engineering,Galway,UNIVERSITY OF GALWAY,Biomedical Technologies & Medtech
+8,GY410,Project and Construction Management,Galway,UNIVERSITY OF GALWAY,Environment & Construction
+8,GY413,Energy Systems Engineering,Galway,UNIVERSITY OF GALWAY,"Engineering, Manufacturing & Energy"
+8,GY414,Electrical and Electronic Engineering,Galway,UNIVERSITY OF GALWAY,"Engineering, Manufacturing & Energy"
+8,GY501,Medicine (HPAT Required),Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY502,Occupational Therapy,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY503,Speech and Language Therapy,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY504,Podiatric Medicine,Galway,UNIVERSITY OF GALWAY,Biomedical Technologies & Medtech
+8,GY515,General Nursing,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY516,Mental Health Nursing,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,GY517,Midwifery,Galway,UNIVERSITY OF GALWAY,"Healthcare, Wellbeing & Sport"
+8,ID001,Accounting and Finance,Dublin,ICD BUSINESS SCHOOL,"Accountancy, Finance & Insurance"
+8,ID002,Business Studies,Dublin,ICD BUSINESS SCHOOL,"Business, Sales & Tourism"
+8,LM002,Arts,Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM019,Social Sciences,Limerick,UNIVERSITY OF LIMERICK,Other
+8,LM020,Law and Accounting,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM027,Common and Civil Law,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM028,Criminal Justice,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM029,Law Plus,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM030,Global Politics *NEW*,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM031,Arts (Professional Pathways) *NEW*,Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM038,Psychology and Sociology,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM039,Journalism and Digital Communication,Limerick,UNIVERSITY OF LIMERICK,Information Technology (IT)
+8,LM040,European Studies,Limerick,UNIVERSITY OF LIMERICK,Other
+8,LM044,Applied Languages,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM050,Business Studies (options),Limerick,UNIVERSITY OF LIMERICK,"Business, Sales & Tourism"
+8,LM056,International Business,Limerick,UNIVERSITY OF LIMERICK,"Business, Sales & Tourism"
+8,LM058,Financial Mathematics,Limerick,UNIVERSITY OF LIMERICK,"Physics, Mathematics & Space Science"
+8,LM063,Technology Management,Limerick,UNIVERSITY OF LIMERICK,"Business, Sales & Tourism"
+8,LM066,Environmental Science,Limerick,UNIVERSITY OF LIMERICK,Environment & Construction
+8,LM068,Food Science and Health,Limerick,UNIVERSITY OF LIMERICK,"Agriculture, Animals & Food"
+8,LM076,Product Design and Technology (Portfolio),Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM077,Aeronautical Engineering (Level 9 progression option),Limerick,UNIVERSITY OF LIMERICK,"Engineering, Manufacturing & Energy"
+8,LM082,Construction Management and Engineering,Limerick,UNIVERSITY OF LIMERICK,Environment & Construction
+8,LM089,Sport and Exercise Sciences,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM090,Physical Education with concurrent Teacher Education,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM091,Languages with concurrent Teacher Education,Limerick,UNIVERSITY OF LIMERICK,"Government, Law & Education"
+8,LM092,Science with concurrent Teacher Education (Biology with Physics or Chemistry or Agricultural Science),Limerick,UNIVERSITY OF LIMERICK,"Agriculture, Animals & Food"
+8,LM093,Equine Science,Limerick,UNIVERSITY OF LIMERICK,"Agriculture, Animals & Food"
+8,LM094,Graphics and Construction Technology with concurrent Teacher Education,Limerick,UNIVERSITY OF LIMERICK,Environment & Construction
+8,LM095,"Graphics, Engineering and Technology with concurrent Teacher Education",Limerick,UNIVERSITY OF LIMERICK,"Engineering, Manufacturing & Energy"
+8,LM096,Science with concurrent Teacher Education (Physical Sciences with Chemistry and Physics),Limerick,UNIVERSITY OF LIMERICK,"Biological, Chemical & Pharmaceutical Science"
+8,LM097,Mathematics and Computer Science with concurrent Teacher Education,Limerick,UNIVERSITY OF LIMERICK,Information Technology (IT)
+8,LM099,Architecture,Limerick,UNIVERSITY OF LIMERICK,Environment & Construction
+8,LM100,Physiotherapy,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM101,Medicine (Graduate Entry) (GAMSAT Required),Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM102,Psychology,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM103,Paramedic Studies Clean Driving Licence required (Full B and minimum Provisional C1) (Interview),Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM104,Occupational Therapy,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM105,Exercise and Health Fitness Management,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM113,Interaction Design,Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM114,"Music, Media and Performance Technology",Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM115,Chemical and Biochemical Engineering,Limerick,UNIVERSITY OF LIMERICK,"Biological, Chemical & Pharmaceutical Science"
+8,LM116,Engineering,Limerick,UNIVERSITY OF LIMERICK,"Engineering, Manufacturing & Energy"
+8,LM118,Electronic and Computer Engineering (Level 9 progression option),Limerick,UNIVERSITY OF LIMERICK,"Engineering, Manufacturing & Energy"
+8,LM121,Computer Science,Limerick,UNIVERSITY OF LIMERICK,Information Technology (IT)
+8,LM123,Biological and Chemical Sciences,Limerick,UNIVERSITY OF LIMERICK,"Biological, Chemical & Pharmaceutical Science"
+8,LM124,Mathematics,Limerick,UNIVERSITY OF LIMERICK,"Physics, Mathematics & Space Science"
+8,LM125,Physics,Limerick,UNIVERSITY OF LIMERICK,"Physics, Mathematics & Space Science"
+8,LM126,Electrical Engineering (Level 9 progression option),Limerick,UNIVERSITY OF LIMERICK,"Engineering, Manufacturing & Energy"
+8,LM131,Irish Music (Audition),Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM132,Irish Dance (Audition),Limerick,UNIVERSITY OF LIMERICK,Other
+8,LM133,Contemporary Dance (Audition),Limerick,UNIVERSITY OF LIMERICK,Other
+8,LM134,Voice (Audition),Limerick,UNIVERSITY OF LIMERICK,Other
+8,LM135,World Music (Audition),Limerick,UNIVERSITY OF LIMERICK,"Creative Arts, Fashion & Media"
+8,LM150,General Nursing,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM152,Mental Health Nursing,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM154,Intellectual Disability Nursing,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM156,Midwifery,Limerick,UNIVERSITY OF LIMERICK,"Healthcare, Wellbeing & Sport"
+8,LM173,Immersive Software Engineering (Portfolio) (Level 9 progression option),Limerick,UNIVERSITY OF LIMERICK,"Engineering, Manufacturing & Energy"
+8,LM174,Artificial Intelligence and Machine Learning (Level 9 progression option),Limerick,UNIVERSITY OF LIMERICK,Information Technology (IT)
+8,MH001,Education - Primary Teaching (Froebel),Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH002,Education - Primary Teaching - Gaeltacht Applicants (Froebel),Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH003,Early Childhood - Teaching and Learning (full-time),Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH101,Arts,Maynooth,MAYNOOTH UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MH103,Music (Audition),Maynooth,MAYNOOTH UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MH106,Psychology,Maynooth,MAYNOOTH UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MH107,Social Science,Maynooth,MAYNOOTH UNIVERSITY,Other
+8,MH109,Media Studies,Maynooth,MAYNOOTH UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MH111,Creative Writing and English *NEW*,Maynooth,MAYNOOTH UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MH116,Community and Youth Work (full-time) (Interview),Maynooth,MAYNOOTH UNIVERSITY,Other
+8,MH201,Science,Maynooth,MAYNOOTH UNIVERSITY,Other
+8,MH202,Biotechnology,Maynooth,MAYNOOTH UNIVERSITY,Other
+8,MH203,Biological and Geographical Sciences,Maynooth,MAYNOOTH UNIVERSITY,Environment & Construction
+8,MH204,Physics with Astrophysics,Maynooth,MAYNOOTH UNIVERSITY,"Physics, Mathematics & Space Science"
+8,MH206,Theoretical Physics and Mathematics,Maynooth,MAYNOOTH UNIVERSITY,"Physics, Mathematics & Space Science"
+8,MH207,Data Science,Maynooth,MAYNOOTH UNIVERSITY,Information Technology (IT)
+8,MH208,Biological and Biomedical Sciences,Maynooth,MAYNOOTH UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MH209,Psychology (through Science),Maynooth,MAYNOOTH UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MH210,Pharmaceutical and Biomedical Chemistry,Maynooth,MAYNOOTH UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MH212,Science (with Education) or Mathematics and Computer Science (with Education) or Mathematics and Applied Maths (with Education),Maynooth,MAYNOOTH UNIVERSITY,Information Technology (IT)
+8,MH221,Sport Science and Health,Maynooth,MAYNOOTH UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MH222,Food Science and Human Nutrition,Maynooth,MAYNOOTH UNIVERSITY,"Agriculture, Animals & Food"
+8,MH304,Engineering,Maynooth,MAYNOOTH UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MH305,Product Design and Innovation,Maynooth,MAYNOOTH UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MH306,Robotics and Intelligent Devices,Maynooth,MAYNOOTH UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MH401,Finance,Maynooth,MAYNOOTH UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MH402,Quantitative Finance,Maynooth,MAYNOOTH UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MH403,Accounting and Finance,Maynooth,MAYNOOTH UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MH404,Business,Maynooth,MAYNOOTH UNIVERSITY,"Business, Sales & Tourism"
+8,MH407,Business and Accounting,Maynooth,MAYNOOTH UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MH409,Business and Languages,Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH411,Entrepreneurship,Maynooth,MAYNOOTH UNIVERSITY,"Business, Sales & Tourism"
+8,MH412,Business with Sport Science,Maynooth,MAYNOOTH UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MH415,Economics - option of an integrated MSc Economics,Maynooth,MAYNOOTH UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MH416,International Economics,Maynooth,MAYNOOTH UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MH501,LLB Law,Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH502,BCL Law,Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH503,BCL Law and Languages,Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH504,Criminology *NEW*,Maynooth,MAYNOOTH UNIVERSITY,"Government, Law & Education"
+8,MH601,Computer Science through Arts,Maynooth,MAYNOOTH UNIVERSITY,Information Technology (IT)
+8,MH602,Computer Science through Science,Maynooth,MAYNOOTH UNIVERSITY,Information Technology (IT)
+8,MH603,Computational Thinking,Maynooth,MAYNOOTH UNIVERSITY,Information Technology (IT)
+8,MH803,"Local Studies or Community Studies (part-time, evening, Mature Students only)",Maynooth,MAYNOOTH UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MI002,Arts,Limerick,MARY IMMACULATE COLLEGE,"Creative Arts, Fashion & Media"
+8,MI003,Psychology,Limerick,MARY IMMACULATE COLLEGE,"Healthcare, Wellbeing & Sport"
+8,MI004,Education - Primary Teaching - International,Limerick,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI005,Education - Primary Teaching,Limerick,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI006,Education - Primary Teaching - Gaeltacht Applicants,Limerick,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI007,Early Childhood Care and Education,Limerick,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI008,Education and Psychology - Primary Teaching,Limerick,MARY IMMACULATE COLLEGE,"Healthcare, Wellbeing & Sport"
+8,MI009,English Language and Literature,Limerick,MARY IMMACULATE COLLEGE,"Creative Arts, Fashion & Media"
+8,MI010,Drama and English,Limerick,MARY IMMACULATE COLLEGE,"Creative Arts, Fashion & Media"
+8,MI016,"Education, Business Studies and Accounting",Thurles,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI017,"Education, Business Studies and Religious Studies",Thurles,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI018,"Education, Gaeilge and Religious Studies",Thurles,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI019,"Education, Gaeilge and Business Studies",Thurles,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MI020,"Education, Mathematics and Gaeilge",Thurles,MARY IMMACULATE COLLEGE,"Physics, Mathematics & Space Science"
+8,MI021,"Education, Mathematics and Business Studies",Thurles,MARY IMMACULATE COLLEGE,"Physics, Mathematics & Space Science"
+8,MI022,"Education, Home Economics and Business Studies",Thurles,MARY IMMACULATE COLLEGE,"Government, Law & Education"
+8,MT800,Software Development,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,MT802,Computer Systems,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,MT803,Computing (Common Entry),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,MT805,I.T. Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT811,"Animation, Visual Effects and Motion Design (Portfolio)",Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT815,Digital Health and Informatics for Healthcare *NEW*,Kerry Campus,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,MT820,"Contemporary Applied Art (Ceramics, Glass, Textiles ) (Portfolio)",CCAD Sharman Crawford Street,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT821,Fine Art (Portfolio),CCAD Sharman Crawford Street,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT822,Photography with New Media,CCAD Envision Centre,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT823,Visual Communications (Portfolio),CCAD Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+8,MT824,Creative Digital Media,CCAD Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,MT830,Engineering (Common Entry),Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT831,Structural Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT832,Civil Engineering,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT833,Instrument Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT834,Mechanical and Manufacturing Engineering,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT836,Mechanical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT837,Sustainable Energy Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT838,Chemical and Biopharmaceutical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT839,Biomedical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,MT844,Smart Product Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT845,Electrical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT846,Electronic Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT847,Automotive Business Management and Technology,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,MT848,Agricultural Engineering,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,MT856,Construction Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT857,Quantity Surveying,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT859,Architectural Technology,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT860,Interior Architecture,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT870,Physical Sciences (Common Entry),Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+8,MT871,Biomedical Science (offered jointly MTU Cork Campus and UCC),Cork and UCC,MUNSTER TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,MT872,Pharmaceutical Science (Degree Award option: Biopharmaceutics),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT873,Pharmaceutical Biotechnology,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT874,Analytical Chemistry with Quality Assurance,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT875,Biological Sciences (Common Entry),Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT876,Nutrition and Health Science,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT877,Agricultural Science (Semester 2 of year 2 is in Teagasc Clonakilty Agricultural College),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,MT878,Environmental Science and Sustainable Technology,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,MT879,Agri-Biosciences,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT880,Wildlife Biology,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,MT881,Veterinary Bioscience,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,MT906,Physical Education Studies with Business,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,MT910,Sport and Exercise Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT911,"Health, Sport and Exercise Sciences",Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT912,Health and Exercise Sciences with Massage Therapy,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT913,Coaching and Sports Performance,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT915,Coaching Science and Sports Pedagogy,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT925,Counselling with Addiction (Interview),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT926,General Nursing,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT927,Mental Health Nursing,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MT930,Home Economics and Business (First three years in MTU; Final two years in UCC),Cork and UCC,MUNSTER TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MT931,Popular Music - Electric Guitar (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT932,Popular Music - Electric Bass (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT933,Popular Music - Keyboards (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT934,Popular Music - Drums (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT935,Popular Music - Voice (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT936,Music (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT938,Musical Theatre (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT939,Theatre and Drama Studies (entrance assessment) (Audition),Cork School of Music,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT940,Event Management (3 Year Programme),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT941,Business (Common Entry),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT942,Accounting,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,MT943,Marketing,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT944,Business Information Systems,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT945,International Business with Language,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,MT946,Global Business and Pilot Studies,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT947,Tourism Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT948,Hospitality Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,MT957,Culinary Arts Management,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MT970,Montessori Education,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,MT971,Early Childhood Education and Care,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,MT972,Early Childhood Education and Care,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,MT974,Social Care,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,MU001,Theology and Arts (jointly awarded with Maynooth University),Maynooth,ST PATRICK'S PONTIFICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,MU002,Theology,Maynooth,ST PATRICK'S PONTIFICAL UNIVERSITY,"Government, Law & Education"
+8,MU004,Philosophy,Maynooth,ST PATRICK'S PONTIFICAL UNIVERSITY,"Government, Law & Education"
+8,NC003,Computing,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),Information Technology (IT)
+8,NC005,Human Resource Management,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),"Business, Sales & Tourism"
+8,NC009,Business,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),"Business, Sales & Tourism"
+8,NC010,Psychology,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),"Healthcare, Wellbeing & Sport"
+8,NC020,Marketing Practice,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),"Business, Sales & Tourism"
+8,NC022,Accounting and Finance,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),"Accountancy, Finance & Insurance"
+8,NC025,Data Science,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),Information Technology (IT)
+8,NC030,Early Childhood Education and Care,,,"Government, Law & Education"
+8,PC410,Arts and Humanities,Carlow,"CARLOW COLLEGE, ST. PATRICK`S","Creative Arts, Fashion & Media"
+8,PC411,English and History,"Carlow College, St. Patrick`s","CARLOW COLLEGE, ST. PATRICK`S","Creative Arts, Fashion & Media"
+8,PC414,Psychology,"Carlow College, St. Patrick`s","CARLOW COLLEGE, ST. PATRICK`S","Healthcare, Wellbeing & Sport"
+8,RC001,Medicine - Undergraduate Entry (HPAT Required),Dublin,RCSI UNIVERSITY OF MEDICINE & HEALTH SCIENCES,"Healthcare, Wellbeing & Sport"
+8,RC004,Physiotherapy,Dublin,RCSI UNIVERSITY OF MEDICINE & HEALTH SCIENCES,"Healthcare, Wellbeing & Sport"
+8,RC005,Pharmacy (Level 9 progression option),Dublin,RCSI UNIVERSITY OF MEDICINE & HEALTH SCIENCES,"Healthcare, Wellbeing & Sport"
+8,RC006,Advanced Therapeutic Technologies,Dublin,RCSI UNIVERSITY OF MEDICINE & HEALTH SCIENCES,Other
+8,RC007,Dentistry *NEW*,Dublin,RCSI UNIVERSITY OF MEDICINE & HEALTH SCIENCES,Other
+8,RC101,Medicine - Graduate Entry (GAMSAT Required),Dublin,RCSI UNIVERSITY OF MEDICINE & HEALTH SCIENCES,"Healthcare, Wellbeing & Sport"
+8,SC801,Strength and Conditioning,Tipperary,SETANTA COLLEGE,Other
+8,SE200,Arts,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE201,Design (Visual Communications),Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE202,Product Design Innovation,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE203,Visual Art,Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE204,Visual Communications and Design,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE205,Psychology (Audition),Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE206,Music (Audition),Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE207,Art (Portfolio),Wexford - Hill Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE208,TV and Media Production,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE300,Content Creation and Social Media,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE400,Business - with/without a language,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE401,Business,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,SE402,Business,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,SE403,Business with Law,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE404,Law (LLB),Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE405,Law (LLB),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE406,Criminal Justice Studies,Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE407,Accounting,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,SE408,Accounting,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Accountancy, Finance & Insurance"
+8,SE409,Public Relations and Media,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE410,Marketing and Digital Media,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE411,Digital Marketing with Analytics,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE412,International Business,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,SE413,Business Information Systems,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,SE500,Science,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+8,SE501,Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+8,SE502,Agricultural Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,SE503,Sustainable Farm Management and Agribusiness,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,SE504,Pharmaceutical Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,SE521,Brewing and Distilling,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,SE600,Computer Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE601,Information Technology Management,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE602,Computer Forensics and Security,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+8,SE603,Software Development,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE604,Software Systems Development,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE605,Creative Computing,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE606,Cyber Crime and IT Security,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE607,Computer Games Development,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE608,Computing in Interactive Digital Art and Design,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+8,SE700,Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,SE701,Architecture,Waterford - Granary,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE702,Architectural Technology,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE703,Architectural and Building Information Modelling Technology,Waterford - Granary,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE704,Quantity Surveying,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE705,Quantity Surveying,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE706,Construction Management,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE707,Construction Management and Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE708,Electronic Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,SE709,Biomedical Electronics,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+8,SE710,Robotics and Automated Systems,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,SE711,Mechanical Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,SE712,Mechanical and Manufacturing Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,SE713,Civil Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE714,Aerospace Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+8,SE732,Agricultural Systems Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+8,SE734,Set Design and Construction,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+8,SE900,Health Sciences,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE901,Sport Rehabilitation and Athletic Therapy,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE902,Exercise Sciences,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+8,SE903,Strength and Conditioning,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+8,SE904,Sports Coaching and Performance,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE905,Sport and Exercise Science,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE906,Recreation and Sport Management,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE907,Sports Management and Coaching (Gaelic Games) (Portfolio),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE908,Sports Management and Coaching (Rugby) (Portfolio),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE909,Sports Management and Coaching (Football) (Portfolio),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE910,"Sport, Business and Coaching",Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE911,Early Childhood Care and Education,Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE912,Early Childhood Education and Practice,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE913,Early Childhood Education and Practice,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+8,SE914,Psychiatric Nursing,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE915,General Nursing,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE916,Intellectual Disability Nursing,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE917,Applied Social Studies in Professional Social Care,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE918,Professional Social Care Practice,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE919,Social Care Practice,Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+8,SE920,Social Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+8,SE921,Hospitality Management,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,SE922,Tourism and Event Management,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+8,SE923,Culinary Arts,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+8,SE943,"Individual, Family and Community Support *NEW*",Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+8,TR002,Music,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR003,History,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR004,Law,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR005,Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR006,Psychology,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR007,Clinical Speech and Language Studies,Dublin,TRINITY COLLEGE DUBLIN,Biomedical Technologies & Medtech
+8,TR009,Music Education (Interview) (Audition),Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR015,"Philosophy, Political Science, Economics and Sociology (PPES)",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR016,Deaf Studies,Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR018,Law and French,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR019,Law and German,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR021,"Classics, Ancient History and Archaeology",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR022,Early and Modern Irish,Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR023,English Studies,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR024,European Studies,Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR025,Drama and Theatre Studies (Interview),Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR028,Ancient and Medieval History and Culture,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR031,Mathematics,Dublin,TRINITY COLLEGE DUBLIN,"Physics, Mathematics & Space Science"
+8,TR032,Engineering,Dublin,TRINITY COLLEGE DUBLIN,"Engineering, Manufacturing & Energy"
+8,TR033,Computer Science,Dublin,TRINITY COLLEGE DUBLIN,Information Technology (IT)
+8,TR034,Management Science and Information Systems Studies,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR035,Theoretical Physics,Dublin,TRINITY COLLEGE DUBLIN,"Physics, Mathematics & Space Science"
+8,TR038,Engineering with Management,Dublin,TRINITY COLLEGE DUBLIN,"Engineering, Manufacturing & Energy"
+8,TR039,"Computer Science, Linguistics and a Language",Dublin,TRINITY COLLEGE DUBLIN,Information Technology (IT)
+8,TR040,Middle Eastern and European Languages and Cultures,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR041,Religion,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR042,Film,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR043,History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR051,Medicine (HPAT Required),Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR052,Dental Science,Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR053,Physiotherapy,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR054,Occupational Therapy,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR055,Radiation Therapy,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR056,Human Health and Disease,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR060,Biological and Biomedical Sciences,Dublin,TRINITY COLLEGE DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TR061,Chemical Sciences,Dublin,TRINITY COLLEGE DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TR062,Geography and Geoscience,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR063,Physical Sciences,Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR064,Environmental Science and Engineering,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR072,Pharmacy,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR080,Global Business,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR081,"Business, Economic and Social Studies (BESS)",Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR084,Social Studies (Social Work),Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR085,Business Studies and French,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR086,Business Studies and German,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR087,Business Studies and Russian,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR089,Business Studies and Polish,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR090,Business Studies and Spanish,Dublin,TRINITY COLLEGE DUBLIN,"Business, Sales & Tourism"
+8,TR091,General Nursing,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR093,General Nursing (Interview),Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR095,Mental Health Nursing,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR097,Intellectual Disability Nursing,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR111,Ancient History and Archaeology/Geography,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR112,Ancient History and Archaeology/History,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR113,Ancient History and Archaeology/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR114,Ancient History and Archaeology/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR117,Ancient History and Archaeology/Religion,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR166,Classical Civilisation/English Literature,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR173,Classical Civilisation/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR177,Classical Civilisation/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR179,Classical Civilisation/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR188,Computer Science/Business Studies,Dublin,TRINITY COLLEGE DUBLIN,Information Technology (IT)
+8,TR197,Economics/Computer Science,Dublin,TRINITY COLLEGE DUBLIN,Information Technology (IT)
+8,TR198,Economics/Geography,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR202,Economics/History,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR207,Economics/Mathematics,Dublin,TRINITY COLLEGE DUBLIN,"Physics, Mathematics & Space Science"
+8,TR208,Economics/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR209,Economics/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR212,Economics/Sociology,Dublin,TRINITY COLLEGE DUBLIN,"Accountancy, Finance & Insurance"
+8,TR214,Social Policy/Economics,Dublin,TRINITY COLLEGE DUBLIN,"Accountancy, Finance & Insurance"
+8,TR228,Classical Languages/English Literature,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR230,Classical Languages/Linguistics,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR231,Classical Languages/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR233,"Classical Languages/Middle Eastern,Jewish and Islamic Civilisations",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR239,Classical Languages/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR240,Computer Science/Geography,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR241,Computer Science/Linguistics,Dublin,TRINITY COLLEGE DUBLIN,Information Technology (IT)
+8,TR262,English Literature/History,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR263,English Literature/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR269,English Literature/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR272,English Literature/Sociology,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR276,English Literature/Drama Studies,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR277,English Literature/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR311,Film/Drama Studies,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR312,Film/English Literature,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR320,Film/Music,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR322,Geography/History,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR323,Drama Studies/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR324,Film/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR325,Film/History,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR326,Geography/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR328,Political Science/Geography,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR332,Geography/Sociology,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR443,History/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR447,History/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR449,History/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR454,History/Religion,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR455,History of Art and Architecture/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR457,History/Political Science,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR479,History of Art and Architecture/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR482,Sociology/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR485,Drama/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR546,"English Literature/Middle Eastern,Jewish and Islamic Civilisations",Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR547,"Middle Eastern,Jewish and Islamic Civ./Ancient History and Archaeology",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR548,"Middle Eastern,Jewish and Islamic Civilisations/Classical Civilisation",Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR554,"Middle Eastern,Jewish and Islamic Civilisations/History",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR563,"Middle Eastern,Jewish and Islamic Civilisations/Modern Language",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR564,"Middle Eastern,Jewish and Islamic Civilisations/Music",Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR565,"Middle Eastern,Jewish and Islamic Civilisations/Religion",Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR566,"Drama Studies/Middle Eastern,Jewish and Islamic Civilisations",Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR580,Business Studies/Law,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR581,History/Law,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR582,Political Science/Law,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR587,"Middle Eastern,Jewish and Islamic Civilisations/Linguistics",Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR588,Linguistics/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR589,Linguistics/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR592,"Sociology/Middle Eastern,Jewish and Islamic Civilisations",Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR597,Mathematics/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Physics, Mathematics & Space Science"
+8,TR598,Mathematics/Music,Dublin,TRINITY COLLEGE DUBLIN,"Physics, Mathematics & Space Science"
+8,TR599,Mathematics/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Physics, Mathematics & Space Science"
+8,TR629,Music/Philosophy,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR635,Music/Drama Studies,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR636,Music/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR638,Music/Religion,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR639,Philosophy/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR662,Philosophy/Sociology,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR663,Religion/Classical Civilisation,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR664,Religion/English Literature,Dublin,TRINITY COLLEGE DUBLIN,"Creative Arts, Fashion & Media"
+8,TR665,Religion/History of Art and Architecture,Dublin,TRINITY COLLEGE DUBLIN,Environment & Construction
+8,TR666,Religion/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR667,French/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR668,German/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR669,Irish/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR670,Italian/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR671,Russian/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR672,Spanish/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR756,Sociology/Modern Language,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR757,Modern Language/Social Policy,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR758,Social Policy/Political Science,Dublin,TRINITY COLLEGE DUBLIN,"Government, Law & Education"
+8,TR759,Sociology/Social Policy,Dublin,TRINITY COLLEGE DUBLIN,Other
+8,TR911,Children`s and General Nursing,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TR913,Midwifery,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU801,Sustainable Energy Engineering,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU802,Electrical Services and Energy Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU804,Engineering (General Entry),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU805,Engineering (General Entry),Bolton St AND Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU807,Computer Engineering in Mobile Systems,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU810,Mechatronic Engineering,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU811,Product Design,Aungier Street AND Bolton St AND Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU828,Mechanical Engineering (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU829,Electronic Engineering and Engineering Software (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU831,Architectural Technology,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU832,Architecture (Portfolio) (Interview),Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU833,Construction Management,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU835,Planning and Environmental Management,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU836,Property Economics (Valuation Surveying),Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU837,Quantity Surveying and Construction Economics,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU850,Data Science and Artificial Intelligence,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU851,Analytical Chemistry (Environmental Forensic and Pharmaceutical),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU852,Chemical Sciences with Medicinal Chemistry,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TU854,Science (General Entry),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+8,TU855,Science with Nanotechnology,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+8,TU856,Computer Science,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU857,Computer Science (Infrastructure),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU858,Computer Science (International),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU859,Computing (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU860,Computing (Information Technology),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU862,Computing with Machine Learning and Artificial Intelligence,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU863,Digital Forensics and Cyber Security,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TU864,DNA and Forensic Analysis,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TU865,Cloud Computing,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU866,Biomedical and Molecular Diagnostics,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Biomedical Technologies & Medtech
+8,TU867,Medical Science,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Biomedical Technologies & Medtech
+8,TU868,Clinical Measurement Science,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Biomedical Technologies & Medtech
+8,TU869,Environmental Health,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU870,Human Nutrition and Dietetics,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU871,Optometry,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+8,TU872,Public Health Nutrition,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU874,Mathematical Sciences,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Physics, Mathematics & Space Science"
+8,TU875,Pharmaceutical Healthcare,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TU876,Pharmaceutical Science,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+8,TU877,Physics Technology,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Physics, Mathematics & Space Science"
+8,TU878,Physics with Energy and Environment,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+8,TU879,Physics with Medical Physics and Bioengineering,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+8,TU880,Physics with Data Science,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU881,Food Science,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Agriculture, Animals & Food"
+8,TU882,Nutraceuticals in Health and Nutrition,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU889,Biotechnology,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+8,TU902,Business (General Entry),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU903,Business and Management,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU904,Business and Law,Aungier St AND Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+8,TU905,Economics and Finance,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Accountancy, Finance & Insurance"
+8,TU906,Human Resource Management,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU907,Logistics and Supply Chain Management,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU910,Accounting,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Accountancy, Finance & Insurance"
+8,TU912,Business Analytics,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU914,Business Computing,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU917,Law (LL.B.) with a Language,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+8,TU918,Law (LL.B.),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+8,TU919,Advertising and Marketing Communications,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU920,Digital Marketing,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU921,Digital Marketing Technologies,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU922,Marketing,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU924,E-Commerce in Retailing,Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU932,Business (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU933,Accounting and Finance,Blanchardstown OR Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Accountancy, Finance & Insurance"
+8,TU935,Sports Management and Coaching,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU936,Sports Science and Health,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU942,Culinary Arts,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU951,International Hospitality and Tourism Management,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU952,International Hospitality Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU953,Tourism and Digital Marketing,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU954,Event Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+8,TU955,Sports and Leisure Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU961,Commercial Modern Music (BIMM) (Audition),Francis Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU962,Drama (Performance) (Audition),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU965,International Business and Languages,Aungier St AND Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+8,TU973,Design - Visual Communication (Portfolio),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU974,Fine Art (Portfolio),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU975,Interior Design (Portfolio),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU976,Photography,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU978,Creative Industries and Visual Culture,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU981,Creative Digital Media,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU982,Media Production and Digital Arts,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+8,TU983,Film and Broadcasting,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU984,Game Design,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+8,TU985,Journalism,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+8,TU989,Early Childhood Education and Care (Campus Options),Blanchardstown OR Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+8,TU991,Applied Social Studies in Social Care,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU992,Community Development and Youth Work,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+8,TU995,Early Childhood Education,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+8,TU996,Social Care,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,TU997,Applied Social Care,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+8,US800,Art and Design (Common Entry) (Portfolio),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US801,Art and Design (Offered jointly by TUS and UL) (Portfolio),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US802,Animation and Illustration (Portfolio),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US803,Graphic and Digital Design (Portfolio),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US805,Digital Animation (Portfolio),Clonmel,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US806,Game Art and Design (Portfolio),Clonmel,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US807,Creative Broadcast and Film Production,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US808,Music Production and Technology,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US809,Music and Sound Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US810,"Visual Effects for Film, TV and Animation (Portfolio)",Clonmel,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US811,Interior Design (Portfolio),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US812,Design Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US819,Software Development with Cyber Security *NEW*,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US820,Software Development,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US821,Software Design with Virtual Reality and Gaming,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US822,Software Design with Artificial Intelligence for Cloud Computing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US823,Software Design with Digitalisation,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US824,Computer Engineering with Network Infrastructure,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US825,Immersive Digital Media,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US826,Computing - Mobile and Web,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US827,Computer Networks and Cyber Security,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US828,Software Development with Games Programming,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US829,Computer Engineering for Robotics,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US837,Law,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US838,Business and Law,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US840,Business,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US841,Business,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US842,Business,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US843,Business Studies (Digital Marketing),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US844,Digital Marketing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US845,Accounting and Finance,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Accountancy, Finance & Insurance"
+8,US846,Accounting with Finance,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Accountancy, Finance & Insurance"
+8,US847,Accounting with Finance (with Placement),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Accountancy, Finance & Insurance"
+8,US848,Business and Law,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US850,Law,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US851,Business Studies (Marketing and Management),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US852,Business Studies (Enterprise and Innovation),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US853,International Business,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US854,International Business Studies,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US855,Business with Computing,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US860,Biotechnology with Biopharmaceutical Science,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+8,US861,Biotechnology,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Other
+8,US862,Microbiology,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+8,US863,Forensic and Pharmaceutical Sciences,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+8,US864,Drug and Medicinal Product Analysis,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+8,US865,Pharmacology,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Other
+8,US866,Pharmaceutical Sciences,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+8,US867,Bioveterinary Science,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
+8,US869,Medical Technology,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Other
+8,US870,Agricultural Science and Sustainability,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
+8,US877,General Nursing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US878,Mental Health Nursing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US880,Quantity Surveying,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US881,Quantity Surveying,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US882,Property Valuation and Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US883,Built Environment (Common Entry),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US884,Construction Management,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US885,Construction Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US886,Civil Engineering Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US887,Civil Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US888,Built Environment (Common Entry) *NEW*,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+8,US900,Electrical Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US901,Renewable and Electrical Energy Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US902,Robotics and Automation Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US903,Electronic Engineering with Computer Systems,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US909,Engineering Technology Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US910,Mechanical Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US911,Mechanical Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US912,Mechanical Engineering with Energy,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US913,Polymer and Mechanical Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US914,Precision Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US915,Automotive Engineering and Transport Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US916,Automation and Robotics,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US917,Computer Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+8,US918,International Software Design (with International Placement),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+8,US920,Social Care Work,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US921,Social Care Practice,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US922,Social Care Work,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US923,Social Care Work,Ennis,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US924,Applied Psychology,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US925,Applied Psychology,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US926,Early Childhood Education and Care,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US927,Early Childhood Education and Care,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US931,Culinary Entrepreneurship,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US932,Hospitality Management (with International Placement),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US933,Physical Education Studies *NEW*,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US934,Physical Education with Business *NEW*,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+8,US941,Business Studies with Event Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US942,Business Studies with Event Management,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+8,US946,Business Studies with Beauty and Spa Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+8,US950,Nutrition and Health Science,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US951,Sports Science with Exercise Physiology,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US952,Sports Management (with International Placement),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US953,Business Studies with Sports Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US954,Sports Development and Performance,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US956,Athletic and Rehabilitation Therapy,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US957,Physical Activity and Health Science,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US958,Applied Sports Science with Strength and Conditioning,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US959,Applied Sports Science with Performance Technology,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+8,US961,Applied Sports Science with Sport and Exercise Nutrition,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,AU200,Business - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU210,Law with Criminal Justice,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+7,AU220,Culinary Arts,Killybegs,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU221,Tourism and Hospitality Operations,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU222,Sport and Exercise,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,AU230,Film and Media Production,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU231,Animation,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU232,Fashion with Promotion,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU233,Graphic Design & Illustration,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU240,Quantity Surveying,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU241,Civil Engineering,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU242,Construction - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU243,Building Engineering - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU251,Mechanical Engineering,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU260,Computer Games Development,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU261,Computing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU262,Cybersecurity and Digital Forensics,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,AU270,Science - Common Entry,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+7,AU271,Veterinary Nursing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,AU272,Agriculture,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,AU290,Inclusive Practice for Special Needs Assistance,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+7,AU501,Business,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU502,Business Information Systems,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU503,Marketing and Sales,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU505,Business with Entrepreneurship,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU506,Rural Enterprise and Agri-Business,Mountbellew,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU518,Art (Portfolio),Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU519,Design - Common Entry,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU531,Gastronomy Science and Food Innovation,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,AU532,"Tourism, Hospitality & Event Management - Common Entry *NEW*",Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU535,Construction Management,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU536,Quantity Surveying and Construction Economics,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU537,Architectural Technology,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU538,Civil Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU542,Software and Electronic Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU545,Mechanical Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU546,Energy Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU547,Biomedical Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+7,AU548,Agricultural Engineering,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,AU549,Engineering - Common Entry,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU550,Manufacturing Engineering Design,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU555,Applied Freshwater and Marine Biology,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,AU556,Science - undenominated,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+7,AU557,Agriculture and Environmental Management,Mountbellew,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,AU568,Chemical and Pharmaceutical Science,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,AU569,Applied Biology and Biopharmaceutical Science,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,AU575,Physics and Instrumentation,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Physics, Mathematics & Space Science"
+7,AU576,Computing in Software Development,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU577,Computing and Digital Media,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU583,"Furniture Design, Making and Technology - Common Entry",Letterfrack,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU590,Outdoor Education and Leisure,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+7,AU591,History and Geography,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU593,Applied Social Care,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,AU800,Business,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU802,Marketing,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU803,International Tourism and Event Management,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,AU804,Applied Sport with Business,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,AU820,Interior Architecture and Design,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU821,Creative Design,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU822,Fine Art (Portfolio),Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU823,Performing Arts,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,AU830,Engineering - Common Entry,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU831,Mechatronic Engineering,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU833,Mechanical Engineering,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,AU835,Civil Engineering,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU836,Quantity Surveying,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU837,Advanced Wood and Sustainable Building Technology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU845,Computing - Common Entry,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU846,Computer Networks and Cyber Security,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU847,Software Development,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,AU848,Games Development,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+7,AU855,Environmental Science with Ecology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,AU856,Occupational Safety and Health,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,AU857,Pharmaceutical Science with Drug Development,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,AU858,Biomedical Science,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+7,AU859,Forensic Investigation and Analysis,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,AU861,Health Science and Physiology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,AU862,Human Nutrition,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,BY002,Business,Dublin,IBAT COLLEGE DUBLIN,"Business, Sales & Tourism"
+7,DB571,Business Studies,Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+7,DB572,Business in Accounting,Dublin,DUBLIN BUSINESS SCHOOL,"Accountancy, Finance & Insurance"
+7,DB573,Business in Marketing,Dublin,DUBLIN BUSINESS SCHOOL,"Business, Sales & Tourism"
+7,DB574,Business in Information Technology,Dublin,DUBLIN BUSINESS SCHOOL,Information Technology (IT)
+7,DB576,Film and Creative Media,Dublin,DUBLIN BUSINESS SCHOOL,"Creative Arts, Fashion & Media"
+7,DK710,Business and Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+7,DK711,Business and Technology,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+7,DK712,Digital Marketing and Public Relations,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+7,DK721,Computing,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+7,DK723,Computing Systems and Operations,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Information Technology (IT)
+7,DK730,Building Surveying,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+7,DK731,Architectural Technology,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+7,DK732,Construction Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+7,DK734,Quantity Surveying,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+7,DK740,Engineering - Electrical and Electronic Systems,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Engineering, Manufacturing & Energy"
+7,DK742,Engineering - Mechanical Engineering,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Engineering, Manufacturing & Energy"
+7,DK744,Engineering - Civil Engineering,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Environment & Construction
+7,DK750,Hospitality Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+7,DK752,Event Management,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Business, Sales & Tourism"
+7,DK753,Culinary Arts,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DK763,"Sport, Exercise and Enterprise",Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Healthcare, Wellbeing & Sport"
+7,DK767,Community Youth Work (Portfolio) (Interview),Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+7,DK768,Audio and Music Production,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DK769,Creative Media,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DK770,Theatre and Film Practice,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DK771,Musical Theatre (audition) (Portfolio),Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DK781,Science - Bioscience,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Biological, Chemical & Pharmaceutical Science"
+7,DK783,Science - Pharmaceutical Science,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Biological, Chemical & Pharmaceutical Science"
+7,DK784,Veterinary Nursing,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Agriculture, Animals & Food"
+7,DK791,Audio Development,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,Other
+7,DK792,Music and Performance Technologies,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DK793,Sound Design,Dundalk,DUNDALK INSTITUTE OF TECHNOLOGY,"Creative Arts, Fashion & Media"
+7,DS701,Business,Dublin,DORSET COLLEGE,"Business, Sales & Tourism"
+7,DS702,Computing,Dublin,DORSET COLLEGE,Information Technology (IT)
+7,GB001,Business,Galway,GALWAY BUSINESS SCHOOL,"Business, Sales & Tourism"
+7,GC335,Computing,Limerick,GRIFFITH COLLEGE,Information Technology (IT)
+7,GC435,Computing,Dublin,GRIFFITH COLLEGE,Information Technology (IT)
+7,GC465,Communications,Dublin,GRIFFITH COLLEGE,Other
+7,GC466,"Film, TV and Screen Media Production",Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+7,GC480,Graphic Communication Design,Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+7,GC490,Interior Architecture & Design,Dublin,GRIFFITH COLLEGE,Environment & Construction
+7,GC495,Fashion Design,Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+7,MT510,Recreation and Leisure Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT511,"Health, Sport and Exercise Sciences",Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,MT512,Health and Exercise Sciences with Massage Therapy,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,MT513,Coaching and Sports Performance,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,MT541,Business (Common Entry),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT550,Business (Common Entry),Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT551,Business Technology and Communications,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT552,Tourism Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT553,Beverage Industry Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT554,Hospitality Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,MT555,Culinary Arts,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,MT557,Culinary Arts,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,MT571,Early Childhood Education and Care,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+7,MT573,Social Care Work,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,MT574,Social Care,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,MT575,Community Development,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+7,MT700,Software Development,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,MT703,Computing (Common Entry),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,MT705,Information Technology,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,MT706,Computer Systems and Networking,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,MT711,"Animation, Visual Effects and Motion Design (Portfolio)",Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,MT731,Civil Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,MT732,Civil Engineering,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,MT736,Mechanical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,MT739,Biomedical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+7,MT745,Electrical Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,MT746,Electronic Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,MT747,Automotive Technology and Management,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,MT748,Agricultural Engineering,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,MT750,Agriculture (In year one students spend two days in Clonakilty Agricultural College and three days in Cork Campus),Clonakilty/Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,MT758,Construction (Common Entry),Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,MT759,Architectural Technology,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,MT760,Interior Architecture,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,MT761,Environmental Engineering,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,MT764,Marine Engineering,NMCI Ringaskiddy,MUNSTER TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,MT765,Marine Electrotechnology,NMCI Ringaskiddy,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+7,MT766,Nautical Science,NMCI Ringaskiddy,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+7,MT770,Physical Sciences (Common Entry),Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+7,MT772,Pharmaceutical Science (Degree Award option - Biopharmaceutics),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,MT774,Analytical and Pharmaceutical Chemistry,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,MT775,Applied Biosciences,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,MT777,Agricultural Science (Semester 2 of year 2 is in Teagasc Clonakilty Agricultural College),Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,MT781,Animal Bioscience,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,MT782,Applied Physics and Instrumentation,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,"Physics, Mathematics & Space Science"
+7,MT784,Veterinary Nursing,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,PC404,Applied Social Studies - Professional Social Care,"Carlow College, St. Patrick`s","CARLOW COLLEGE, ST. PATRICK`S","Healthcare, Wellbeing & Sport"
+7,SC701,Strength and Conditioning,Online,SETANTA COLLEGE,Other
+7,SE209,Design,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE210,Visual Communications and Design,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE211,Art (Portfolio),Wexford - Hill Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE212,TV and Media Production,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE301,Content Creation and Social Media,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE414,Business,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,SE415,Business,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,SE416,Business,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,SE417,Public Relations and Media,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE418,Digital Marketing with Analytics,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE419,Fashion Buying and Retail Management,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+7,SE505,Forestry,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE506,Horticulture,Waterford - Kildalton,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE507,Horticulture,Dublin - Natnl Botanic Gardens,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE508,Agriculture,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE509,Sustainable Farm Management and Agribusiness,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE510,Food Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE511,Pharmaceutical Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,SE512,Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+7,SE513,Analytical Science,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+7,SE514,Molecular Biology with Biopharmaceutical Science,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,SE515,Biosciences,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+7,SE609,Software Development,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE610,Software Systems Development,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE611,Creative Computing,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE612,Cyber Crime and IT Security,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE613,Information Technology,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE614,Information Technology Management,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE615,Computing in Interactive Digital Art and Design,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE618,Computer Games Programming,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+7,SE716,Architectural Technology,Waterford - Granary,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,SE717,Architectural Technology,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,SE719,Civil Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,SE720,Electrical Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE721,Electronic Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE722,Electronic Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE723,Mechanical Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE724,Mechanical Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE725,Manufacturing Engineering,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE726,Construction Management,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,SE727,Biomedical Electronics,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Biomedical Technologies & Medtech
+7,SE728,Robotics and Automated Systems,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+7,SE729,Aircraft Systems,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+7,SE733,Agricultural Systems Engineering,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Agriculture, Animals & Food"
+7,SE735,Set Design and Construction,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Environment & Construction
+7,SE924,Tourism and Hospitality Services,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,SE925,Tourism and Event Management,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+7,SE926,Professional Social Care Practice,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE927,Applied Social Care,Waterford - College Street,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE928,Applied Health Care,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE929,Sport Coaching and Business Management (Gaelic Games) (Portfolio),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE930,Sport Coaching and Business Management (Rugby) (Portfolio),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE931,Sport Coaching and Business Management (Football) (Portfolio),Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE932,"Sport, Business and Coaching",Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE933,Recreation and Sport Management,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+7,SE934,Early Childhood Education and Practice,Wexford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+7,SE935,Early Childhood Education and Practice,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+7,SE944,"Individual, Family and Community Support *NEW*",Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Other
+7,TR801,Dental Nursing,Dublin,TRINITY COLLEGE DUBLIN,"Healthcare, Wellbeing & Sport"
+7,TR802,Dental Hygiene (Interview),Dublin,TRINITY COLLEGE DUBLIN,Other
+7,TR803,Dental Technology (Interview),Dublin,TRINITY COLLEGE DUBLIN,Other
+7,TU701,Automation Engineering and Robotics,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU703,Building Engineering,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU704,Civil Engineering,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+7,TU705,Electrical and Control Engineering,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU706,Electrical Services Engineering,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU708,Engineering (General Entry),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU709,Engineering (General Entry),Bolton St AND Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU713,Computer Engineering,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU714,Electronics and Communications Engineering,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU716,Networking Technologies,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+7,TU717,Mechanical Engineering,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU720,Automotive Management and Technology,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU721,Aviation Technology,Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU722,Process Instrumentation and Automation (Learn and Work),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU725,Mechanical Engineering (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU726,Electronic Engineering and Engineering Software (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Engineering, Manufacturing & Energy"
+7,TU731,"Auctioneering, Valuation and Estate Agency",Bolton Street,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU735,Sports Management and Coaching,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+7,TU736,Sports Science and Health,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+7,TU737,Sports Studies,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+7,TU741,Baking and Pastry Arts Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+7,TU742,Culinary Arts,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Creative Arts, Fashion & Media"
+7,TU745,Hospitality Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+7,TU746,International Hospitality and Tourism Management,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+7,TU747,Tourism Management,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+7,TU751,Biosciences,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+7,TU752,DNA and Forensic Analysis,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+7,TU754,Industrial and Environmental Physics,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Environment & Construction
+7,TU755,Science (General Entry),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU756,Computing (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+7,TU757,Computing (Information Technology),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+7,TU758,Digital Forensics and Cyber Security,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+7,TU760,Bioanalysis,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU761,Ophthalmic Dispensing,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU762,Medicinal Chemistry and Pharmaceutical Sciences,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+7,TU763,Pharmaceutical Science,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+7,TU772,Business (General Entry),Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+7,TU781,Digital Marketing,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+7,TU782,Digital Marketing,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+7,TU787,Business (General Entry),Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+7,TU788,Accounting and Finance,Blanchardstown OR Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Accountancy, Finance & Insurance"
+7,TU790,Early Childhood Education and Care,Blanchardstown OR Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Government, Law & Education"
+7,TU791,Applied Social Studies in Social Care,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+7,TU792,Community and Youth Development,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU795,Visual Merchandising and Display (Portfolio),Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,Other
+7,TU796,Creative Digital Media,Blanchardstown,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+7,US700,Graphic Design (Portfolio),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+7,US702,Creative Broadcast and Film Production,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+7,US703,Music Production and Technology,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+7,US704,Music and Sound Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US710,Computing - Mobile and Web,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+7,US711,Computer Engineering with Network Infrastructure,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US712,Software Design with Artificial Intelligence for Cloud Computing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+7,US713,Software Design with Virtual Reality and Gaming,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+7,US714,Computer Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US715,Software Design with Digitalisation,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+7,US720,Business,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+7,US721,Business,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+7,US722,Business with Computing,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+7,US723,Enterprise and Innovation,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Other
+7,US724,Digital Marketing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Information Technology (IT)
+7,US730,Applied Biology,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+7,US731,Biotechnology,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Other
+7,US732,Forensic and Pharmaceutical Sciences,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+7,US733,Pharmaceutical Sciences (Drug Development and Analysis),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Biological, Chemical & Pharmaceutical Science"
+7,US735,Medical Technology,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Other
+7,US738,Veterinary Nursing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
+7,US740,Agricultural Science and Sustainability,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
+7,US750,Electrical Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US751,Electronic Engineering with Computer Systems,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US752,Renewable and Electrical Energy Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US753,Robotics and Automation Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US760,Civil Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+7,US761,Civil Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,Environment & Construction
+7,US769,Agricultural Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
+7,US770,Mechanical Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US771,Mechanical Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US772,Mechanical Engineering with Energy,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US773,Engineering (Common Entry),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US774,Precision Engineering,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US775,Road Transport Technology and Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US776,Automation and Robotics,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US777,Polymer and Mechanical Engineering,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US778,Animation and Illustration (Portfolio),Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+7,US779,Engineering Technology Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Engineering, Manufacturing & Energy"
+7,US780,Early Childhood Education and Care,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+7,US781,Social Care Work,Ennis,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US782,Applied Social Studies in Social Care,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US783,Early Childhood Education and Care,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Government, Law & Education"
+7,US784,Applied Sports Science with Sport and Exercise Nutrition,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US785,Sports Development and Performance,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US786,Applied Sport Science Strength and Conditioning,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US787,Business Studies with Sports Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US788,Exercise and Health Science,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US789,Applied Sport Science with Performance Technology,Thurles,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+7,US791,Business Studies with Event Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+7,US792,Business Studies with Beauty and Spa Management,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+7,US793,Business Studies with Event Mangement,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+7,US795,Culinary Arts,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+6,AU170,Health Science with Physiotherapy Studies,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,AU171,Health Science with Occupational Therapy Studies,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,AU172,Health Science with Dietetics Studies,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,AU173,Dental Nursing,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,AU174,Pharmacy Technician,Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,AU190,"Early Childhood Care, Health and Education",Letterkenny,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,AU401,Business,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+6,AU425,Heritage,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+6,AU426,Business in Tourism,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+6,AU429,Culinary Arts Professional Chef Programme,Galway,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+6,AU491,Early Childhood Education and Care,Castlebar,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+6,AU715,Engineering,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+6,AU716,Construction Economics,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+6,AU717,Applied Construction Technology,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Environment & Construction
+6,AU725,Computing,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+6,AU730,Science,Sligo,ATLANTIC TECHNOLOGICAL UNIVERSITY,Other
+6,DB534,Sound Engineering and Music Production,Dublin,DUBLIN BUSINESS SCHOOL,"Engineering, Manufacturing & Energy"
+6,DB563,Arts,Dublin,DUBLIN BUSINESS SCHOOL,"Creative Arts, Fashion & Media"
+6,GC460,Music Production for Games (portfolio) (Interview),Dublin,GRIFFITH COLLEGE,"Creative Arts, Fashion & Media"
+6,LM180,Equine Science,Limerick,UNIVERSITY OF LIMERICK,"Agriculture, Animals & Food"
+6,MT655,Culinary Studies,Cork,MUNSTER TECHNOLOGICAL UNIVERSITY,Other
+6,MT657,Culinary Arts,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+6,MT680,Biological and Environmental Studies,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,Environment & Construction
+6,MT682,Pharmacy Technician,Kerry,MUNSTER TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,NC102,Computing,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),Information Technology (IT)
+6,NC103,Business,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),"Business, Sales & Tourism"
+6,NC105,Data Science,Dublin,NATIONAL COLLEGE OF IRELAND (NCI),Information Technology (IT)
+6,SC601,Strength and Conditioning,Online,SETANTA COLLEGE,Other
+6,SE420,Business,"Carlow or
+Waterford or
+Wexford",SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Business, Sales & Tourism"
+6,SE421,Business with Law,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+6,SE422,Legal Studies,Waterford,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+6,SE423,Legal Studies,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Government, Law & Education"
+6,SE516,Science - Applied Biology or Applied Chemistry,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,"Biological, Chemical & Pharmaceutical Science"
+6,SE616,Computing - Applications or Programming,Carlow,SOUTH EAST TECHNOLOGICAL UNIVERSITY,Information Technology (IT)
+6,SE730,Electronic Engineering,Waterford,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+6,SE731,Mechanical Engineering,Waterford,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Engineering, Manufacturing & Energy"
+6,SE936,Physiology and Health Science,Carlow,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,SE937,Pharmacy Technician Studies,Carlow,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Healthcare, Wellbeing & Sport"
+6,SE938,Culinary Arts,Waterford,ATLANTIC TECHNOLOGICAL UNIVERSITY,"Creative Arts, Fashion & Media"
+6,TU651,Applied Biology,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,"Biological, Chemical & Pharmaceutical Science"
+6,TU652,Computing,Tallaght,TECHNOLOGICAL UNIVERSITY DUBLIN,Information Technology (IT)
+6,TU654,Pharmacy Technician Studies,Grangegorman,TECHNOLOGICAL UNIVERSITY DUBLIN,"Healthcare, Wellbeing & Sport"
+6,TU670,Business,"Blanchardstown
+OR Tallaght",TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+6,TU678,Business (General Entry),Aungier Street,TECHNOLOGICAL UNIVERSITY DUBLIN,"Business, Sales & Tourism"
+6,US610,Accounting and Finance,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Accountancy, Finance & Insurance"
+6,US612,Business Studies (Marketing and Management),Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Business, Sales & Tourism"
+6,US630,Culinary Arts *NEW*,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+6,US631,Culinary Arts,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Creative Arts, Fashion & Media"
+6,US640,Sports Development and Coaching,Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+6,US651,"Agricultural Mechanisation (in Year 1 students - four days at Pallaskenry Ag College and one
+day at TUS Limerick)",Limerick,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Agriculture, Animals & Food"
+6,US660,Pharmacy Technician,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+6,US661,Dental Nursing,Athlone,TECHNOLOGICAL UNIVERSITY OF THE SHANNON,"Healthcare, Wellbeing & Sport"
+>>>>>>> fb3a2d1 (Integrated Help Page)
