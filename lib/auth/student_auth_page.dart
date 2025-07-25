@@ -77,6 +77,8 @@ class _StudentAuthPageState extends State<StudentAuthPage> {
           isDarkMode     : prefs.getBool('isDarkMode') ?? false,
           isDyslexicFont : prefs.getBool('isDyslexicFont') ?? false,
           role           : _role,
+          setDarkMode: (_) {},           
+          setDyslexicFont: (_) {},
         )));
     } catch (e) {
       setState(() => _err = e is FirebaseException

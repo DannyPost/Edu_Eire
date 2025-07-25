@@ -141,6 +141,8 @@ class _BusinessAuthPageState extends State<BusinessAuthPage> {
         isDarkMode     : prefs.getBool('isDarkMode') ?? false,
         isDyslexicFont : prefs.getBool('isDyslexicFont') ?? false,
         role           : _role,
+        setDarkMode: (_) {},         
+        setDyslexicFont: (_) {},
       )));
   }
 
