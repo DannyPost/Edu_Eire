@@ -2,27 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../homepage.dart';
 import 'business_auth_page.dart';
 import 'google_signin_helper.dart';
 
-const primaryColor = Color(0xFF0018EE);
-const errorColor   = Colors.redAccent;
-const _role        = 'student';
+const errorColor = Colors.redAccent;
+const _role      = 'student';
 
 class StudentAuthPage extends StatefulWidget {
   const StudentAuthPage({super.key});
-  @override State<StudentAuthPage> createState() => _StudentAuthPageState();
+
+  @override
+  State<StudentAuthPage> createState() => _StudentAuthPageState();
 }
 
 class _StudentAuthPageState extends State<StudentAuthPage> {
-  bool _login = true;
-  bool _busy = false;
-  String _err = '';
-  final _name = TextEditingController();
-  final _email = TextEditingController();
-  final _pass = TextEditingController();
+  bool  _login = true;
+  bool  _busy  = false;
+  String _err  = '';
 
+  final _name  = TextEditingController();
+  final _email = TextEditingController();
+  final _pass  = TextEditingController();
+
+  // --- brand colour ---------------------------------------------
+  Color get _brand => Theme.of(context).primaryColor;
+
+  /* ─────────────── Google sign-in ─────────────── */
   Future<void> _googleSignIn() async {
     setState(() { _busy = true; _err = ''; });
     try {
@@ -30,18 +37,13 @@ class _StudentAuthPageState extends State<StudentAuthPage> {
       if (!mounted) return;
       if (user == null) throw Exception('Google sign-in cancelled');
       await _finishAuth(user, fromGoogle: true);
-      if (!mounted) return;
     } catch (e) {
       if (!mounted) return;
-      setState(() => _err = e is FirebaseException
-        ? (e.message ?? e.toString())
-        : e.toString());
-    } finally {
-      if (!mounted) return;
-      setState(() => _busy = false);
-    }
+      setState(() => _err = e is FirebaseException ? (e.message ?? e.toString()) : e.toString());
+    } finally { if (mounted) setState(() => _busy = false); }
   }
 
+  /* ───────── Email / password auth ───────── */
   Future<void> _submitEmailPw() async {
     setState(() { _busy = true; _err = ''; });
     try {
@@ -58,11 +60,10 @@ class _StudentAuthPageState extends State<StudentAuthPage> {
       setState(() => _err = e.message ?? 'Auth failed');
     } catch (e) {
       setState(() => _err = e.toString());
-    } finally {
-      setState(() => _busy = false);
-    }
+    } finally { if (mounted) setState(() => _busy = false); }
   }
 
+  /* ───────── After successful login ───────── */
   Future<void> _finishAuth(User? user, {required bool fromGoogle}) async {
     if (user == null || !mounted) return;
     try {
@@ -71,33 +72,36 @@ class _StudentAuthPageState extends State<StudentAuthPage> {
         'role'       : _role,
         'email'      : user.email?.toLowerCase(),
       }, SetOptions(merge: true));
+
       final prefs = await SharedPreferences.getInstance();
-      Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (_) => HomePage(
-          isDarkMode     : prefs.getBool('isDarkMode') ?? false,
-          isDyslexicFont : prefs.getBool('isDyslexicFont') ?? false,
-          role           : _role,
-          setDarkMode: (_) {},           
-          setDyslexicFont: (_) {},
-        )));
+      if (!mounted) return;
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage(
+        isDarkMode     : prefs.getBool('isDarkMode') ?? false,
+        isDyslexicFont : prefs.getBool('isDyslexicFont') ?? false,
+        role           : _role,
+        setDarkMode    : (_) {},
+        setDyslexicFont: (_) {},
+      )));
     } catch (e) {
-      setState(() => _err = e is FirebaseException
-        ? (e.message ?? e.toString())
-        : e.toString());
+      if (!mounted) return;
+      setState(() => _err = e is FirebaseException ? (e.message ?? e.toString()) : e.toString());
     }
   }
 
+  /* ───────────────────────── UI ───────────────────────── */
   @override
   Widget build(BuildContext ctx) => Scaffold(
-    appBar: AppBar(title: const Text('Student'),
-        backgroundColor: primaryColor, centerTitle: true),
+    appBar: AppBar(
+      title: const Text('Student'),
+      backgroundColor: _brand,
+      centerTitle: true,
+    ),
     body: SingleChildScrollView(
       padding: const EdgeInsets.all(32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Center(child: Image.asset('assets/g-logo.png',
-                  height: 120, width: 120)),
+          Center(child: Image.asset('assets/g-logo.png', height: 120, width: 120)),
           const SizedBox(height: 30),
           if (!_login) ...[
             _field('Name', Icons.person_outline, _name, false),
@@ -114,56 +118,58 @@ class _StudentAuthPageState extends State<StudentAuthPage> {
           _googleButton(),
           TextButton(
             onPressed: _busy ? null : () => setState(() => _login = !_login),
-            child: Text(_login
-                ? 'New user?  Sign up'
-                : 'Have an account?  Login',
+            child: Text(_login ? 'New user?  Sign up' : 'Have an account?  Login',
                 style: const TextStyle(fontWeight: FontWeight.w600)),
           ),
           TextButton(
-            onPressed: _busy ? null : () => Navigator.push(context,
-                MaterialPageRoute(builder: (_) => const BusinessAuthPage())),
-            child: const Text('Business login / register',
-                style: TextStyle(fontWeight: FontWeight.w600)),
+            onPressed: _busy ? null : () => Navigator.push(
+              ctx, MaterialPageRoute(builder: (_) => const BusinessAuthPage())),
+            child: const Text('Business login / register', style: TextStyle(fontWeight: FontWeight.w600)),
           ),
           if (_err.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: Text(_err, textAlign: TextAlign.center,
-                  style: const TextStyle(color: errorColor))),
+              child: Text(_err, textAlign: TextAlign.center, style: const TextStyle(color: errorColor)),
+            ),
         ],
       ),
     ),
   );
 
+  /* ---------------- Helpers --------------- */
   Widget _googleButton() => ElevatedButton.icon(
     onPressed: _busy ? null : _googleSignIn,
-    icon: Image.asset('assets/g-logo.png', height: 22, width: 22),
+    icon : Image.asset('assets/g-logo.png', height: 22, width: 22),
     label: const Text('Sign in with Google', style: TextStyle(fontWeight: FontWeight.w600)),
     style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.white, foregroundColor: Colors.black87,
-      side: const BorderSide(color: Colors.black12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      minimumSize: const Size(double.infinity, 48),
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black87,
+      side           : const BorderSide(color: Colors.black12),
+      shape          : RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      minimumSize    : const Size(double.infinity, 48),
     ),
   );
 
   Widget _field(String lbl, IconData ico, TextEditingController c, bool obs) =>
       TextField(
-        controller: c, obscureText: obs,
+        controller: c,
+        obscureText: obs,
         decoration: InputDecoration(
-          labelText: lbl,
-          prefixIcon: Icon(ico, color: primaryColor),
-          filled: true, fillColor: Colors.grey[100],
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+          labelText : lbl,
+          prefixIcon: Icon(ico, color: _brand),
+          filled    : true,
+          fillColor : Colors.grey[100],
+          border    : OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
         ),
       );
 
   Widget _button(String txt, VoidCallback fn) => ElevatedButton(
     onPressed: _busy ? null : fn,
     style: ElevatedButton.styleFrom(
-        backgroundColor: primaryColor,
-        minimumSize: const Size(double.infinity, 50)),
+      backgroundColor: _brand,
+      minimumSize    : const Size(double.infinity, 50),
+    ),
     child: _busy
         ? const CircularProgressIndicator(color: Colors.white)
         : Text(txt, style: const TextStyle(fontSize: 18)),

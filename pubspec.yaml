@@ -19,7 +19,7 @@ dependencies:
   # Core Functionality
   http: ^1.2.1
   xml: ^6.5.0
-  csv: ^5.0.2
+  csv: ^6.0.0
   collection: ^1.18.0
   intl: ^0.20.2
 
@@ -28,10 +28,11 @@ dependencies:
   firebase_auth: ^5.6.2
   cloud_firestore: ^5.6.11
   cloud_functions: ^5.6.1
-  google_sign_in: ^6.1.5
+  google_sign_in: ^6.1.4 
+  google_sign_in_web: ^0.12.0
 
   # Form validation
-  email_validator: ^2.1.17
+  email_validator: ^3.0.0
 
   # Local Storage & Env
   shared_preferences: ^2.2.2
@@ -45,7 +46,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true

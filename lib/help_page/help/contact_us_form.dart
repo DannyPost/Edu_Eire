@@ -11,40 +11,47 @@ class ContactUsForm extends StatefulWidget {
 
 class _ContactUsFormState extends State<ContactUsForm> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
+  final _nameController    = TextEditingController();
+  final _emailController   = TextEditingController();
   final _messageController = TextEditingController();
   bool _loading = false;
 
+  // -------------------------------------------------------------
   Future<void> _submitForm() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _loading = true);
 
     await FirebaseFirestore.instance.collection('contact_submissions').add({
-      'name': _nameController.text,
-      'email': _emailController.text,
-      'message': _messageController.text,
+      'name'     : _nameController.text,
+      'email'    : _emailController.text,
+      'message'  : _messageController.text,
       'timestamp': FieldValue.serverTimestamp(),
     });
 
     setState(() => _loading = false);
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Thank you! Your message has been sent.'),
-        backgroundColor: Colors.lightBlue,
-      ),
+    final snackBar = SnackBar(
+      content: const Text('Thank you! Your message has been sent.'),
+      backgroundColor: Theme.of(context).colorScheme.primary,
     );
+    if (mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
     _nameController.clear();
     _emailController.clear();
     _messageController.clear();
   }
 
+  // -------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
+    final theme   = Theme.of(context);
+    final brand   = theme.primaryColor;
+    final bgField = theme.brightness == Brightness.light
+        ? Colors.grey[50]
+        : Colors.grey[800];
+
     return Card(
-      color: Colors.white,
+      color: theme.cardColor,
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
@@ -55,78 +62,55 @@ class _ContactUsFormState extends State<ContactUsForm> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "Send us a message",
+                'Send us a message',
                 style: TextStyle(
-                  color: Colors.lightBlue.shade700,
+                  color: brand,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 20),
-              TextFormField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                validator: (value) =>
-                    value == null || value.isEmpty ? 'Enter your name' : null,
-              ),
+              _inputField('Name', _nameController, bgField, false, (v) =>
+                  v == null || v.isEmpty ? 'Enter your name' : null),
               const SizedBox(height: 14),
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                validator: (value) => value != null && EmailValidator.validate(value)
-                    ? null
-                    : 'Enter a valid email',
-              ),
+              _inputField('Email', _emailController, bgField, false, (v) =>
+                  v != null && EmailValidator.validate(v) ? null : 'Enter a valid email'),
               const SizedBox(height: 14),
-              TextFormField(
-                controller: _messageController,
-                decoration: InputDecoration(
-                  labelText: 'Message',
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
+              _inputField('Message', _messageController, bgField, true, (v) =>
+                  v == null || v.isEmpty ? 'Enter your message' : null,
                 maxLines: 4,
-                validator: (value) =>
-                    value == null || value.isEmpty ? 'Enter your message' : null,
               ),
               const SizedBox(height: 18),
               SizedBox(
                 height: 45,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlue.shade600,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: brand,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
                   onPressed: _loading ? null : _submitForm,
                   child: _loading
-                      ? const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation(Colors.white),
-                        )
-                      : const Text('Send Message',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      ? const CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white))
+                      : const Text('Send Message', style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _inputField(String label, TextEditingController controller, Color? fill, bool multiline, String? Function(String?) validator, {int maxLines = 1}) {
+    return TextFormField(
+      controller : controller,
+      validator  : validator,
+      maxLines   : multiline ? maxLines : 1,
+      decoration : InputDecoration(
+        labelText: label,
+        filled   : true,
+        fillColor: fill,
+        border   : OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
