@@ -13,6 +13,12 @@ import '../auth/student_auth_page.dart';
 import '../auth/business_pending_page.dart';
 
 /* ──────────────────────────────────────────────────────────────
+   Global brand colours
+   ────────────────────────────────────────────────────────────── */
+const kPrimaryColor   = Color(0xFF3AB6FF); // bright blue
+const kSecondaryColor = Colors.white;      // accent / onPrimary
+
+/* ──────────────────────────────────────────────────────────────
    Entry point
    ────────────────────────────────────────────────────────────── */
 Future<void> main() async {
@@ -71,14 +77,33 @@ class _MyAppState extends State<MyApp> {
         title: 'Edu Éire',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          useMaterial3: true,
           brightness: Brightness.light,
           fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue, brightness: Brightness.light),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: kPrimaryColor,
+            brightness: Brightness.light,
+          ).copyWith(
+            secondary: kSecondaryColor,
+          ),
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kSecondaryColor,
+          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
         ),
         darkTheme: ThemeData(
+          useMaterial3: true,
           brightness: Brightness.dark,
           fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue, brightness: Brightness.dark),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: kPrimaryColor,
+            brightness: Brightness.dark,
+          ).copyWith(
+            secondary: kSecondaryColor,
+          ),
+          primaryColor: kPrimaryColor,
+          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
         // 👇 NEW – send everything through the AuthGate first

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// Import your actual pages
+// Pages
 import 'homepage/widgets/education_news_feed.dart';
 import 'settings/settings_page.dart';
 import 'chatbot/screens/chat_screen.dart';
@@ -16,8 +16,6 @@ import 'cao_search/cao_search_page.dart';
 
 import '../help_page/help_main.dart';
 import '../help_page/help/help_page.dart';
-
-const primaryColor = Color(0xFF0018EE);
 
 class HomePage extends StatefulWidget {
   final bool isDarkMode;
@@ -41,15 +39,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _dark = false;
-  bool _dys = false;
-  int _idx = 0;
+  bool _dys  = false;
+  int  _idx  = 0;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Color get _brand => Theme.of(context).primaryColor;
 
   @override
   void initState() {
     super.initState();
     _dark = widget.isDarkMode;
-    _dys = widget.isDyslexicFont;
+    _dys  = widget.isDyslexicFont;
   }
 
   Future<void> _setDark(bool v) async {
@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> {
     await prefs.setBool('isDyslexicFont', v);
   }
 
+  /* --------------------- Page lists --------------------- */
   late final List<Widget> _bizPages = [
     SettingsPage(
       toggleTheme: _setDark,
@@ -98,6 +99,7 @@ class _HomePageState extends State<HomePage> {
     const CalendarPage(),
   ];
 
+  /* ------------------------- UI ------------------------- */
   @override
   Widget build(BuildContext context) {
     final isBiz = widget.role == 'business';
@@ -106,7 +108,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: _brand,
         centerTitle: true,
         title: const Text('Edu Éire'),
         leading: IconButton(
@@ -119,19 +121,23 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  /* ---------------- Business drawer ---------------- */
   Drawer _bizDrawer(BuildContext ctx) => Drawer(
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(topRight: Radius.circular(28), bottomRight: Radius.circular(28))),
+          borderRadius: BorderRadius.only(topRight: Radius.circular(28), bottomRight: Radius.circular(28)),
+        ),
         backgroundColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: primaryColor),
+              decoration: BoxDecoration(color: _brand),
               child: Align(
                 alignment: Alignment.bottomLeft,
-                child: Text(FirebaseAuth.instance.currentUser?.email ?? 'Business',
-                    style: const TextStyle(color: Colors.white, fontSize: 22)),
+                child: Text(
+                  FirebaseAuth.instance.currentUser?.email ?? 'Business',
+                  style: const TextStyle(color: Colors.white, fontSize: 22),
+                ),
               ),
             ),
             for (int i = 0; i < _bizLabels.length; i++)
@@ -152,28 +158,28 @@ class _HomePageState extends State<HomePage> {
   Icon _bizIcon(int i) {
     switch (i) {
       case 0:
-        return const Icon(Icons.settings, color: primaryColor);
+        return Icon(Icons.settings, color: _brand);
       case 1:
-        return const Icon(Icons.help, color: primaryColor);
+        return Icon(Icons.help, color: _brand);
       case 2:
-        return const Icon(Icons.local_offer, color: primaryColor);
+        return Icon(Icons.local_offer, color: _brand);
       case 3:
-        return const Icon(Icons.dashboard, color: primaryColor);
+        return Icon(Icons.dashboard, color: _brand);
       default:
         return const Icon(Icons.circle);
     }
   }
 
+  /* ---------------- Student drawer ---------------- */
   Drawer _stdDrawer(BuildContext ctx) => Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: primaryColor),
-              child: Align(
+            DrawerHeader(
+              decoration: BoxDecoration(color: _brand),
+              child: const Align(
                 alignment: Alignment.bottomLeft,
-                child: Text('Edu Éire Menu',
-                    style: TextStyle(color: Colors.white, fontSize: 24)),
+                child: Text('Edu Éire Menu', style: TextStyle(color: Colors.white, fontSize: 24)),
               ),
             ),
             _drawerItem(ctx, Icons.home, 'Home', 0),
@@ -189,41 +195,29 @@ class _HomePageState extends State<HomePage> {
               title: const Text('CAO Search'),
               onTap: () {
                 Navigator.pop(ctx);
-                Navigator.push(ctx, MaterialPageRoute(
-                  builder: (_) => CAOSearchPage(),
-                ));
+                Navigator.push(ctx, MaterialPageRoute(builder: (_) => CAOSearchPage()));
               },
             ),
             ListTile(
-              leading: const Icon(Icons.help_outline, color: Colors.lightBlue),
-              title: const Text(
-                'Help & Support',
-                style: TextStyle(fontWeight: FontWeight.w600),
-              ),
+              leading: Icon(Icons.help_outline, color: _brand),
+              title: const Text('Help & Support', style: TextStyle(fontWeight: FontWeight.w600)),
               onTap: () {
                 Navigator.pop(ctx);
-                Navigator.push(
-                  ctx,
-                  MaterialPageRoute(builder: (_) => HelpPage()),
-                );
+                Navigator.push(ctx, MaterialPageRoute(builder: (_) => HelpPage()));
               },
             ),
           ],
         ),
       );
 
-  ListTile _drawerItem(BuildContext ctx, IconData icon, String title, int index) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      selected: _idx == index,
-      selectedTileColor: Colors.grey[200],
-      onTap: () {
-        Navigator.pop(ctx);
-        setState(() {
-          _idx = index;
-        });
-      },
-    );
-  }
+  ListTile _drawerItem(BuildContext ctx, IconData icon, String title, int index) => ListTile(
+        leading: Icon(icon, color: index == _idx ? _brand : null),
+        title: Text(title),
+        selected: _idx == index,
+        selectedTileColor: Colors.grey[200],
+        onTap: () {
+          Navigator.pop(ctx);
+          setState(() => _idx = index);
+        },
+      );
 }
