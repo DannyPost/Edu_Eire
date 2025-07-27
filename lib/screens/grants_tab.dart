@@ -14,25 +14,24 @@ class GrantsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1) Sample data with a 'category' field
     final sample = <Map<String, String>>[
       {
         'title': 'DARE Scheme',
         'subtitle': 'Disability Access Route to Education',
-        'url': 'https://accesscollege.ie/',
+        'url': 'https://accesscollege.ie/dare/what-is-dare/',
         'category': 'Disability',
       },
       {
         'title': '1916 Bursary Fund',
         'subtitle': 'Financial support for disadvantaged students',
-        'url': 'https://susi.ie/',
+        'url': 'https://1916bursary.ie/',
         'category': 'Financial',
       },
       {
         'title': 'HEAR Scheme',
         'subtitle':
             'Reduced points for school leavers from socio-economically disadvantaged backgrounds',
-        'url': 'https://hea.ie/funding-and-student-finance/',
+        'url': 'https://accesscollege.ie/hear/',
         'category': 'Financial',
       },
       {
@@ -43,7 +42,6 @@ class GrantsTab extends StatelessWidget {
       },
     ];
 
-    // 2) Filter by search & categories
     final filtered = sample.where((item) {
       final text = (item['title']! + ' ' + item['subtitle']!).toLowerCase();
       if (searchQuery.isNotEmpty &&
@@ -61,19 +59,34 @@ class GrantsTab extends StatelessWidget {
       return const Center(child: Text('No grants match your filters.'));
     }
 
-    // 3) Build list
-    return ListView(
+    return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      children: filtered.map((item) {
+      itemCount: filtered.length,
+      itemBuilder: (context, index) {
+        final item = filtered[index];
         return Card(
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ListTile(
-            title: Text(item['title']!),
-            subtitle: Text(item['subtitle']!),
-            trailing: const Icon(Icons.open_in_new),
+            title: Text(
+              item['title']!,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            subtitle: Text(
+              item['subtitle']!,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            trailing: Icon(
+              Icons.open_in_new,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             onTap: () => onTap(item['url']!),
           ),
         );
-      }).toList(),
+      },
     );
   }
 }

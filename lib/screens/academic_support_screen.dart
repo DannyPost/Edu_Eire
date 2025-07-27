@@ -4,6 +4,8 @@ import 'package:academic_support_app/screens/motivation_tab.dart';
 import 'package:academic_support_app/screens/resources_tab.dart';
 import 'package:academic_support_app/screens/deals_tab.dart';
 import 'package:academic_support_app/screens/scholarships_tab.dart';
+import 'package:academic_support_app/screens/academic_tab.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class AcademicSupportScreen extends StatefulWidget {
@@ -17,7 +19,7 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
-  // ─────── Search & Filter State ───────
+  int _currentIndex = 0;
   String _searchQuery = '';
   final Set<String> _activeCategories = {};
   final List<String> _allCategories = [
@@ -32,13 +34,12 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 6, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ─────── A) Branded Header ───────
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
         child: AppBar(
@@ -67,21 +68,22 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
             controller: _tabController,
             labelColor: Colors.deepPurple,
             unselectedLabelColor: Colors.grey,
+            isScrollable: true,
             tabs: const [
               Tab(text: 'Grants'),
               Tab(text: 'Motivation'),
               Tab(text: 'Resources'),
               Tab(text: 'Deals'),
               Tab(text: 'Scholarships'),
+              Tab(text: 'Academic'), // ✅ Added Academic tab label
             ],
           ),
         ),
       ),
 
-      // ─────── B) Body ───────
       body: Column(
         children: [
-          // 1) Global Search Bar
+          // ─────── Search Bar ───────
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: TextField(
@@ -96,7 +98,7 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
             ),
           ),
 
-          // 2) Category Filter Chips
+          // ─────── Filter Chips ───────
           SizedBox(
             height: 40,
             child: ListView(
@@ -111,8 +113,11 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
                     selected: selected,
                     onSelected: (on) {
                       setState(() {
-                        if (on) _activeCategories.add(cat);
-                        else _activeCategories.remove(cat);
+                        if (on) {
+                          _activeCategories.add(cat);
+                        } else {
+                          _activeCategories.remove(cat);
+                        }
                       });
                     },
                   ),
@@ -121,15 +126,15 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
             ),
           ),
 
-          // 3) Hero “Welcome” Card
+          // ─────── Welcome Hero Card ───────
           Card(
             margin: const EdgeInsets.all(16),
             elevation: 4,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16)),
+              borderRadius: BorderRadius.circular(16),
+            ),
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
               child: Column(
                 children: [
                   Image.asset('assets/images/logo.jpeg', height: 64),
@@ -154,7 +159,7 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
             ),
           ),
 
-          // 4) Tab Views (now passing the new parameters!)
+          // ─────── Tab View ───────
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -184,8 +189,29 @@ class _AcademicSupportScreenState extends State<AcademicSupportScreen>
                   searchQuery: _searchQuery,
                   categories: _activeCategories,
                 ),
+                AcademicTab(), // ✅ Your actual academic support layout here
               ],
             ),
+          ),
+        ],
+      ),
+
+      // ─────── Bottom Navigation Bar (optional but ready) ───────
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() => _currentIndex = index);
+        },
+        selectedItemColor: Colors.deepPurple,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Support',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard_customize),
+            label: 'More Soon',
           ),
         ],
       ),

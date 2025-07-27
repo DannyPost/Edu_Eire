@@ -18,13 +18,13 @@ class ResourcesTab extends StatelessWidget {
       {
         'title': 'Mental Health Support',
         'subtitle': 'Student wellness resources and counselling',
-        'url': 'https://studentsupport.ie/mental-health',
+        'url': 'https://www2.hse.ie/mental-health/services-support/supports-services/',
         'category': 'Wellness',
       },
       {
         'title': 'Writing Center',
         'subtitle': 'Help with essays and academic writing',
-        'url': 'https://writingcentre.university.ie/',
+        'url': 'https://info.writetheworld.org/teaching-writing-resources?utm_term=&utm_campaign=AI+Writing&utm_source=adwords&utm_medium=ppc&hsa_acc=8591759309&hsa_cam=22436731428&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=22436738868&gbraid=0AAAAAp_bUaRkAiHd8hoNarQNlg9RtQDnM&gclid=EAIaIQobChMIjcHRl87djgMVd4FQBh1IYCMXEAAYAiAAEgIDWPD_BwE',
         'category': 'Study Skills',
       },
     ];
@@ -46,18 +46,39 @@ class ResourcesTab extends StatelessWidget {
       return const Center(child: Text('No resources match your filters.'));
     }
 
-    return ListView(
+    return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      children: filtered.map((item) {
+      itemCount: filtered.length,
+      itemBuilder: (context, index) {
+        final item = filtered[index];
+
         return Card(
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ListTile(
-            title: Text(item['title']!),
-            subtitle: Text(item['subtitle']!),
-            trailing: const Icon(Icons.open_in_new),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 12,
+            ),
+            title: Text(
+              item['title']!,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            subtitle: Text(
+              item['subtitle']!,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            trailing: Icon(
+              Icons.open_in_new,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             onTap: () => onTap(item['url']!),
           ),
         );
-      }).toList(),
+      },
     );
   }
 }

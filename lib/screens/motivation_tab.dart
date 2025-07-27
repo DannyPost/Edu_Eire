@@ -51,19 +51,40 @@ class MotivationTab extends StatelessWidget {
       return const Center(child: Text('No motivational items found.'));
     }
 
-    return ListView(
+    return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      children: filtered.map((item) {
+      itemCount: filtered.length,
+      itemBuilder: (context, index) {
+        final item = filtered[index];
         final hasUrl = item.containsKey('url');
+
         return Card(
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ListTile(
-            title: Text(item['title']!),
-            trailing:
-                hasUrl ? const Icon(Icons.open_in_new) : const SizedBox(),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 12,
+            ),
+            title: Text(
+              item['title']!,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontStyle: !hasUrl ? FontStyle.italic : FontStyle.normal,
+                    fontWeight: hasUrl ? FontWeight.w600 : FontWeight.w400,
+                    fontSize: hasUrl ? 15 : 14,
+                  ),
+            ),
+            trailing: hasUrl
+                ? Icon(Icons.ondemand_video,
+                    color: Theme.of(context).colorScheme.primary)
+                : null,
             onTap: hasUrl ? () => onTap(item['url']!) : null,
           ),
         );
-      }).toList(),
+      },
     );
   }
 }

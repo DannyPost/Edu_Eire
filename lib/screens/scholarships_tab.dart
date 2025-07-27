@@ -30,7 +30,7 @@ class ScholarshipsTab extends StatelessWidget {
       {
         'title': 'HEAR Scheme',
         'subtitle': 'Access route for socio-economically disadvantaged students',
-        'url': 'https://hea.ie/funding-and-student-finance/',
+        'url': 'https://accesscollege.ie/hear/',
         'category': 'Scholarships',
       },
       {
@@ -43,7 +43,7 @@ class ScholarshipsTab extends StatelessWidget {
       {
         'title': 'University Scholarships',
         'subtitle': 'Scholarships offered by individual universities',
-        'url': 'https://www.university.ie/the-scholarships/',
+        'url': 'https://careersportal.ie/scholarships',
         'category': 'Scholarships',
       },
     ];
