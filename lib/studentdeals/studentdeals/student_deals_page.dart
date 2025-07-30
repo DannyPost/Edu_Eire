@@ -278,10 +278,10 @@ class _StudentDealsPageState extends State<StudentDealsPage> {
             CircleAvatar(
               radius: 32,
               backgroundColor: kPrimaryBlue.withOpacity(0.08),
-              backgroundImage: (p.imageUrl.isNotEmpty)
-                  ? NetworkImage(p.imageUrl)
+              backgroundImage: (p.imageUrl != null && p.imageUrl!.isNotEmpty)
+                  ? NetworkImage(p.imageUrl!)
                   : null,
-              child: (p.imageUrl.isEmpty)
+              child: (p.imageUrl == null || p.imageUrl!.isEmpty)
                   ? Icon(Icons.card_giftcard, color: kPrimaryBlue, size: 34)
                   : null,
             ),
