@@ -1,0 +1,8 @@
+fastapi==0.111.*
+uvicorn[standard]==0.30.*
+functions-framework==3.*        # Cloud Functions adapter
+firebase-admin==6.*
+google-cloud-firestore==3.*      # if you persist scores
+langchain==0.2.*
+openai==1.*
+python-dotenv==1.*               # local testing
