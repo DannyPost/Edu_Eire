@@ -6,6 +6,9 @@ import 'search.dart';
 import 'notification_service.dart';
 import 'ics_importer.dart';
 
+import '../events_page/event_details_page.dart';
+
+
 
 class Event {
   final String title;
@@ -139,6 +142,33 @@ final List<Event> _allEvents = [
     );
   }
 
+void _goToEventsPage() {
+  final bookmarkedEvents = _allEvents
+      .where((event) => _bookmarkedEventTitles.contains(event.title))
+      .toList();
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => EventsPage(
+        allEvents: _allEvents,
+        bookmarkedEvents: bookmarkedEvents,
+        onBookmarkToggle: (event) {
+          setState(() {
+           if (_bookmarkedEventTitles.contains(event.title!)) {
+  _bookmarkedEventTitles.remove(event.title!);
+} else {
+  _bookmarkedEventTitles.add(event.title!);
+}
+
+          });
+        },
+      ),
+    ),
+  );
+}
+
+
   void _addPersonalEvent() async {
     final newEvent = await showDialog<Event>(
       context: context,
@@ -235,6 +265,12 @@ Widget build(BuildContext context) {
           tooltip: 'Import .ics File',
           onPressed: _handleICSImport,
         ),
+        IconButton(
+          icon: const Icon(Icons.event_note),
+          tooltip: 'All Events',
+          onPressed: _goToEventsPage,
+        ),
+
         PopupMenuButton<CalendarViewMode>(
           icon: const Icon(Icons.view_agenda),
           tooltip: 'Change Calendar View',
