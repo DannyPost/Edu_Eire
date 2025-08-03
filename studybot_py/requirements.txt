@@ -1,0 +1,5 @@
+fastapi==0.111.*
+uvicorn[standard]==0.30.*
+firebase-admin==6.*
+langchain==0.2.*
+openai==1.*
