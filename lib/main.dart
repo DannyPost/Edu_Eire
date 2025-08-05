@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:academic_support_app/screens/academic_support_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:academic_support_app/firebase_options.dart';
+import 'package:academic_support_app/homepage.dart'; // ✅ import HomePage here
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,10 +25,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'OpenDyslexic',
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color(0xFF007BFF), // CareersPortal blue
+          seedColor: Color(0xFF007BFF),
           brightness: Brightness.light,
         ),
-        scaffoldBackgroundColor: Color(0xFFF9FAFB), // bright soft white
+        scaffoldBackgroundColor: Color(0xFFF9FAFB),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Color(0xFF007BFF),
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // ─────── Dark Theme (fallback) ───────
+      // ─────── Dark Theme ───────
       darkTheme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
@@ -93,8 +93,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      themeMode: ThemeMode.light, // Force light mode to match teammates
-      home: const AcademicSupportScreen(),
+      themeMode: ThemeMode.light,
+      home: const HomePage(), // ✅ use HomePage here
     );
   }
 }

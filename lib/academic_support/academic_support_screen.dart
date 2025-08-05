@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:academic_support_app/screens/grants_tab.dart';
-import 'package:academic_support_app/screens/motivation_tab.dart';
-import 'package:academic_support_app/screens/resources_tab.dart';
+import 'package:academic_support_app/academic_support/motivation_tab.dart';
+import 'package:academic_support_app/academic_support/resources_tab.dart';
 import 'package:academic_support_app/screens/deals_tab.dart';
-import 'package:academic_support_app/screens/scholarships_tab.dart';
-import 'package:academic_support_app/screens/academic_tab.dart';
+import 'package:academic_support_app/academic_support/scholarships_tab.dart';
+import 'package:academic_support_app/academic_support/academic_tab.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
