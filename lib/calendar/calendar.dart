@@ -175,46 +175,55 @@ void _goToEventsPage() {
 
 
 void _addPersonalEvent() async {
-  final newEvent = await showDialog<Event>(
+  showAddOrEditEventDialog(
     context: context,
-    builder: (context) => const AddEventDialog(),
+    selectedDate: _selectedDay,
+    onSave: (newEvent) {
+      setState(() {
+        _allEvents.add(newEvent);
+        _selectedDay = DateTime(
+          newEvent.date.year,
+          newEvent.date.month,
+          newEvent.date.day,
+        );
+        _focusedDay = _selectedDay!;
+        _selectedEvents.value = _getEventsForDay(_selectedDay!);
+      });
+
+      // Optional: Notification
+      final reminderTime = newEvent.date.subtract(const Duration(days: 1));
+      if (reminderTime.isAfter(DateTime.now())) {
+        NotificationService.scheduleNotification(
+          id: newEvent.date.millisecondsSinceEpoch ~/ 1000,
+          title: 'Upcoming Event: ${newEvent.title}',
+          body: newEvent.note ?? 'You have an event tomorrow.',
+          scheduledDate: reminderTime,
+        );
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Event "${newEvent.title}" added.')),
+      );
+    },
   );
-
-  if (newEvent != null && mounted) {
-    setState(() {
-      _allEvents.add(newEvent);
-      _selectedDay = DateTime(
-      newEvent.date.year,
-      newEvent.date.month,
-      newEvent.date.day,
-      );
-      _focusedDay = _selectedDay!;
-      _selectedEvents.value = _getEventsForDay(_selectedDay!);
-
-        // 🔍 Debug print statements
-      print('Added event: ${newEvent.title} on ${newEvent.date}');
-      print('SelectedDay: $_selectedDay');
-      print('Events on selected day: ${_getEventsForDay(_selectedDay!).length}');
-
-    });
-
-    // ✅ Show snackbar AFTER dialog has closed
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Event "${newEvent.title}" added.')),
-    );
-
-    // Optional: Schedule notification
-    final reminderTime = newEvent.date.subtract(const Duration(days: 1));
-    if (reminderTime.isAfter(DateTime.now())) {
-      await NotificationService.scheduleNotification(
-        id: newEvent.date.millisecondsSinceEpoch ~/ 1000,
-        title: 'Upcoming Event: ${newEvent.title}',
-        body: newEvent.note ?? 'You have an event tomorrow.',
-        scheduledDate: reminderTime,
-      );
-    }
-  }
 }
+
+
+
+void _addOrUpdateEvent(Event newEvent, {Event? oldEvent}) {
+  setState(() {
+    if (oldEvent != null) {
+      _allEvents.remove(oldEvent);
+    }
+    _allEvents.add(newEvent);
+
+    _selectedDay = DateTime(newEvent.date.year, newEvent.date.month, newEvent.date.day);
+    _focusedDay = _selectedDay!;
+    _selectedEvents.value = _getEventsForDay(_selectedDay!);
+  });
+}
+
+
 
 
 
@@ -249,16 +258,18 @@ Widget _buildAgendaView() {
     itemBuilder: (context, index) {
       final event = sortedEvents[index];
       return ListTile(
-        title: Text(event.title),
-        subtitle: Text(
-          '${event.date.day.toString().padLeft(2, '0')}/'
-          '${event.date.month.toString().padLeft(2, '0')}/'
-          '${event.date.year}',
-        ),
-        leading: Icon(_getEventIcon(event.category)),
-        trailing: _bookmarkedEventTitles.contains(event.title)
-            ? const Icon(Icons.bookmark, color: Colors.blue)
-            : null,
+          title: Text(event.title),
+          subtitle: Text(event.note ?? ''),
+          trailing: const Icon(Icons.edit),
+          onTap: () {
+            showAddOrEditEventDialog(
+              context: context,
+              existingEvent: event,
+              onSave: (updatedEvent) {
+                _addOrUpdateEvent(updatedEvent, oldEvent: event);
+              },
+            );
+          },
       );
     },
   );
@@ -281,7 +292,17 @@ Widget _buildSelectedDayView() {
               '${event.date.month.toString().padLeft(2, '0')}/'
               '${event.date.year}';
           final icon = _getEventIcon(event.category);
+
           return ListTile(
+            onTap: () {
+              showAddOrEditEventDialog(
+                context: context,
+                existingEvent: event,
+                onSave: (updatedEvent) {
+                  _addOrUpdateEvent(updatedEvent, oldEvent: event);
+                },
+              );
+            },
             leading: Icon(icon, color: Colors.blue),
             title: Row(
               children: [
@@ -297,8 +318,10 @@ Widget _buildSelectedDayView() {
                 Expanded(child: Text(event.title)),
               ],
             ),
-            subtitle: Text(dateFormatted +
-                (event.note != null ? '\nNote: ${event.note}' : '')),
+            subtitle: Text(
+              dateFormatted +
+                  (event.note != null ? '\nNote: ${event.note}' : ''),
+            ),
             trailing: ScaleTransition(
               scale: _animationController,
               child: IconButton(
@@ -316,6 +339,7 @@ Widget _buildSelectedDayView() {
     },
   );
 }
+
 
 Color _getEventColor(String category) {
   switch (category) {
@@ -479,10 +503,18 @@ Widget build(BuildContext context) {
       ],
     ),
     floatingActionButton: FloatingActionButton(
-      onPressed: _addPersonalEvent,
+      onPressed: () {
+        showAddOrEditEventDialog(
+          context: context,
+          selectedDate: _selectedDay,
+          onSave: (newEvent) {
+            _addOrUpdateEvent(newEvent);
+          },
+        );
+      },
       child: const Icon(Icons.add),
-      tooltip: 'Add Personal Event',
     ),
+
   );
 }
 

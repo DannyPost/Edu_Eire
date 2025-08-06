@@ -1,84 +1,98 @@
 import 'package:flutter/material.dart';
-import 'calendar.dart'; // For the Event class
+import 'calendar.dart'; // Make sure this path matches your project structure
 
-class AddEventDialog extends StatefulWidget {
-  const AddEventDialog({super.key});
+Future<void> showAddOrEditEventDialog({
+  required BuildContext context,
+  DateTime? selectedDate,
+  Event? existingEvent,
+  required void Function(Event) onSave,
+}) async {
+  final titleController = TextEditingController(text: existingEvent?.title ?? '');
+  final noteController = TextEditingController(text: existingEvent?.note ?? '');
+  String selectedCategory = existingEvent?.category ?? 'General';
+  DateTime selectedEventDate = existingEvent?.date ?? selectedDate ?? DateTime.now();
 
-  @override
-  State<AddEventDialog> createState() => _AddEventDialogState();
-}
-
-class _AddEventDialogState extends State<AddEventDialog> {
-  final _titleController = TextEditingController();
-  DateTime _selectedDate = DateTime(
-  DateTime.now().year,
-  DateTime.now().month,
-  DateTime.now().day,
-);
-
-  String? _note;
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Add Personal Event'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(
-            controller: _titleController,
-            decoration: const InputDecoration(labelText: 'Event Title'),
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(existingEvent == null ? 'Add Event' : 'Edit Event'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: const InputDecoration(labelText: 'Event Title'),
+              ),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: selectedCategory,
+                decoration: const InputDecoration(labelText: 'Category'),
+                items: <String>[
+                  'General', 'Exam', 'Holiday', 'Deadline', 'Personal'
+                ].map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  if (value != null) {
+                    selectedCategory = value;
+                  }
+                },
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: noteController,
+                decoration: const InputDecoration(labelText: 'Note (optional)'),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  const Text("Date: "),
+                  TextButton(
+                    child: Text(
+                      "${selectedEventDate.toLocal()}".split(' ')[0],
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () async {
+                      final picked = await showDatePicker(
+                        context: context,
+                        initialDate: selectedEventDate,
+                        firstDate: DateTime(2020),
+                        lastDate: DateTime(2100),
+                      );
+                      if (picked != null) {
+                        selectedEventDate = picked;
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
-          TextField(
-            decoration: const InputDecoration(labelText: 'Note (optional)'),
-            onChanged: (value) => _note = value,
-          ),
+        ),
+        actions: [
           TextButton(
-            onPressed: () async {
-              final date = await showDatePicker(
-                context: context,
-                initialDate: _selectedDate,
-                firstDate: DateTime(2025, 1, 1),
-                lastDate: DateTime(2026, 12, 31),
-              );
-              if (date != null) {
-                setState(() {
-                  _selectedDate = DateTime(date.year, date.month, date.day); // <- clean date
-                });
-              }
-            },
-            child: const Text('Select Date'),
+            child: const Text('Cancel'),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          Text(
-            'Selected Date: ${_selectedDate.day.toString().padLeft(2, '0')}/'
-            '${_selectedDate.month.toString().padLeft(2, '0')}/'
-            '${_selectedDate.year}',
-            style: const TextStyle(fontSize: 13),
+          ElevatedButton(
+            child: Text(existingEvent == null ? 'Add' : 'Update'),
+            onPressed: () {
+              final newEvent = Event(
+                title: titleController.text,
+                date: selectedEventDate,
+                category: selectedCategory,
+                note: noteController.text.isEmpty ? null : noteController.text,
+              );
+              onSave(newEvent);
+              Navigator.of(context).pop();
+            },
           ),
         ],
-      ),
-
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () {
-            if (_titleController.text.isNotEmpty) {
-              final newEvent = Event(
-                title: _titleController.text,
-                date: _selectedDate,
-                category: 'personal',
-                note: _note,
-              );
-
-              Navigator.pop(context, newEvent);
-            }
-          },
-          child: const Text('Add'),
-        ),
-      ],
-    );
-  }
+      );
+    },
+  );
 }
