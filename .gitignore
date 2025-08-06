@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📚 EduEire Academic Support App
 
 EduEire is a Flutter application designed to help Irish students easily access **academic support**, **student discounts**, **grants**, **resources**, **motivation**, and **scholarship opportunities** — all in one convenient app.
@@ -28,3 +29,81 @@ EduEire is a Flutter application designed to help Irish students easily access *
 ```bash
 git clone https://github.com/YourUsername/edu-eire-academic-support.git
 cd edu-eire-academic-support
+=======
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+# Flutter/Android builds
+android/.gradle/
+android/.idea/
+android/.settings/
+android/.cxx/
+android/local.properties
+
+# VS Code settings
+.vscode/
+
+# macOS specific
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+
+# iOS build artifacts
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+
+# Windows build artifacts
+windows/runner/Debug/
+windows/runner/Release/
+windows/runner/Profile/
+
+# Crash logs
+hs_err_pid*.log
+replay_pid*.log
+
+# Environment secrets
+.env
+chatbot_api.env
+>>>>>>> e0b4353cf7ba5b3fecaec3524f9d21f0f5e54769
