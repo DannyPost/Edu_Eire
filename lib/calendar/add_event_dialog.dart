@@ -10,7 +10,12 @@ class AddEventDialog extends StatefulWidget {
 
 class _AddEventDialogState extends State<AddEventDialog> {
   final _titleController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  DateTime _selectedDate = DateTime(
+  DateTime.now().year,
+  DateTime.now().month,
+  DateTime.now().day,
+);
+
   String? _note;
 
   @override
@@ -26,9 +31,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
           ),
           TextField(
             decoration: const InputDecoration(labelText: 'Note (optional)'),
-            onChanged: (value) {
-              _note = value;
-            },
+            onChanged: (value) => _note = value,
           ),
           TextButton(
             onPressed: () async {
@@ -40,14 +43,21 @@ class _AddEventDialogState extends State<AddEventDialog> {
               );
               if (date != null) {
                 setState(() {
-                  _selectedDate = date;
+                  _selectedDate = DateTime(date.year, date.month, date.day); // <- clean date
                 });
               }
             },
             child: const Text('Select Date'),
           ),
+          Text(
+            'Selected Date: ${_selectedDate.day.toString().padLeft(2, '0')}/'
+            '${_selectedDate.month.toString().padLeft(2, '0')}/'
+            '${_selectedDate.year}',
+            style: const TextStyle(fontSize: 13),
+          ),
         ],
       ),
+
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),

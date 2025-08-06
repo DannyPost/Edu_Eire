@@ -83,3 +83,8 @@ flutter:
         - asset: assets/calendar/fonts/NotoSans-VariableFont_wdth,wght.ttf
         - asset: assets/calendar/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf
           style: italic
+
+dependency_overrides:
+  file_picker:
+    git:
+      url: https://github.com/miguelpruivo/flutter_file_picker.git

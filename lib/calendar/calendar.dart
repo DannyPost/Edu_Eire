@@ -93,10 +93,15 @@ final List<Event> _allEvents = [
     );
   }
 
-  List<Event> _getEventsForDay(DateTime day) {
-    final dateOnly = DateTime.utc(day.year, day.month, day.day);
-    return _allEvents.where((event) => event.date == dateOnly).toList();
-  }
+List<Event> _getEventsForDay(DateTime day) {
+  final dateOnly = DateTime(day.year, day.month, day.day);
+  return _allEvents.where((event) {
+    final eventDate = DateTime(event.date.year, event.date.month, event.date.day);
+    return eventDate == dateOnly;
+  }).toList();
+}
+
+
 
   void _toggleBookmark(Event event) async {
     await _animationController.forward();
@@ -169,30 +174,49 @@ void _goToEventsPage() {
 }
 
 
-  void _addPersonalEvent() async {
-    final newEvent = await showDialog<Event>(
-      context: context,
-      builder: (context) => const AddEventDialog(),
-    );
-    if (newEvent != null) {
-      setState(() {
-        _allEvents.add(newEvent);
-        _selectedEvents.value = _getEventsForDay(_selectedDay!);
-      });
-    
+void _addPersonalEvent() async {
+  final newEvent = await showDialog<Event>(
+    context: context,
+    builder: (context) => const AddEventDialog(),
+  );
 
-      //Schedule notification 1 day before event (if in future)
-      final reminderTime = newEvent.date.subtract(const Duration(days: 1));
-      if (reminderTime.isAfter(DateTime.now())) {
-        await NotificationService.scheduleNotification(
-          id: newEvent.date.millisecondsSinceEpoch ~/ 1000,
-          title: 'Upcoming Event: ${newEvent.title}',
-          body: newEvent.note ?? 'You have an event tomorrow.',
-          scheduledDate: reminderTime,
-        );
-      }
+  if (newEvent != null && mounted) {
+    setState(() {
+      _allEvents.add(newEvent);
+      _selectedDay = DateTime(
+      newEvent.date.year,
+      newEvent.date.month,
+      newEvent.date.day,
+      );
+      _focusedDay = _selectedDay!;
+      _selectedEvents.value = _getEventsForDay(_selectedDay!);
+
+        // 🔍 Debug print statements
+      print('Added event: ${newEvent.title} on ${newEvent.date}');
+      print('SelectedDay: $_selectedDay');
+      print('Events on selected day: ${_getEventsForDay(_selectedDay!).length}');
+
+    });
+
+    // ✅ Show snackbar AFTER dialog has closed
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Event "${newEvent.title}" added.')),
+    );
+
+    // Optional: Schedule notification
+    final reminderTime = newEvent.date.subtract(const Duration(days: 1));
+    if (reminderTime.isAfter(DateTime.now())) {
+      await NotificationService.scheduleNotification(
+        id: newEvent.date.millisecondsSinceEpoch ~/ 1000,
+        title: 'Upcoming Event: ${newEvent.title}',
+        body: newEvent.note ?? 'You have an event tomorrow.',
+        scheduledDate: reminderTime,
+      );
     }
   }
+}
+
+
 
   IconData _getEventIcon(String category) {
     switch (category) {
@@ -213,6 +237,86 @@ void _goToEventsPage() {
     _animationController.dispose();
     super.dispose();
   }
+
+Widget _buildAgendaView() {
+  final sortedEvents = _allEvents
+      .where((e) => e.date.isAfter(DateTime.now()))
+      .toList()
+    ..sort((a, b) => a.date.compareTo(b.date));
+
+  return ListView.builder(
+    itemCount: sortedEvents.length,
+    itemBuilder: (context, index) {
+      final event = sortedEvents[index];
+      return ListTile(
+        title: Text(event.title),
+        subtitle: Text(
+          '${event.date.day.toString().padLeft(2, '0')}/'
+          '${event.date.month.toString().padLeft(2, '0')}/'
+          '${event.date.year}',
+        ),
+        leading: Icon(_getEventIcon(event.category)),
+        trailing: _bookmarkedEventTitles.contains(event.title)
+            ? const Icon(Icons.bookmark, color: Colors.blue)
+            : null,
+      );
+    },
+  );
+}
+
+Widget _buildSelectedDayView() {
+  return ValueListenableBuilder<List<Event>>(
+    valueListenable: _selectedEvents,
+    builder: (context, value, _) {
+      if (value.isEmpty) {
+        return const Center(child: Text('No events on this day.'));
+      }
+      return ListView.builder(
+        itemCount: value.length,
+        itemBuilder: (context, index) {
+          final event = value[index];
+          final isBookmarked = _bookmarkedEventTitles.contains(event.title);
+          final dateFormatted =
+              '${event.date.day.toString().padLeft(2, '0')}/'
+              '${event.date.month.toString().padLeft(2, '0')}/'
+              '${event.date.year}';
+          final icon = _getEventIcon(event.category);
+          return ListTile(
+            leading: Icon(icon, color: Colors.blue),
+            title: Row(
+              children: [
+                Container(
+                  width: 8,
+                  height: 8,
+                  margin: const EdgeInsets.only(right: 8),
+                  decoration: BoxDecoration(
+                    color: _getEventColor(event.category),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                Expanded(child: Text(event.title)),
+              ],
+            ),
+            subtitle: Text(dateFormatted +
+                (event.note != null ? '\nNote: ${event.note}' : '')),
+            trailing: ScaleTransition(
+              scale: _animationController,
+              child: IconButton(
+                icon: Icon(
+                  isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                  color: isBookmarked ? Colors.blue : null,
+                ),
+                onPressed: () => _toggleBookmark(event),
+                tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
+              ),
+            ),
+          );
+        },
+      );
+    },
+  );
+}
+
 Color _getEventColor(String category) {
   switch (category) {
     case 'deadline':
@@ -326,31 +430,34 @@ Widget build(BuildContext context) {
             ),
             calendarBuilders: CalendarBuilders<Event>(
               markerBuilder: (context, date, events) {
-                if (events.isEmpty) return null;
-                Color color;
-                if (events.any((event) => _bookmarkedEventTitles.contains(event.title))) {
+              if (events.isEmpty) return null;
+
+              // Priority logic: show color based on most important event type
+              Color color = Colors.green; // default: personal
+
+              for (var event in events) {
+                if (_bookmarkedEventTitles.contains(event.title)) {
                   color = Colors.green;
-                } else if (events.any((event) => event.category == 'open_day')) {
-                  color = Colors.blue;
-                } else if (events.any((event) => event.category == 'deadline')) {
+                  break;
+                } else if (event.category == 'deadline') {
                   color = Colors.red;
-                } else {
-                  color = Colors.grey;
+                } else if (event.category == 'open_day') {
+                  color = Colors.blue;
                 }
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: events.length,
-                  itemBuilder: (context, index) => Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 1.5),
-                    width: 7,
-                    height: 7,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: color,
-                    ),
-                  ),
-                );
-              },
+              }
+
+              return Container(
+                margin: const EdgeInsets.only(top: 3),
+                width: 7,
+                height: 7,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: color,
+                ),
+              );
+            },
+
+
             ),
             onDaySelected: (selectedDay, focusedDay) {
               setState(() {
@@ -362,87 +469,13 @@ Widget build(BuildContext context) {
             onPageChanged: (focusedDay) {
               _focusedDay = focusedDay;
             },
-          )
-        else if (_viewMode == CalendarViewMode.agenda)
-          Expanded(
-            child: ListView(
-              children: (() {
-                final sortedEvents = _allEvents
-                    .where((e) => e.date.isAfter(DateTime.now()))
-                    .toList()
-                  ..sort((a, b) => a.date.compareTo(b.date));
-
-                return sortedEvents.map((event) => ListTile(
-                  title: Text(event.title),
-                  subtitle: Text(
-                    '${event.date.day.toString().padLeft(2, '0')}/'
-                    '${event.date.month.toString().padLeft(2, '0')}/'
-                    '${event.date.year}',
-                  ),
-                  leading: Icon(_getEventIcon(event.category)),
-                  trailing: _bookmarkedEventTitles.contains(event.title)
-                      ? const Icon(Icons.bookmark, color: Colors.blue)
-                      : null,
-                )).toList();
-              })(),
-            ),
           ),
-
-
-
-
         Expanded(
-          child: ValueListenableBuilder<List<Event>>(
-            valueListenable: _selectedEvents,
-            builder: (context, value, _) {
-              if (value.isEmpty) {
-                return const Center(child: Text('No events on this day.'));
-              }
-              return ListView.builder(
-                itemCount: value.length,
-                itemBuilder: (context, index) {
-                  final event = value[index];
-                  final isBookmarked = _bookmarkedEventTitles.contains(event.title);
-                  final dateFormatted =
-                      '${event.date.day.toString().padLeft(2, '0')}/'
-                      '${event.date.month.toString().padLeft(2, '0')}/'
-                      '${event.date.year}';
-                  final icon = _getEventIcon(event.category);
-                  return ListTile(
-                    leading: Icon(icon, color: Colors.blue),
-                    title: Row(
-                      children: [
-                        Container(
-                          width: 8,
-                          height: 8,
-                          margin: const EdgeInsets.only(right: 8),
-                          decoration: BoxDecoration(
-                            color: _getEventColor(event.category),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        Expanded(child: Text(event.title)),
-                      ],
-                    ),
-                    subtitle: Text(dateFormatted +
-                        (event.note != null ? '\nNote: ${event.note}' : '')),
-                    trailing: ScaleTransition(
-                      scale: _animationController,
-                      child: IconButton(
-                        icon: Icon(
-                          isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                          color: isBookmarked ? Colors.blue : null,
-                        ),
-                        onPressed: () => _toggleBookmark(event),
-                        tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
-          ),
+          child: _viewMode == CalendarViewMode.agenda
+            ? _buildAgendaView()
+            : _buildSelectedDayView(),
         ),
+
       ],
     ),
     floatingActionButton: FloatingActionButton(
