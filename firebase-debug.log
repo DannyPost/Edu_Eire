@@ -1,0 +1,42 @@
+[debug] [2025-08-05T22:23:16.252Z] ----------------------------------------------------------------------
+[debug] [2025-08-05T22:23:16.254Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\camro\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js projects:list --json
+[debug] [2025-08-05T22:23:16.254Z] CLI Version:   14.7.0
+[debug] [2025-08-05T22:23:16.254Z] Platform:      win32
+[debug] [2025-08-05T22:23:16.254Z] Node Version:  v22.16.0
+[debug] [2025-08-05T22:23:16.255Z] Time:          Tue Aug 05 2025 23:23:16 GMT+0100 (Irish Standard Time)
+[debug] [2025-08-05T22:23:16.255Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-05T22:23:16.259Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-05T22:23:16.259Z] > authorizing via signed-in user (camronnjock@gmail.com)
+[debug] [2025-08-05T22:23:16.262Z] Checked if tokens are valid: true, expires at: 1754435302701
+[debug] [2025-08-05T22:23:16.263Z] Checked if tokens are valid: true, expires at: 1754435302701
+[debug] [2025-08-05T22:23:16.265Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-08-05T22:23:27.378Z] *** [apiv2] error from fetch(https://firebase.googleapis.com/v1beta1/projects?pageSize=1000, {"headers":{},"method":"GET","signal":{}}): FetchError: request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000 failed, reason: getaddrinfo ENOTFOUND firebase.googleapis.com
+[debug] [2025-08-05T22:23:27.378Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+[debug] [2025-08-05T22:23:28.388Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+    at RetryOperation._fn (C:\Users\camro\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:261:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
+[debug] [2025-08-05T22:23:46.478Z] ----------------------------------------------------------------------
+[debug] [2025-08-05T22:23:46.480Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\camro\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js projects:create susi-app --json
+[debug] [2025-08-05T22:23:46.481Z] CLI Version:   14.7.0
+[debug] [2025-08-05T22:23:46.481Z] Platform:      win32
+[debug] [2025-08-05T22:23:46.481Z] Node Version:  v22.16.0
+[debug] [2025-08-05T22:23:46.482Z] Time:          Tue Aug 05 2025 23:23:46 GMT+0100 (Irish Standard Time)
+[debug] [2025-08-05T22:23:46.482Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-05T22:23:46.487Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-05T22:23:46.487Z] > authorizing via signed-in user (camronnjock@gmail.com)
+[debug] [2025-08-05T22:23:46.490Z] Checked if tokens are valid: true, expires at: 1754435302701
+[debug] [2025-08-05T22:23:46.490Z] Checked if tokens are valid: true, expires at: 1754435302701
+[debug] [2025-08-05T22:23:46.490Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2025-08-05T22:23:46.490Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"susi-app","name":"susi-app"}
+[debug] [2025-08-05T22:23:46.821Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 409
+[debug] [2025-08-05T22:23:46.821Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":409,"message":"Requested entity already exists","status":"ALREADY_EXISTS"}}
+[debug] [2025-08-05T22:23:46.891Z] FirebaseError: Request to https://cloudresourcemanager.googleapis.com/v1/projects had HTTP Error: 409, Requested entity already exists
+    at responseToError (C:\Users\camro\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\camro\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[error] 
+[error] Error: Failed to create project because there is already a project with ID susi-app. Please try again with a unique project ID.

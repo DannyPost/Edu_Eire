@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:academic_support_app/main.dart'; // ✅ Corrected import path
-import 'package:academic_support_app/screens/academic_support_screen.dart';
+import 'package:academic_support_app/academic_support/academic_support_screen.dart';
 
 
 void main() {

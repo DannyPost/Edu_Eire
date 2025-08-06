@@ -10,11 +10,11 @@ dependencies:
     sdk: flutter
 
   # Firebase + Firestore (if you plan to wire up your own queries)
-  firebase_core: ^2.20.0
+  firebase_core: ^2.32.0
   cloud_firestore: ^4.13.0
 
   # To open external URLs
-  url_launcher: ^6.1.10
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_test:

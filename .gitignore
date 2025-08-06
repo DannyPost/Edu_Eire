@@ -1,45 +1,30 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
+# 📚 EduEire Academic Support App
 
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
+EduEire is a Flutter application designed to help Irish students easily access **academic support**, **student discounts**, **grants**, **resources**, **motivation**, and **scholarship opportunities** — all in one convenient app.
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+---
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
+## ✨ Features
 
-# Symbolication related
-app.*.symbols
+- 🧠 **Academic Support**: Tap-to-expand cards inspired by NCI and CareersPortal
+- 💸 **Student Deals**: Browse discounted offers for students
+- 💰 **Grants & Scholarships**: Learn about financial support options
+- 🎯 **Motivational Resources**: Stay on track with curated tips and encouragement
+- 📚 **Learning Resources**: Study support and exam tools
+- 🔍 **Drawer Navigation**: Quick-access sidebar to switch tabs
 
-# Obfuscation related
-app.*.map.json
+---
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- Dart SDK (bundled with Flutter)
+- Firebase CLI (optional if generating config locally)
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/YourUsername/edu-eire-academic-support.git
+cd edu-eire-academic-support
