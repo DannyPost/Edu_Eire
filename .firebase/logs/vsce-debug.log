@@ -1841,3 +1841,4 @@ E0805 21:52:11.372754   31236 watch.go:76] watchAllDir unable to walk dir `c:\Us
  {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0805 22:12:11.372245   31236 watch.go:76] watchAllDir unable to walk dir `c:\\Users\\camro\\Downloads\\academic_support_app\\flutter_application_1\\dataconnect`: on path \"c:\\\\Users\\\\camro\\\\Downloads\\\\academic_support_app\\\\flutter_application_1\\\\dataconnect\" (DirEntry: <nil>): CreateFile c:\\Users\\camro\\Downloads\\academic_support_app\\flutter_application_1\\dataconnect: The system cannot find the file specified.\n"}}
 [info] [Firebase Plugin] Stopping Data Connect toolkit
 [warn] !  Data Connect Emulator has exited upon receiving signal: SIGKILL 
+[debug] [2025-08-06T00:24:04.126Z] [Firebase Plugin] Activating Firebase extension.
