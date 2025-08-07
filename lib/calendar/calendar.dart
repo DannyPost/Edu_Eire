@@ -258,19 +258,36 @@ Widget _buildAgendaView() {
     itemBuilder: (context, index) {
       final event = sortedEvents[index];
       return ListTile(
-          title: Text(event.title),
-          subtitle: Text(event.note ?? ''),
-          trailing: const Icon(Icons.edit),
-          onTap: () {
-            showAddOrEditEventDialog(
-              context: context,
-              existingEvent: event,
-              onSave: (updatedEvent) {
-                _addOrUpdateEvent(updatedEvent, oldEvent: event);
+        title: Text(event.title),
+        subtitle: Text(event.note ?? ''),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () {
+                showAddOrEditEventDialog(
+                  context: context,
+                  existingEvent: event,
+                  onSave: (updatedEvent) {
+                    _addOrUpdateEvent(updatedEvent, oldEvent: event);
+                  },
+                );
               },
-            );
-          },
-      );
+              tooltip: 'Edit Event',
+            ),
+      IconButton(
+        icon: const Icon(Icons.delete, color: Colors.red),
+        onPressed: () => _deleteEvent(event),
+        tooltip: 'Delete Event',
+      ),
+    ],
+  ),
+  onTap: () {
+    // Optional: show details or also call edit dialog
+  },
+);
+
     },
   );
 }
@@ -294,37 +311,38 @@ Widget _buildSelectedDayView() {
           final icon = _getEventIcon(event.category);
 
           return ListTile(
-            onTap: () {
-              showAddOrEditEventDialog(
-                context: context,
-                existingEvent: event,
-                onSave: (updatedEvent) {
-                  _addOrUpdateEvent(updatedEvent, oldEvent: event);
-                },
-              );
-            },
-            leading: Icon(icon, color: Colors.blue),
-            title: Row(
-              children: [
-                Container(
-                  width: 8,
-                  height: 8,
-                  margin: const EdgeInsets.only(right: 8),
-                  decoration: BoxDecoration(
-                    color: _getEventColor(event.category),
-                    shape: BoxShape.circle,
-                  ),
+          onTap: () {
+            showAddOrEditEventDialog(
+              context: context,
+              existingEvent: event,
+              onSave: (updatedEvent) {
+                _addOrUpdateEvent(updatedEvent, oldEvent: event);
+              },
+            );
+          },
+          leading: Icon(icon, color: Colors.blue),
+          title: Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                margin: const EdgeInsets.only(right: 8),
+                decoration: BoxDecoration(
+                  color: _getEventColor(event.category),
+                  shape: BoxShape.circle,
                 ),
-                Expanded(child: Text(event.title)),
-              ],
-            ),
-            subtitle: Text(
-              dateFormatted +
-                  (event.note != null ? '\nNote: ${event.note}' : ''),
-            ),
-            trailing: ScaleTransition(
-              scale: _animationController,
-              child: IconButton(
+              ),
+              Expanded(child: Text(event.title)),
+            ],
+          ),
+          subtitle: Text(
+            dateFormatted +
+                (event.note != null ? '\nNote: ${event.note}' : ''),
+          ),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
                 icon: Icon(
                   isBookmarked ? Icons.bookmark : Icons.bookmark_border,
                   color: isBookmarked ? Colors.blue : null,
@@ -332,8 +350,15 @@ Widget _buildSelectedDayView() {
                 onPressed: () => _toggleBookmark(event),
                 tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
               ),
-            ),
-          );
+              IconButton(
+                icon: const Icon(Icons.delete, color: Colors.red),
+                onPressed: () => _deleteEvent(event),
+                tooltip: 'Delete Event',
+              ),
+            ],
+          ),
+        );
+
         },
       );
     },
@@ -370,6 +395,38 @@ Widget _buildLegendDot(Color color, String label) {
     ],
   );
 }
+
+void _deleteEvent(Event event) async {
+  final confirm = await showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('Delete Event'),
+      content: Text('Are you sure you want to delete "${event.title}"?'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context, true),
+          child: const Text('Delete', style: TextStyle(color: Colors.red)),
+        ),
+      ],
+    ),
+  );
+
+  if (confirm == true) {
+    setState(() {
+      _allEvents.remove(event);
+      _selectedEvents.value = _getEventsForDay(_selectedDay!);
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Event "${event.title}" deleted.')),
+    );
+  }
+}
+
 
 @override
 Widget build(BuildContext context) {
