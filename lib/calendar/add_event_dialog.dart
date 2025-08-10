@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'calendar.dart'; // Make sure this path matches your project structure
+import 'event.dart';
 
 Future<void> showAddOrEditEventDialog({
   required BuildContext context,

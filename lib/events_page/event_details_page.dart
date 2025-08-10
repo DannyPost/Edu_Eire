@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../calendar/calendar.dart'; // adjust the path to match your Event model
 import '../calendar/add_event_dialog.dart'; // if you have calendar-related helpers
 import 'package:intl/intl.dart';
+import '../calendar/event.dart';
 
 class EventsPage extends StatefulWidget {
   final List<Event> allEvents;

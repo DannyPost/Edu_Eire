@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../calendar/calendar.dart'; // Ensure Event is imported
+import 'event.dart';
+
 
 class SearchPage extends StatefulWidget {
   final List<Event> allEvents;

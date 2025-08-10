@@ -5,24 +5,10 @@ import 'add_event_dialog.dart';
 import 'search.dart';
 import 'notification_service.dart';
 import 'ics_importer.dart';
+import 'ics_exporter.dart';
+import 'event.dart';
 
 import '../events_page/event_details_page.dart';
-
-
-
-class Event {
-  final String title;
-  final DateTime date;
-  final String category;
-  final String? note;
-
-  Event({
-    required this.title,
-    required this.date,
-    required this.category,
-    this.note,
-  });
-}
 
 
 class CalendarPage extends StatefulWidget {
@@ -455,6 +441,15 @@ Widget build(BuildContext context) {
           tooltip: 'All Events',
           onPressed: _goToEventsPage,
         ),
+        IconButton(
+          icon: const Icon(Icons.download),
+          tooltip: 'Export .ics',
+          onPressed: () => exportICS(
+            _allEvents,
+            (msg) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg))),
+          ),
+        ),
+
 
         PopupMenuButton<CalendarViewMode>(
           icon: const Icon(Icons.view_agenda),

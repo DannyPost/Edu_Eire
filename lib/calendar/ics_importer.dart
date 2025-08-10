@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'add_event_dialog.dart'; // Make sure Event is defined here or imported correctly
 import 'calendar.dart';         // Your main calendar logic (if needed)
+import 'event.dart';
 
 Future<List<Event>> importICSFile() async {
   final result = await FilePicker.platform.pickFiles(
