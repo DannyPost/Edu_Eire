@@ -7,6 +7,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
+// ✅ NEW: Provider + StudyBot DI / Notifiers
+import 'package:provider/provider.dart';
+import 'studybot/di.dart';
+import 'studybot/state/chat/chat_notifier.dart';
+import 'studybot/state/grade/grade_notifier.dart';
+import 'studybot/state/exemplar/exemplar_notifier.dart';
+
 // Pages
 import 'homepage.dart';
 import '../auth/student_auth_page.dart';
@@ -53,11 +60,23 @@ class _MyAppState extends State<MyApp> {
   late bool _isDarkMode;
   late bool _isDyslexicFont;
 
+  // ✅ NEW: StudyBot DI (services → repos → use-cases → notifiers)
+  late final StudyBotDI _di;
+
   @override
   void initState() {
     super.initState();
     _isDarkMode     = widget.isDarkMode;
     _isDyslexicFont = widget.isDyslexicFont;
+
+    // Build the dependency graph (dev variant is fine for now)
+    _di = StudyBotDI.dev();
+  }
+
+  @override
+  void dispose() {
+    _di.dispose(); // closes ApiClient, etc.
+    super.dispose();
   }
 
   Future<void> _toggleTheme(bool v) async {
@@ -73,7 +92,15 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) {
+    // ✅ NEW: Provide StudyBot notifiers to the whole app tree
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ChatNotifier>.value(value: _di.chatNotifier),
+        ChangeNotifierProvider<GradeNotifier>.value(value: _di.gradeNotifier),
+        ChangeNotifierProvider<ExemplarNotifier>.value(value: _di.exemplarNotifier),
+      ],
+      child: MaterialApp(
         title: 'Edu Éire',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -106,14 +133,17 @@ class _MyAppState extends State<MyApp> {
           floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        // 👇 NEW – send everything through the AuthGate first
+
+        // 👇 unchanged: auth gate still decides landing page
         home: AuthGate(
           isDarkMode: _isDarkMode,
           isDyslexicFont: _isDyslexicFont,
           setDarkMode: _toggleTheme,
           setDyslexicFont: _toggleDyslexicFont,
         ),
-      );
+      ),
+    );
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -138,16 +168,13 @@ class AuthGate extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snap) {
-        // 1️⃣ Waiting for Firebase to emit the first auth state
         if (snap.connectionState == ConnectionState.waiting) {
           return const Scaffold(body: Center(child: CircularProgressIndicator()));
         }
 
-        // 2️⃣ No user -> go straight to the login/ signup flow
         final user = snap.data;
         if (user == null) return const StudentAuthPage();
 
-        // 3️⃣ We *do* have a user – figure out what type they are
         return FutureBuilder<_RoleState>(
           future: _determineRole(user),
           builder: (context, roleSnap) {
@@ -175,7 +202,6 @@ class AuthGate extends StatelessWidget {
                 return const BusinessPendingPage();
               case _RoleState.unknown:
               default:
-                // Fallback – sign the user out & go to login
                 FirebaseAuth.instance.signOut();
                 return const StudentAuthPage();
             }
@@ -185,21 +211,15 @@ class AuthGate extends StatelessWidget {
     );
   }
 
-  /* -----------------------------------------------------
-     Query Firestore to learn what *kind* of user we have
-     ----------------------------------------------------- */
   Future<_RoleState> _determineRole(User user) async {
-    // Students ------------------------------------------------------
     final stuDoc = await FirebaseFirestore.instance.collection('students').doc(user.uid).get();
     if (stuDoc.exists) return _RoleState.student;
 
-    // Businesses ----------------------------------------------------
     final bizDoc = await FirebaseFirestore.instance.collection('businesses').doc(user.uid).get();
     if (bizDoc.exists) {
       final approved = bizDoc.data()?['approved'] == true;
       return approved ? _RoleState.business : _RoleState.businessPending;
     }
-
     return _RoleState.unknown;
   }
 }

@@ -27,16 +27,6 @@
     "source": "functions",
     "codebase": "default"
     
-  },
-  {
-    "source": "studybot_clean",
-    "codebase": "studybot",
-    "runtime": "python312",
-    "ignore": [
-      ".git",
-      "venv",
-      "__pycache__"
-    ]
   }
 ]
 }

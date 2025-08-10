@@ -13,7 +13,7 @@ import 'hear_calculator/hear_calculator.dart';
 import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
-import 'studybot/study_bot_screen.dart';
+import 'studybot/app/study_bot_screen.dart';
 
 import '../help_page/help_main.dart';
 import '../help_page/help/help_page.dart';
