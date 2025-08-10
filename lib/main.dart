@@ -19,6 +19,9 @@ import 'homepage.dart';
 import '../auth/student_auth_page.dart';
 import '../auth/business_pending_page.dart';
 
+import 'calendar/notification_service.dart';
+
+
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
    ────────────────────────────────────────────────────────────── */
@@ -32,6 +35,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+    // 🆕 Initialize notification service
+  await NotificationService.init();
+  
   // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
