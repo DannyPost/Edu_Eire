@@ -24,7 +24,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
   late final ValueNotifier<List<Event>> _selectedEvents;
   late final AnimationController _animationController;
 
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  final CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.utc(2025, 9, 1);
   DateTime? _selectedDay;
 
@@ -247,8 +247,8 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addPersonalEvent,
-        child: const Icon(Icons.add),
         tooltip: 'Add Personal Event',
+        child: const Icon(Icons.add),
       ),
     );
   }

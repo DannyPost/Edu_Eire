@@ -14,7 +14,6 @@ import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
 
-import '../help_page/help_main.dart';
 import '../help_page/help/help_page.dart';
 
 class HomePage extends StatefulWidget {
