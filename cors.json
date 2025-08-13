@@ -1,0 +1,6 @@
+{
+  "AllowOrigins": ["*"],
+  "AllowHeaders": ["Content-Type","Authorization"],
+  "AllowMethods": ["POST","OPTIONS"],
+  "AllowCredentials": false
+}

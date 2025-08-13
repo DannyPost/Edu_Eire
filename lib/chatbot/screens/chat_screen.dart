@@ -8,7 +8,7 @@ class TypewriterText extends StatefulWidget {
   final String text;
   final TextStyle style;
   final Duration speed;
-  const TypewriterText({required this.text, required this.style, this.speed = const Duration(milliseconds: 20), super.key});
+  const TypewriterText({required this.text, required this.style, this.speed = const Duration(milliseconds: 20), Key? key}) : super(key: key);
 
   @override
   State<TypewriterText> createState() => _TypewriterTextState();
@@ -44,11 +44,11 @@ class _TypewriterTextState extends State<TypewriterText> {
 }
 
 class TypingDots extends StatefulWidget {
+<<<<<<< HEAD
   const TypingDots({super.key});
-  @override
-  State<TypingDots> createState() => _TypingDotsState();
+=======
+  const TypingDots({Key? key}) : super(key: key);
 }
-
 class _TypingDotsState extends State<TypingDots> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -82,7 +82,11 @@ class _TypingDotsState extends State<TypingDots> with SingleTickerProviderStateM
 }
 
 class ChatScreen extends StatefulWidget {
+<<<<<<< HEAD
   const ChatScreen({super.key});
+=======
+  const ChatScreen({Key? key}) : super(key: key);
+>>>>>>> ef348ae3adf21afb75625d5e812df23a645806e7
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }

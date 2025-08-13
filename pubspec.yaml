@@ -10,6 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  icalendar_parser: ^2.0.1
+  file_picker: ^6.1.1
+  permission_handler: ^11.3.1
+
+  flutter_local_notifications: ^16.3.1
+  timezone: ^0.9.2
+
 
   # UI & Icons
   cupertino_icons: ^1.0.2
@@ -19,7 +26,7 @@ dependencies:
   # Core Functionality
   http: ^1.2.1
   xml: ^6.5.0
-  csv: ^5.0.0
+  csv: ^6.0.0
   collection: ^1.18.0
   intl: ^0.20.2
 
@@ -42,11 +49,12 @@ dependencies:
   # Misc
   url_launcher: ^6.2.3
   table_calendar: ^3.0.9
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
+  flutter_lints: 5.0.0
 
 flutter:
   uses-material-design: true

@@ -47,7 +47,7 @@ Guidelines:
 
   // Optional: Estimate token usage (rough approximation)
   final estimatedTokens = (encodedBody.length / 4).ceil();
-  print('[Token Estimate] Sending ~$estimatedTokens tokens');
+  print('[Token Estimate] Sending ~${estimatedTokens} tokens');
 
   final response = await http.post(
     url,

@@ -13,7 +13,13 @@ import 'hear_calculator/hear_calculator.dart';
 import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
+<<<<<<< HEAD
 
+=======
+import 'studybot/app/study_bot_screen.dart';
+
+import '../help_page/help_main.dart';
+>>>>>>> ef348ae3adf21afb75625d5e812df23a645806e7
 import '../help_page/help/help_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -96,6 +102,11 @@ class _HomePageState extends State<HomePage> {
     HearCalculatorPage(),
     DareCalculatorPage(),
     const CalendarPage(),
+<<<<<<< HEAD
+=======
+    const StudyBotScreen(),
+
+>>>>>>> ef348ae3adf21afb75625d5e812df23a645806e7
   ];
 
   /* ------------------------- UI ------------------------- */
@@ -189,6 +200,11 @@ class _HomePageState extends State<HomePage> {
             _drawerItem(ctx, Icons.school, 'HEAR Calculator', 5),
             _drawerItem(ctx, Icons.accessibility_new, 'DARE Calculator', 6),
             _drawerItem(ctx, Icons.calendar_today, 'School Calendar', 7),
+<<<<<<< HEAD
+=======
+            _drawerItem(ctx, Icons.school, 'Study-Bot', 8),     // add to drawer
+
+>>>>>>> ef348ae3adf21afb75625d5e812df23a645806e7
             ListTile(
               leading: const Icon(Icons.search),
               title: const Text('CAO Search'),

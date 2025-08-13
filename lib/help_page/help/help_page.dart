@@ -62,7 +62,11 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme  = Theme.of(context);
     final brand  = theme.primaryColor;               // → exact #3AB6FF
+<<<<<<< HEAD
     final onBack = theme.colorScheme.onSurface;   // adapts to dark mode
+=======
+    final onBack = theme.colorScheme.onBackground;   // adapts to dark mode
+>>>>>>> ef348ae3adf21afb75625d5e812df23a645806e7
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,

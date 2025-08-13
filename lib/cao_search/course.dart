@@ -1,4 +1,4 @@
-// course.dart
+// lib/cao_search/course.dart
 class Course {
   final String level, code, title, location, university, jobField;
 

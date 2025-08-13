@@ -57,11 +57,20 @@ class _AddEventDialogState extends State<AddEventDialog> {
           onPressed: () {
             if (_titleController.text.isNotEmpty) {
               final newEvent = Event(
+<<<<<<< HEAD
                 _titleController.text,
                 _selectedDate,
                 'personal',
                 note: _note,
               );
+=======
+                title: _titleController.text,
+                date: _selectedDate,
+                category: 'personal',
+                note: _note,
+              );
+
+>>>>>>> ef348ae3adf21afb75625d5e812df23a645806e7
               Navigator.pop(context, newEvent);
             }
           },

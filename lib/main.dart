@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
 
 // Firebase
 import 'package:firebase_core/firebase_core.dart';
@@ -8,12 +7,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
+// ✅ NEW: Provider + StudyBot DI / Notifiers
+import 'package:provider/provider.dart';
+import 'studybot/di.dart';
+import 'studybot/state/chat/chat_notifier.dart';
+import 'studybot/state/grade/grade_notifier.dart';
+import 'studybot/state/exemplar/exemplar_notifier.dart';
+
 // Pages
 import 'homepage.dart';
 import '../auth/student_auth_page.dart';
 import '../auth/business_pending_page.dart';
 import 'cao_search/cao_search_page.dart'; // CourseProvider & CAO Search
 import 'interests_page/interests_page.dart'; // <-- NEW SURVEY PAGE
+
+import 'calendar/notification_service.dart';
+
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -28,23 +37,22 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+    // 🆕 Initialize notification service
+  await NotificationService.init();
+  
+  // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
-  final isDarkMode = prefs.getBool('isDarkMode') ?? false;
+  final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
   final isDyslexicFont = prefs.getBool('isDyslexicFont') ?? false;
 
-  runApp(
-    ChangeNotifierProvider<CourseProvider>(
-      create: (context) => CourseProvider(),
-      child: MyApp(
-        isDarkMode: isDarkMode,
-        isDyslexicFont: isDyslexicFont,
-      ),
-    ),
-  );
+  runApp(MyApp(
+    isDarkMode:     isDarkMode,
+    isDyslexicFont: isDyslexicFont,
+  ));
 }
 
 /* ──────────────────────────────────────────────────────────────
-   Root widget
+   Root widget – holds user preferences (theme + font)
    ────────────────────────────────────────────────────────────── */
 class MyApp extends StatefulWidget {
   final bool isDarkMode;
@@ -60,11 +68,23 @@ class _MyAppState extends State<MyApp> {
   late bool _isDarkMode;
   late bool _isDyslexicFont;
 
+  // ✅ NEW: StudyBot DI (services → repos → use-cases → notifiers)
+  late final StudyBotDI _di;
+
   @override
   void initState() {
     super.initState();
-    _isDarkMode = widget.isDarkMode;
+    _isDarkMode     = widget.isDarkMode;
     _isDyslexicFont = widget.isDyslexicFont;
+
+    // Build the dependency graph (dev variant is fine for now)
+    _di = StudyBotDI.dev();
+  }
+
+  @override
+  void dispose() {
+    _di.dispose(); // closes ApiClient, etc.
+    super.dispose();
   }
 
   Future<void> _toggleTheme(bool v) async {
@@ -81,63 +101,61 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Edu Éire',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.light,
-        fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: kPrimaryColor,
+    // ✅ NEW: Provide StudyBot notifiers to the whole app tree
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ChatNotifier>.value(value: _di.chatNotifier),
+        ChangeNotifierProvider<GradeNotifier>.value(value: _di.gradeNotifier),
+        ChangeNotifierProvider<ExemplarNotifier>.value(value: _di.exemplarNotifier),
+      ],
+      child: MaterialApp(
+        title: 'Edu Éire',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
           brightness: Brightness.light,
-        ).copyWith(secondary: kSecondaryColor),
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: kSecondaryColor,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: kPrimaryColor,
-          foregroundColor: kSecondaryColor,
+          fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: kPrimaryColor,
+            brightness: Brightness.light,
+          ).copyWith(
+            secondary: kSecondaryColor,
+          ),
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kSecondaryColor,
+          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
         ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: kPrimaryColor,
-        ),
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: kPrimaryColor,
+        darkTheme: ThemeData(
+          useMaterial3: true,
           brightness: Brightness.dark,
-        ).copyWith(secondary: kSecondaryColor),
-        primaryColor: kPrimaryColor,
-        appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: kPrimaryColor,
+          fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: kPrimaryColor,
+            brightness: Brightness.dark,
+          ).copyWith(
+            secondary: kSecondaryColor,
+          ),
+          primaryColor: kPrimaryColor,
+          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+        ),
+        themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+
+        // 👇 unchanged: auth gate still decides landing page
+        home: AuthGate(
+          isDarkMode: _isDarkMode,
+          isDyslexicFont: _isDyslexicFont,
+          setDarkMode: _toggleTheme,
+          setDyslexicFont: _toggleDyslexicFont,
         ),
       ),
-      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: AuthGate(
-        isDarkMode: _isDarkMode,
-        isDyslexicFont: _isDyslexicFont,
-        setDarkMode: _toggleTheme,
-        setDyslexicFont: _toggleDyslexicFont,
-      ),
-      routes: {
-        '/home': (context) => HomePage(
-              isDarkMode: _isDarkMode,
-              isDyslexicFont: _isDyslexicFont,
-              role: 'student',
-              setDarkMode: _toggleTheme,
-              setDyslexicFont: _toggleDyslexicFont,
-            ),
-      },
     );
   }
 }
 
 /* ──────────────────────────────────────────────────────────────
-   AuthGate
+   AuthGate – decides what the first real page should be
    ────────────────────────────────────────────────────────────── */
 class AuthGate extends StatelessWidget {
   final bool isDarkMode;
@@ -219,9 +237,11 @@ class AuthGate extends StatelessWidget {
       final approved = bizDoc.data()?['approved'] == true;
       return approved ? _RoleState.business : _RoleState.businessPending;
     }
-
     return _RoleState.unknown;
   }
 }
 
+
 enum _RoleState { student, needsSurvey, business, businessPending, unknown }
+
+
