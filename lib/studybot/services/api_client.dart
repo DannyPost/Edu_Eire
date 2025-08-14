@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 
 import '../config/env.dart';
 import '../config/constants.dart';
-import '../backend/common/api_paths.dart';
 import 'auth_service.dart';
 
 /// Single place for HTTP calls (JSON + streaming).

@@ -112,10 +112,10 @@ class _CoursePageState extends State<CoursePage> {
   void _showFilterSheet(BuildContext context) {
     // These will hold the filter selections *within* the bottom sheet
     // They are temporary until 'Apply' is pressed
-    String _tempSelectedJobField = selectedJobField;
-    String _tempSelectedUniversity = selectedUniversity;
-    String _tempSelectedLocation = selectedLocation;
-    String _tempSelectedLevel = selectedLevel;
+    String tempSelectedJobField = selectedJobField;
+    String tempSelectedUniversity = selectedUniversity;
+    String tempSelectedLocation = selectedLocation;
+    String tempSelectedLevel = selectedLevel;
 
     final jobFields = getUnique(allCourses, (c) => c.jobField);
     final universities = getUnique(allCourses, (c) => c.university);
@@ -164,10 +164,10 @@ class _CoursePageState extends State<CoursePage> {
                       children: jobFields.map((field) {
                         return ChoiceChip(
                           label: Text(field),
-                          selected: _tempSelectedJobField == field,
+                          selected: tempSelectedJobField == field,
                           onSelected: (selected) {
                             setModalState(() {
-                              _tempSelectedJobField = selected ? field : 'All';
+                              tempSelectedJobField = selected ? field : 'All';
                             });
                           },
                         );
@@ -186,13 +186,13 @@ class _CoursePageState extends State<CoursePage> {
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       ),
-                      value: _tempSelectedUniversity,
+                      value: tempSelectedUniversity,
                       items: universities.map((uni) {
                         return DropdownMenuItem(value: uni, child: Text(uni));
                       }).toList(),
                       onChanged: (value) {
                         setModalState(() {
-                          _tempSelectedUniversity = value!;
+                          tempSelectedUniversity = value!;
                         });
                       },
                     ),
@@ -209,13 +209,13 @@ class _CoursePageState extends State<CoursePage> {
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       ),
-                      value: _tempSelectedLocation,
+                      value: tempSelectedLocation,
                       items: locations.map((loc) {
                         return DropdownMenuItem(value: loc, child: Text(loc));
                       }).toList(),
                       onChanged: (value) {
                         setModalState(() {
-                          _tempSelectedLocation = value!;
+                          tempSelectedLocation = value!;
                         });
                       },
                     ),
@@ -230,10 +230,10 @@ class _CoursePageState extends State<CoursePage> {
                       children: levels.map((lvl) {
                         return ChoiceChip(
                           label: Text(lvl),
-                          selected: _tempSelectedLevel == lvl,
+                          selected: tempSelectedLevel == lvl,
                           onSelected: (selected) {
                             setModalState(() {
-                              _tempSelectedLevel = selected ? lvl : 'All';
+                              tempSelectedLevel = selected ? lvl : 'All';
                             });
                           },
                         );
@@ -249,10 +249,10 @@ class _CoursePageState extends State<CoursePage> {
                           child: OutlinedButton(
                             onPressed: () {
                               setModalState(() {
-                                _tempSelectedJobField = 'All';
-                                _tempSelectedUniversity = 'All';
-                                _tempSelectedLocation = 'All';
-                                _tempSelectedLevel = 'All';
+                                tempSelectedJobField = 'All';
+                                tempSelectedUniversity = 'All';
+                                tempSelectedLocation = 'All';
+                                tempSelectedLevel = 'All';
                               });
                             },
                             style: OutlinedButton.styleFrom(
@@ -267,10 +267,10 @@ class _CoursePageState extends State<CoursePage> {
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                selectedJobField = _tempSelectedJobField;
-                                selectedUniversity = _tempSelectedUniversity;
-                                selectedLocation = _tempSelectedLocation;
-                                selectedLevel = _tempSelectedLevel;
+                                selectedJobField = tempSelectedJobField;
+                                selectedUniversity = tempSelectedUniversity;
+                                selectedLocation = tempSelectedLocation;
+                                selectedLevel = tempSelectedLevel;
                               });
                               applyFilters(); // Apply filters to the main list
                               Navigator.pop(context); // Close the bottom sheet

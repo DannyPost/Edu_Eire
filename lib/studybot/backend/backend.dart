@@ -1,6 +1,7 @@
 /// Single import point for all backend contracts and common types.
 /// Usage:
 ///   import 'package:studybot/studybot/backend/backend.dart';
+library;
 
 export 'common/api_paths.dart';
 export 'common/types.dart';

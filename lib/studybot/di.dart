@@ -71,7 +71,7 @@ class StudyBotDI {
 
   /// No-op when using FirebaseAuthService (token is fetched per-call).
   /// Kept for compatibility if you ever inject a DevAuthService in tests.
-  void setAuthToken(String? _token) {}
+  void setAuthToken(String? token) {}
 
   /// Clean up network resources (call from your root widget's dispose()).
   void dispose() {

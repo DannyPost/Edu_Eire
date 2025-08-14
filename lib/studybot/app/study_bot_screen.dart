@@ -10,7 +10,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../state/grade/grade_notifier.dart';
 import '../state/grade/grade_state.dart';
 import '../state/common/status.dart';
-import 'package:flutter/services.dart'; 
+import 'package:flutter/services.dart';
+
 /*───────────────────────────────────────────────────────────
  ⏳  Typing-dots “...”
 ───────────────────────────────────────────────────────────*/
@@ -117,37 +118,37 @@ class _StudyBotScreenState extends State<StudyBotScreen> {
 
   // Clipboard
 
-Future<void> _printFirebaseIdToken() async {
-  try {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) {
-      _snack('No user signed in.');
-      return;
+  Future<void> _printFirebaseIdToken() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        _snack('No user signed in.');
+        return;
+      }
+
+      // Null-safe: coerce possible null to empty string (some plugin versions use String?)
+      final token = (await user.getIdToken(true)) ?? '';
+      if (token.isEmpty) {
+        _snack('Could not fetch ID token.');
+        return;
+      }
+
+      // Ensure single-line (defensive; tokens normally have no newlines)
+      final singleLine = token.replaceAll('\r', '').replaceAll('\n', '');
+
+      // Log full token for debugging
+      // ignore: avoid_print
+      print('FIREBASE_ID_TOKEN:$singleLine');
+
+      // Copy to clipboard for cURL/Postman
+      await Clipboard.setData(ClipboardData(text: singleLine));
+
+      final preview = singleLine.length > 24 ? '${singleLine.substring(0, 24)}…' : singleLine;
+      _snack('ID token copied: $preview');
+    } catch (e) {
+      _snack('Failed to get ID token: $e');
     }
-
-    String? token = await user.getIdToken(true); // refresh
-    if (token == null || token.isEmpty) {
-      _snack('Could not fetch ID token.');
-      return;
-    }
-
-    // Ensure single-line (defensive; tokens normally have no newlines)
-    token = token.replaceAll('\r', '').replaceAll('\n', '');
-
-    // Log full token for debugging
-    // ignore: avoid_print
-    print('FIREBASE_ID_TOKEN:$token');
-
-    // Copy to clipboard for cURL/Postman
-    await Clipboard.setData(ClipboardData(text: token));
-
-    final preview = token.length > 24 ? '${token.substring(0, 24)}…' : token;
-    _snack('ID token copied: $preview');
-  } catch (e) {
-    _snack('Failed to get ID token: $e');
   }
-}
-
 
   Future<void> _testGrade(BuildContext context) async {
     final text = _controller.text.trim().isEmpty

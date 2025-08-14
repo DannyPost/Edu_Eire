@@ -1,4 +1,5 @@
 /// Common shared types & helpers used across backend contracts.
+library;
 
 /// Shorthand for JSON maps.
 typedef Json = Map<String, dynamic>;

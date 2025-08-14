@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-import '../../domain/repositories/chat_repository.dart';
 import '../../domain/usecases/send_chat_message.dart';
 import '../common/status.dart';
 import 'chat_state.dart';

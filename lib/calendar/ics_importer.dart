@@ -19,19 +19,17 @@ Future<List<Event>> importICSFile() async {
 
     final eventList = calendar.data;
 
-    if (eventList is List) {
-      for (final item in eventList) {
-        if (item is Map<String, dynamic>) {
-          final summary = item['summary']?.toString();
-          final start = DateTime.tryParse(item['dtstart']?.toString() ?? '');
-          
-          if (summary != null && start != null) {
-            newEvents.add(Event(title: summary, date: start, category: 'imported'));
-          }
+    for (final item in eventList) {
+      if (item is Map<String, dynamic>) {
+        final summary = item['summary']?.toString();
+        final start = DateTime.tryParse(item['dtstart']?.toString() ?? '');
+        
+        if (summary != null && start != null) {
+          newEvents.add(Event(title: summary, date: start, category: 'imported'));
         }
       }
     }
-
+  
     return newEvents;
   }
 

@@ -11,7 +11,7 @@ class ChatLogger {
     final newEntry = '[$timestamp] $role: $message';
 
     final existing = html.window.localStorage[_webLogKey] ?? '';
-    final updated = _pruneIfNeeded(existing + '\n' + newEntry);
+    final updated = _pruneIfNeeded('$existing\n$newEntry');
     html.window.localStorage[_webLogKey] = updated;
   }
 
