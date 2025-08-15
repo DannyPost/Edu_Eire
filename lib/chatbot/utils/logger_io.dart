@@ -18,7 +18,7 @@ class ChatLogger {
       }
 
       String current = await file.readAsString();
-      final updated = _pruneIfNeeded(current + '\n' + newEntry);
+      final updated = _pruneIfNeeded('$current\n$newEntry');
       await file.writeAsString(updated);
     } catch (e) {
       print('Log error: $e');

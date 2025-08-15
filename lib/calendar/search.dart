@@ -45,8 +45,11 @@ class _SearchPageState extends State<SearchPage> {
     );
     if (newDate != null) {
       setState(() {
-        if (isStart) _startDate = newDate;
-        else _endDate = newDate;
+        if (isStart) {
+          _startDate = newDate;
+        } else {
+          _endDate = newDate;
+        }
       });
     }
   }

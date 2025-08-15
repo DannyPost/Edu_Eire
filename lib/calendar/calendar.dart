@@ -39,7 +39,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
   late final AnimationController _animationController;
 
   CalendarViewMode _viewMode = CalendarViewMode.month;
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  final CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.utc(2025, 9, 1);
   DateTime? _selectedDay;
 
@@ -155,10 +155,10 @@ void _goToEventsPage() {
         bookmarkedEvents: bookmarkedEvents,
         onBookmarkToggle: (event) {
           setState(() {
-           if (_bookmarkedEventTitles.contains(event.title!)) {
-  _bookmarkedEventTitles.remove(event.title!);
+           if (_bookmarkedEventTitles.contains(event.title)) {
+  _bookmarkedEventTitles.remove(event.title);
 } else {
-  _bookmarkedEventTitles.add(event.title!);
+  _bookmarkedEventTitles.add(event.title);
 }
 
           });
@@ -447,8 +447,8 @@ Widget build(BuildContext context) {
     ),
     floatingActionButton: FloatingActionButton(
       onPressed: _addPersonalEvent,
-      child: const Icon(Icons.add),
       tooltip: 'Add Personal Event',
+      child: const Icon(Icons.add),
     ),
   );
 }

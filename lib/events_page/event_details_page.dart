@@ -9,11 +9,11 @@ class EventsPage extends StatefulWidget {
   final Function(Event) onBookmarkToggle;
 
   const EventsPage({
-    Key? key,
+    super.key,
     required this.allEvents,
     required this.bookmarkedEvents,
     required this.onBookmarkToggle,
-  }) : super(key: key);
+  });
 
   @override
   State<EventsPage> createState() => _EventsPageState();

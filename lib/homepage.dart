@@ -15,7 +15,6 @@ import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
 import 'studybot/app/study_bot_screen.dart';
 
-import '../help_page/help_main.dart';
 import '../help_page/help/help_page.dart';
 
 class HomePage extends StatefulWidget {
