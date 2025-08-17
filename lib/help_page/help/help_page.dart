@@ -86,7 +86,7 @@ class HelpPage extends StatelessWidget {
               icon: Icons.volunteer_activism,
               title: '1916 Bursary Fund',
               body:
-                  'Financial support for students who are socio-economically disadvantaged and from target groups under the National Access Plan.',
+                  'The 1916 Bursary provides multi-year financial support to students who are socio-economically disadvantaged and who belong to priority groups identified in the National Access Plan. Awards are managed by regional clusters of higher-education institutions.',
               actionText: 'Learn more / apply',
               url: 'https://1916bursary.ie/',
             ),
@@ -96,7 +96,7 @@ class HelpPage extends StatelessWidget {
               icon: Icons.account_balance_wallet,
               title: 'SUSI (Student Grants)',
               body:
-                  'SUSI is Ireland’s national grant authority. Use our SUSI Calculator in the app to check eligibility, then apply on the official site.',
+                  'SUSI is Ireland’s national authority for student grants. Eligible students can apply online for maintenance and/or fee supports; our in-app SUSI Calculator helps you estimate eligibility before you start the official application.',
               actionText: 'Open SUSI website',
               url: 'https://www.susi.ie/',
             ),
@@ -106,7 +106,7 @@ class HelpPage extends StatelessWidget {
               icon: Icons.school,
               title: 'HEAR Scheme',
               body:
-                  'Higher Education Access Route (HEAR) for students from socio-economically disadvantaged backgrounds.',
+                  'The Higher Education Access Route (HEAR) is an admissions scheme for school leavers from socio-economically disadvantaged backgrounds. Successful applicants may receive reduced points offers and tailored academic, financial, and social supports in college.',
               actionText: 'Visit HEAR',
               url: 'https://accesscollege.ie/hear/',
             ),
@@ -116,7 +116,7 @@ class HelpPage extends StatelessWidget {
               icon: Icons.accessibility_new,
               title: 'DARE Scheme',
               body:
-                  'Disability Access Route to Education (DARE) for students with disabilities entering higher education.',
+                  'The Disability Access Route to Education (DARE) is an admissions scheme for school leavers with verified, long-term disabilities. It offers consideration for reduced points entry and access to disability and learning supports throughout your studies.',
               actionText: 'Visit DARE',
               url: 'https://accesscollege.ie/dare/',
             ),
@@ -126,7 +126,7 @@ class HelpPage extends StatelessWidget {
               icon: Icons.menu_book,
               title: 'Study Tips & Essay Writing',
               body:
-                  'Practical techniques to study smarter and write stronger essays. Curated tips from Harvard.',
+                  'Build strong study habits and academic writing skills with trusted guidance (e.g., Harvard’s study strategies). Practical techniques can improve focus, retention, and the clarity of your assignments.',
               actionText: 'Open study tips',
               url:
                   'https://summer.harvard.edu/blog/top-10-study-tips-to-study-like-a-harvard-student/',
@@ -137,22 +137,11 @@ class HelpPage extends StatelessWidget {
               icon: Icons.health_and_safety,
               title: 'Mental Health & Wellbeing',
               body:
-                  'Free, confidential 24/7 supports are available via the HSE and your college counselling service.',
+                  'Free, confidential support is available 24/7 through HSE services and on-campus counselling. If you’re struggling, please reach out early—help is available.',
               actionText: 'HSE mental health services',
               url: 'https://www2.hse.ie/mental-health/',
             ),
             const SizedBox(height: 12),
-
-            const _SupportCard(
-              icon: Icons.mail_outline,
-              title: 'Contact Support',
-              body:
-                  'Have a question about grants, access routes, or wellbeing? Email us and we’ll point you in the right direction.',
-              actionText: 'Email support',
-              url:
-                  'mailto:support@example.com?subject=Academic%20Support&body=Hi%20team%2C%0A%0A',
-            ),
-            const SizedBox(height: 24),
             // ─────────────── END Academic Support (ADDED) ───────────────
 
             // FAQ header
