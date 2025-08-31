@@ -7,6 +7,9 @@ import '../homepage.dart';
 import 'business_auth_page.dart';
 import 'google_signin_helper.dart';
 
+import 'organiser_auth/organiser_auth_page.dart';
+
+
 const errorColor = Colors.redAccent;
 const _role      = 'student';
 
@@ -131,6 +134,19 @@ class _StudentAuthPageState extends State<StudentAuthPage> {
               padding: const EdgeInsets.only(top: 16),
               child: Text(_err, textAlign: TextAlign.center, style: const TextStyle(color: errorColor)),
             ),
+            TextButton(
+              onPressed: _busy
+                  ? null
+                  : () => Navigator.push(
+                        ctx,
+                        MaterialPageRoute(builder: (_) => const OrganiserAuthPage()),
+                      ),
+              child: const Text(
+                'Organizer login',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+
         ],
       ),
     ),

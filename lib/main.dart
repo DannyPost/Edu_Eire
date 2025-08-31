@@ -14,6 +14,9 @@ import '../auth/business_pending_page.dart';
 
 import 'calendar/notification_service.dart';
 
+import 'organizer/organizer_dashboard.dart';
+
+
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -161,6 +164,8 @@ class AuthGate extends StatelessWidget {
               return const Scaffold(body: Center(child: CircularProgressIndicator()));
             }
             switch (roleSnap.data) {
+              case _RoleState.organizer:
+              return OrganizerDashboard(); // <-- you'll add this widget below
               case _RoleState.student:
                 return HomePage(
                   isDarkMode: isDarkMode,
@@ -181,10 +186,10 @@ class AuthGate extends StatelessWidget {
                 return const BusinessPendingPage();
               case _RoleState.unknown:
               default:
-                // Fallback – sign the user out & go to login
                 FirebaseAuth.instance.signOut();
                 return const StudentAuthPage();
             }
+
           },
         );
       },
@@ -195,19 +200,32 @@ class AuthGate extends StatelessWidget {
      Query Firestore to learn what *kind* of user we have
      ----------------------------------------------------- */
   Future<_RoleState> _determineRole(User user) async {
-    // Students ------------------------------------------------------
-    final stuDoc = await FirebaseFirestore.instance.collection('students').doc(user.uid).get();
+    // 0) Claims-based organizer check (fast + secure)
+    await user.getIdToken(true); // force refresh so new claims are present
+    final claims = (await user.getIdTokenResult()).claims ?? {};
+    final role = claims['role'];
+    final orgId = claims['orgId'];
+    if (role == 'organizer' && orgId is String && orgId.isNotEmpty) {
+      return _RoleState.organizer;
+    }
+
+    // 1) Students (your existing logic)
+    final stuDoc = await FirebaseFirestore.instance
+        .collection('students').doc(user.uid).get();
     if (stuDoc.exists) return _RoleState.student;
 
-    // Businesses ----------------------------------------------------
-    final bizDoc = await FirebaseFirestore.instance.collection('businesses').doc(user.uid).get();
+    // 2) Businesses (your existing logic)
+    final bizDoc = await FirebaseFirestore.instance
+        .collection('businesses').doc(user.uid).get();
     if (bizDoc.exists) {
       final approved = bizDoc.data()?['approved'] == true;
       return approved ? _RoleState.business : _RoleState.businessPending;
     }
 
     return _RoleState.unknown;
-  }
 }
 
-enum _RoleState { student, business, businessPending, unknown }
+}
+
+//enum _RoleState { student, business, businessPending, unknown }
+enum _RoleState { student, business, businessPending, organizer, unknown }
