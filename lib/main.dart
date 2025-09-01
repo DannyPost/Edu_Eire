@@ -14,9 +14,7 @@ import '../auth/business_pending_page.dart';
 
 import 'calendar/notification_service.dart';
 
-import 'organizer/organizer_dashboard.dart';
-
-
+// import 'organizer/organizer_dashboard.dart'; // ← removed (we inline it below)
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -31,9 +29,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-    // 🆕 Initialize notification service
+  // 🆕 Initialize notification service
   await NotificationService.init();
-  
+
   // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
@@ -115,7 +113,7 @@ class _MyAppState extends State<MyApp> {
           floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        // 👇 NEW – send everything through the AuthGate first
+        // 👇 send everything through the AuthGate first
         home: AuthGate(
           isDarkMode: _isDarkMode,
           isDyslexicFont: _isDyslexicFont,
@@ -147,16 +145,13 @@ class AuthGate extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snap) {
-        // 1️⃣ Waiting for Firebase to emit the first auth state
         if (snap.connectionState == ConnectionState.waiting) {
           return const Scaffold(body: Center(child: CircularProgressIndicator()));
         }
 
-        // 2️⃣ No user -> go straight to the login/ signup flow
         final user = snap.data;
         if (user == null) return const StudentAuthPage();
 
-        // 3️⃣ We *do* have a user – figure out what type they are
         return FutureBuilder<_RoleState>(
           future: _determineRole(user),
           builder: (context, roleSnap) {
@@ -165,7 +160,7 @@ class AuthGate extends StatelessWidget {
             }
             switch (roleSnap.data) {
               case _RoleState.organizer:
-              return OrganizerDashboard(); // <-- you'll add this widget below
+                return const OrganizerDashboard(); // organizer route
               case _RoleState.student:
                 return HomePage(
                   isDarkMode: isDarkMode,
@@ -189,7 +184,6 @@ class AuthGate extends StatelessWidget {
                 FirebaseAuth.instance.signOut();
                 return const StudentAuthPage();
             }
-
           },
         );
       },
@@ -197,35 +191,63 @@ class AuthGate extends StatelessWidget {
   }
 
   /* -----------------------------------------------------
-     Query Firestore to learn what *kind* of user we have
+     Query Firestore / claims to learn the user role
      ----------------------------------------------------- */
-  Future<_RoleState> _determineRole(User user) async {
-    // 0) Claims-based organizer check (fast + secure)
-    await user.getIdToken(true); // force refresh so new claims are present
-    final claims = (await user.getIdTokenResult()).claims ?? {};
-    final role = claims['role'];
-    final orgId = claims['orgId'];
-    if (role == 'organizer' && orgId is String && orgId.isNotEmpty) {
-      return _RoleState.organizer;
-    }
+Future<_RoleState> _determineRole(User user) async {
+  await user.getIdToken(true);
+  final claims = (await user.getIdTokenResult()).claims ?? {};
+  final role = claims['role'];
+  final orgId = claims['orgId'];
+  if (role == 'organizer' && orgId is String && orgId.isNotEmpty) {
+    return _RoleState.organizer;
+  }
 
-    // 1) Students (your existing logic)
-    final stuDoc = await FirebaseFirestore.instance
-        .collection('students').doc(user.uid).get();
-    if (stuDoc.exists) return _RoleState.student;
+  // 🆕 Organizer by Firestore doc (approved)
+  final orgDoc = await FirebaseFirestore.instance
+      .collection('organizers')
+      .doc(user.uid)
+      .get();
+  if (orgDoc.exists) {
+    final approved = orgDoc.data()?['approved'] == true;
+    if (approved) return _RoleState.organizer;
+    // If you have a dedicated pending page for organizers, return that here instead.
+    return _RoleState.businessPending; // reuse your existing pending page
+  }
 
-    // 2) Businesses (your existing logic)
-    final bizDoc = await FirebaseFirestore.instance
-        .collection('businesses').doc(user.uid).get();
-    if (bizDoc.exists) {
-      final approved = bizDoc.data()?['approved'] == true;
-      return approved ? _RoleState.business : _RoleState.businessPending;
-    }
+  // Students
+  final stuDoc = await FirebaseFirestore.instance
+      .collection('students').doc(user.uid).get();
+  if (stuDoc.exists) return _RoleState.student;
 
-    return _RoleState.unknown;
+  // Businesses
+  final bizDoc = await FirebaseFirestore.instance
+      .collection('businesses').doc(user.uid).get();
+  if (bizDoc.exists) {
+    final approved = bizDoc.data()?['approved'] == true;
+    return approved ? _RoleState.business : _RoleState.businessPending;
+  }
+
+  return _RoleState.unknown;
 }
 
 }
 
-//enum _RoleState { student, business, businessPending, unknown }
+// enum _RoleState { student, business, businessPending, unknown }
 enum _RoleState { student, business, businessPending, organizer, unknown }
+
+/* ──────────────────────────────────────────────────────────────
+   Inlined Organizer Dashboard (moved here from separate file)
+   ────────────────────────────────────────────────────────────── */
+class OrganizerDashboard extends StatelessWidget {
+  const OrganizerDashboard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Organizer Dashboard')),
+      body: const Center(
+        child: Text('Create, edit, and publish events for your organization.'),
+      ),
+    );
+  }
+}
