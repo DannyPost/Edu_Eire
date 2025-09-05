@@ -17,44 +17,42 @@ class _OrganiserSignupPageState extends State<OrganiserSignupPage> {
   bool _busy = false;
   String _err = '';
 
-  Future<void> _submit() async {
-    setState(() { _busy = true; _err = ''; });
-    try {
-      if (_orgName.text.trim().isEmpty) {
-        throw Exception('Please enter an organization name.');
-      }
-      if (_password.text != _password2.text) {
-        throw Exception('Passwords do not match.');
-      }
+Future<void> _submit() async {
+  setState(() { _busy = true; _err = ''; });
+  try {
+    if (_orgName.text.trim().isEmpty) throw Exception('Please enter an organization name.');
+    if (_password.text != _password2.text) throw Exception('Passwords do not match.');
 
-      final cred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _email.text.trim(),
-        password: _password.text,
-      );
+    final cred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _email.text.trim(),
+      password: _password.text,
+    );
+    final uid = cred.user!.uid;
 
-      final uid = cred.user!.uid;
+    await FirebaseFirestore.instance.collection('organizers').doc(uid).set({
+      'orgName'  : _orgName.text.trim(),
+      'email'    : _email.text.trim().toLowerCase(),
+      'approved' : false,
+      'createdAt': FieldValue.serverTimestamp(),
+    });
 
-      // Create organizer doc in Firestore
-      await FirebaseFirestore.instance.collection('organizers').doc(uid).set({
-        'orgName': _orgName.text.trim(),
-        'email': _email.text.trim().toLowerCase(),
-        'approved': false, // admin must approve
-        'createdAt': FieldValue.serverTimestamp(),
-      });
-
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Organizer account created. Pending approval.')),
-      );
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      setState(() => _err = e.message ?? 'Sign up failed.');
-    } catch (e) {
-      setState(() => _err = e.toString());
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Account created. Pending approval.')),
+    );
+    Navigator.pop(context);
+  } on FirebaseException catch (e) {
+    // <— This will show Firestore problems like permission-denied
+    setState(() => _err = 'Firestore error: ${e.code} — ${e.message}');
+  } on FirebaseAuthException catch (e) {
+    setState(() => _err = 'Auth error: ${e.code} — ${e.message}');
+  } catch (e) {
+    setState(() => _err = e.toString());
+  } finally {
+    if (mounted) setState(() => _busy = false);
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

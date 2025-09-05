@@ -14,7 +14,7 @@ import '../auth/business_pending_page.dart';
 
 import 'calendar/notification_service.dart';
 
-// import 'organizer/organizer_dashboard.dart'; // ← removed (we inline it below)
+import 'organizer/organizer_dashboard.dart'; 
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -160,7 +160,11 @@ class AuthGate extends StatelessWidget {
             }
             switch (roleSnap.data) {
               case _RoleState.organizer:
-                return const OrganizerDashboard(); // organizer route
+                return const OrganizerDashboard();
+
+            case _RoleState.organizerPending:
+              return const OrganizerPendingPage();
+
               case _RoleState.student:
                 return HomePage(
                   isDarkMode: isDarkMode,
@@ -194,6 +198,7 @@ class AuthGate extends StatelessWidget {
      Query Firestore / claims to learn the user role
      ----------------------------------------------------- */
 Future<_RoleState> _determineRole(User user) async {
+  // 0) Claims-based organizer check (if you're using custom claims)
   await user.getIdToken(true);
   final claims = (await user.getIdTokenResult()).claims ?? {};
   final role = claims['role'];
@@ -202,24 +207,22 @@ Future<_RoleState> _determineRole(User user) async {
     return _RoleState.organizer;
   }
 
-  // 🆕 Organizer by Firestore doc (approved)
+  // 1) Organizer by Firestore doc (APPROVED OR PENDING)
   final orgDoc = await FirebaseFirestore.instance
-      .collection('organizers')
+      .collection('organizers')        // <-- make sure this matches your collection name
       .doc(user.uid)
       .get();
   if (orgDoc.exists) {
     final approved = orgDoc.data()?['approved'] == true;
-    if (approved) return _RoleState.organizer;
-    // If you have a dedicated pending page for organizers, return that here instead.
-    return _RoleState.businessPending; // reuse your existing pending page
+    return approved ? _RoleState.organizer : _RoleState.organizerPending;
   }
 
-  // Students
+  // 2) Student?
   final stuDoc = await FirebaseFirestore.instance
       .collection('students').doc(user.uid).get();
   if (stuDoc.exists) return _RoleState.student;
 
-  // Businesses
+  // 3) Business?
   final bizDoc = await FirebaseFirestore.instance
       .collection('businesses').doc(user.uid).get();
   if (bizDoc.exists) {
@@ -227,18 +230,20 @@ Future<_RoleState> _determineRole(User user) async {
     return approved ? _RoleState.business : _RoleState.businessPending;
   }
 
+  // 4) Unknown
   return _RoleState.unknown;
 }
+
 
 }
 
 // enum _RoleState { student, business, businessPending, unknown }
-enum _RoleState { student, business, businessPending, organizer, unknown }
+enum _RoleState { student, business, businessPending, organizer, organizerPending, unknown }
 
 /* ──────────────────────────────────────────────────────────────
    Inlined Organizer Dashboard (moved here from separate file)
    ────────────────────────────────────────────────────────────── */
-class OrganizerDashboard extends StatelessWidget {
+/*class OrganizerDashboard extends StatelessWidget {
   const OrganizerDashboard({super.key});
 
   @override
@@ -247,6 +252,34 @@ class OrganizerDashboard extends StatelessWidget {
       appBar: AppBar(title: const Text('Organizer Dashboard')),
       body: const Center(
         child: Text('Create, edit, and publish events for your organization.'),
+      ),
+    );
+  }
+}*/
+
+
+class OrganizerPendingPage extends StatelessWidget {
+  const OrganizerPendingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Organizer sign-up')),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.search, size: 96),
+              SizedBox(height: 16),
+              Text(
+                "We’re verifying your organizer account.\nYou’ll get an e-mail when approved.",
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
