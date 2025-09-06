@@ -15,7 +15,6 @@ const _logoMap = <String, String>{
   // add more when you have them
 };
 
-/* ───────── widget ───────── */
 class CAOSearchPage extends StatefulWidget {
   const CAOSearchPage({super.key});
   @override
@@ -23,7 +22,7 @@ class CAOSearchPage extends StatefulWidget {
 }
 
 class _CAOSearchPageState extends State<CAOSearchPage> {
-/* ───────── runtime data ───────── */
+  /* ───────── runtime data ───────── */
   List<Map<String, String>> _courses = [];
 
   final _universities = <String>['All'];
@@ -31,7 +30,7 @@ class _CAOSearchPageState extends State<CAOSearchPage> {
   final _levels       = <String>['All'];
   final _jobFields    = <String>['All'];
 
-/* ───────── UI state ───────── */
+  /* ───────── UI state ───────── */
   String _query = '';
   String _uniF  = 'All';
   String _locF  = 'All';
@@ -40,13 +39,16 @@ class _CAOSearchPageState extends State<CAOSearchPage> {
   int    _shown = 10;
   List<Map<String, String>> _sug = [];
 
-/* ───────── helpers ───────── */
-  /// trim + collapse whitespace/new-lines
+  /* ───────── helpers ───────── */
   String _clean(String? v) =>
       v?.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim() ?? '';
 
   bool _match(String filter, String? rawCell) =>
       filter == 'All' || _clean(rawCell) == filter;
+
+  // Normalize header names: trim, remove BOM, lowercase.
+  String _normHeader(String s) =>
+      s.replaceAll('\uFEFF', '').trim().toLowerCase();
 
   List<Map<String, String>> get _currentCourses {
     final q = _query.toLowerCase();
@@ -114,7 +116,7 @@ class _CAOSearchPageState extends State<CAOSearchPage> {
     );
   }
 
-/* ───────── init & CSV loader ───────── */
+  /* ───────── init & CSV loader ───────── */
   @override
   void initState() {
     super.initState();
@@ -122,54 +124,86 @@ class _CAOSearchPageState extends State<CAOSearchPage> {
   }
 
   Future<void> _loadCsv() async {
-    // 1. read CSV
+    // 1) read CSV
     final raw = await rootBundle.loadString(_csvAsset);
     final table = const CsvToListConverter(
       eol: '\n',
       shouldParseNumbers: false,
     ).convert(raw);
 
-    // 2. headers
-    final headers = table.first.map((e) => e.toString().trim()).toList();
-    const required = ['University', 'Location', 'Level', 'Job Field'];
-    if (!required.every(headers.contains)) {
-      throw StateError('CSV missing one of $required');
+    if (table.isEmpty) {
+      throw StateError('CSV is empty');
     }
 
-    // 3. containers for unique values
+    // 2) headers (normalize + index mapping)
+    final rawHeaders = table.first.map((e) => e.toString()).toList();
+    final normHeaders = rawHeaders.map(_normHeader).toList();
+
+    // canonical labels we will use in the app → normalized header names to look for
+    const canonicalToNorm = <String, String>{
+      'Level'      : 'level',
+      'Code'       : 'code',
+      'Title'      : 'title',
+      'Location'   : 'location',
+      'University' : 'University', // keep canonical case for UI; map check uses lower below
+      'Job Field'  : 'job field',
+    };
+
+    // build a map from canonical label -> index in the CSV
+    final headerIndex = <String, int>{};
+    for (final entry in canonicalToNorm.entries) {
+      final wanted = entry.value.toLowerCase();
+      final idx = normHeaders.indexOf(wanted);
+      if (idx == -1) {
+        throw StateError('CSV missing required header: ${entry.key}');
+      }
+      headerIndex[entry.key] = idx;
+    }
+
+    // 3) containers for unique filter values
     final uniSet = <String>{}, locSet = <String>{},
           levSet = <String>{}, jobSet = <String>{};
 
     final data = <Map<String, String>>[];
 
-    // 4. iterate rows
+    // 4) iterate rows
     for (var r = 1; r < table.length; r++) {
       final rawRow = table[r];
-      if (rawRow.every((e) => e.toString().trim().isEmpty)) continue;
+      // skip fully empty rows
+      if (rawRow.isEmpty || rawRow.every((e) => e.toString().trim().isEmpty)) continue;
 
-      // normalise to correct length
+      // coerce to strings
       final row = rawRow.map((e) => e.toString()).toList();
-      final fixed = row.length == headers.length
-          ? row
-          : row.length > headers.length
-              ? [...row.take(headers.length - 1),
-                 row.sublist(headers.length - 1).join(',')]
-              : [...row, ...List.filled(headers.length - row.length, '')];
 
-      final rec = <String, String>{};
-      for (var i = 0; i < headers.length; i++) {
-        rec[headers[i]] = _clean(fixed[i]);
-      }
+      // pad/merge if row length mismatches header length
+      final fixed = row.length == rawHeaders.length
+          ? row
+          : row.length > rawHeaders.length
+              ? [
+                  ...row.take(rawHeaders.length - 1),
+                  row.sublist(rawHeaders.length - 1).join(',')
+                ]
+              : [...row, ...List.filled(rawHeaders.length - row.length, '')];
+
+      // create record using canonical keys
+      final rec = <String, String>{
+        'Level'     : _clean(fixed[headerIndex['Level']!]),
+        'Code'      : _clean(fixed[headerIndex['Code']!]),
+        'Title'     : _clean(fixed[headerIndex['Title']!]),
+        'Location'  : _clean(fixed[headerIndex['Location']!]),
+        'University': _clean(fixed[headerIndex['University']!]),
+        'Job Field' : _clean(fixed[headerIndex['Job Field']!]),
+      };
       data.add(rec);
 
-      // collect sets
+      // collect filters
       if (rec['University']!.isNotEmpty) uniSet.add(rec['University']!);
       if (rec['Location']!.isNotEmpty)   locSet.add(rec['Location']!);
       if (rec['Level']!.isNotEmpty)      levSet.add(rec['Level']!);
       if (rec['Job Field']!.isNotEmpty)  jobSet.add(rec['Job Field']!);
     }
 
-    // 5. sort lists
+    // 5) sort lists (levels numerically if possible)
     final levList = levSet.toList()
       ..sort((a, b) {
         final ai = int.tryParse(a), bi = int.tryParse(b);
@@ -189,7 +223,7 @@ class _CAOSearchPageState extends State<CAOSearchPage> {
     });
   }
 
-/* ───────── UI ───────── */
+  /* ───────── UI ───────── */
   @override
   Widget build(BuildContext ctx) {
     final res = _currentCourses;
