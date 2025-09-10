@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class OrganizerDashboard extends StatelessWidget {
   const OrganizerDashboard({super.key});
@@ -12,4 +12,4 @@ class OrganizerDashboard extends StatelessWidget {
       ),
     );
   }
-}
+}*/

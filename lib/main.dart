@@ -14,7 +14,7 @@ import '../auth/business_pending_page.dart';
 
 import 'calendar/notification_service.dart';
 
-import 'organizer/organizer_dashboard.dart'; 
+//import 'organizer/organizer_dashboard.dart'; 
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -243,7 +243,7 @@ enum _RoleState { student, business, businessPending, organizer, organizerPendin
 /* ──────────────────────────────────────────────────────────────
    Inlined Organizer Dashboard (moved here from separate file)
    ────────────────────────────────────────────────────────────── */
-/*class OrganizerDashboard extends StatelessWidget {
+class OrganizerDashboard extends StatelessWidget {
   const OrganizerDashboard({super.key});
 
   @override
@@ -255,7 +255,7 @@ enum _RoleState { student, business, businessPending, organizer, organizerPendin
       ),
     );
   }
-}*/
+}
 
 
 class OrganizerPendingPage extends StatelessWidget {
