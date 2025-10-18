@@ -7,10 +7,11 @@ import 'notification_service.dart';
 import 'ics_importer.dart';
 // FIX: correct helper import path
 import 'google_calendar_link.dart';
+import 'event.dart';
 
 import '../events_page/event_details_page.dart'; // if you actually use this elsewhere
 
-class Event {
+/*class Event {
   final String title;
   final DateTime date;
   final String category;
@@ -22,7 +23,7 @@ class Event {
     required this.category,
     this.note,
   });
-}
+}*/
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -168,7 +169,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
   void _addPersonalEvent() async {
     final newEvent = await showDialog<Event>(
       context: context,
-      builder: (context) => const AddEventDialog(),
+      builder: (context) => AddEventDialog(),
     );
     if (newEvent != null) {
       setState(() {
@@ -313,34 +314,33 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                 formatButtonVisible: false,
                 titleCentered: true,
               ),
-              calendarBuilders: CalendarBuilders<Event>(
-                markerBuilder: (context, date, events) {
-                  if (events.isEmpty) return null;
-                  Color color;
-                  if (events.any((event) => _bookmarkedEventTitles.contains(event.title))) {
-                    color = Colors.green;
-                  } else if (events.any((event) => event.category == 'open_day')) {
-                    color = Colors.blue;
-                  } else if (events.any((event) => event.category == 'deadline')) {
-                    color = Colors.red;
-                  } else {
-                    color = Colors.grey;
-                  }
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: events.length,
-                    itemBuilder: (context, index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 1.5),
-                      width: 7,
-                      height: 7,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: color,
-                      ),
-                    ),
-                  );
-                },
-              ),
+             calendarBuilders: CalendarBuilders<Event>(
+              markerBuilder: (context, date, events) {
+                final evts = events.cast<Event>();   // <-- important
+                if (evts.isEmpty) return null;
+
+                Color color;
+                if (evts.any((e) => _bookmarkedEventTitles.contains(e.title))) {
+                  color = Colors.green;
+                } else if (evts.any((e) => e.category == 'open_day')) {
+                  color = Colors.blue;
+                } else if (evts.any((e) => e.category == 'deadline')) {
+                  color = Colors.red;
+                } else {
+                  color = Colors.grey;
+                }
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: evts.length,
+                  itemBuilder: (context, index) => Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                    width: 7, height: 7,
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+                  ),
+                );
+              },
+            ),
+
               onDaySelected: (selectedDay, focusedDay) {
                 setState(() {
                   _selectedDay = selectedDay;

@@ -1,12 +1,12 @@
 import 'package:url_launcher/url_launcher.dart';
 
 /// Helper to open Google Calendar "Create event" with fields prefilled.
-/// Works on mobile and web. Falls back to the browser if the app isn't installed.
+/// Works on mobile and web. Falls back to the browser if the app isn’t installed.
 class GoogleCalendarLink {
   /// Opens Google Calendar with a prefilled event template.
   ///
   /// [start] and [end] are in local time; we convert to UTC for Google format.
-  /// For all-day events, pass `allDay: true` and only the date parts are used.
+  /// For all-day events, pass [allDay]: true and only the date parts are used.
   static Future<void> addEvent({
     required String title,
     required DateTime start,
@@ -15,45 +15,32 @@ class GoogleCalendarLink {
     String? location,
     bool allDay = false,
   }) async {
-    final dates = _formatDates(start, end, allDay: allDay);
-    final uri = Uri.https(
-      'www.google.com',
-      '/calendar/render',
-      <String, String>{
-        'action': 'TEMPLATE',
-        'text': title,
-        if (description != null && description.isNotEmpty) 'details': description,
-        if (location != null && location.isNotEmpty) 'location': location,
-        'dates': dates,
-      },
+    // Convert to UTC in the correct Google Calendar time format.
+    String formatDate(DateTime dt) {
+      final utc = dt.toUtc();
+      return allDay
+          ? utc.toIso8601String().split('T').first // just YYYY-MM-DD
+          : utc.toIso8601String().replaceAll('-', '').replaceAll(':', '').split('.').first + 'Z';
+    }
+
+    final startTime = formatDate(start);
+    final endTime = formatDate(end);
+
+    // Construct the Google Calendar event creation URL.
+    final Uri googleUrl = Uri.parse(
+      'https://www.google.com/calendar/render?action=TEMPLATE'
+      '&text=${Uri.encodeComponent(title)}'
+      '&dates=$startTime/$endTime'
+      '${description != null ? '&details=${Uri.encodeComponent(description)}' : ''}'
+      '${location != null ? '&location=${Uri.encodeComponent(location)}' : ''}'
+      '&sf=true&output=xml',
     );
 
-    // Prefer external app/browser.
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      // Fallback try: in-app webview
-      await launchUrl(uri, mode: LaunchMode.inAppWebView);
-    }
-  }
-
-  /// Google Calendar 'dates' parameter formatting:
-  /// - Timed:  YYYYMMDDTHHMMSSZ/YYYYMMDDTHHMMSSZ  (UTC)
-  /// - All-day: YYYYMMDD/YYYYMMDD  (end is exclusive)
-  static String _formatDates(DateTime start, DateTime end, {bool allDay = false}) {
-    if (allDay) {
-      // For all-day, Google expects end as the *next day* (exclusive).
-      final s = DateTime(start.year, start.month, start.day);
-      final e = DateTime(end.year, end.month, end.day).add(const Duration(days: 1));
-      String d(DateTime d) =>
-          '${d.year.toString().padLeft(4, '0')}${d.month.toString().padLeft(2, '0')}${d.day.toString().padLeft(2, '0')}';
-      return '${d(s)}/${d(e)}';
+    // Try launching the URL
+    if (await canLaunchUrl(googleUrl)) {
+      await launchUrl(googleUrl, mode: LaunchMode.externalApplication);
     } else {
-      // Convert to UTC and format
-      String f(DateTime dt) {
-        final u = dt.toUtc();
-        String two(int v) => v.toString().padLeft(2, '0');
-        return '${u.year.toString().padLeft(4, '0')}${two(u.month)}${two(u.day)}T${two(u.hour)}${two(u.minute)}${two(u.second)}Z';
-      }
-      return '${f(start)}/${f(end)}';
+      throw 'Could not launch Google Calendar';
     }
   }
 }
