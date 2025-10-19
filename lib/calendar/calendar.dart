@@ -5,25 +5,10 @@ import 'add_event_dialog.dart';
 import 'search.dart';
 import 'notification_service.dart';
 import 'ics_importer.dart';
-// FIX: correct helper import path
-import 'google_calendar_link.dart';
+import 'google_calendar_link.dart'; // openInGoogleCalendar(...)
 import 'event.dart';
 
-import '../events_page/event_details_page.dart'; // if you actually use this elsewhere
-
-/*class Event {
-  final String title;
-  final DateTime date;
-  final String category;
-  final String? note;
-
-  Event({
-    required this.title,
-    required this.date,
-    required this.category,
-    this.note,
-  });
-}*/
+import '../events_page/event_details_page.dart'; // Student Events page (cards list)
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -34,7 +19,8 @@ class CalendarPage extends StatefulWidget {
 
 enum CalendarViewMode { month, week, agenda }
 
-class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderStateMixin {
+class _CalendarPageState extends State<CalendarPage>
+    with SingleTickerProviderStateMixin {
   late final ValueNotifier<List<Event>> _selectedEvents;
   late final AnimationController _animationController;
 
@@ -43,6 +29,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
   DateTime _focusedDay = DateTime.utc(2025, 9, 1);
   DateTime? _selectedDay;
 
+  // Seed events (date-only, stored as UTC midnight)
   final List<Event> _allEvents = [
     Event(title: 'School Year Starts', date: DateTime.utc(2025, 8, 25), category: 'deadline'),
     Event(title: 'CAO Opens', date: DateTime.utc(2025, 11, 5), category: 'deadline'),
@@ -65,6 +52,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
     Event(title: 'College Open Day (TCD Sample)', date: DateTime.utc(2025, 11, 15), category: 'open_day'),
   ];
 
+  // Import .ics and update lists
   void _handleICSImport() async {
     final importedEvents = await importICSFile();
     if (importedEvents.isNotEmpty) {
@@ -90,8 +78,8 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
     );
   }
 
+  // All events are stored as UTC midnight (date-only). Normalize incoming day similarly.
   List<Event> _getEventsForDay(DateTime day) {
-    // Normalize to date (UTC midnight) so equality matches your _allEvents UTC dates
     final dateOnly = DateTime.utc(day.year, day.month, day.day);
     return _allEvents.where((event) => event.date == dateOnly).toList();
   }
@@ -109,9 +97,9 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
   }
 
   void _goToBookmarksPage() {
-    final bookmarkedEvents = _allEvents
-        .where((event) => _bookmarkedEventTitles.contains(event.title))
-        .toList();
+    final bookmarkedEvents =
+        _allEvents.where((e) => _bookmarkedEventTitles.contains(e.title)).toList();
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -141,9 +129,8 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
   }
 
   void _goToEventsPage() {
-    final bookmarkedEvents = _allEvents
-        .where((event) => _bookmarkedEventTitles.contains(event.title))
-        .toList();
+    final bookmarkedEvents =
+        _allEvents.where((e) => _bookmarkedEventTitles.contains(e.title)).toList();
 
     Navigator.push(
       context,
@@ -153,7 +140,6 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
           bookmarkedEvents: bookmarkedEvents,
           onBookmarkToggle: (event) {
             setState(() {
-              // FIX: title isn’t nullable; remove the bang
               if (_bookmarkedEventTitles.contains(event.title)) {
                 _bookmarkedEventTitles.remove(event.title);
               } else {
@@ -177,7 +163,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
         _selectedEvents.value = _getEventsForDay(_selectedDay!);
       });
 
-      // Schedule notification 1 day before event (if in future)
+      // schedule a reminder 1 day before
       final reminderTime = newEvent.date.subtract(const Duration(days: 1));
       if (reminderTime.isAfter(DateTime.now())) {
         await NotificationService.scheduleNotification(
@@ -222,10 +208,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
         Container(
           width: 10,
           height: 10,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
         const SizedBox(width: 4),
         Text(label, style: const TextStyle(fontSize: 13)),
@@ -285,6 +268,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
       ),
       body: Column(
         children: [
+          // Legend
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
@@ -299,8 +283,9 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
             ),
           ),
 
-          // Calendar or Agenda
-          if (_viewMode == CalendarViewMode.month || _viewMode == CalendarViewMode.week)
+          // Calendar (month/week) OR Agenda
+          if (_viewMode == CalendarViewMode.month ||
+              _viewMode == CalendarViewMode.week)
             TableCalendar<Event>(
               firstDay: DateTime.utc(2025, 9, 1),
               lastDay: DateTime.utc(2026, 8, 31),
@@ -314,33 +299,38 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                 formatButtonVisible: false,
                 titleCentered: true,
               ),
-             calendarBuilders: CalendarBuilders<Event>(
-              markerBuilder: (context, date, events) {
-                final evts = events.cast<Event>();   // <-- important
-                if (evts.isEmpty) return null;
+              calendarBuilders: CalendarBuilders<Event>(
+                markerBuilder: (context, date, events) {
+                  final evts = events.cast<Event>();
+                  if (evts.isEmpty) return null;
 
-                Color color;
-                if (evts.any((e) => _bookmarkedEventTitles.contains(e.title))) {
-                  color = Colors.green;
-                } else if (evts.any((e) => e.category == 'open_day')) {
-                  color = Colors.blue;
-                } else if (evts.any((e) => e.category == 'deadline')) {
-                  color = Colors.red;
-                } else {
-                  color = Colors.grey;
-                }
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: evts.length,
-                  itemBuilder: (context, index) => Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 1.5),
-                    width: 7, height: 7,
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: color),
-                  ),
-                );
-              },
-            ),
+                  Color color;
+                  if (evts.any((e) => _bookmarkedEventTitles.contains(e.title))) {
+                    color = Colors.green;
+                  } else if (evts.any((e) => e.category == 'open_day')) {
+                    color = Colors.blue;
+                  } else if (evts.any((e) => e.category == 'deadline')) {
+                    color = Colors.red;
+                  } else {
+                    color = Colors.grey;
+                  }
 
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 7,
+                        height: 7,
+                        margin: const EdgeInsets.only(top: 2),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: color,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
               onDaySelected: (selectedDay, focusedDay) {
                 setState(() {
                   _selectedDay = selectedDay;
@@ -370,28 +360,38 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                     return ListTile(
                       leading: Icon(_getEventIcon(event.category)),
                       title: Text(event.title),
-                      subtitle: Text(dateFormatted + (event.note != null ? '\nNote: ${event.note}' : '')),
+                      subtitle: Text(
+                        dateFormatted +
+                            (event.note != null ? '\nNote: ${event.note}' : ''),
+                      ),
                       trailing: Wrap(
                         spacing: 6,
                         children: [
+                          // Add to Google Calendar
                           IconButton(
                             tooltip: 'Add to Google Calendar',
                             icon: const Icon(Icons.event_available),
                             onPressed: () async {
-                              await GoogleCalendarLink.addEvent(
+                              // date-only → make it all-day
+                              final start = DateTime.utc(
+                                  event.date.year, event.date.month, event.date.day);
+                              final end = start.add(const Duration(days: 1));
+                              await openInGoogleCalendar(
                                 title: event.title,
-                                start: event.date,
-                                end: event.date.add(const Duration(hours: 1)),
+                                start: start,
+                                end: end,
                                 description: event.note,
                                 location: null,
-                                allDay: true, // your events are date-only
                               );
                               if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Opening Google Calendar…')),
+                                const SnackBar(
+                                  content: Text('Opening Google Calendar…'),
+                                ),
                               );
                             },
                           ),
+                          // Bookmark
                           IconButton(
                             icon: _bookmarkedEventTitles.contains(event.title)
                                 ? const Icon(Icons.bookmark, color: Colors.blue)
@@ -409,7 +409,7 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
               ),
             ),
 
-          // Day's events list
+          // List for the selected day
           Expanded(
             child: ValueListenableBuilder<List<Event>>(
               valueListenable: _selectedEvents,
@@ -421,12 +421,14 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                   itemCount: value.length,
                   itemBuilder: (context, index) {
                     final event = value[index];
-                    final isBookmarked = _bookmarkedEventTitles.contains(event.title);
+                    final isBookmarked =
+                        _bookmarkedEventTitles.contains(event.title);
                     final dateFormatted =
                         '${event.date.day.toString().padLeft(2, '0')}/'
                         '${event.date.month.toString().padLeft(2, '0')}/'
                         '${event.date.year}';
                     final icon = _getEventIcon(event.category);
+
                     return ListTile(
                       leading: Icon(icon, color: Colors.blue),
                       title: Row(
@@ -443,7 +445,10 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                           Expanded(child: Text(event.title)),
                         ],
                       ),
-                      subtitle: Text(dateFormatted + (event.note != null ? '\nNote: ${event.note}' : '')),
+                      subtitle: Text(
+                        dateFormatted +
+                            (event.note != null ? '\nNote: ${event.note}' : ''),
+                      ),
                       trailing: Wrap(
                         spacing: 6,
                         children: [
@@ -451,17 +456,21 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                             tooltip: 'Add to Google Calendar',
                             icon: const Icon(Icons.event_available),
                             onPressed: () async {
-                              await GoogleCalendarLink.addEvent(
+                              final start = DateTime.utc(
+                                  event.date.year, event.date.month, event.date.day);
+                              final end = start.add(const Duration(days: 1));
+                              await openInGoogleCalendar(
                                 title: event.title,
-                                start: event.date,
-                                end: event.date.add(const Duration(hours: 1)),
+                                start: start,
+                                end: end,
                                 description: event.note,
                                 location: null,
-                                allDay: true, // date-only → treat as all-day
                               );
                               if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Opening Google Calendar…')),
+                                const SnackBar(
+                                  content: Text('Opening Google Calendar…'),
+                                ),
                               );
                             },
                           ),
@@ -469,11 +478,15 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
                             scale: _animationController,
                             child: IconButton(
                               icon: Icon(
-                                isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                                isBookmarked
+                                    ? Icons.bookmark
+                                    : Icons.bookmark_border,
                                 color: isBookmarked ? Colors.blue : null,
                               ),
                               onPressed: () => _toggleBookmark(event),
-                              tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
+                              tooltip: isBookmarked
+                                  ? 'Remove Bookmark'
+                                  : 'Add Bookmark',
                             ),
                           ),
                         ],
@@ -501,6 +514,8 @@ class _CalendarPageState extends State<CalendarPage> with SingleTickerProviderSt
     super.dispose();
   }
 }
+
+// ===================== Bookmarked Events Page =====================
 
 class BookmarkedEventsPage extends StatelessWidget {
   final List<Event> bookmarkedEvents;
@@ -546,7 +561,10 @@ class BookmarkedEventsPage extends StatelessWidget {
       ),
       body: sortedEvents.isEmpty
           ? const Center(
-              child: Text('No events bookmarked yet.', style: TextStyle(fontSize: 16)),
+              child: Text(
+                'No events bookmarked yet.',
+                style: TextStyle(fontSize: 16),
+              ),
             )
           : ListView.builder(
               itemCount: sortedEvents.length,
@@ -558,36 +576,69 @@ class BookmarkedEventsPage extends StatelessWidget {
                     '${event.date.year}';
                 final color = _getBookmarkColor(event.category);
                 final icon = _getEventIcon(event.category);
+
                 return ListTile(
                   leading: Icon(icon, color: color),
                   title: Text(event.title),
                   subtitle: Text('Date: $dateFormatted'),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () async {
-                      final confirm = await showDialog<bool>(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: const Text('Remove Bookmark'),
-                          content: Text('Are you sure you want to remove "${event.title}" from bookmarks?'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, false),
-                              child: const Text('Cancel'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // NEW: Add to Google Calendar
+                      IconButton(
+                        tooltip: 'Add to Google Calendar',
+                        icon: const Icon(Icons.event_available),
+                        onPressed: () async {
+                          final start = DateTime.utc(
+                              event.date.year, event.date.month, event.date.day);
+                          final end = start.add(const Duration(days: 1));
+                          await openInGoogleCalendar(
+                            title: event.title,
+                            start: start,
+                            end: end,
+                            description: event.note,
+                            location: null,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Opening Google Calendar…'),
                             ),
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, true),
-                              child: const Text('Remove'),
+                          );
+                        },
+                      ),
+                      // Existing delete button
+                      IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        tooltip: 'Remove from bookmarks',
+                        onPressed: () async {
+                          final confirm = await showDialog<bool>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Remove Bookmark'),
+                              content: Text(
+                                'Are you sure you want to remove "${event.title}" from bookmarks?',
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, false),
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, true),
+                                  child: const Text('Remove'),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      );
-                      if (confirm == true) {
-                        onRemoveBookmark(event);
-                        Navigator.pop(context);
-                      }
-                    },
-                    tooltip: 'Remove from bookmarks',
+                          );
+                          if (confirm == true) {
+                            onRemoveBookmark(event);
+                            Navigator.pop(context);
+                          }
+                        },
+                      ),
+                    ],
                   ),
                 );
               },
