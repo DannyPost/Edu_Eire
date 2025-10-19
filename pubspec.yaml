@@ -48,6 +48,9 @@ dependencies:
   # Misc
   url_launcher: ^6.2.3
   table_calendar: ^3.0.9
+
+  uuid: ^4.5.1
+
   
 
 dev_dependencies:

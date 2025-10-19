@@ -1,17 +1,20 @@
+// lib/studybot/domain/usecases/send_chat_message.dart
 import '../repositories/chat_repository.dart';
 
-/// Use case: route a user's free text to the correct chain.
-/// Thin wrapper so state layer can depend on a stable API.
+/// Use-case: send a user message to the router (/chat) and get back a route.
 class SendChatMessage {
   final ChatRepository _repo;
+  SendChatMessage(this._repo);
 
-  const SendChatMessage(this._repo);
-
-  /// Returns a ChatRoute describing which endpoint to call next.
   Future<ChatRoute> call({
     required String message,
-    Map<String, dynamic>? context,
+    Map<String, dynamic>? meta,
+    List<dynamic> history = const [],
   }) {
-    return _repo.routeMessage(message: message, context: context);
+    return _repo.routeMessage(
+      message: message,
+      meta: meta,
+      history: history,
+    );
   }
 }
