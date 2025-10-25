@@ -1,3 +1,5 @@
+// lib/studybot/domain/repositories/chat_repository.dart
+
 /// Abstraction for routing/chat-related operations.
 /// The data layer will implement this and call the /chat endpoint.
 abstract class ChatRepository {
@@ -5,7 +7,8 @@ abstract class ChatRepository {
   /// Returns a ChatRoute describing which specialised chain to call.
   Future<ChatRoute> routeMessage({
     required String message,
-    Map<String, dynamic>? context,
+    Map<String, dynamic>? meta,          // unified name
+    List<dynamic> history = const [],    // optional conversation turns
   });
 }
 
@@ -40,7 +43,8 @@ class ChatRoute {
           confidence == other.confidence;
 
   @override
-  int get hashCode => type.hashCode ^ payload.hashCode ^ confidence.hashCode;
+  int get hashCode =>
+      type.hashCode ^ payload.hashCode ^ (confidence?.hashCode ?? 0);
 }
 
 bool _mapEq(Map a, Map b) {

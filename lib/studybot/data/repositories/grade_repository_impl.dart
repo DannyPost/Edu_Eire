@@ -19,18 +19,16 @@ class GradeRepositoryImpl implements GradeRepository {
     return GradeResult(score: resp.score, bullets: resp.bullets, meta: resp.meta);
   }
 
-  @override
+    @override
   Future<String> getExemplar({
     required String question,
     Map<String, dynamic>? meta,
   }) async {
-    // Collect the streamed exemplar into a single string for the domain.
+    // BASELINE: non-streaming JSON response -> { "text": "..." }
     final req = ExemplarRequest(question: question, meta: meta);
-    final buffer = StringBuffer();
-    final stream = _api.postStream(ApiPaths.exemplar, req.toJson());
-    await for (final chunk in stream) {
-      buffer.write(chunk);
-    }
-    return buffer.toString();
+    final json = await _api.postJson(ApiPaths.exemplar, req.toJson());
+    final resp = ExemplarResponse.fromJson(json);
+    return resp.text;
   }
+
 }
