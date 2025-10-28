@@ -2,22 +2,28 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-/// Universal Google sign‑in helper.
+/// Universal Google sign-in helper.
 ///
 /// * **Web** → uses Firebase’s `signInWithPopup` convenience.
 /// * **Mobile / Desktop** → uses the `google_sign_in` package to obtain a
-///   Google ID‑token + access‑token, then exchanges them for a Firebase
+///   Google ID-token + access-token, then exchanges them for a Firebase
 ///   credential.
 ///
 /// Returns the **Firebase [User]** on success, or `null` if the user canceled
-/// the sign‑in flow.
+/// the sign-in flow.
 Future<User?> signInWithGoogle() async {
   if (kIsWeb) {
     // ── Web: open Google auth popup ────────────────────────────────
     final provider = GoogleAuthProvider();
     // You can add extra scopes if you need YouTube / Contacts APIs, e.g.:
     // provider.addScope('https://www.googleapis.com/auth/youtube.readonly');
+
     final userCred = await FirebaseAuth.instance.signInWithPopup(provider);
+
+    // ✅ Print Firebase ID token for testing
+    final token = await userCred.user?.getIdToken();
+    print('✅ Firebase ID Token (Web): $token');
+
     return userCred.user;
   } else {
     // ── Mobile / Desktop: use google_sign_in package ───────────────
@@ -33,6 +39,11 @@ Future<User?> signInWithGoogle() async {
 
     final userCred =
         await FirebaseAuth.instance.signInWithCredential(credential);
+
+    // ✅ Print Firebase ID token for testing
+    final token = await userCred.user?.getIdToken();
+    print('✅ Firebase ID Token (Mobile/Desktop): $token');
+
     return userCred.user;
   }
 }
