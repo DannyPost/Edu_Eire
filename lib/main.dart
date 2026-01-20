@@ -21,6 +21,8 @@ import '../auth/business_pending_page.dart';
 
 import 'calendar/notification_service.dart';
 
+// ✅ ADD: dotenv init
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -33,11 +35,40 @@ const kSecondaryColor = Colors.white;      // accent / onPrimary
    ────────────────────────────────────────────────────────────── */
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // ✅ Load BOTH env files (kept minimal and safe)
+  await dotenv.load(fileName: 'chatbot_api.env');
+  final merged = Map<String, String>.from(dotenv.env);
+  await dotenv.load(fileName: 'news_api.env', mergeWith: merged);
+
+  // ✅ Workaround: normalise key names WITHOUT changing your env files
+  // This means your services can always read:
+  // dotenv.env['OPENAI_API_KEY'] and dotenv.env['NEWSAPI_API_KEY']
+  final openAiKey =
+      dotenv.env['OPENAI_API_KEY'] ??
+      dotenv.env['OPENAI_KEY'] ??
+      dotenv.env['CHATBOT_API_KEY'] ??
+      dotenv.env['CHATBOT_KEY'];
+
+  final newsApiKey =
+      dotenv.env['NEWSAPI_API_KEY'] ??
+      dotenv.env['NEWS_API_KEY'] ??
+      dotenv.env['NEWSAPI_KEY'] ??
+      dotenv.env['NEWS_KEY'];
+
+  if (openAiKey != null && openAiKey.trim().isNotEmpty) {
+    dotenv.env['OPENAI_API_KEY'] = openAiKey.trim();
+  }
+  if (newsApiKey != null && newsApiKey.trim().isNotEmpty) {
+    dotenv.env['NEWSAPI_API_KEY'] = newsApiKey.trim();
+  }
+
+  // Firebase ---------------------------------------------------------
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-    // 🆕 Initialize notification service
+  // 🆕 Initialize notification service
   await NotificationService.init();
-  
+
   // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
