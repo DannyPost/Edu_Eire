@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ✅ dotenv
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 // Firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
-// ✅ NEW: Provider + StudyBot DI / Notifiers
+// Provider + StudyBot DI / Notifiers
 import 'package:provider/provider.dart';
 import 'studybot/di.dart';
 import 'studybot/state/chat/chat_notifier.dart';
@@ -21,73 +24,43 @@ import '../auth/business_pending_page.dart';
 
 import 'calendar/notification_service.dart';
 
-// ✅ ADD: dotenv init
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+const kPrimaryColor = Color(0xFF3AB6FF);
+const kSecondaryColor = Colors.white;
 
-/* ──────────────────────────────────────────────────────────────
-   Global brand colours
-   ────────────────────────────────────────────────────────────── */
-const kPrimaryColor   = Color(0xFF3AB6FF); // bright blue
-const kSecondaryColor = Colors.white;      // accent / onPrimary
-
-/* ──────────────────────────────────────────────────────────────
-   Entry point
-   ────────────────────────────────────────────────────────────── */
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ✅ Load BOTH env files (kept minimal and safe)
-  await dotenv.load(fileName: 'chatbot_api.env');
-  final merged = Map<String, String>.from(dotenv.env);
-  await dotenv.load(fileName: 'news_api.env', mergeWith: merged);
-
-  // ✅ Workaround: normalise key names WITHOUT changing your env files
-  // This means your services can always read:
-  // dotenv.env['OPENAI_API_KEY'] and dotenv.env['NEWSAPI_API_KEY']
-  final openAiKey =
-      dotenv.env['OPENAI_API_KEY'] ??
-      dotenv.env['OPENAI_KEY'] ??
-      dotenv.env['CHATBOT_API_KEY'] ??
-      dotenv.env['CHATBOT_KEY'];
-
-  final newsApiKey =
-      dotenv.env['NEWSAPI_API_KEY'] ??
-      dotenv.env['NEWS_API_KEY'] ??
-      dotenv.env['NEWSAPI_KEY'] ??
-      dotenv.env['NEWS_KEY'];
-
-  if (openAiKey != null && openAiKey.trim().isNotEmpty) {
-    dotenv.env['OPENAI_API_KEY'] = openAiKey.trim();
-  }
-  if (newsApiKey != null && newsApiKey.trim().isNotEmpty) {
-    dotenv.env['NEWSAPI_API_KEY'] = newsApiKey.trim();
+  // ✅ Load dedicated env for homepage/news
+  // Put HOMEPAGE_CACHE_URL in: app.env
+  try {
+    await dotenv.load(fileName: 'app.env');
+  } catch (e) {
+    debugPrint('[dotenv] Failed to load app.env: $e');
   }
 
-  // Firebase ---------------------------------------------------------
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // 🆕 Initialize notification service
   await NotificationService.init();
 
-  // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
-  final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
+  final isDarkMode = prefs.getBool('isDarkMode') ?? false;
   final isDyslexicFont = prefs.getBool('isDyslexicFont') ?? false;
 
   runApp(MyApp(
-    isDarkMode:     isDarkMode,
+    isDarkMode: isDarkMode,
     isDyslexicFont: isDyslexicFont,
   ));
 }
 
-/* ──────────────────────────────────────────────────────────────
-   Root widget – holds user preferences (theme + font)
-   ────────────────────────────────────────────────────────────── */
 class MyApp extends StatefulWidget {
   final bool isDarkMode;
   final bool isDyslexicFont;
 
-  const MyApp({super.key, required this.isDarkMode, required this.isDyslexicFont});
+  const MyApp({
+    super.key,
+    required this.isDarkMode,
+    required this.isDyslexicFont,
+  });
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -97,22 +70,19 @@ class _MyAppState extends State<MyApp> {
   late bool _isDarkMode;
   late bool _isDyslexicFont;
 
-  // ✅ NEW: StudyBot DI (services → repos → use-cases → notifiers)
   late final StudyBotDI _di;
 
   @override
   void initState() {
     super.initState();
-    _isDarkMode     = widget.isDarkMode;
+    _isDarkMode = widget.isDarkMode;
     _isDyslexicFont = widget.isDyslexicFont;
-
-    // Build the dependency graph (dev variant is fine for now)
     _di = StudyBotDI.dev();
   }
 
   @override
   void dispose() {
-    _di.dispose(); // closes ApiClient, etc.
+    _di.dispose();
     super.dispose();
   }
 
@@ -130,7 +100,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ NEW: Provide StudyBot notifiers to the whole app tree
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ChatNotifier>.value(value: _di.chatNotifier),
@@ -147,13 +116,16 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(
             seedColor: kPrimaryColor,
             brightness: Brightness.light,
-          ).copyWith(
-            secondary: kSecondaryColor,
-          ),
+          ).copyWith(secondary: kSecondaryColor),
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kSecondaryColor,
-          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: kPrimaryColor,
+            foregroundColor: kSecondaryColor,
+          ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: kPrimaryColor,
+          ),
         ),
         darkTheme: ThemeData(
           useMaterial3: true,
@@ -162,16 +134,14 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(
             seedColor: kPrimaryColor,
             brightness: Brightness.dark,
-          ).copyWith(
-            secondary: kSecondaryColor,
-          ),
+          ).copyWith(secondary: kSecondaryColor),
           primaryColor: kPrimaryColor,
           appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: kPrimaryColor,
+          ),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-
-        // 👇 unchanged: auth gate still decides landing page
         home: AuthGate(
           isDarkMode: _isDarkMode,
           isDyslexicFont: _isDyslexicFont,
@@ -183,9 +153,6 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-/* ──────────────────────────────────────────────────────────────
-   AuthGate – decides what the first real page should be
-   ────────────────────────────────────────────────────────────── */
 class AuthGate extends StatelessWidget {
   final bool isDarkMode;
   final bool isDyslexicFont;
@@ -218,6 +185,7 @@ class AuthGate extends StatelessWidget {
             if (roleSnap.connectionState == ConnectionState.waiting) {
               return const Scaffold(body: Center(child: CircularProgressIndicator()));
             }
+
             switch (roleSnap.data) {
               case _RoleState.student:
                 return HomePage(
@@ -257,6 +225,7 @@ class AuthGate extends StatelessWidget {
       final approved = bizDoc.data()?['approved'] == true;
       return approved ? _RoleState.business : _RoleState.businessPending;
     }
+
     return _RoleState.unknown;
   }
 }

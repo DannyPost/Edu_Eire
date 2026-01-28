@@ -64,6 +64,7 @@ flutter:
 
   assets:
     - chatbot_api.env
+    - app.env
     - news_api.env
     - assets/fonts/
     - assets/chatbot/

@@ -128,18 +128,6 @@ class _EducationNewsFeedState extends State<EducationNewsFeed> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (a.imageUrl.isNotEmpty)
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            a.imageUrl,
-                            height: 180,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-                          ),
-                        ),
-                      const SizedBox(height: 10),
                       Text(
                         a.title,
                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
@@ -150,7 +138,6 @@ class _EducationNewsFeedState extends State<EducationNewsFeed> {
                         style: TextStyle(color: Colors.grey.shade700, fontSize: 12),
                       ),
                       const SizedBox(height: 10),
-
                       if ((a.summary ?? '').trim().isNotEmpty) ...[
                         const Text(
                           'Quick summary',
@@ -163,7 +150,6 @@ class _EducationNewsFeedState extends State<EducationNewsFeed> {
                         Text(a.snippet.trim()),
                         const SizedBox(height: 10),
                       ],
-
                       Row(
                         children: [
                           IconButton(
@@ -179,13 +165,10 @@ class _EducationNewsFeedState extends State<EducationNewsFeed> {
                           ),
                         ],
                       ),
-
                       const Divider(height: 18),
-
                       _CommentBox(
                         onSubmit: (text) => _addComment(a.url, text),
                       ),
-
                       if (comments.isNotEmpty) ...[
                         const SizedBox(height: 10),
                         const Text(
@@ -221,7 +204,8 @@ class _EducationNewsFeedState extends State<EducationNewsFeed> {
 
   String _prettyDate(DateTime dtUtc) {
     final dt = dtUtc.toLocal();
-    return '${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
+    return '${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')} '
+        '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
   }
 
   Future<void> _launchUrl(String url) async {
@@ -290,15 +274,9 @@ class _ErrorView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              message,
-              textAlign: TextAlign.center,
-            ),
+            Text(message, textAlign: TextAlign.center),
             const SizedBox(height: 12),
-            OutlinedButton(
-              onPressed: onRetry,
-              child: const Text('Retry'),
-            )
+            OutlinedButton(onPressed: onRetry, child: const Text('Retry')),
           ],
         ),
       ),
