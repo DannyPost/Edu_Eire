@@ -64,6 +64,8 @@ flutter:
 
   assets:
     - chatbot_api.env
+    - app.env
+    - news_api.env
     - assets/fonts/
     - assets/chatbot/
     - assets/chatbot/edu_eire_logo.png
