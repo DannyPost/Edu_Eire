@@ -13,10 +13,7 @@ import 'hear_calculator/hear_calculator.dart';
 import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
-import 'studybot/app/study_bot_screen.dart';
-import 'academic_support/academic_support_page.dart';
 
-import '../help_page/help_main.dart';
 import '../help_page/help/help_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -99,8 +96,6 @@ class _HomePageState extends State<HomePage> {
     HearCalculatorPage(),
     DareCalculatorPage(),
     const CalendarPage(),
-    const StudyBotScreen(),
-    const AcademicSupportPage(), // index 9
   ];
 
   /* ------------------------- UI ------------------------- */
@@ -194,9 +189,6 @@ class _HomePageState extends State<HomePage> {
             _drawerItem(ctx, Icons.school, 'HEAR Calculator', 5),
             _drawerItem(ctx, Icons.accessibility_new, 'DARE Calculator', 6),
             _drawerItem(ctx, Icons.calendar_today, 'School Calendar', 7),
-            _drawerItem(ctx, Icons.school, 'Study-Bot', 8),
-
-            // CAO Search opens a new route (keep as push)
             ListTile(
               leading: const Icon(Icons.search),
               title: const Text('CAO Search'),
@@ -205,11 +197,6 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(ctx, MaterialPageRoute(builder: (_) => CAOSearchPage()));
               },
             ),
-
-            // ✅ NEW: Academic Support is its own menu item (index 9 in the stack)
-            _drawerItem(ctx, Icons.menu_book, 'Academic Support', 9),
-
-            // Help & Support remains separate (pushes your HelpPage route)
             ListTile(
               leading: Icon(Icons.help_outline, color: _brand),
               title: const Text('Help & Support', style: TextStyle(fontWeight: FontWeight.w600)),

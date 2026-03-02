@@ -1,15 +1,31 @@
-// lib/cao_search/course.dart
 class Course {
-  final String level, code, title, location, university, jobField;
+  final String level;
+  final String code;
+  final String title;
+  final String location;
+  final String university;
+  final String jobField;
 
-  Course(this.level, this.code, this.title, this.location, this.university, this.jobField);
+  Course({
+    required this.level,
+    required this.code,
+    required this.title,
+    required this.location,
+    required this.university,
+    required this.jobField,
+  });
 
-  factory Course.fromList(List<String> values) {
-    // Make sure the indices match your CSV column order and the number of fields
-    if (values.length < 6) {
-      throw Exception("Insufficient data for Course.fromList. Expected 6 values.");
-    }
-    // Corrected to match the order expected by the constructor
-    return Course(values[0], values[1], values[2], values[3], values[4], values[5]);
+  factory Course.fromCsv(List<dynamic> row) {
+    String clean(dynamic v) =>
+        v.toString().replaceAll('"', '').trim();
+
+    return Course(
+      level: clean(row[0]),
+      code: clean(row[1]),
+      title: clean(row[2]),
+      location: clean(row[3]),
+      university: clean(row[4]).toUpperCase(),
+      jobField: clean(row[5]),
+    );
   }
 }
