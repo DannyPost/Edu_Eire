@@ -1,3 +1,4 @@
+// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,20 +8,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
-// ✅ NEW: Provider + StudyBot DI / Notifiers
-import 'package:provider/provider.dart';
-import 'studybot/di.dart';
-import 'studybot/state/chat/chat_notifier.dart';
-import 'studybot/state/grade/grade_notifier.dart';
-import 'studybot/state/exemplar/exemplar_notifier.dart';
-
 // Pages
 import 'homepage.dart';
-import '../auth/student_auth_page.dart';
-import '../auth/business_pending_page.dart';
+import 'auth/student_auth_page.dart';
+import 'auth/business_pending_page.dart';
 
+// Notifications
 import 'calendar/notification_service.dart';
 
+// ✅ StudyBot (minimal client)
+import 'studybot/config/env.dart';
+import 'studybot/ui/studybot_screen.dart';
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
@@ -35,9 +33,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-    // 🆕 Initialize notification service
+  // 🛎️ Notifications (local)
   await NotificationService.init();
-  
+
+  // ✅ StudyBot environment + token getter
+  Env.configure(
+    baseUrl: 'https://57u97hpdwi.execute-api.eu-west-1.amazonaws.com/dev',
+    authTokenGetter: () async =>
+        await FirebaseAuth.instance.currentUser?.getIdToken(true) ?? '',
+  );
+
   // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
@@ -66,23 +71,11 @@ class _MyAppState extends State<MyApp> {
   late bool _isDarkMode;
   late bool _isDyslexicFont;
 
-  // ✅ NEW: StudyBot DI (services → repos → use-cases → notifiers)
-  late final StudyBotDI _di;
-
   @override
   void initState() {
     super.initState();
     _isDarkMode     = widget.isDarkMode;
     _isDyslexicFont = widget.isDyslexicFont;
-
-    // Build the dependency graph (dev variant is fine for now)
-    _di = StudyBotDI.dev();
-  }
-
-  @override
-  void dispose() {
-    _di.dispose(); // closes ApiClient, etc.
-    super.dispose();
   }
 
   Future<void> _toggleTheme(bool v) async {
@@ -99,61 +92,55 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ NEW: Provide StudyBot notifiers to the whole app tree
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ChatNotifier>.value(value: _di.chatNotifier),
-        ChangeNotifierProvider<GradeNotifier>.value(value: _di.gradeNotifier),
-        ChangeNotifierProvider<ExemplarNotifier>.value(value: _di.exemplarNotifier),
-      ],
-      child: MaterialApp(
-        title: 'Edu Éire',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
+    return MaterialApp(
+      title: 'Edu Éire',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.light,
+        fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: kPrimaryColor,
           brightness: Brightness.light,
-          fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: kPrimaryColor,
-            brightness: Brightness.light,
-          ).copyWith(
-            secondary: kSecondaryColor,
-          ),
-          primaryColor: kPrimaryColor,
-          scaffoldBackgroundColor: kSecondaryColor,
-          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
-        ),
-        darkTheme: ThemeData(
-          useMaterial3: true,
-          brightness: Brightness.dark,
-          fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: kPrimaryColor,
-            brightness: Brightness.dark,
-          ).copyWith(
-            secondary: kSecondaryColor,
-          ),
-          primaryColor: kPrimaryColor,
-          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
-        ),
-        themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-
-        // 👇 unchanged: auth gate still decides landing page
-        home: AuthGate(
-          isDarkMode: _isDarkMode,
-          isDyslexicFont: _isDyslexicFont,
-          setDarkMode: _toggleTheme,
-          setDyslexicFont: _toggleDyslexicFont,
-        ),
+        ).copyWith(secondary: kSecondaryColor),
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: kSecondaryColor,
+        appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        fontFamily: _isDyslexicFont ? 'OpenDyslexic' : null,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: kPrimaryColor,
+          brightness: Brightness.dark,
+        ).copyWith(secondary: kSecondaryColor),
+        primaryColor: kPrimaryColor,
+        appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+      ),
+      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+
+      // 👇 unchanged: auth gate still decides landing page
+      home: AuthGate(
+        isDarkMode: _isDarkMode,
+        isDyslexicFont: _isDyslexicFont,
+        setDarkMode: _toggleTheme,
+        setDyslexicFont: _toggleDyslexicFont,
+      ),
+
+      // ✅ Named route so you can push StudyBot from anywhere:
+      routes: <String, WidgetBuilder>{
+        '/studybot': (_) => const StudyBotScreen(),
+      },
     );
   }
 }
 
 /* ──────────────────────────────────────────────────────────────
    AuthGate – decides what the first real page should be
+   Also primes Env with a fresh token after login.
    ────────────────────────────────────────────────────────────── */
 class AuthGate extends StatelessWidget {
   final bool isDarkMode;
@@ -169,6 +156,15 @@ class AuthGate extends StatelessWidget {
     required this.setDyslexicFont,
   });
 
+  Future<void> _primeIdToken(User user) async {
+    try {
+      final token = await user.getIdToken(true);
+      Env.setFirebaseIdToken(token); // ✅ cache it for first call
+    } catch (_) {
+      // ignore; ApiClient will still call Env.authToken() when needed
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -180,6 +176,9 @@ class AuthGate extends StatelessWidget {
 
         final user = snap.data;
         if (user == null) return const StudentAuthPage();
+
+        // Prime Firebase ID token for StudyBot
+        _primeIdToken(user);
 
         return FutureBuilder<_RoleState>(
           future: _determineRole(user),

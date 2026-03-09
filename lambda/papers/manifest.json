@@ -1,0 +1,1251 @@
+{
+  "source": "StudyClix",
+  "fetchedAt": "2026-03-08T15:12:11.373Z",
+  "subjects": {
+    "EnglishOL": {
+      "subjectId": "1042686",
+      "subjectName": "EnglishOL",
+      "papersUrl": "https://www.studyclix.ie/papers#subject=1042686",
+      "links": [
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/cb92666f-51eb-4074-8098-0a851be8edae.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/c45b72b9-321f-4552-b85d-c59ab5c32ed7.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/0158b26e-de42-43e0-ba8d-438b5d3a9b55.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/d74946b2-0d33-4631-b0c9-f281715a93d7.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/9d5ae462-e840-43f4-bb76-7d0e2de95d4f.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/97f7f804-662b-4c49-9a52-7758b0e58d0c.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/25ef5d8d-1ee6-44f8-8b7a-875ecac5fa8a.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/1b173ce8-a0df-4f84-9636-cafaf26ecdfd.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/2a67ca40-8730-4d5b-a437-b7f674c5952e.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/5bd961e1-207a-4f31-87b8-9df37ec45d14.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/5e1bb57b-df76-4022-935d-0ff166fa486b.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/23807a51-aece-4d45-912c-22e2dc212750.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/7ca92a59-4f2f-4afc-a058-721288ac86c2.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/c7bb2cc5-b661-4e24-b681-02d307216542.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/c910cb5e-b1ee-477c-89f7-6546d4ad6fdc.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/190a0fc8-96f1-4a39-9ab3-57d8924461f5.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/07483c1f-cdf2-48ba-9eef-5cc80962c252.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/3b8bb47f-cd2c-42bb-9cc3-0df1c652ed68.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/103c3465-44be-4c7b-83cb-0f8455e26b26.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/acbe6dda-71c1-4dc2-9b8f-28060d231d31.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/f34f62fd-e4a0-4625-9f5b-2b7d3deb78d2.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/0ed4cd21-a137-4268-897a-e856837f89ae.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/e6209825-5355-4b9f-b12b-44e2b82f0491.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/35f647be-bc87-47c7-849d-512e137b3ec3.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/fd10da4f-5094-48ba-af7e-e50482bb4846.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/87053292-d46f-414c-bd0b-8fef9fb71195.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/a25c0410-e57e-4a30-9350-3e5f69de00f2.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/ef017efb-cad1-4fd4-b077-fafdb001dff5.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/0b5ba95f-80fa-4110-b8dd-c4c8d3af36e5.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper1",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/11a88a58-6a25-4723-b597-2aab98c0af12.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper1",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/2e7ace0b-3947-42ac-8bb9-c7ef82c92f9f.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/91328941-acea-4edf-b8cd-07f4c173f0f9.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/159036ca-a4e6-4828-91a0-4ae18baeb83d.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/43b2ccfd-40ad-44b4-991e-86e58b6e824d.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/43517030-7336-42f9-9071-3c9e19a14071.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/8abc2bc8-c9ef-460e-b0f5-31eb53c4671e.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/5b425dd5-aee2-44f0-bcbb-24f79d11851f.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/caf6f87d-79f6-44ad-96f1-eb08d030b2ba.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/117f4e84-2a81-47d0-bb55-c6fcff087b52.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/8047696a-f7be-4391-a6f7-34e9fe916cc1.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/854e0660-8f00-453b-8fa6-53acc472b27f.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/370e555a-9382-4ae0-a455-6996913c6b0c.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/8acb975e-bea4-4999-a6f8-1755b9ef0735.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/907481a7-7fdc-43f1-9c35-0e3430d17776.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/0d14674e-86dc-4d78-97b2-3dd4192f4392.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/6cdce190-1887-4a23-b11b-03badb7f2b8b.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/f46f39d6-f893-463a-8f63-782ef10cae9d.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/e1da38e1-efed-499c-97ce-f91186dff6d9.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/a5e5b273-66a0-4276-9c62-89289b766a71.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/a8f42d90-7ec5-42b7-a314-368c40fa4888.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/366d4564-76df-4560-8fe3-7d0a441d5b9b.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/84934dd5-6214-43cb-9c49-a4e1bc649739.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/dbbff4dd-eca8-4c66-9f39-73ef55904714.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/b5178aaa-03e2-4600-9b59-e25aa3446d2b.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/fc0f977f-63cf-4af8-b51c-d795383b0bf9.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/3b6771b3-5c44-4730-99a1-d1e0cf1c57fb.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/6fc7a89b-7afe-4fc2-b286-8b6590f1b221.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/714e103d-92b6-49dc-9b4a-ec35fe8204b3.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/572cae21-ef24-4101-a51f-f498db7e9f69.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/39d18c5b-3710-460f-bea3-69bb30103fca.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/26b6bc1d-8f91-46b1-b2d5-5f04213b5a95.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/61f89510-3c75-4a53-ad32-5512974282a7.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/8bb5d43c-2b3f-4ae8-98cd-daed5c113d33.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/284b41c6-f972-4f64-b140-9b2aea93bebb.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/fda34384-c138-43dc-b4c8-29c4fb1468f1.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/68915a07-2657-4961-ad3f-52ddb6f4e471.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/e720ae29-2527-4de0-be23-bb4fe9f01ee9.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/e65b46a3-472f-4788-85b0-b9d7c29d85a9.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/ee205f33-d696-4f5c-ad15-4d07aefeb035.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/535ece27-c470-4a06-9174-aa2300073833.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/5a4d9c7c-ef40-490c-8247-504e57d92baa.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/f0438dbe-ee78-423c-a1bf-8dc9366e1f96.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/23bdde33-45e7-43e1-9ad5-145ed22735ac.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/718dc909-53e1-4259-988e-50865daed743.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/a5e7983d-6cf5-4237-a0b4-86f2a17f4523.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/8b12220b-3fd4-4291-a4e3-a34c41ba7084.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/3eabcf5b-8522-4c4d-9ccd-ae4adc0d7dd6.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/999e653c-59a5-47c0-9141-4fad90f0db82.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/7e404d97-d840-4656-96f7-f4d9d9e8ba4d.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/aa7083eb-bd84-4c7f-8435-661efc04b1b5.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/fc0af73f-9a97-4b0e-af19-039096749966.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/79c4fb12-b09c-4769-b2dc-320bdf32cc38.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/9205b7e2-3fd6-4de3-be36-7eca0f821719.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/2f102620-d63f-4b3b-904b-ccba12566b36.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/5e8cb8bb-41ea-4303-a9a6-8ec4e69f0d0d.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/6440a49c-bf5e-4cf9-945a-e2e3613075a1.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/50e79139-9e46-4217-9a03-e5d5f0b72b12.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/7dfdce48-19f3-4ff8-8a24-eced44f9bda5.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/7c7cbb62-d6d7-4dbc-804a-b0bfd169b9a2.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/275711b7-683b-4b24-acd3-4193d75774c5.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/358d187c-b09e-4f53-88a6-5c2924e726f7.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/db562673-a8b8-4aa1-95ce-940c2e2d2727.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/495a2aee-546e-4bb2-8dfb-847c5566e59b.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/747aecb6-46a3-42fe-b05e-d838a5f91180.pdf",
+          "text": "Exam Paper",
+          "paperType": "paper2",
+          "docType": "exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/340d71b1-662f-4974-97ad-b058b18ec95f.pdf",
+          "text": "Marking Scheme",
+          "paperType": "paper2",
+          "docType": "marking"
+        }
+      ],
+      "downloaded": [
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/cb92666f-51eb-4074-8098-0a851be8edae.pdf",
+          "filename": "Exam_Paper.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/c45b72b9-321f-4552-b85d-c59ab5c32ed7.pdf",
+          "filename": "Marking_Scheme.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/0158b26e-de42-43e0-ba8d-438b5d3a9b55.pdf",
+          "filename": "Exam_Paper_1.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/d74946b2-0d33-4631-b0c9-f281715a93d7.pdf",
+          "filename": "Marking_Scheme_1.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/9d5ae462-e840-43f4-bb76-7d0e2de95d4f.pdf",
+          "filename": "Exam_Paper.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/97f7f804-662b-4c49-9a52-7758b0e58d0c.pdf",
+          "filename": "Marking_Scheme_2.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/25ef5d8d-1ee6-44f8-8b7a-875ecac5fa8a.pdf",
+          "filename": "Exam_Paper_2.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/1b173ce8-a0df-4f84-9636-cafaf26ecdfd.pdf",
+          "filename": "Marking_Scheme_3.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/2a67ca40-8730-4d5b-a437-b7f674c5952e.pdf",
+          "filename": "Exam_Paper_1.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/5bd961e1-207a-4f31-87b8-9df37ec45d14.pdf",
+          "filename": "Marking_Scheme_4.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/5e1bb57b-df76-4022-935d-0ff166fa486b.pdf",
+          "filename": "Exam_Paper_3.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/23807a51-aece-4d45-912c-22e2dc212750.pdf",
+          "filename": "Marking_Scheme_5.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/7ca92a59-4f2f-4afc-a058-721288ac86c2.pdf",
+          "filename": "Exam_Paper_2.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/c7bb2cc5-b661-4e24-b681-02d307216542.pdf",
+          "filename": "Marking_Scheme.pdf",
+          "paperType": "paper2",
+          "docType": "marking",
+          "folder": "Paper2/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/c910cb5e-b1ee-477c-89f7-6546d4ad6fdc.pdf",
+          "filename": "Exam_Paper_4.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/190a0fc8-96f1-4a39-9ab3-57d8924461f5.pdf",
+          "filename": "Marking_Scheme_6.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/07483c1f-cdf2-48ba-9eef-5cc80962c252.pdf",
+          "filename": "Exam_Paper_3.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/3b8bb47f-cd2c-42bb-9cc3-0df1c652ed68.pdf",
+          "filename": "Marking_Scheme_1.pdf",
+          "paperType": "paper2",
+          "docType": "marking",
+          "folder": "Paper2/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/103c3465-44be-4c7b-83cb-0f8455e26b26.pdf",
+          "filename": "Exam_Paper_4.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/acbe6dda-71c1-4dc2-9b8f-28060d231d31.pdf",
+          "filename": "Marking_Scheme_2.pdf",
+          "paperType": "paper2",
+          "docType": "marking",
+          "folder": "Paper2/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/f34f62fd-e4a0-4625-9f5b-2b7d3deb78d2.pdf",
+          "filename": "Exam_Paper_5.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/0ed4cd21-a137-4268-897a-e856837f89ae.pdf",
+          "filename": "Marking_Scheme_7.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/e6209825-5355-4b9f-b12b-44e2b82f0491.pdf",
+          "filename": "Exam_Paper_5.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/35f647be-bc87-47c7-849d-512e137b3ec3.pdf",
+          "filename": "Marking_Scheme_8.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/fd10da4f-5094-48ba-af7e-e50482bb4846.pdf",
+          "filename": "Exam_Paper_6.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/87053292-d46f-414c-bd0b-8fef9fb71195.pdf",
+          "filename": "Marking_Scheme_9.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/a25c0410-e57e-4a30-9350-3e5f69de00f2.pdf",
+          "filename": "Exam_Paper_6.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/ef017efb-cad1-4fd4-b077-fafdb001dff5.pdf",
+          "filename": "Marking_Scheme_10.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/0b5ba95f-80fa-4110-b8dd-c4c8d3af36e5.pdf",
+          "filename": "Exam_Paper_7.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/11a88a58-6a25-4723-b597-2aab98c0af12.pdf",
+          "filename": "Marking_Scheme_11.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/2e7ace0b-3947-42ac-8bb9-c7ef82c92f9f.pdf",
+          "filename": "Exam_Paper_7.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/91328941-acea-4edf-b8cd-07f4c173f0f9.pdf",
+          "filename": "Marking_Scheme_3.pdf",
+          "paperType": "paper2",
+          "docType": "marking",
+          "folder": "Paper2/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/159036ca-a4e6-4828-91a0-4ae18baeb83d.pdf",
+          "filename": "Exam_Paper_8.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/43b2ccfd-40ad-44b4-991e-86e58b6e824d.pdf",
+          "filename": "Marking_Scheme_12.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/43517030-7336-42f9-9071-3c9e19a14071.pdf",
+          "filename": "Exam_Paper_8.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/8abc2bc8-c9ef-460e-b0f5-31eb53c4671e.pdf",
+          "filename": "Marking_Scheme_4.pdf",
+          "paperType": "paper2",
+          "docType": "marking",
+          "folder": "Paper2/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/5b425dd5-aee2-44f0-bcbb-24f79d11851f.pdf",
+          "filename": "Exam_Paper_9.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/caf6f87d-79f6-44ad-96f1-eb08d030b2ba.pdf",
+          "filename": "Marking_Scheme_13.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/117f4e84-2a81-47d0-bb55-c6fcff087b52.pdf",
+          "filename": "Exam_Paper_10.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/8047696a-f7be-4391-a6f7-34e9fe916cc1.pdf",
+          "filename": "Exam_Paper_9.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/854e0660-8f00-453b-8fa6-53acc472b27f.pdf",
+          "filename": "Marking_Scheme_14.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/370e555a-9382-4ae0-a455-6996913c6b0c.pdf",
+          "filename": "Exam_Paper_11.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/8acb975e-bea4-4999-a6f8-1755b9ef0735.pdf",
+          "filename": "Marking_Scheme_15.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/907481a7-7fdc-43f1-9c35-0e3430d17776.pdf",
+          "filename": "Exam_Paper_10.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/0d14674e-86dc-4d78-97b2-3dd4192f4392.pdf",
+          "filename": "Marking_Scheme_16.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/6cdce190-1887-4a23-b11b-03badb7f2b8b.pdf",
+          "filename": "Exam_Paper_12.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/f46f39d6-f893-463a-8f63-782ef10cae9d.pdf",
+          "filename": "Marking_Scheme_17.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/e1da38e1-efed-499c-97ce-f91186dff6d9.pdf",
+          "filename": "Exam_Paper_11.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/a5e5b273-66a0-4276-9c62-89289b766a71.pdf",
+          "filename": "Marking_Scheme_18.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/a8f42d90-7ec5-42b7-a314-368c40fa4888.pdf",
+          "filename": "Exam_Paper_13.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/366d4564-76df-4560-8fe3-7d0a441d5b9b.pdf",
+          "filename": "Marking_Scheme_19.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/84934dd5-6214-43cb-9c49-a4e1bc649739.pdf",
+          "filename": "Exam_Paper_12.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/dbbff4dd-eca8-4c66-9f39-73ef55904714.pdf",
+          "filename": "Marking_Scheme_20.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/b5178aaa-03e2-4600-9b59-e25aa3446d2b.pdf",
+          "filename": "Exam_Paper_14.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/fc0f977f-63cf-4af8-b51c-d795383b0bf9.pdf",
+          "filename": "Marking_Scheme_21.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/3b6771b3-5c44-4730-99a1-d1e0cf1c57fb.pdf",
+          "filename": "Exam_Paper_13.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/6fc7a89b-7afe-4fc2-b286-8b6590f1b221.pdf",
+          "filename": "Marking_Scheme_22.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/714e103d-92b6-49dc-9b4a-ec35fe8204b3.pdf",
+          "filename": "Exam_Paper_15.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/572cae21-ef24-4101-a51f-f498db7e9f69.pdf",
+          "filename": "Marking_Scheme_23.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/39d18c5b-3710-460f-bea3-69bb30103fca.pdf",
+          "filename": "Exam_Paper_16.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/26b6bc1d-8f91-46b1-b2d5-5f04213b5a95.pdf",
+          "filename": "Marking_Scheme_24.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/61f89510-3c75-4a53-ad32-5512974282a7.pdf",
+          "filename": "Exam_Paper_14.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/8bb5d43c-2b3f-4ae8-98cd-daed5c113d33.pdf",
+          "filename": "Marking_Scheme_25.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/284b41c6-f972-4f64-b140-9b2aea93bebb.pdf",
+          "filename": "Exam_Paper_17.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/fda34384-c138-43dc-b4c8-29c4fb1468f1.pdf",
+          "filename": "Marking_Scheme_26.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/68915a07-2657-4961-ad3f-52ddb6f4e471.pdf",
+          "filename": "Exam_Paper_15.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/e720ae29-2527-4de0-be23-bb4fe9f01ee9.pdf",
+          "filename": "Marking_Scheme_27.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/e65b46a3-472f-4788-85b0-b9d7c29d85a9.pdf",
+          "filename": "Exam_Paper_16.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/ee205f33-d696-4f5c-ad15-4d07aefeb035.pdf",
+          "filename": "Marking_Scheme_28.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/535ece27-c470-4a06-9174-aa2300073833.pdf",
+          "filename": "Exam_Paper_18.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/5a4d9c7c-ef40-490c-8247-504e57d92baa.pdf",
+          "filename": "Marking_Scheme_29.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/f0438dbe-ee78-423c-a1bf-8dc9366e1f96.pdf",
+          "filename": "Exam_Paper_19.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/23bdde33-45e7-43e1-9ad5-145ed22735ac.pdf",
+          "filename": "Marking_Scheme_30.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/718dc909-53e1-4259-988e-50865daed743.pdf",
+          "filename": "Exam_Paper_17.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/a5e7983d-6cf5-4237-a0b4-86f2a17f4523.pdf",
+          "filename": "Marking_Scheme_31.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/8b12220b-3fd4-4291-a4e3-a34c41ba7084.pdf",
+          "filename": "Exam_Paper_18.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/3eabcf5b-8522-4c4d-9ccd-ae4adc0d7dd6.pdf",
+          "filename": "Marking_Scheme_32.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/999e653c-59a5-47c0-9141-4fad90f0db82.pdf",
+          "filename": "Exam_Paper_20.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/7e404d97-d840-4656-96f7-f4d9d9e8ba4d.pdf",
+          "filename": "Marking_Scheme_33.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/aa7083eb-bd84-4c7f-8435-661efc04b1b5.pdf",
+          "filename": "Exam_Paper_19.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/fc0af73f-9a97-4b0e-af19-039096749966.pdf",
+          "filename": "Marking_Scheme_34.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/79c4fb12-b09c-4769-b2dc-320bdf32cc38.pdf",
+          "filename": "Exam_Paper_21.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/9205b7e2-3fd6-4de3-be36-7eca0f821719.pdf",
+          "filename": "Marking_Scheme_35.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/2f102620-d63f-4b3b-904b-ccba12566b36.pdf",
+          "filename": "Exam_Paper_22.pdf",
+          "paperType": "paper1",
+          "docType": "exam",
+          "folder": "Paper1/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/5e8cb8bb-41ea-4303-a9a6-8ec4e69f0d0d.pdf",
+          "filename": "Marking_Scheme_36.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/6440a49c-bf5e-4cf9-945a-e2e3613075a1.pdf",
+          "filename": "Exam_Paper_20.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/50e79139-9e46-4217-9a03-e5d5f0b72b12.pdf",
+          "filename": "Marking_Scheme_37.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/7dfdce48-19f3-4ff8-8a24-eced44f9bda5.pdf",
+          "filename": "Exam_Paper_21.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/7c7cbb62-d6d7-4dbc-804a-b0bfd169b9a2.pdf",
+          "filename": "Marking_Scheme_38.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/275711b7-683b-4b24-acd3-4193d75774c5.pdf",
+          "filename": "Exam_Paper_22.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/358d187c-b09e-4f53-88a6-5c2924e726f7.pdf",
+          "filename": "Marking_Scheme_39.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/db562673-a8b8-4aa1-95ce-940c2e2d2727.pdf",
+          "filename": "Exam_Paper_23.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/495a2aee-546e-4bb2-8dfb-847c5566e59b.pdf",
+          "filename": "Marking_Scheme_40.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/papers/747aecb6-46a3-42fe-b05e-d838a5f91180.pdf",
+          "filename": "Exam_Paper_24.pdf",
+          "paperType": "paper2",
+          "docType": "exam",
+          "folder": "Paper2/Exam"
+        },
+        {
+          "href": "https://blob-static.studyclix.ie/cms/media/markingSchemes/340d71b1-662f-4974-97ad-b058b18ec95f.pdf",
+          "filename": "Marking_Scheme_41.pdf",
+          "paperType": "paper1",
+          "docType": "marking",
+          "folder": "Paper1/MarkingScheme"
+        }
+      ],
+      "failed": []
+    }
+  }
+}

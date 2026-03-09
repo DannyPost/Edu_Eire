@@ -1,0 +1,17 @@
+{
+  "name": "studybot-data-scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "generate-poetry": "node generate-poetry-data.mjs",
+    "generate-single-text": "node generate-single-text-data.mjs",
+    "fetch-papers": "node fetch-lc-papers.mjs",
+    "upload-papers": "node upload-lc-papers.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "pdf-parse": "^2.4.5",
+    "puppeteer": "^23.11.1"
+  }
+}

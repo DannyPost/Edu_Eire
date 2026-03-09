@@ -1,34 +1,19 @@
-import '../../backend/backend.dart';
+// lib/studybot/data/repositories/grade_repository_impl.dart
+import '../../backend/common/api_paths.dart';
+import '../../backend/grade/grade_models.dart';
 import '../../services/api_client.dart';
-import '../../domain/entities/grade_result.dart';
-import '../../domain/repositories/grade_repository.dart';
 
-class GradeRepositoryImpl implements GradeRepository {
-  final ApiClient _api;
+class GradeRepository {
+  GradeRepository(this._client);
+  final ApiClient _client;
 
-  GradeRepositoryImpl(this._api);
-
-  @override
-  Future<GradeResult> gradeAnswer({
-    required String answer,
-    required Map<String, dynamic> meta,
-  }) async {
-    final req = GradeRequest(answer: answer, meta: meta);
-    final json = await _api.postJson(ApiPaths.grade, req.toJson());
-    final resp = GradeResponse.fromJson(json);
-    return GradeResult(score: resp.score, bullets: resp.bullets, meta: resp.meta);
-  }
-
-    @override
-  Future<String> getExemplar({
+  Future<GradeResponse> gradeAnswer({
     required String question,
+    required String answer,
     Map<String, dynamic>? meta,
   }) async {
-    // BASELINE: non-streaming JSON response -> { "text": "..." }
-    final req = ExemplarRequest(question: question, meta: meta);
-    final json = await _api.postJson(ApiPaths.exemplar, req.toJson());
-    final resp = ExemplarResponse.fromJson(json);
-    return resp.text;
+    final req = GradeRequest(question: question, answer: answer, meta: meta);
+    final json = await _client.postJson(ApiPaths.grade, body: req.toJson());
+    return GradeResponse.fromJson(json);
   }
-
 }

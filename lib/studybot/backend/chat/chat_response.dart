@@ -1,20 +1,15 @@
+// lib/studybot/backend/chat/chat_response.dart
+import 'chat_models.dart';
+
 class ChatResponse {
-  /// grade | exemplar | advice | prediction | paper | fallback
-  final String type;
-  final Map<String, dynamic> payload;
-  final double? confidence;
+  final ChatRoute route;
+  final String? text; // some router variants include a text
+  ChatResponse({required this.route, this.text});
 
-  const ChatResponse({
-    required this.type,
-    required this.payload,
-    this.confidence,
-  });
-
-  factory ChatResponse.fromJson(Map<String, dynamic> json) => ChatResponse(
-        type: json['type'] as String,
-        payload: (json['payload'] as Map).cast<String, dynamic>(),
-        confidence: (json['confidence'] == null)
-            ? null
-            : (json['confidence'] as num).toDouble(),
-      );
+  factory ChatResponse.fromJson(Map<String, dynamic> json) {
+    return ChatResponse(
+      route: ChatRoute.fromJson(json),
+      text: json['text'] as String?,
+    );
+  }
 }

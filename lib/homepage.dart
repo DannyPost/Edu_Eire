@@ -1,3 +1,4 @@
+// lib/homepage.dart
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,11 +14,9 @@ import 'hear_calculator/hear_calculator.dart';
 import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
-import 'studybot/app/study_bot_screen.dart';
+import 'studybot/ui/studybot_screen.dart';
 import 'academic_support/academic_support_page.dart';
-
-import '../help_page/help_main.dart';
-import '../help_page/help/help_page.dart';
+import 'help_page/help/help_page.dart';
 
 class HomePage extends StatefulWidget {
   final bool isDarkMode;
@@ -78,7 +77,9 @@ class _HomePageState extends State<HomePage> {
     ),
     const ChatScreen(),
     const StudentDealsPage(),
-    AdminDashboardPage(adminEmail: FirebaseAuth.instance.currentUser?.email ?? 'unknown'),
+    AdminDashboardPage(
+      adminEmail: FirebaseAuth.instance.currentUser?.email ?? 'unknown',
+    ),
   ];
 
   late final List<String> _bizLabels = const [
@@ -86,21 +87,21 @@ class _HomePageState extends State<HomePage> {
   ];
 
   late final List<Widget> _stdPages = [
-    const EducationNewsFeed(),
-    SettingsPage(
+    const EducationNewsFeed(), // 0
+    SettingsPage(               // 1
       toggleTheme: _setDark,
       isDarkMode: _dark,
       toggleDyslexicFont: _setFont,
       isDyslexicFont: _dys,
     ),
-    const ChatScreen(),
-    const StudentDealsPage(),
-    GrantCalculatorPage(),
-    HearCalculatorPage(),
-    DareCalculatorPage(),
-    const CalendarPage(),
-    const StudyBotScreen(),
-    const AcademicSupportPage(), // index 9
+    const ChatScreen(),         // 2
+    const StudentDealsPage(),   // 3
+    GrantCalculatorPage(),      // 4
+    HearCalculatorPage(),       // 5
+    DareCalculatorPage(),       // 6
+    const CalendarPage(),       // 7
+    const StudyBotScreen(),     // 8
+    const AcademicSupportPage() // 9
   ];
 
   /* ------------------------- UI ------------------------- */
@@ -128,7 +129,10 @@ class _HomePageState extends State<HomePage> {
   /* ---------------- Business drawer ---------------- */
   Drawer _bizDrawer(BuildContext ctx) => Drawer(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topRight: Radius.circular(28), bottomRight: Radius.circular(28)),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(28),
+            bottomRight: Radius.circular(28),
+          ),
         ),
         backgroundColor: Colors.white,
         child: ListView(
@@ -147,7 +151,8 @@ class _HomePageState extends State<HomePage> {
             for (int i = 0; i < _bizLabels.length; i++)
               ListTile(
                 leading: _bizIcon(i),
-                title: Text(_bizLabels[i], style: const TextStyle(fontWeight: FontWeight.w500)),
+                title: Text(_bizLabels[i],
+                    style: const TextStyle(fontWeight: FontWeight.w500)),
                 selected: _idx == i,
                 selectedTileColor: Colors.grey[200],
                 onTap: () {
@@ -183,7 +188,8 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(color: _brand),
               child: const Align(
                 alignment: Alignment.bottomLeft,
-                child: Text('Edu Éire Menu', style: TextStyle(color: Colors.white, fontSize: 24)),
+                child: Text('Edu Éire Menu',
+                    style: TextStyle(color: Colors.white, fontSize: 24)),
               ),
             ),
             _drawerItem(ctx, Icons.home, 'Home', 0),
@@ -196,33 +202,43 @@ class _HomePageState extends State<HomePage> {
             _drawerItem(ctx, Icons.calendar_today, 'School Calendar', 7),
             _drawerItem(ctx, Icons.school, 'Study-Bot', 8),
 
-            // CAO Search opens a new route (keep as push)
+            // CAO Search opens a new route (push)
             ListTile(
               leading: const Icon(Icons.search),
               title: const Text('CAO Search'),
               onTap: () {
                 Navigator.pop(ctx);
-                Navigator.push(ctx, MaterialPageRoute(builder: (_) => CAOSearchPage()));
+                Navigator.push(
+                  ctx,
+                  MaterialPageRoute(builder: (_) => CAOSearchPage()),
+                );
               },
             ),
 
-            // ✅ NEW: Academic Support is its own menu item (index 9 in the stack)
+            // Academic Support (index 9 in the stack)
             _drawerItem(ctx, Icons.menu_book, 'Academic Support', 9),
 
-            // Help & Support remains separate (pushes your HelpPage route)
+            // Help & Support (pushes a separate page)
             ListTile(
               leading: Icon(Icons.help_outline, color: _brand),
-              title: const Text('Help & Support', style: TextStyle(fontWeight: FontWeight.w600)),
+              title: const Text(
+                'Help & Support',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               onTap: () {
                 Navigator.pop(ctx);
-                Navigator.push(ctx, MaterialPageRoute(builder: (_) => HelpPage()));
+                Navigator.push(
+                  ctx,
+                  MaterialPageRoute(builder: (_) => HelpPage()),
+                );
               },
             ),
           ],
         ),
       );
 
-  ListTile _drawerItem(BuildContext ctx, IconData icon, String title, int index) => ListTile(
+  ListTile _drawerItem(BuildContext ctx, IconData icon, String title, int index) =>
+      ListTile(
         leading: Icon(icon, color: index == _idx ? _brand : null),
         title: Text(title),
         selected: _idx == index,
