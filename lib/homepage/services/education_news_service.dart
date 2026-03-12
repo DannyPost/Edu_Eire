@@ -13,6 +13,7 @@ class EducationNewsService {
   String get _newsDataKey => dotenv.env['NEWSDATA_API_KEY'] ?? '';
   String get _openAiKey => dotenv.env['OPENAI_API_KEY'] ?? '';
 
+
   Future<List<NewsArticle>> fetchSummarised({int maxItems = 20}) async {
   final articles = await _fetchNewsData();
   final deduped = _dedupeByUrl(articles).toList();

@@ -13,6 +13,7 @@ import 'hear_calculator/hear_calculator.dart';
 import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
+import 'academic_support/academic_support_page.dart';
 
 import '../help_page/help/help_page.dart';
 
@@ -96,6 +97,7 @@ class _HomePageState extends State<HomePage> {
     HearCalculatorPage(),
     DareCalculatorPage(),
     const CalendarPage(),
+    const AcademicSupportPage(),
   ];
 
   /* ------------------------- UI ------------------------- */
@@ -189,6 +191,7 @@ class _HomePageState extends State<HomePage> {
             _drawerItem(ctx, Icons.school, 'HEAR Calculator', 5),
             _drawerItem(ctx, Icons.accessibility_new, 'DARE Calculator', 6),
             _drawerItem(ctx, Icons.calendar_today, 'School Calendar', 7),
+            _drawerItem(ctx, Icons.support_agent, 'Academic Support', 8),
             ListTile(
               leading: const Icon(Icons.search),
               title: const Text('CAO Search'),

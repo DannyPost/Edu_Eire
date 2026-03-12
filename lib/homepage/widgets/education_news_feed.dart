@@ -156,7 +156,7 @@ class _ArticleCardState extends State<_ArticleCard> {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(16)),
               child: Image.network(
-                widget.article.imageUrl,
+                _proxiedImage(widget.article.imageUrl),
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 200,
@@ -281,6 +281,12 @@ class _ArticleCardState extends State<_ArticleCard> {
         ],
       ),
     );
+  }
+
+  String _proxiedImage(String url) {
+    if (url.isEmpty) return '';
+    // Only proxy on web
+    return 'https://corsproxy.io/?${Uri.encodeComponent(url)}';
   }
 
   Future<void> _launchUrl(String url) async {

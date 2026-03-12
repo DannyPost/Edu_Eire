@@ -18,15 +18,13 @@ import 'calendar/notification_service.dart';
 // 👇 NEW: organizer dashboard page (the real one)
 import './auth/organiser_auth/organiser_dashboard_page.dart';
 
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
    ────────────────────────────────────────────────────────────── */
-const kPrimaryColor   = Color(0xFF3AB6FF); // bright blue
-const kSecondaryColor = Colors.white;      // accent / onPrimary
+const kPrimaryColor = Color(0xFF3AB6FF); // bright blue
+const kSecondaryColor = Colors.white; // accent / onPrimary
 
 /* ──────────────────────────────────────────────────────────────
    Entry point
@@ -35,8 +33,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // LOAD ENV FILE FIRST
-  //await dotenv.load(fileName: ".env");
+  try {
+    await dotenv.load(fileName: "app.env");
+  } catch (e) {
+    print('[dotenv] .env file not found, continuing without it: $e');
+  }
 
+  try {
+  await dotenv.load(fileName: "app.env");
+  } catch (e) {
+    print('[dotenv] .env file not found: $e');
+  }
 
 
   await Firebase.initializeApp(
@@ -48,15 +55,14 @@ Future<void> main() async {
 
   // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
-  final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
+  final isDarkMode = prefs.getBool('isDarkMode') ?? false;
   final isDyslexicFont = prefs.getBool('isDyslexicFont') ?? false;
 
   runApp(MyApp(
-    isDarkMode:     isDarkMode,
+    isDarkMode: isDarkMode,
     isDyslexicFont: isDyslexicFont,
   ));
 }
-
 
 /* ──────────────────────────────────────────────────────────────
    Root widget – holds user preferences (theme + font)
@@ -65,7 +71,8 @@ class MyApp extends StatefulWidget {
   final bool isDarkMode;
   final bool isDyslexicFont;
 
-  const MyApp({super.key, required this.isDarkMode, required this.isDyslexicFont});
+  const MyApp(
+      {super.key, required this.isDarkMode, required this.isDyslexicFont});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -78,7 +85,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _isDarkMode     = widget.isDarkMode;
+    _isDarkMode = widget.isDarkMode;
     _isDyslexicFont = widget.isDyslexicFont;
   }
 
@@ -110,8 +117,10 @@ class _MyAppState extends State<MyApp> {
           ),
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kSecondaryColor,
-          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+          appBarTheme: const AppBarTheme(
+              backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: kPrimaryColor),
         ),
         darkTheme: ThemeData(
           useMaterial3: true,
@@ -125,7 +134,8 @@ class _MyAppState extends State<MyApp> {
           ),
           primaryColor: kPrimaryColor,
           appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: kPrimaryColor),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
         home: AuthGate(
@@ -160,7 +170,8 @@ class AuthGate extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.waiting) {
-          return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          return const Scaffold(
+              body: Center(child: CircularProgressIndicator()));
         }
 
         final user = snap.data;
@@ -170,7 +181,8 @@ class AuthGate extends StatelessWidget {
           future: _determineRole(user),
           builder: (context, roleSnap) {
             if (roleSnap.connectionState == ConnectionState.waiting) {
-              return const Scaffold(body: Center(child: CircularProgressIndicator()));
+              return const Scaffold(
+                  body: Center(child: CircularProgressIndicator()));
             }
             switch (roleSnap.data) {
               case _RoleState.organizer:
@@ -234,11 +246,15 @@ class AuthGate extends StatelessWidget {
     }
 
     final stuDoc = await FirebaseFirestore.instance
-        .collection('students').doc(user.uid).get();
+        .collection('students')
+        .doc(user.uid)
+        .get();
     if (stuDoc.exists) return _RoleState.student;
 
     final bizDoc = await FirebaseFirestore.instance
-        .collection('businesses').doc(user.uid).get();
+        .collection('businesses')
+        .doc(user.uid)
+        .get();
     if (bizDoc.exists) {
       final approved = bizDoc.data()?['approved'] == true;
       return approved ? _RoleState.business : _RoleState.businessPending;
@@ -249,7 +265,12 @@ class AuthGate extends StatelessWidget {
 }
 
 enum _RoleState {
-  student, business, businessPending, organizer, organizerPending, unknown
+  student,
+  business,
+  businessPending,
+  organizer,
+  organizerPending,
+  unknown
 }
 
 /* ──────────────────────────────────────────────────────────────
