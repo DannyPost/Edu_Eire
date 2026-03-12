@@ -10,43 +10,54 @@ class EducationNewsService {
   EducationNewsService._();
   static final EducationNewsService instance = EducationNewsService._();
 
-  String get _newsApiKey => dotenv.env['NEWSAPI_API_KEY'] ?? '';
+  String get _newsDataKey => dotenv.env['NEWSDATA_API_KEY'] ?? '';
   String get _openAiKey => dotenv.env['OPENAI_API_KEY'] ?? '';
 
+
   Future<List<NewsArticle>> fetchSummarised({int maxItems = 20}) async {
-    print('[NewsService] Keys => NewsAPI:${_newsApiKey.isNotEmpty ? _newsApiKey.substring(0, 4) : "null"} OpenAI:${_openAiKey.isNotEmpty ? "loaded" : "null"}');
+  final articles = await _fetchNewsData();
+  final deduped = _dedupeByUrl(articles).toList();
 
-    try {
-      final articles = await _fetchNewsAPI();
-      final deduped = _dedupeByUrl(articles).toList();
-
-      const batchSize = 3;
-      final summarised = <NewsArticle>[];
-      for (var i = 0; i < deduped.length; i += batchSize) {
-        final batch = deduped.skip(i).take(batchSize);
-        final batchResults = await Future.wait(batch.map(_summariseWithOpenAI));
-        summarised.addAll(batchResults.whereType<NewsArticle>());
-        await Future.delayed(const Duration(milliseconds: 1200));
-      }
-
-      return summarised.take(maxItems).toList();
-    } catch (e, st) {
-      print('[NewsService] ERROR => $e');
-      print(st);
-      rethrow;
-    }
+  // 🔑 If OpenAI is not configured, return raw articles
+  if (_openAiKey.isEmpty) {
+    print('[NewsService] OpenAI key missing — returning raw articles');
+    return deduped.take(maxItems).toList();
   }
 
-  Future<List<NewsArticle>> _fetchNewsAPI() async {
-    if (_newsApiKey.isEmpty) return [];
+  const batchSize = 3;
+  final summarised = <NewsArticle>[];
 
-    final uri = Uri.https('newsapi.org', '/v2/everything', {
-      'q': 'education',
-      'language': 'en',
-      'apiKey': _newsApiKey,
-      'pageSize': '50',
-      'domains': 'irishtimes.com,rte.ie,independent.ie,irishexaminer.com,thejournal.ie',
-    });
+  for (var i = 0; i < deduped.length; i += batchSize) {
+    final batch = deduped.skip(i).take(batchSize);
+    final results = await Future.wait(batch.map(_summariseWithOpenAI));
+    summarised.addAll(results.whereType<NewsArticle>());
+    await Future.delayed(const Duration(milliseconds: 1200));
+  }
+
+  // 🛟 Fallback if everything was filtered out
+  if (summarised.isEmpty) {
+    print('[NewsService] All articles filtered — showing raw feed');
+    return deduped.take(maxItems).toList();
+  }
+
+  return summarised.take(maxItems).toList();
+}
+
+
+  /// ✅ newsdata.io fetch
+  Future<List<NewsArticle>> _fetchNewsData() async {
+    if (_newsDataKey.isEmpty) return [];
+
+    final uri = Uri.https(
+      'newsdata.io',
+      '/api/1/latest',
+      {
+        'apikey': _newsDataKey,
+        'country': 'ie',
+        'language': 'en',
+        'category': 'education',
+      },
+    );
 
     print('[NewsService] Fetching Irish education news: $uri');
 
@@ -54,28 +65,28 @@ class EducationNewsService {
     if (res.statusCode != 200) return [];
 
     final json = jsonDecode(res.body) as Map<String, dynamic>;
-    return (json['articles'] as List<dynamic>).map((e) {
-      final m = e as Map<String, dynamic>;
-      return NewsArticle(
-        title: m['title'] ?? '',
-        url: m['url'] ?? '',
-        source: m['source']?['name'] ?? 'NewsAPI',
-        imageUrl: m['urlToImage'] ?? '',
-        publishedAt: DateTime.tryParse(m['publishedAt'] ?? '') ?? DateTime.now(),
-        snippet: m['description'] ?? '',
-      );
-    }).toList();
+    final results = json['results'] as List<dynamic>? ?? [];
+
+    return results
+        .map((e) => NewsArticle.fromNewsData(e as Map<String, dynamic>))
+        .where((a) => a.title.isNotEmpty && a.url.isNotEmpty)
+        .toList();
   }
 
   Iterable<NewsArticle> _dedupeByUrl(List<NewsArticle> items) {
     final seen = <String, NewsArticle>{};
     for (final a in items) {
-      if (!seen.containsKey(a.url)) seen[a.url] = a;
+      if (!seen.containsKey(a.url)) {
+        seen[a.url] = a;
+      }
     }
-    return seen.values
-        .sortedByCompare((a) => a.publishedAt, (a, b) => b.compareTo(a));
+    return seen.values.sortedByCompare(
+      (a) => a.publishedAt,
+      (a, b) => b.compareTo(a),
+    );
   }
 
+  /// ✅ unchanged OpenAI summarisation
   Future<NewsArticle?> _summariseWithOpenAI(NewsArticle article) async {
     if (_openAiKey.isEmpty || article.snippet.isEmpty) return null;
 
@@ -83,19 +94,13 @@ class EducationNewsService {
 Please carefully read the following Irish education news article.
 
 Determine if it is specifically relevant to:
-✅ Irish secondary schools (e.g., curriculum, exams, student life, buildings, funding, policies)
-✅ Irish third-level (university/college) education (e.g., courses, student grants, admissions, fees, policies)
+✅ Irish secondary schools
+✅ Irish third-level education
 
-If it is **NOT** relevant to Irish secondary or third-level education, reply only with:
+If it is NOT relevant, reply only with:
 NOT RELEVANT
 
-If it **is** relevant, write a detailed, clear summary in around 150 words. The summary should include:
-✅ The main points of the article
-✅ Any background or context that helps understand it
-✅ Why this news matters to Irish secondary or third-level students
-✅ Write in **short, clear sentences** to make it easy to read and understand
-
-Use plain, student-friendly language. Do not shorten or skip details.
+If it IS relevant, write a clear ~150-word summary in student-friendly language.
 
 TITLE: ${article.title}
 SNIPPET: ${article.snippet}
@@ -106,7 +111,7 @@ SNIPPET: ${article.snippet}
       'messages': [
         {
           'role': 'system',
-          'content': 'You are an Irish education news analyst. Provide concise and polite answers for students.',
+          'content': 'You are an Irish education news analyst.',
         },
         {
           'role': 'user',
@@ -127,11 +132,12 @@ SNIPPET: ${article.snippet}
 
     if (res.statusCode == 200) {
       final data = jsonDecode(res.body) as Map<String, dynamic>;
-      final content = ((data['choices'] as List<dynamic>).first)['message']['content'] ?? '';
-      if (content.contains('NOT RELEVANT')) {
-        return null;
-      }
-      return article.copyWith(summary: content, whyMatters: null);
+      final content =
+          data['choices'][0]['message']['content'] as String? ?? '';
+
+      if (content.contains('NOT RELEVANT')) return null;
+
+      return article.copyWith(summary: content);
     }
     return null;
   }

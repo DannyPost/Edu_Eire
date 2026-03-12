@@ -11,10 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   icalendar_parser: ^2.0.1
-  file_picker: ^6.1.1
+  file_picker: ^8.1.2
   permission_handler: ^11.3.1
 
-  flutter_local_notifications: ^16.3.1
+  flutter_local_notifications: ^18.0.1
   timezone: ^0.9.2
 
   # UI & Icons
@@ -48,22 +48,21 @@ dependencies:
   # Misc
   url_launcher: ^6.2.3
   table_calendar: ^3.0.9
-
-  uuid: ^4.5.1
-
+  file_saver: ^0.3.1
+  share_plus: ^10.1.0
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: 5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
   generate: true
 
   assets:
-    - chatbot_api.env
+    - assets/app.env
     - assets/fonts/
     - assets/chatbot/
     - assets/chatbot/edu_eire_logo.png
@@ -86,3 +85,5 @@ flutter:
         - asset: assets/calendar/fonts/NotoSans-VariableFont_wdth,wght.ttf
         - asset: assets/calendar/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf
           style: italic
+
+
