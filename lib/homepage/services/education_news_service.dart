@@ -111,7 +111,8 @@ SNIPPET: ${article.snippet}
       'messages': [
         {
           'role': 'system',
-          'content': 'You are an Irish education news analyst.',
+          'content':
+              'You are an Irish education news analyst. Use British English spelling and terminology suitable for Irish secondary students.',
         },
         {
           'role': 'user',

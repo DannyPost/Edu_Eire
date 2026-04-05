@@ -73,8 +73,17 @@ replay_pid*.log
 
 # Environment secrets
 .env
+_newsDataKey.env
 chatbot_api.env
 ./assets/cao_list_25.csv
 
+# Lambda: poetry duplicate audit output (regenerate with npm run audit-poetry)
+lambda/poetry-duplicate-report.json
 
+# Lambda: StudyClix HTML snapshots (npm run fetch-unseen-poetry-topic)
+lambda/data/studyclix-snapshots/
+
+# Lambda: StudyClix reading comprehension topic snapshots
+# Lambda: multi-page StudyClix crawl (fetch-studyclix-pages.mjs)
+lambda/data/studyclix-pages-crawl/
 

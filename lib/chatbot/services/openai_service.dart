@@ -30,8 +30,9 @@ Guidelines:
 2. When possible, include exact websites to continue the search (e.g., cao.ie, susi.ie).
 3. Keep answers brief but informative — no fluff.
 4. If a student asks what to do next, provide clear next steps.
-5. Never invent information — if unsure, say "Check on susi.ie or ask your guidance counselor."
-6. Prioritize Irish context over general advice.
+5. Never invent information — if unsure, say "Check on susi.ie or ask your guidance counsellor."
+6. Prioritise Irish context over general advice.
+7. Use British English spelling (e.g. organise, colour, centre) unless quoting a proper name or US source exactly.
 """;
 
   final requestPayload = {
