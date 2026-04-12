@@ -141,9 +141,8 @@ class _ArticleCardState extends State<_ArticleCard> {
     final textTheme = Theme.of(context).textTheme;
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-    final cardColor = isDarkMode
-        ? colorScheme.surface
-        : Colors.lightBlue.shade100;
+    final cardColor =
+        isDarkMode ? colorScheme.surface : Colors.lightBlue.shade100;
 
     return Card(
       elevation: 3,
@@ -154,12 +153,34 @@ class _ArticleCardState extends State<_ArticleCard> {
         children: [
           if (widget.article.imageUrl.isNotEmpty)
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(16)),
               child: Image.network(
-                widget.article.imageUrl,
+                _proxiedImage(widget.article.imageUrl),
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 200,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.grey.shade300,
+                    alignment: Alignment.center,
+                    child: const Icon(
+                      Icons.image_not_supported,
+                      size: 48,
+                      color: Colors.grey,
+                    ),
+                  );
+                },
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: const CircularProgressIndicator(),
+                  );
+                },
               ),
             ),
           Padding(
@@ -194,7 +215,8 @@ class _ArticleCardState extends State<_ArticleCard> {
                     IconButton(
                       icon: Icon(
                         widget.isLiked ? Icons.favorite : Icons.favorite_border,
-                        color: widget.isLiked ? Colors.red : colorScheme.primary,
+                        color:
+                            widget.isLiked ? Colors.red : colorScheme.primary,
                       ),
                       onPressed: () => widget.onLike(widget.article.url),
                     ),
@@ -259,6 +281,12 @@ class _ArticleCardState extends State<_ArticleCard> {
         ],
       ),
     );
+  }
+
+  String _proxiedImage(String url) {
+    if (url.isEmpty) return '';
+    // Only proxy on web
+    return 'https://corsproxy.io/?${Uri.encodeComponent(url)}';
   }
 
   Future<void> _launchUrl(String url) async {

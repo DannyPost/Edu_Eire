@@ -2,23 +2,35 @@ class NewsArticle {
   final String title;
   final String url;
   final String source;
-  final String imageUrl; // ADD THIS
+  final String imageUrl;
   final DateTime publishedAt;
   final String snippet;
 
-  final String? summary;      // Optional: for summarised content
-  final String? whyMatters;   // Optional: why it matters
+  final String? summary;
+  final String? whyMatters;
 
   NewsArticle({
     required this.title,
     required this.url,
     required this.source,
-    required this.imageUrl, // ADD THIS
+    required this.imageUrl,
     required this.publishedAt,
     required this.snippet,
     this.summary,
     this.whyMatters,
   });
+
+  /// ✅ NEW: factory for newsdata.io JSON
+  factory NewsArticle.fromNewsData(Map<String, dynamic> json) {
+    return NewsArticle(
+      title: json['title'] ?? '',
+      url: json['link'] ?? '',
+      source: json['source_name'] ?? 'NewsData',
+      imageUrl: json['image_url'] ?? '',
+      publishedAt: DateTime.tryParse(json['pubDate'] ?? '') ?? DateTime.now(),
+      snippet: json['description'] ?? '',
+    );
+  }
 
   String get formattedDate =>
       '${publishedAt.day}/${publishedAt.month}/${publishedAt.year}';
@@ -31,7 +43,7 @@ class NewsArticle {
       title: title,
       url: url,
       source: source,
-      imageUrl: imageUrl, // ADD THIS
+      imageUrl: imageUrl,
       publishedAt: publishedAt,
       snippet: snippet,
       summary: summary ?? this.summary,

@@ -7,44 +7,59 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
-// ✅ NEW: Provider + StudyBot DI / Notifiers
-import 'package:provider/provider.dart';
-import 'studybot/di.dart';
-import 'studybot/state/chat/chat_notifier.dart';
-import 'studybot/state/grade/grade_notifier.dart';
-import 'studybot/state/exemplar/exemplar_notifier.dart';
-
 // Pages
 import 'homepage.dart';
 import '../auth/student_auth_page.dart';
 import '../auth/business_pending_page.dart';
 
+// Calendar notifications
 import 'calendar/notification_service.dart';
 
+// 👇 NEW: organizer dashboard page (the real one)
+import './auth/organiser_auth/organiser_dashboard_page.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /* ──────────────────────────────────────────────────────────────
    Global brand colours
    ────────────────────────────────────────────────────────────── */
-const kPrimaryColor   = Color(0xFF3AB6FF); // bright blue
-const kSecondaryColor = Colors.white;      // accent / onPrimary
+const kPrimaryColor = Color(0xFF3AB6FF); // bright blue
+const kSecondaryColor = Colors.white; // accent / onPrimary
 
 /* ──────────────────────────────────────────────────────────────
    Entry point
    ────────────────────────────────────────────────────────────── */
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-    // 🆕 Initialize notification service
+  // LOAD ENV FILE FIRST
+  try {
+    await dotenv.load(fileName: "app.env");
+  } catch (e) {
+    print('[dotenv] .env file not found, continuing without it: $e');
+  }
+
+  try {
+  await dotenv.load(fileName: "app.env");
+  } catch (e) {
+    print('[dotenv] .env file not found: $e');
+  }
+
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // 🆕 Initialize notification service
   await NotificationService.init();
-  
+
   // Local prefs -------------------------------------------------------
   final prefs = await SharedPreferences.getInstance();
-  final isDarkMode     = prefs.getBool('isDarkMode')     ?? false;
+  final isDarkMode = prefs.getBool('isDarkMode') ?? false;
   final isDyslexicFont = prefs.getBool('isDyslexicFont') ?? false;
 
   runApp(MyApp(
-    isDarkMode:     isDarkMode,
+    isDarkMode: isDarkMode,
     isDyslexicFont: isDyslexicFont,
   ));
 }
@@ -56,7 +71,8 @@ class MyApp extends StatefulWidget {
   final bool isDarkMode;
   final bool isDyslexicFont;
 
-  const MyApp({super.key, required this.isDarkMode, required this.isDyslexicFont});
+  const MyApp(
+      {super.key, required this.isDarkMode, required this.isDyslexicFont});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -66,23 +82,11 @@ class _MyAppState extends State<MyApp> {
   late bool _isDarkMode;
   late bool _isDyslexicFont;
 
-  // ✅ NEW: StudyBot DI (services → repos → use-cases → notifiers)
-  late final StudyBotDI _di;
-
   @override
   void initState() {
     super.initState();
-    _isDarkMode     = widget.isDarkMode;
+    _isDarkMode = widget.isDarkMode;
     _isDyslexicFont = widget.isDyslexicFont;
-
-    // Build the dependency graph (dev variant is fine for now)
-    _di = StudyBotDI.dev();
-  }
-
-  @override
-  void dispose() {
-    _di.dispose(); // closes ApiClient, etc.
-    super.dispose();
   }
 
   Future<void> _toggleTheme(bool v) async {
@@ -98,15 +102,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    // ✅ NEW: Provide StudyBot notifiers to the whole app tree
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ChatNotifier>.value(value: _di.chatNotifier),
-        ChangeNotifierProvider<GradeNotifier>.value(value: _di.gradeNotifier),
-        ChangeNotifierProvider<ExemplarNotifier>.value(value: _di.exemplarNotifier),
-      ],
-      child: MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
         title: 'Edu Éire',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -121,8 +117,10 @@ class _MyAppState extends State<MyApp> {
           ),
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kSecondaryColor,
-          appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+          appBarTheme: const AppBarTheme(
+              backgroundColor: kPrimaryColor, foregroundColor: kSecondaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: kPrimaryColor),
         ),
         darkTheme: ThemeData(
           useMaterial3: true,
@@ -136,20 +134,17 @@ class _MyAppState extends State<MyApp> {
           ),
           primaryColor: kPrimaryColor,
           appBarTheme: const AppBarTheme(backgroundColor: kPrimaryColor),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: kPrimaryColor),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: kPrimaryColor),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-
-        // 👇 unchanged: auth gate still decides landing page
         home: AuthGate(
           isDarkMode: _isDarkMode,
           isDyslexicFont: _isDyslexicFont,
           setDarkMode: _toggleTheme,
           setDyslexicFont: _toggleDyslexicFont,
         ),
-      ),
-    );
-  }
+      );
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -175,7 +170,8 @@ class AuthGate extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.waiting) {
-          return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          return const Scaffold(
+              body: Center(child: CircularProgressIndicator()));
         }
 
         final user = snap.data;
@@ -185,9 +181,17 @@ class AuthGate extends StatelessWidget {
           future: _determineRole(user),
           builder: (context, roleSnap) {
             if (roleSnap.connectionState == ConnectionState.waiting) {
-              return const Scaffold(body: Center(child: CircularProgressIndicator()));
+              return const Scaffold(
+                  body: Center(child: CircularProgressIndicator()));
             }
             switch (roleSnap.data) {
+              case _RoleState.organizer:
+                // 👇 Route organizers to the real organiser dashboard page
+                return OrganiserDashboardPage(user: user);
+
+              case _RoleState.organizerPending:
+                return const OrganizerPendingPage();
+
               case _RoleState.student:
                 return HomePage(
                   isDarkMode: isDarkMode,
@@ -196,6 +200,7 @@ class AuthGate extends StatelessWidget {
                   setDarkMode: setDarkMode,
                   setDyslexicFont: setDyslexicFont,
                 );
+
               case _RoleState.business:
                 return HomePage(
                   isDarkMode: isDarkMode,
@@ -204,8 +209,10 @@ class AuthGate extends StatelessWidget {
                   setDarkMode: setDarkMode,
                   setDyslexicFont: setDyslexicFont,
                 );
+
               case _RoleState.businessPending:
                 return const BusinessPendingPage();
+
               case _RoleState.unknown:
               default:
                 FirebaseAuth.instance.signOut();
@@ -217,17 +224,81 @@ class AuthGate extends StatelessWidget {
     );
   }
 
+  /* -----------------------------------------------------
+     Query Firestore / claims to learn the user role
+     ----------------------------------------------------- */
   Future<_RoleState> _determineRole(User user) async {
-    final stuDoc = await FirebaseFirestore.instance.collection('students').doc(user.uid).get();
+    await user.getIdToken(true);
+    final claims = (await user.getIdTokenResult()).claims ?? {};
+    final role = claims['role'];
+    final orgId = claims['orgId'];
+    if (role == 'organizer' && orgId is String && orgId.isNotEmpty) {
+      return _RoleState.organizer;
+    }
+
+    final orgDoc = await FirebaseFirestore.instance
+        .collection('organizers')
+        .doc(user.uid)
+        .get();
+    if (orgDoc.exists) {
+      final approved = orgDoc.data()?['approved'] == true;
+      return approved ? _RoleState.organizer : _RoleState.organizerPending;
+    }
+
+    final stuDoc = await FirebaseFirestore.instance
+        .collection('students')
+        .doc(user.uid)
+        .get();
     if (stuDoc.exists) return _RoleState.student;
 
-    final bizDoc = await FirebaseFirestore.instance.collection('businesses').doc(user.uid).get();
+    final bizDoc = await FirebaseFirestore.instance
+        .collection('businesses')
+        .doc(user.uid)
+        .get();
     if (bizDoc.exists) {
       final approved = bizDoc.data()?['approved'] == true;
       return approved ? _RoleState.business : _RoleState.businessPending;
     }
+
     return _RoleState.unknown;
   }
 }
 
-enum _RoleState { student, business, businessPending, unknown }
+enum _RoleState {
+  student,
+  business,
+  businessPending,
+  organizer,
+  organizerPending,
+  unknown
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Organizer pending page (keep)
+   ────────────────────────────────────────────────────────────── */
+class OrganizerPendingPage extends StatelessWidget {
+  const OrganizerPendingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Organizer sign-up')),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.search, size: 96),
+              SizedBox(height: 16),
+              Text(
+                "We’re verifying your organizer account.\nYou’ll get an e-mail when approved.",
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

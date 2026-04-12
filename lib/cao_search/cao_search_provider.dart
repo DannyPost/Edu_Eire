@@ -1,63 +1,143 @@
-// lib/cao_search/cao_course_provider.dart
-import 'package:flutter/material.dart'; // Keep this for ChangeNotifier
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:csv/csv.dart';
-import 'course.dart'; // Assuming course.dart is in the same directory
+import 'course.dart';
 
-class CAOCourseProvider with ChangeNotifier { // Renamed from CAOSearchPage
-  List<Course> _allCourses = [];
-  List<Course> _filtered = [];
-  int _loadedCount = 20;
-  String _search = '';
-  String? _university, _location, _level, _jobField;
+class CAOCourseProvider extends ChangeNotifier {
+  final List<Course> _allCourses = [];
+  List<Course> _filteredCourses = [];
 
-  // Constructor is not needed if you only use loadFromCsv
-  // CAOCourseProvider(); // No const constructor here as it manages mutable state
+  final Set<String> _favorites = {}; // store course codes
 
-  void loadFromCsv(String csvString) {
-    final rows = const CsvToListConverter().convert(csvString, eol: '\n');
-    // Ensure that Course.fromList expects 6 values, based on your Course model
-    _allCourses = rows.skip(1).map((e) => Course.fromList(e.map((e) => '$e').toList())).toList();
+  bool isLoading = true;
+
+  String search = '';
+  String university = 'All';
+  String location = 'All';
+  String level = 'All';
+  String jobField = 'All';
+
+  List<Course> get courses => _filteredCourses;
+  Set<String> get favorites => _favorites;
+
+  /* ───────────────── CSV LOADING ───────────────── */
+
+  Future<void> loadCourses() async {
+    if (_allCourses.isNotEmpty) return; // prevent reloading
+
+    final raw = await rootBundle.loadString('assets/cao_list_25.csv');
+    final rows = const CsvToListConverter(
+      shouldParseNumbers: false,
+    ).convert(raw);
+
+    for (int i = 1; i < rows.length; i++) {
+      final row = rows[i];
+      if (row.length < 6) continue;
+
+      final course = Course.fromCsv(row);
+
+      // 🔐 Hard guard against empty / broken rows
+      if (course.code.isEmpty || course.title.isEmpty) continue;
+
+      _allCourses.add(course);
+    }
+
     applyFilters();
+    isLoading = false;
+    notifyListeners();
+
+    debugPrint('TOTAL COURSES LOADED: ${_allCourses.length}');
   }
+
+  /* ───────────────── FILTERING ───────────────── */
 
   void applyFilters() {
-    _filtered = _allCourses.where((course) {
-      final matchesSearch = course.code.toLowerCase().contains(_search) ||
-          course.title.toLowerCase().contains(_search);
-      final matchesUniversity = _university == null || course.university == _university;
-      final matchesLocation = _location == null || course.location == _location;
-      final matchesLevel = _level == null || course.level == _level;
-      final matchesJobField = _jobField == null || course.jobField == _jobField;
-      return matchesSearch && matchesUniversity && matchesLocation && matchesLevel && matchesJobField;
+    _filteredCourses = _allCourses.where((c) {
+      final matchesSearch = search.isEmpty ||
+          c.code.toLowerCase().contains(search) ||
+          c.title.toLowerCase().contains(search);
+
+      return matchesSearch &&
+          (university == 'All' || c.university == university) &&
+          (location == 'All' || c.location == location) &&
+          (level == 'All' || c.level == level) &&
+          (jobField == 'All' || c.jobField == jobField);
     }).toList();
-    _loadedCount = 20; // Reset loaded count on filter change
+
     notifyListeners();
   }
 
-  List<Course> get visibleCourses => _filtered.take(_loadedCount).toList();
-  bool get hasMore => _loadedCount < _filtered.length;
+  /* ───────────────── SEARCH SUGGESTIONS ───────────────── */
 
-  void loadMore() {
-    _loadedCount += 20;
-    notifyListeners();
+  List<Course> get suggestions {
+    if (search.isEmpty) return [];
+    return _allCourses
+        .where((c) =>
+            c.code.toLowerCase().contains(search) ||
+            c.title.toLowerCase().contains(search))
+        .take(5)
+        .toList();
   }
 
   void setSearch(String value) {
-    _search = value.toLowerCase();
+    search = value.toLowerCase();
     applyFilters();
   }
 
-  void setFilter({String? university, String? location, String? level, String? jobField}) {
-    _university = university;
-    _location = location;
-    _level = level;
-    _jobField = jobField;
+  /* ───────────────── FILTER SETTERS ───────────────── */
+
+  void setFilters({
+    String? university,
+    String? location,
+    String? level,
+    String? jobField,
+  }) {
+    this.university = university ?? this.university;
+    this.location = location ?? this.location;
+    this.level = level ?? this.level;
+    this.jobField = jobField ?? this.jobField;
     applyFilters();
   }
 
-  // Ensure these getters correctly extract unique values from _allCourses
-  List<String> get universities => _allCourses.map((c) => c.university).toSet().toList()..sort();
-  List<String> get locations => _allCourses.map((c) => c.location).toSet().toList()..sort();
-  List<String> get levels => _allCourses.map((c) => c.level).toSet().toList()..sort();
-  List<String> get jobFields => _allCourses.map((c) => c.jobField).toSet().toList()..sort();
+  void resetFilters() {
+    search = '';
+    university = location = level = jobField = 'All';
+    applyFilters();
+  }
+
+  /* ───────────────── DROPDOWN VALUES (FIXED) ───────────────── */
+
+  List<String> get universities => _buildUniqueList((c) => c.university);
+  List<String> get locations => _buildUniqueList((c) => c.location);
+  List<String> get levels => _buildUniqueList((c) => c.level);
+  List<String> get jobFields => _buildUniqueList((c) => c.jobField);
+
+  List<String> _buildUniqueList(String Function(Course) selector) {
+    final set = <String>{};
+
+    for (final c in _allCourses) {
+      final value = selector(c).trim();
+      if (value.isNotEmpty) {
+        set.add(value);
+      }
+    }
+
+    final list = set.toList()..sort();
+    return ['All', ...list];
+  }
+
+  /* ───────────────── FAVORITES ───────────────── */
+
+  bool isFavorite(String code) {
+    return _favorites.contains(code);
+  }
+
+  void toggleFavorite(String code) {
+    if (_favorites.contains(code)) {
+      _favorites.remove(code);
+    } else {
+      _favorites.add(code);
+    }
+    notifyListeners();
+  }
 }

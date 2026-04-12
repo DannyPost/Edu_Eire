@@ -1,413 +1,293 @@
-// lib/pages/cao_search_page.dart
-import 'dart:async';
-import 'dart:collection';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:csv/csv.dart';
+import 'package:provider/provider.dart';
 
-/* ───────── assets ───────── */
-const _csvAsset        = 'assets/cao_list_25.csv';
-const _placeholderLogo = 'assets/atlantic_technological_university.jpeg';
+import 'cao_search_provider.dart';
+import 'course.dart';
+import 'course_detail_page.dart';
 
-/* optional: college → logo asset  (all caps key) */
-const _logoMap = <String, String>{
-  'ATLANTIC TECHNOLOGICAL UNIVERSITY': 'assets/atlantic_technological_university.jpeg',
-  // add more when you have them
-};
-
-class CAOSearchPage extends StatefulWidget {
+class CAOSearchPage extends StatelessWidget {
   const CAOSearchPage({super.key});
+
   @override
-  State<CAOSearchPage> createState() => _CAOSearchPageState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => CAOCourseProvider()..loadCourses(),
+      child: const _CAOSearchView(),
+    );
+  }
 }
 
-class _CAOSearchPageState extends State<CAOSearchPage> {
-  /* ───────── runtime data ───────── */
-  List<Map<String, String>> _courses = [];
+/* ───────────────── INTERNAL VIEW ───────────────── */
 
-  final _universities = <String>['All'];
-  final _locations    = <String>['All'];
-  final _levels       = <String>['All'];
-  final _jobFields    = <String>['All'];
+class _CAOSearchView extends StatelessWidget {
+  const _CAOSearchView();
 
-  /* ───────── UI state ───────── */
-  String _query = '';
-  String _uniF  = 'All';
-  String _locF  = 'All';
-  String _levF  = 'All';
-  String _jobF  = 'All';
-  int    _shown = 10;
-  List<Map<String, String>> _sug = [];
-
-  /* ───────── helpers ───────── */
-  String _clean(String? v) =>
-      v?.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim() ?? '';
-
-  bool _match(String filter, String? rawCell) =>
-      filter == 'All' || _clean(rawCell) == filter;
-
-  // Normalize header names: trim, remove BOM, lowercase.
-  String _normHeader(String s) =>
-      s.replaceAll('\uFEFF', '').trim().toLowerCase();
-
-  List<Map<String, String>> get _currentCourses {
-    final q = _query.toLowerCase();
-    return _courses.where((c) {
-      final sOK = q.isEmpty ||
-          (c['Code']  ?? '').toLowerCase().contains(q) ||
-          (c['Title'] ?? '').toLowerCase().contains(q);
-      return sOK &&
-          _match(_uniF,  c['University']) &&
-          _match(_locF,  c['Location'])   &&
-          _match(_levF,  c['Level'])      &&
-          _match(_jobF,  c['Job Field']);
-    }).take(_shown).toList();
-  }
-
-  void _updateSug(String q) {
-    final L = q.toLowerCase();
-    setState(() {
-      _sug = q.isEmpty
-          ? []
-          : _courses.where((c) =>
-              (c['Code']  ?? '').toLowerCase().contains(L) ||
-              (c['Title'] ?? '').toLowerCase().contains(L))
-              .take(5)
-              .toList();
-    });
-  }
-
-  Widget _logo(String? uni) {
-    final path = _logoMap[(uni ?? '').trim().toUpperCase()] ?? _placeholderLogo;
-    return CircleAvatar(
-      radius: 22,
-      backgroundColor: Colors.grey[200],
-      child: ClipOval(
-        child: Image.asset(
-          path,
-          fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) =>
-              Image.asset(_placeholderLogo, fit: BoxFit.cover),
-        ),
-      ),
-    );
-  }
-
-  DropdownButtonFormField<String> _drop(
-      String label, String val, List<String> items, ValueChanged<String> cb) {
-    return DropdownButtonFormField<String>(
-      value: val,
-      isExpanded: true,
-      decoration: InputDecoration(
-        labelText: label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      ),
-      items: items
-          .map((v) => DropdownMenuItem(
-                value: v,
-                child: Text(v, overflow: TextOverflow.ellipsis),
-              ))
-          .toList(),
-      onChanged: (v) {
-        if (v != null) setState(() => cb(v));
-      },
-    );
-  }
-
-  /* ───────── init & CSV loader ───────── */
   @override
-  void initState() {
-    super.initState();
-    unawaited(_loadCsv());
-  }
-
-  Future<void> _loadCsv() async {
-    // 1) read CSV
-    final raw = await rootBundle.loadString(_csvAsset);
-    final table = const CsvToListConverter(
-      eol: '\n',
-      shouldParseNumbers: false,
-    ).convert(raw);
-
-    if (table.isEmpty) {
-      throw StateError('CSV is empty');
-    }
-
-    // 2) headers (normalize + index mapping)
-    final rawHeaders = table.first.map((e) => e.toString()).toList();
-    final normHeaders = rawHeaders.map(_normHeader).toList();
-
-    // canonical labels we will use in the app → normalized header names to look for
-    const canonicalToNorm = <String, String>{
-      'Level'      : 'level',
-      'Code'       : 'code',
-      'Title'      : 'title',
-      'Location'   : 'location',
-      'University' : 'University', // keep canonical case for UI; map check uses lower below
-      'Job Field'  : 'job field',
-    };
-
-    // build a map from canonical label -> index in the CSV
-    final headerIndex = <String, int>{};
-    for (final entry in canonicalToNorm.entries) {
-      final wanted = entry.value.toLowerCase();
-      final idx = normHeaders.indexOf(wanted);
-      if (idx == -1) {
-        throw StateError('CSV missing required header: ${entry.key}');
-      }
-      headerIndex[entry.key] = idx;
-    }
-
-    // 3) containers for unique filter values
-    final uniSet = <String>{}, locSet = <String>{},
-          levSet = <String>{}, jobSet = <String>{};
-
-    final data = <Map<String, String>>[];
-
-    // 4) iterate rows
-    for (var r = 1; r < table.length; r++) {
-      final rawRow = table[r];
-      // skip fully empty rows
-      if (rawRow.isEmpty || rawRow.every((e) => e.toString().trim().isEmpty)) continue;
-
-      // coerce to strings
-      final row = rawRow.map((e) => e.toString()).toList();
-
-      // pad/merge if row length mismatches header length
-      final fixed = row.length == rawHeaders.length
-          ? row
-          : row.length > rawHeaders.length
-              ? [
-                  ...row.take(rawHeaders.length - 1),
-                  row.sublist(rawHeaders.length - 1).join(',')
-                ]
-              : [...row, ...List.filled(rawHeaders.length - row.length, '')];
-
-      // create record using canonical keys
-      final rec = <String, String>{
-        'Level'     : _clean(fixed[headerIndex['Level']!]),
-        'Code'      : _clean(fixed[headerIndex['Code']!]),
-        'Title'     : _clean(fixed[headerIndex['Title']!]),
-        'Location'  : _clean(fixed[headerIndex['Location']!]),
-        'University': _clean(fixed[headerIndex['University']!]),
-        'Job Field' : _clean(fixed[headerIndex['Job Field']!]),
-      };
-      data.add(rec);
-
-      // collect filters
-      if (rec['University']!.isNotEmpty) uniSet.add(rec['University']!);
-      if (rec['Location']!.isNotEmpty)   locSet.add(rec['Location']!);
-      if (rec['Level']!.isNotEmpty)      levSet.add(rec['Level']!);
-      if (rec['Job Field']!.isNotEmpty)  jobSet.add(rec['Job Field']!);
-    }
-
-    // 5) sort lists (levels numerically if possible)
-    final levList = levSet.toList()
-      ..sort((a, b) {
-        final ai = int.tryParse(a), bi = int.tryParse(b);
-        return (ai != null && bi != null) ? ai.compareTo(bi) : a.compareTo(b);
-      });
-
-    setState(() {
-      _courses      = data;
-      _universities
-        ..clear() ..addAll(['All', ...uniSet.toList()..sort()]);
-      _locations
-        ..clear() ..addAll(['All', ...locSet.toList()..sort()]);
-      _levels
-        ..clear() ..addAll(['All', ...levList]);
-      _jobFields
-        ..clear() ..addAll(['All', ...jobSet.toList()..sort()]);
-    });
-  }
-
-  /* ───────── UI ───────── */
-  @override
-  Widget build(BuildContext ctx) {
-    final res = _currentCourses;
+  Widget build(BuildContext context) {
+    final provider = context.watch<CAOCourseProvider>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CAO Search'),
-        backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white,
+        title: const Text('CAO Course Search'),
+        actions: [
+          IconButton(
+            tooltip: 'Reset Filters',
+            icon: const Icon(Icons.refresh),
+            onPressed: provider.resetFilters,
+          ),
+        ],
       ),
-      body: _courses.isEmpty
+      body: provider.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.all(16),
+          : Column(
+              children: const [
+                _SearchBar(),
+                _FilterSection(),
+                Expanded(child: _CourseList()),
+              ],
+            ),
+    );
+  }
+}
+
+/* ───────────────── SEARCH BAR ───────────────── */
+
+class _SearchBar extends StatelessWidget {
+  const _SearchBar();
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = context.watch<CAOCourseProvider>();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // 🔍 Search input
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: TextField(
+            onChanged: provider.setSearch,
+            decoration: InputDecoration(
+              hintText: 'Search by CAO code or course title',
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+        ),
+
+        // 🔽 Search suggestions (Step 7.2)
+        if (provider.suggestions.isNotEmpty)
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 12),
+            constraints: const BoxConstraints(maxHeight: 220),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 6,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: provider.suggestions.length,
+              itemBuilder: (_, i) {
+                final c = provider.suggestions[i];
+                return ListTile(
+                  dense: true,
+                  title: Text('${c.code} – ${c.title}'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ChangeNotifierProvider.value(
+                          value: context.read<CAOCourseProvider>(),
+                          child: CourseDetailPage(course: c),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/* ───────────────── FILTER SECTION ───────────────── */
+
+class _FilterSection extends StatelessWidget {
+  const _FilterSection();
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.watch<CAOCourseProvider>();
+
+    Widget dropdown({
+      required String label,
+      required String value,
+      required List<String> items,
+      required void Function(String?) onChanged,
+    }) {
+      return Expanded(
+        child: DropdownButtonFormField<String>(
+          value: value,
+          isExpanded: true,
+          decoration: InputDecoration(
+            labelText: label,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          ),
+          items: items
+              .map(
+                (e) => DropdownMenuItem(
+                  value: e,
+                  child: Text(
+                    e,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              )
+              .toList(),
+          onChanged: onChanged,
+        ),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              dropdown(
+                label: 'University',
+                value: p.university,
+                items: p.universities,
+                onChanged: (v) => p.setFilters(university: v),
+              ),
+              const SizedBox(width: 10),
+              dropdown(
+                label: 'Location',
+                value: p.location,
+                items: p.locations,
+                onChanged: (v) => p.setFilters(location: v),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              dropdown(
+                label: 'Level',
+                value: p.level,
+                items: p.levels,
+                onChanged: (v) => p.setFilters(level: v),
+              ),
+              const SizedBox(width: 10),
+              dropdown(
+                label: 'Job Field',
+                value: p.jobField,
+                items: p.jobFields,
+                onChanged: (v) => p.setFilters(jobField: v),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Results: ${p.courses.length}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/* ───────────────── COURSE LIST ───────────────── */
+
+class _CourseList extends StatelessWidget {
+  const _CourseList();
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Course> courses = context.watch<CAOCourseProvider>().courses;
+
+    if (courses.isEmpty) {
+      return const Center(
+        child: Text(
+          'No courses match your search or filters.',
+          textAlign: TextAlign.center,
+        ),
+      );
+    }
+
+    return ListView.builder(
+      padding: const EdgeInsets.only(bottom: 12),
+      itemCount: courses.length,
+      itemBuilder: (context, index) {
+        final course = courses[index];
+
+        return Card(
+          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          elevation: 2,
+          child: ListTile(
+            contentPadding: const EdgeInsets.all(14),
+            title: Text(
+              '${course.code} – ${course.title}',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 6),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /* search */
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search by CAO code or course title',
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      fillColor: Colors.grey[100],
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                    onChanged: (v) {
-                      _query = v.trimLeft();
-                      _updateSug(_query);
-                    },
+                  Text(
+                    course.university,
+                    style: TextStyle(color: Colors.grey.shade700),
                   ),
-                  if (_sug.isNotEmpty)
-                    Container(
-                      constraints: const BoxConstraints(maxHeight: 160),
-                      margin: const EdgeInsets.only(top: 4, bottom: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border:
-                            Border.all(color: Colors.grey.shade300, width: 1),
-                        borderRadius: BorderRadius.circular(6),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26.withOpacity(0.08),
-                              blurRadius: 4,
-                              offset: const Offset(0, 2))
-                        ],
-                      ),
-                      child: ListView.builder(
-                        itemCount: _sug.length,
-                        itemBuilder: (_, i) {
-                          final s = _sug[i];
-                          return ListTile(
-                            dense: true,
-                            title: Text(
-                              '${s['Code']}  •  ${s['Title']}',
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            onTap: () {
-                              setState(() {
-                                _query = s['Title'] ?? '';
-                                _sug.clear();
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    )
-                  else
-                    const SizedBox(height: 12),
-
-                  /* filters */
-                  Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    children: [
-                      SizedBox(
-                        width: 200,
-                        child: _drop('University', _uniF, _universities,
-                            (v) => _uniF = v),
-                      ),
-                      SizedBox(
-                        width: 200,
-                        child: _drop('Location', _locF, _locations,
-                            (v) => _locF = v),
-                      ),
-                      SizedBox(
-                        width: 120,
-                        child:
-                            _drop('Level', _levF, _levels, (v) => _levF = v),
-                      ),
-                      SizedBox(
-                        width: 200,
-                        child: _drop('Job Field', _jobF, _jobFields,
-                            (v) => _jobF = v),
-                      ),
-                    ],
+                  const SizedBox(height: 2),
+                  Text(
+                    'Level ${course.level} • ${course.location}',
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  const SizedBox(height: 12),
-
-                  /* info + reset */
-                  Row(
-                    children: [
-                      Text('Results: ${res.length}',
-                          style:
-                              const TextStyle(fontWeight: FontWeight.bold)),
-                      const Spacer(),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          setState(() {
-                            _query = '';
-                            _uniF = _locF = _levF = _jobF = 'All';
-                            _shown = 10;
-                            _sug.clear();
-                          });
-                        },
-                        icon: const Icon(Icons.clear),
-                        label: const Text('Reset Filters'),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-
-                  /* list */
-                  Expanded(
-                    child: res.isEmpty
-                        ? const Center(
-                            child: Text(
-                              'No courses match the selected filters.',
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        : ListView.builder(
-                            itemCount: res.length,
-                            itemBuilder: (_, i) {
-                              final c = res[i];
-                              return Card(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 6),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: ListTile(
-                                  leading: _logo(c['University']),
-                                  title: Text(c['Title'] ?? '—',
-                                      overflow: TextOverflow.ellipsis),
-                                  subtitle: Text(
-                                    '${c['University']} • ${c['Location']} • '
-                                    'Level ${c['Level']} • ${c['Job Field']}',
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  trailing: Text(
-                                    c['Code'] ?? '',
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                  ),
-
-                  /* load-more / fewer */
-                  if (res.isNotEmpty)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (_shown < _courses.length)
-                          ElevatedButton(
-                            onPressed: () => setState(() => _shown += 10),
-                            child: const Text('Load More'),
-                          ),
-                        if (_shown > 10) ...[
-                          const SizedBox(width: 12),
-                          TextButton(
-                            onPressed: () => setState(() => _shown = 10),
-                            child: const Text('Show Less'),
-                          ),
-                        ]
-                      ],
-                    ),
                 ],
               ),
             ),
+            trailing: IconButton(
+              icon: Icon(
+                context.watch<CAOCourseProvider>().isFavorite(course.code)
+                    ? Icons.star
+                    : Icons.star_border,
+                color: Colors.amber,
+              ),
+              onPressed: () {
+                context.read<CAOCourseProvider>().toggleFavorite(course.code);
+              },
+            ),
+            onTap: () {
+              debugPrint('Tapped ${course.code}');
+            },
+          ),
+        );
+      },
     );
   }
 }

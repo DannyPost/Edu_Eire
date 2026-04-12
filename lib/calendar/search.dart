@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import '../calendar/calendar.dart'; // Ensure Event is imported
+
+import 'event.dart';
+import 'event_details_sheet.dart';
+import 'firestore_service.dart';
+import 'ics_exporter.dart';
 
 class SearchPage extends StatefulWidget {
-  final List<Event> allEvents;
-  final Set<String> bookmarkedEventTitles;
-  final void Function(Event) onToggleBookmark;
+  final Set<String>? bookmarkedTitles;
+  final void Function(Event)? onToggleBookmark;
 
   const SearchPage({
     super.key,
-    required this.allEvents,
-    required this.bookmarkedEventTitles,
-    required this.onToggleBookmark,
+    this.bookmarkedTitles,
+    this.onToggleBookmark,
   });
 
   @override
@@ -18,8 +20,11 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  final _repo = EventRepo();
+
   String _searchText = '';
   String _selectedCategory = 'All';
+  String _selectedCollege = 'All';
   DateTime? _startDate;
   DateTime? _endDate;
   bool _showBookmarkedOnly = false;
@@ -38,13 +43,6 @@ class _SearchPageState extends State<SearchPage> {
       value: 'title_az',
       child: Text('Title (A-Z)'),
     ),
-  ];
-
-  static const List<DropdownMenuItem<String>> _categoryDropdownItems = [
-    DropdownMenuItem(value: 'All', child: Text('All')),
-    DropdownMenuItem(value: 'deadline', child: Text('Deadline')),
-    DropdownMenuItem(value: 'open_day', child: Text('Open Day')),
-    DropdownMenuItem(value: 'personal', child: Text('Personal')),
   ];
 
   static String _formatEventDate(DateTime d) {
@@ -77,28 +75,14 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
-  List<Event> get _filteredEvents {
-    return widget.allEvents.where((event) {
-      final matchesText =
-          event.title.toLowerCase().contains(_searchText.toLowerCase());
-      final matchesCategory =
-          _selectedCategory == 'All' || event.category == _selectedCategory;
-      final matchesBookmark = !_showBookmarkedOnly ||
-          widget.bookmarkedEventTitles
-              .contains(bookmarkTitleKey(event.title));
-      final matchesStartDate =
-          _startDate == null || !event.date.isBefore(_startDate!);
-      final matchesEndDate = _endDate == null || !event.date.isAfter(_endDate!);
-      return matchesText &&
-          matchesCategory &&
-          matchesBookmark &&
-          matchesStartDate &&
-          matchesEndDate;
-    }).toList();
-  }
-
-  List<Event> get _sortedFilteredEvents {
-    final list = List<Event>.from(_filteredEvents);
+  List<Event> _applyBookmarkAndSort(List<Event> events) {
+    var list = List<Event>.from(events);
+    final titles = widget.bookmarkedTitles;
+    if (_showBookmarkedOnly && titles != null) {
+      list = list
+          .where((e) => titles.contains(bookmarkTitleKey(e.title)))
+          .toList();
+    }
     switch (_sortOption) {
       case 'date_desc':
         list.sort((a, b) => b.date.compareTo(a.date));
@@ -123,25 +107,24 @@ class _SearchPageState extends State<SearchPage> {
     final newDate = await showDatePicker(
       context: context,
       initialDate: initialDate,
-      firstDate: DateTime(2025, 1, 1),
-      lastDate: DateTime(2026, 12, 31),
+      firstDate: DateTime(2024, 1, 1),
+      lastDate: DateTime(2028, 12, 31),
     );
     if (newDate != null) {
-      setState(() {
-        if (isStart)
-          _startDate = newDate;
-        else
-          _endDate = newDate;
-      });
+      setState(() => isStart ? _startDate = newDate : _endDate = newDate);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final events = _sortedFilteredEvents;
+    final collegeParam = _selectedCollege == 'All' ? null : _selectedCollege;
+    final categoryParam = _selectedCategory == 'All' ? null : _selectedCategory;
+    final hasBookmarkUi =
+        widget.bookmarkedTitles != null && widget.onToggleBookmark != null;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('View and Search All Events'),
+        title: const Text('Search College Events'),
         centerTitle: true,
       ),
       body: Column(
@@ -161,7 +144,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   onChanged: (value) => setState(() => _searchText = value),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -171,26 +154,67 @@ class _SearchPageState extends State<SearchPage> {
                       child: DropdownButton<String>(
                         isExpanded: true,
                         value: _selectedCategory,
-                        items: _categoryDropdownItems,
+                        items: const [
+                          'All',
+                          'Academic',
+                          'deadline',
+                          'open_day',
+                          'personal',
+                          'imported',
+                        ]
+                            .map((c) =>
+                                DropdownMenuItem(value: c, child: Text(c)))
+                            .toList(),
                         onChanged: (value) =>
                             setState(() => _selectedCategory = value!),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Checkbox(
-                      value: _showBookmarkedOnly,
-                      onChanged: (val) =>
-                          setState(() => _showBookmarkedOnly = val!),
-                    ),
-                    const Expanded(
-                      child: Text('Bookmarked only'),
+                    const Text('College'),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: _selectedCollege,
+                        items: const [
+                          'All',
+                          'NCI',
+                          'UCD',
+                          'TCD',
+                          'DCU',
+                          'UL',
+                          'UCC',
+                          'Other',
+                        ]
+                            .map((c) =>
+                                DropdownMenuItem(value: c, child: Text(c)))
+                            .toList(),
+                        onChanged: (value) =>
+                            setState(() => _selectedCollege = value!),
+                      ),
                     ),
                   ],
                 ),
+                if (hasBookmarkUi) ...[
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: _showBookmarkedOnly,
+                        onChanged: (val) =>
+                            setState(() => _showBookmarkedOnly = val!),
+                      ),
+                      const Expanded(
+                        child: Text('Bookmarked only'),
+                      ),
+                    ],
+                  ),
+                ],
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -219,7 +243,7 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -240,151 +264,256 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           Expanded(
-            child: events.isEmpty
-                ? Center(
+            child: StreamBuilder<List<Event>>(
+              stream: _repo.streamEvents(
+                college: collegeParam,
+                category: categoryParam,
+                startDate: _startDate,
+                endDate: _endDate,
+                searchText: _searchText,
+              ),
+              builder: (context, snap) {
+                if (snap.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final raw = snap.data ?? const <Event>[];
+                final events = _applyBookmarkAndSort(raw);
+
+                if (events.isEmpty) {
+                  return Center(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'No events match your current filters.',
+                            raw.isEmpty
+                                ? 'No results found.'
+                                : 'No events match your current filters.',
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Try adjusting your search, category, or date filters.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Theme.of(context).hintColor,
-                              fontSize: 14,
+                          if (raw.isNotEmpty) ...[
+                            const SizedBox(height: 10),
+                            Text(
+                              'Try adjusting your search, category, bookmarks, or date filters.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Theme.of(context).hintColor,
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
+                          ],
                         ],
                       ),
                     ),
-                  )
-                : Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 720),
-                      child: ListView.builder(
-                        padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
-                        itemCount: events.length,
-                        itemBuilder: (context, index) {
-                          final event = events[index];
-                          final isBookmarked = widget.bookmarkedEventTitles
-                              .contains(bookmarkTitleKey(event.title));
-                          final theme = Theme.of(context);
-                          final dateStr = _formatEventDate(event.date);
-                          final catLabel =
-                              _categoryDisplayLabel(event.category);
-                          final catColor =
-                              _categoryChipColor(event.category);
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: Material(
-                              color: theme.colorScheme.surfaceContainerHighest
-                                  .withValues(alpha: 0.55),
-                              borderRadius: BorderRadius.circular(10),
-                              clipBehavior: Clip.antiAlias,
-                              child: ListTile(
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 8,
+                  );
+                }
+
+                if (!hasBookmarkUi) {
+                  return _SearchSelectableList(events: events);
+                }
+
+                return Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 720),
+                    child: ListView.builder(
+                      padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
+                      itemCount: events.length,
+                      itemBuilder: (context, index) {
+                        final event = events[index];
+                        final titles = widget.bookmarkedTitles!;
+                        final onToggle = widget.onToggleBookmark!;
+                        final isBookmarked = titles
+                            .contains(bookmarkTitleKey(event.title));
+                        final theme = Theme.of(context);
+                        final dateStr = _formatEventDate(event.date);
+                        final catLabel =
+                            _categoryDisplayLabel(event.category);
+                        final catColor =
+                            _categoryChipColor(event.category);
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Material(
+                            color: theme.colorScheme.surfaceContainerHighest
+                                .withValues(alpha: 0.55),
+                            borderRadius: BorderRadius.circular(10),
+                            clipBehavior: Clip.antiAlias,
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 8,
+                              ),
+                              title: Text(
+                                event.title,
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.25,
                                 ),
-                                title: Text(
-                                  event.title,
-                                  style: theme.textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.25,
-                                  ),
-                                ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(top: 8),
-                                  child: Wrap(
-                                    spacing: 10,
-                                    runSpacing: 6,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(
-                                            Icons.calendar_today_outlined,
-                                            size: 15,
-                                            color: theme.hintColor,
-                                          ),
-                                          const SizedBox(width: 6),
-                                          Text(
-                                            dateStr,
-                                            style: theme.textTheme.bodySmall
-                                                ?.copyWith(
-                                              letterSpacing: 0.2,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Chip(
-                                        label: Text(
-                                          catLabel,
-                                          style: const TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
+                              ),
+                              subtitle: Padding(
+                                padding: const EdgeInsets.only(top: 8),
+                                child: Wrap(
+                                  spacing: 10,
+                                  runSpacing: 6,
+                                  crossAxisAlignment:
+                                      WrapCrossAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.calendar_today_outlined,
+                                          size: 15,
+                                          color: theme.hintColor,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Text(
+                                          dateStr,
+                                          style: theme.textTheme.bodySmall
+                                              ?.copyWith(
+                                            letterSpacing: 0.2,
                                           ),
                                         ),
-                                        visualDensity: VisualDensity.compact,
-                                        materialTapTargetSize:
-                                            MaterialTapTargetSize.shrinkWrap,
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 8,
+                                      ],
+                                    ),
+                                    Chip(
+                                      label: Text(
+                                        catLabel,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
                                         ),
-                                        side: BorderSide.none,
-                                        backgroundColor:
-                                            catColor.withValues(alpha: 0.2),
                                       ),
-                                    ],
-                                  ),
+                                      visualDensity: VisualDensity.compact,
+                                      materialTapTargetSize:
+                                          MaterialTapTargetSize.shrinkWrap,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      side: BorderSide.none,
+                                      backgroundColor:
+                                          catColor.withValues(alpha: 0.2),
+                                    ),
+                                  ],
                                 ),
-                                trailing: IconButton(
-                                  icon: Icon(
-                                    isBookmarked
-                                        ? Icons.bookmark
-                                        : Icons.bookmark_border,
-                                    color: isBookmarked ? Colors.blue : null,
-                                  ),
-                                  tooltip: isBookmarked
-                                      ? 'Remove bookmark'
-                                      : 'Save / bookmark',
-                                  onPressed: () {
-                                    widget.onToggleBookmark(event);
-                                    setState(() {});
-                                  },
+                              ),
+                              trailing: IconButton(
+                                icon: Icon(
+                                  isBookmarked
+                                      ? Icons.bookmark
+                                      : Icons.bookmark_border,
+                                  color: isBookmarked ? Colors.blue : null,
                                 ),
-                                onTap: () {
-                                  showEventDetails(
-                                    context,
-                                    event: event,
-                                    isBookmarked: (e) => widget
-                                        .bookmarkedEventTitles
-                                        .contains(bookmarkTitleKey(e.title)),
-                                    onToggleBookmark: (e) {
-                                      widget.onToggleBookmark(e);
-                                      setState(() {});
-                                    },
-                                  );
+                                tooltip: isBookmarked
+                                    ? 'Remove bookmark'
+                                    : 'Save / bookmark',
+                                onPressed: () {
+                                  onToggle(event);
+                                  setState(() {});
                                 },
                               ),
+                              onTap: () {
+                                showEventDetails(
+                                  context,
+                                  event: event,
+                                  isBookmarked: (e) => titles
+                                      .contains(bookmarkTitleKey(e.title)),
+                                  onToggleBookmark: (e) {
+                                    onToggle(e);
+                                    setState(() {});
+                                  },
+                                );
+                              },
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
+                );
+              },
+            ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _SearchSelectableList extends StatefulWidget {
+  final List<Event> events;
+  const _SearchSelectableList({required this.events});
+
+  @override
+  State<_SearchSelectableList> createState() => _SearchSelectableListState();
+}
+
+class _SearchSelectableListState extends State<_SearchSelectableList> {
+  final _selected = <int>{};
+
+  Future<void> _exportSelectedToICS() async {
+    final picked = _selected.map((i) => widget.events[i]).toList();
+    if (picked.isEmpty) return;
+
+    await exportICS(picked, (msg) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        if (widget.events.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            child: Row(
+              children: [
+                Text('${_selected.length} selected'),
+                const Spacer(),
+                ElevatedButton.icon(
+                  onPressed: _exportSelectedToICS,
+                  icon: const Icon(Icons.file_download),
+                  label: const Text('Export selected (.ics)'),
+                ),
+              ],
+            ),
+          ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: widget.events.length,
+            itemBuilder: (context, i) {
+              final e = widget.events[i];
+              final selected = _selected.contains(i);
+              final d = '${e.date.day}/${e.date.month}/${e.date.year}';
+              final subtitleParts = <String>[d];
+              if ((e.college ?? '').isNotEmpty) {
+                subtitleParts.add('• ${e.college}');
+              }
+              if (e.category.isNotEmpty) {
+                subtitleParts.add('• ${e.category}');
+              }
+              if ((e.location ?? '').isNotEmpty) {
+                subtitleParts.add('• ${e.location}');
+              }
+              if ((e.note ?? '').isNotEmpty) {
+                subtitleParts.add('\n${e.note!}');
+              }
+
+              return CheckboxListTile(
+                value: selected,
+                onChanged: (v) => setState(() {
+                  v == true ? _selected.add(i) : _selected.remove(i);
+                }),
+                title: Text(e.title),
+                subtitle: Text(subtitleParts.join(' ')),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -127,7 +127,7 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> {
                           final col = FirebaseFirestore.instance.collection('products');
                           try {
                             if (isEdit) {
-                              await col.doc(edit!.id).set(data, SetOptions(merge: true));
+                              await col.doc(edit.id).set(data, SetOptions(merge: true));
                             } else {
                               final doc = await col.add(data);
                               await doc.update({'id': doc.id});   // NEW ➊ write ID back
