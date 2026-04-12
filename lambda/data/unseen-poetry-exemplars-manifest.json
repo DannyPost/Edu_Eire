@@ -1,0 +1,10 @@
+{
+  "topic": "HL Unseen Poetry — exemplar archive (user-curated)",
+  "llmOutputLanguage": "en-GB",
+  "llmLanguageNote": "British English spelling and Irish Leaving Certificate terminology for all coached or generated student text.",
+  "llmBritishEnglishConvention": "llm-british-english-convention.md",
+  "sourceNote": "Do not commit copyrighted third-party content without permission. Paste short original exemplars or summaries you wrote, or link to materials you may redistribute. StudyClix pages are normally subscription content — prefer SEC past papers, your own answers, or NCCA guidance.",
+  "s3PrefixPattern": "english/hl/paper1/unseen-poetry/exemplars/{exemplarId}/",
+  "optionalFiles": ["prompt.txt", "answer.md", "notes.md", "meta.json"],
+  "exemplars": []
+}

@@ -10,7 +10,14 @@ class GradeAnswer {
   Future<GradeResult> call({
     required String answer,
     required Map<String, dynamic> meta,
+    String? stimulus,
+    String? taskPrompt,
   }) {
-    return _repo.gradeAnswer(answer: answer, meta: meta);
+    return _repo.gradeAnswer(
+      answer: answer,
+      meta: meta,
+      stimulus: stimulus,
+      taskPrompt: taskPrompt,
+    );
   }
 }

@@ -6,5 +6,5 @@ class ExemplarResponse {
   const ExemplarResponse({required this.text});
 
   factory ExemplarResponse.fromJson(Map<String, dynamic> json) =>
-      ExemplarResponse(text: json['text'] as String);
+      ExemplarResponse(text: json['text']?.toString() ?? '');
 }

@@ -9,7 +9,14 @@ class GetExemplar {
   Future<String> call({
     required String question,
     Map<String, dynamic>? meta,
+    String? stimulus,
+    String? taskPrompt,
   }) {
-    return _repo.getExemplar(question: question, meta: meta);
+    return _repo.getExemplar(
+      question: question,
+      meta: meta,
+      stimulus: stimulus,
+      taskPrompt: taskPrompt,
+    );
   }
 }

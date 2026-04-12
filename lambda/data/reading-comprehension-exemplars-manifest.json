@@ -1,0 +1,14 @@
+{
+  "topic": "HL Paper 1 — Section I: Text A (Question A) & Text B (Question B)",
+  "llmOutputLanguage": "en-GB",
+  "llmLanguageNote": "British English spelling and Irish Leaving Certificate terminology for all coached or generated student text.",
+  "llmKnowledgeMarkdown": "hl-reading-comprehension-llm-guide.md",
+  "llmBritishEnglishConvention": "llm-british-english-convention.md",
+  "s3GuideKey": "english/hl/paper1/reading-comprehension/hl-reading-comprehension-llm-guide.md",
+  "s3BritishEnglishConventionKey": "english/hl/paper1/reading-comprehension/llm-british-english-convention.md",
+  "s3ManifestKey": "english/hl/paper1/reading-comprehension/reading-comprehension-exemplars-manifest.json",
+  "sourceNote": "Add original exemplar Q&A or permitted SEC extracts under exemplars/{id}/ as needed.",
+  "s3PrefixPattern": "english/hl/paper1/reading-comprehension/exemplars/{exemplarId}/",
+  "optionalFiles": ["prompt.txt", "answer.md", "notes.md", "meta.json"],
+  "exemplars": []
+}

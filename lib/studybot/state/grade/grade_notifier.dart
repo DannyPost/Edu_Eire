@@ -16,12 +16,19 @@ class GradeNotifier extends ChangeNotifier {
   Future<void> submit({
     required String answer,
     required Map<String, dynamic> meta,
+    String? stimulus,
+    String? taskPrompt,
   }) async {
     _state = _state.copyWith(status: Status.loading, errorMessage: null, result: null);
     notifyListeners();
 
     try {
-      final GradeResult res = await _gradeAnswer(answer: answer, meta: meta);
+      final GradeResult res = await _gradeAnswer(
+        answer: answer,
+        meta: meta,
+        stimulus: stimulus,
+        taskPrompt: taskPrompt,
+      );
       _state = _state.copyWith(status: Status.success, result: res);
       notifyListeners();
     } catch (e) {

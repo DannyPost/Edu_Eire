@@ -73,6 +73,9 @@ class StudyBotDI {
   /// Kept for compatibility if you ever inject a DevAuthService in tests.
   void setAuthToken(String? _token) {}
 
+  /// GET /health (no JWT). Returns null if unreachable or non-200.
+  Future<Map<String, dynamic>?> getApiHealth() => _api.getHealth();
+
   /// Clean up network resources (call from your root widget's dispose()).
   void dispose() {
     _api.close();

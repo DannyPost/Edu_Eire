@@ -15,12 +15,19 @@ class ExemplarNotifier extends ChangeNotifier {
   Future<void> generate({
     required String question,
     Map<String, dynamic>? meta,
+    String? stimulus,
+    String? taskPrompt,
   }) async {
     _state = _state.copyWith(status: Status.loading, errorMessage: null, text: null);
     notifyListeners();
 
     try {
-      final text = await _getExemplar(question: question, meta: meta);
+      final text = await _getExemplar(
+        question: question,
+        meta: meta,
+        stimulus: stimulus,
+        taskPrompt: taskPrompt,
+      );
       _state = _state.copyWith(status: Status.success, text: text);
       notifyListeners();
     } catch (e) {

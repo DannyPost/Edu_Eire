@@ -10,10 +10,14 @@ class ExemplarRepository {
   Future<String> generate({
     required String question,
     Map<String, dynamic>? meta,
+    String? stimulus,
+    String? taskPrompt,
   }) async {
     final body = <String, dynamic>{
       'question': question,
       if (meta != null) 'meta': meta,
+      if (stimulus != null && stimulus.trim().isNotEmpty) 'stimulus': stimulus,
+      if (taskPrompt != null && taskPrompt.trim().isNotEmpty) 'taskPrompt': taskPrompt,
     };
     final json = await _api.postJson(ApiPaths.exemplar, body);
     return (json['text'] as String?) ?? '';

@@ -14,6 +14,7 @@ import 'dare_calculator/dare_calculator.dart';
 import 'calendar/calendar.dart';
 import 'cao_search/cao_search_page.dart';
 import 'academic_support/academic_support_page.dart';
+import 'studybot/app/study_bot_launcher.dart';
 
 import '../help_page/help/help_page.dart';
 
@@ -152,6 +153,17 @@ class _HomePageState extends State<HomePage> {
                   setState(() => _idx = i);
                 },
               ),
+            ListTile(
+              leading: Icon(Icons.psychology, color: _brand),
+              title: const Text('Study Bot (English)'),
+              onTap: () {
+                Navigator.pop(ctx);
+                Navigator.push(
+                  ctx,
+                  MaterialPageRoute<void>(builder: (_) => const StudyBotLauncher()),
+                );
+              },
+            ),
           ],
         ),
       );
@@ -192,6 +204,17 @@ class _HomePageState extends State<HomePage> {
             _drawerItem(ctx, Icons.accessibility_new, 'DARE Calculator', 6),
             _drawerItem(ctx, Icons.calendar_today, 'School Calendar', 7),
             _drawerItem(ctx, Icons.support_agent, 'Academic Support', 8),
+            ListTile(
+              leading: Icon(Icons.psychology, color: _brand),
+              title: const Text('Study Bot (English)'),
+              onTap: () {
+                Navigator.pop(ctx);
+                Navigator.push(
+                  ctx,
+                  MaterialPageRoute<void>(builder: (_) => const StudyBotLauncher()),
+                );
+              },
+            ),
             ListTile(
               leading: const Icon(Icons.search),
               title: const Text('CAO Search'),

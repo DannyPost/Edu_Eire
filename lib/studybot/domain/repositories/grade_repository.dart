@@ -7,6 +7,8 @@ abstract class GradeRepository {
   Future<GradeResult> gradeAnswer({
     required String answer,
     required Map<String, dynamic> meta,
+    String? stimulus,
+    String? taskPrompt,
   });
 
   /// Generate a high-quality exemplar/model answer for a question.
@@ -15,5 +17,7 @@ abstract class GradeRepository {
   Future<String> getExemplar({
     required String question,
     Map<String, dynamic>? meta,
+    String? stimulus,
+    String? taskPrompt,
   });
 }

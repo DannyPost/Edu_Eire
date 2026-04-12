@@ -19,4 +19,27 @@ class Constants {
 
   // UI
   static const int exemplarStreamAbortAfterMs = 120000; // 2 minutes
+
+  /// When [StudyMeta.section] equals this, the API should load reading-comprehension
+  /// knowledge from S3 (`s3GuideKey` + `s3BritishEnglishConventionKey` in the manifest)
+  /// and prepend it before the task block.
+  static const String metaSectionReadingComprehension = 'Reading comprehension';
+
+  /// API loads unseen-poetry guides from S3 when [StudyMeta.section] matches.
+  static const String metaSectionUnseenPoetry = 'Unseen poetry';
+
+  /// Generic English flow (no S3 topic guides; shorter generic prompt on API).
+  static const String metaSectionGeneralEnglish = 'General English';
+
+  /// Paper 1 Section II style tasks (functional writing / composition).
+  static const String metaSectionComposition = 'Composition';
+
+  /// Paper 2 comparative study.
+  static const String metaSectionComparativeStudy = 'Comparative study';
+
+  /// Paper 2 prescribed / studied poetry.
+  static const String metaSectionStudiedPoetry = 'Studied poetry';
+
+  /// Paper 2 single text (novel, play, etc.).
+  static const String metaSectionSingleText = 'Single text';
 }

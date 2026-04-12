@@ -12,20 +12,34 @@ class GradeRepositoryImpl implements GradeRepository {
   Future<GradeResult> gradeAnswer({
     required String answer,
     required Map<String, dynamic> meta,
+    String? stimulus,
+    String? taskPrompt,
   }) async {
-    final req = GradeRequest(answer: answer, meta: meta);
+    final req = GradeRequest(
+      answer: answer,
+      meta: meta,
+      stimulus: stimulus,
+      taskPrompt: taskPrompt,
+    );
     final json = await _api.postJson(ApiPaths.grade, req.toJson());
     final resp = GradeResponse.fromJson(json);
     return GradeResult(score: resp.score, bullets: resp.bullets, meta: resp.meta);
   }
 
-    @override
+  @override
   Future<String> getExemplar({
     required String question,
     Map<String, dynamic>? meta,
+    String? stimulus,
+    String? taskPrompt,
   }) async {
     // BASELINE: non-streaming JSON response -> { "text": "..." }
-    final req = ExemplarRequest(question: question, meta: meta);
+    final req = ExemplarRequest(
+      question: question,
+      meta: meta,
+      stimulus: stimulus,
+      taskPrompt: taskPrompt,
+    );
     final json = await _api.postJson(ApiPaths.exemplar, req.toJson());
     final resp = ExemplarResponse.fromJson(json);
     return resp.text;

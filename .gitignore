@@ -76,5 +76,8 @@ replay_pid*.log
 chatbot_api.env
 ./assets/cao_list_25.csv
 
+# Node (lambda tooling + Studybot API package)
+lambda/node_modules/
+api/node_modules/
 
 

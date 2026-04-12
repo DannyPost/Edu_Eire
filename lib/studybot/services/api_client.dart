@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../config/env.dart';
 import '../config/constants.dart';
+import '../backend/common/api_paths.dart';
 import 'auth_service.dart';
 
 /// Single place for HTTP calls (JSON + streaming).
@@ -59,6 +60,29 @@ class ApiClient {
           .timeout(Constants.connectTimeout + Constants.receiveTimeout);
     }
     return resp;
+  }
+
+  /// Unauthenticated ping (no Bearer). Expects JSON `{ "ok": true, ... }`.
+  Future<Map<String, dynamic>?> getHealth() async {
+    try {
+      final resp = await _client
+          .get(
+            _uri(ApiPaths.health),
+            headers: {
+              'x-api-version': '2025-10-05',
+              'x-client': 'studybot-flutter',
+              'x-request-id': _requestId(),
+            },
+          )
+          .timeout(Constants.connectTimeout);
+      if (resp.statusCode != 200) return null;
+      final raw = resp.body.isEmpty ? '{}' : resp.body;
+      final decoded = jsonDecode(raw);
+      if (decoded is Map<String, dynamic>) return decoded;
+      return null;
+    } catch (_) {
+      return null;
+    }
   }
 
   Future<Map<String, dynamic>> postJson(String path, Map<String, dynamic> body) async {
