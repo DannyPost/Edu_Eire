@@ -1,5 +1,6 @@
 // lib/studybot/app/study_bot_screen.dart
-// Minimal Study-Bot chat UI + router → exemplar/grade wiring
+// Study-Bot chat UI + router → exemplar/grade wiring + UX improvements
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,147 +17,298 @@ import '../state/exemplar/exemplar_state.dart';
 
 class TypingDots extends StatefulWidget {
   const TypingDots({super.key});
+
   @override
   State<TypingDots> createState() => _TypingDotsState();
 }
+
 class _TypingDotsState extends State<TypingDots>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _c =
-      AnimationController(vsync: this, duration: const Duration(milliseconds: 1200))
-        ..repeat();
+  late final AnimationController _c = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1200),
+  )..repeat();
+
   @override
-  void dispose() { _c.dispose(); super.dispose(); }
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-        animation: _c,
-        builder: (_, __) {
-          final dots = (_c.value * 3).floor() % 3 + 1;
-          return Text('.' * dots, style: TextStyle(fontSize: 20, color: Theme.of(context).primaryColor));
-        },
-      );
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _c,
+      builder: (_, __) {
+        final dots = (_c.value * 3).floor() % 3 + 1;
+        return Text(
+          '.' * dots,
+          style: TextStyle(
+            fontSize: 20,
+            color: Theme.of(context).primaryColor,
+          ),
+        );
+      },
+    );
+  }
 }
 
 class TypewriterText extends StatefulWidget {
   final String text;
   final TextStyle style;
   final Duration duration;
-  const TypewriterText({super.key, required this.text, required this.style, this.duration = const Duration(milliseconds: 30)});
+
+  const TypewriterText({
+    super.key,
+    required this.text,
+    required this.style,
+    this.duration = const Duration(milliseconds: 30),
+  });
+
   @override
   State<TypewriterText> createState() => _TypewriterTextState();
 }
+
 class _TypewriterTextState extends State<TypewriterText> {
-  String _displayed = ""; late int _currentIndex; late final List<String> _characters; late final Duration _duration;
+  String _displayed = "";
+  late int _currentIndex;
+  late final List<String> _characters;
+  late final Duration _duration;
+
   @override
-  void initState() { super.initState(); _characters = widget.text.split(''); _currentIndex = 0; _duration = widget.duration; _tick(); }
+  void initState() {
+    super.initState();
+    _characters = widget.text.split('');
+    _currentIndex = 0;
+    _duration = widget.duration;
+    _tick();
+  }
+
   void _tick() async {
     while (_currentIndex < _characters.length) {
       await Future.delayed(_duration);
       if (!mounted) return;
-      setState(() { _displayed += _characters[_currentIndex]; _currentIndex++; });
+      setState(() {
+        _displayed += _characters[_currentIndex];
+        _currentIndex++;
+      });
     }
   }
+
   @override
-  Widget build(BuildContext context) => Text(_displayed, style: widget.style);
+  Widget build(BuildContext context) {
+    return Text(_displayed, style: widget.style);
+  }
 }
 
-class StudyBotScreen extends StatefulWidget { const StudyBotScreen({super.key}); @override State<StudyBotScreen> createState() => _StudyBotScreenState(); }
+class StudyBotScreen extends StatefulWidget {
+  const StudyBotScreen({super.key});
+
+  @override
+  State<StudyBotScreen> createState() => _StudyBotScreenState();
+}
+
 class _StudyBotScreenState extends State<StudyBotScreen> {
   final TextEditingController _controller = TextEditingController();
-  @override void dispose() { _controller.dispose(); super.dispose(); }
+
+  /// Last answer we sent for grading – shown above the score.
+  String? _lastGradedAnswer;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Future<void> _printFirebaseIdToken() async {
     try {
       final user = FirebaseAuth.instance.currentUser;
-      if (user == null) { _snack('No user signed in.'); return; }
+      if (user == null) {
+        _snack('No user signed in.');
+        return;
+      }
       String? token = await user.getIdToken(true);
-      if (token == null || token.isEmpty) { _snack('Could not fetch ID token.'); return; }
+      if (token == null || token.isEmpty) {
+        _snack('Could not fetch ID token.');
+        return;
+      }
       token = token.replaceAll('\r', '').replaceAll('\n', '');
       // ignore: avoid_print
       print('FIREBASE_ID_TOKEN:$token');
       await Clipboard.setData(ClipboardData(text: token));
-      final preview = token.length > 24 ? '${token.substring(0, 24)}…' : token;
+      final preview =
+          token.length > 24 ? '${token.substring(0, 24)}…' : token;
       _snack('ID token copied: $preview');
-    } catch (e) { _snack('Failed to get ID token: $e'); }
+    } catch (e) {
+      _snack('Failed to get ID token: $e');
+    }
   }
 
   Future<void> _testGrade(BuildContext context) async {
-    final text = _controller.text.trim().isEmpty ? 'This is my test answer for the StudyBot grading flow.' : _controller.text.trim();
+    final text = _controller.text.trim().isEmpty
+        ? 'This is my test answer for the StudyBot grading flow.'
+        : _controller.text.trim();
+
     final grade = context.read<GradeNotifier>();
-    await grade.submit(answer: text, meta: {'subject': 'English','year': 2024,'section': 'Poetry','questionId': 'poetry_q1'});
+    _lastGradedAnswer = text;
+
+    await grade.submit(
+      answer: text,
+      meta: {
+        'subject': 'English',
+        'year': 2024,
+        'section': 'Poetry',
+        'questionId': 'poetry_q1',
+      },
+    );
+
     final state = grade.state;
-    if (state.status == Status.error) _snack('Grade error: ${state.errorMessage ?? 'Unknown error'}');
-    else if (state.status == Status.success) _snack('Graded! Score: ${state.result?.score ?? '-'}');
+    if (state.status == Status.error) {
+      _snack('Grade error: ${state.errorMessage ?? 'Unknown error'}');
+    } else if (state.status == Status.success) {
+      _snack('Graded! Score: ${state.result?.score ?? '-'}');
+    }
   }
 
+  /// Main send handler: calls /chat (router) → branches to /exemplar or /grade.
   Future<void> _sendRouted(BuildContext context) async {
     final message = _controller.text.trim();
-    if (message.isEmpty) { _snack('Type a message first.'); return; }
+    if (message.isEmpty) {
+      _snack('Type a message first.');
+      return;
+    }
 
     final chat = context.read<ChatNotifier>();
     final exemplar = context.read<ExemplarNotifier>();
     final grade = context.read<GradeNotifier>();
 
+    // Optional: clear previous results
+    exemplar.reset();
+    grade.reset();
+
+    // 1) Call /chat router
     await chat.routeMessage(
       message: message,
-      meta: {'subject': 'English', 'year': 2024, 'section': 'Poetry'},
+      meta: {
+        'subject': 'English',
+        'year': 2024,
+        'section': 'Poetry',
+      },
       history: const [],
     );
 
-    final route = chat.state.route;
-    if (route == null) {
-      final err = context.read<ChatNotifier>().state.errorMessage ?? 'Routing failed.';
+    final routeState = chat.state;
+    final route = routeState.route;
+
+    if (routeState.status == Status.error || route == null) {
+      final err = routeState.errorMessage ?? 'Routing failed.';
       _snack('Router error: $err');
       return;
     }
 
+    // 2) Merge base meta with router's routeMeta/payload
+    final Map<String, dynamic> meta = {
+      'subject': 'English',
+      'year': 2024,
+      'section': 'Poetry',
+      ...?route.payload,
+    };
+
+    // 3) Branch based on router type
     switch (route.type) {
       case 'exemplar':
         await exemplar.generate(
           question: message,
-          meta: {'subject': 'English', 'level': 'HL', 'marks': 30},
+          meta: meta,
         );
         if (exemplar.state.status == Status.error) {
           _snack(exemplar.state.errorMessage ?? 'Exemplar error');
         }
         break;
+
       case 'grade':
-        await grade.submit(answer: message, meta: {'subject': 'English'});
+        _lastGradedAnswer = message;
+        await grade.submit(
+          answer: message,
+          meta: meta,
+        );
         if (grade.state.status == Status.error) {
           _snack(grade.state.errorMessage ?? 'Grade error');
         }
         break;
+
+      case 'advice':
+        _snack('Advice mode (using exemplar chain for now)…');
+        await exemplar.generate(
+          question: message,
+          meta: {
+            ...meta,
+            'chain': 'advice',
+          },
+        );
+        break;
+
       default:
-        _snack('Coming soon: ${route.type}. Showing grade for now.');
-        await grade.submit(answer: message, meta: {'subject': 'English'});
+        _snack('Coming soon: ${route.type}. Using exemplar as fallback.');
+        await exemplar.generate(
+          question: message,
+          meta: {
+            ...meta,
+            'chain': route.type,
+          },
+        );
+        break;
     }
+
+    // Optional: clear input after send
+    // _controller.clear();
   }
 
   void _snack(String msg) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(msg)),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final GradeState gradeState = context.watch<GradeNotifier>().state;
     final ChatState chatState = context.watch<ChatNotifier>().state;
-    final ExemplarState exemplarState = context.watch<ExemplarNotifier>().state;
+    final ExemplarState exemplarState =
+        context.watch<ExemplarNotifier>().state;
+
+    final bool isLoading =
+        gradeState.status == Status.loading ||
+        exemplarState.status == Status.loading ||
+        chatState.status == Status.loading;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Study Bot'),
         backgroundColor: Colors.blueAccent,
         actions: [
-          IconButton(tooltip: 'Print ID Token', icon: const Icon(Icons.vpn_key), onPressed: _printFirebaseIdToken),
-          IconButton(tooltip: 'Test Grade (calls /grade)', icon: const Icon(Icons.play_arrow), onPressed: () => _testGrade(context)),
+          IconButton(
+            tooltip: 'Print ID Token',
+            icon: const Icon(Icons.vpn_key),
+            onPressed: _printFirebaseIdToken,
+          ),
+          IconButton(
+            tooltip: 'Test Grade (calls /grade)',
+            icon: const Icon(Icons.play_arrow),
+            onPressed: () => _testGrade(context),
+          ),
         ],
       ),
       body: Column(
         children: [
+          if (isLoading)
+            const LinearProgressIndicator(minHeight: 3),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
+                // Intro message
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -165,38 +317,70 @@ class _StudyBotScreenState extends State<StudyBotScreen> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(8)),
-                        child: const TypewriterText(text: "Hello! I'm your Study Bot. How can I help?", style: TextStyle(fontSize: 16)),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const TypewriterText(
+                          text: "Hello! I'm your Study Bot. How can I help?",
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 16),
-                if (chatState.route != null) _RouterBanner(),
+
+                if (chatState.route != null) const _RouterBanner(),
                 const SizedBox(height: 12),
-                Row(children: const [CircleAvatar(child: Icon(Icons.smart_toy)), SizedBox(width: 8), TypingDots()]),
+
+                // Typing dots (bot thinking)
+                Row(
+                  children: const [
+                    CircleAvatar(child: Icon(Icons.smart_toy)),
+                    SizedBox(width: 8),
+                    TypingDots(),
+                  ],
+                ),
                 const SizedBox(height: 24),
-                if (exemplarState.text?.isNotEmpty == true) _ExemplarResultSection(state: exemplarState),
-                _GradeResultSection(state: gradeState),
+
+                if (exemplarState.text?.isNotEmpty == true)
+                  _ExemplarResultSection(state: exemplarState),
+
+                _GradeResultSection(
+                  state: gradeState,
+                  lastAnswer: _lastGradedAnswer,
+                ),
               ],
             ),
           ),
           const Divider(height: 1),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
-                    controller: _controller, minLines: 1, maxLines: 5,
+                    controller: _controller,
+                    minLines: 1,
+                    maxLines: 5,
                     decoration: const InputDecoration(
-                      hintText: "Ask StudyBot… (router will decide exemplar/grade)",
+                      hintText:
+                          "Ask StudyBot… (router will decide exemplar/grade)",
                       border: OutlineInputBorder(),
                     ),
                   ),
                 ),
                 const SizedBox(width: 8),
-                IconButton(tooltip: 'Send (routes → exemplar/grade)', icon: const Icon(Icons.send, color: Colors.blueAccent), onPressed: () => _sendRouted(context)),
+                IconButton(
+                  tooltip: 'Send (routes → exemplar/grade)',
+                  icon: const Icon(
+                    Icons.send,
+                    color: Colors.blueAccent,
+                  ),
+                  onPressed: () => _sendRouted(context),
+                ),
               ],
             ),
           ),
@@ -207,22 +391,31 @@ class _StudyBotScreenState extends State<StudyBotScreen> {
 }
 
 class _RouterBanner extends StatelessWidget {
+  const _RouterBanner({super.key});
+
   @override
   Widget build(BuildContext context) {
     final route = context.watch<ChatNotifier>().state.route!;
     return Card(
-      elevation: 0, color: Colors.amber.withOpacity(0.15),
+      elevation: 0,
+      color: Colors.amber.withOpacity(0.15),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            Chip(label: Text('Routed: ${route.type}'), backgroundColor: Colors.amber.withOpacity(0.3)),
+            Chip(
+              label: Text('Routed: ${route.type}'),
+              backgroundColor: Colors.amber.withOpacity(0.3),
+            ),
             const SizedBox(width: 12),
             if (route.confidence != null)
               Expanded(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: LinearProgressIndicator(value: route.confidence!.clamp(0, 1), minHeight: 8),
+                  child: LinearProgressIndicator(
+                    value: route.confidence!.clamp(0, 1),
+                    minHeight: 8,
+                  ),
                 ),
               ),
           ],
@@ -234,51 +427,123 @@ class _RouterBanner extends StatelessWidget {
 
 class _ExemplarResultSection extends StatelessWidget {
   final ExemplarState state;
-  const _ExemplarResultSection({required this.state});
+
+  const _ExemplarResultSection({required this.state, super.key});
 
   @override
   Widget build(BuildContext context) {
     if (state.status == Status.loading) {
-      return const Center(child: Padding(padding: EdgeInsets.symmetric(vertical: 16), child: CircularProgressIndicator()));
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          child: CircularProgressIndicator(),
+        ),
+      );
     }
     if (state.status == Status.error) {
-      return Padding(padding: const EdgeInsets.symmetric(vertical: 8), child: Text(state.errorMessage ?? 'Error', style: const TextStyle(color: Colors.red)));
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Text(
+          state.errorMessage ?? 'Error',
+          style: const TextStyle(color: Colors.red),
+        ),
+      );
     }
-    if ((state.text ?? '').isEmpty) return const SizedBox.shrink();
+    if ((state.text ?? '').isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     return Card(
-      elevation: 0, color: Colors.green.withOpacity(0.06),
-      child: Padding(padding: const EdgeInsets.all(12), child: TypewriterText(text: state.text!, style: const TextStyle(fontSize: 16))),
+      elevation: 0,
+      color: Colors.green.withOpacity(0.06),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: TypewriterText(
+          text: state.text!,
+          style: const TextStyle(fontSize: 16),
+        ),
+      ),
     );
   }
 }
 
 class _GradeResultSection extends StatelessWidget {
   final GradeState state;
-  const _GradeResultSection({required this.state});
+  final String? lastAnswer;
+
+  const _GradeResultSection({
+    required this.state,
+    required this.lastAnswer,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (state.status == Status.loading) {
-      return const Center(child: Padding(padding: EdgeInsets.symmetric(vertical: 16), child: CircularProgressIndicator()));
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          child: CircularProgressIndicator(),
+        ),
+      );
     }
     if (state.status == Status.error) {
-      return Padding(padding: const EdgeInsets.symmetric(vertical: 8), child: Text(state.errorMessage ?? 'Error', style: const TextStyle(color: Colors.red)));
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Text(
+          state.errorMessage ?? 'Error',
+          style: const TextStyle(color: Colors.red),
+        ),
+      );
     }
-    if (state.result == null) return const SizedBox.shrink();
+    if (state.result == null) {
+      return const SizedBox.shrink();
+    }
 
     final res = state.result!;
     return Card(
-      elevation: 0, color: Colors.blueGrey.withOpacity(0.06),
+      elevation: 0,
+      color: Colors.blueGrey.withOpacity(0.06),
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Score: ${res.score}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8),
-          const Text('Feedback:', style: TextStyle(fontWeight: FontWeight.w600)),
-          const SizedBox(height: 4),
-          ...res.bullets.map((b) => Row(crossAxisAlignment: CrossAxisAlignment.start, children: [const Text('• '), Expanded(child: Text(b))])),
-        ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (lastAnswer != null && lastAnswer!.trim().isNotEmpty) ...[
+              const Text(
+                'Your answer:',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(lastAnswer!),
+              const SizedBox(height: 12),
+            ],
+            Text(
+              'Score: ${res.score}',
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Feedback:',
+              style: TextStyle(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 4),
+            ...res.bullets.map(
+              (b) => Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('• '),
+                  Expanded(child: Text(b)),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
